@@ -63,3 +63,11 @@
 - Static defense **floors the combined dice/2**, not per-source halves: one total die 0, two dice 1, three dice 1, four dice 2.
 - Destruction Accuracy uses **Perception + Destruction**, Potence **Intelligence + Destruction**, and its rolled self-Cost is measured against static **Will + Destruction**, plus cost-reducing robes; **Conviction** sets the independent Mana mark capacity. Cost dice themselves are never reduced by robes, no extra resistance roll occurs.
 - Default counterspell uses **Wits + Mysticism** as a chosen alternative static Avoidance. Appropriate Talent/Specialty are applicable where legitimate; counterspell reaction cost and timing remain unsettled.
+
+## Mind/Soul resource swap and all-source magic Cost resistance
+
+- Mind/Will owns Spirit (slow), Mana (fast), while Soul/Conviction owns Plasticity (slow), Attention (fast); Body/Health Injury/Fatigue unchanged. Verify character template and validator both enforce exact assignment.
+- Test Perception + applicable Talent + Destruction + Firebolt Specialty for Accuracy; Intelligence + same three for Potence; **Will + same Talent + same Skill + same Specialty** for static Cost resistance.
+- With Will 10, Mage Talent 10, Destruction 10, Firebolt 5, **7 personal dice** give static resistance 3 and **two Mana marks per grade**. One robe die raises resistance to 4, not capacity. A rolled Cost 3 is therefore Middling without the robe and Minor with it.
+- Tests must show both **governing Talent** and **specific spell Specialty** affect cost severity, that off-Talent spells do not gain Talent dice, and that *all four applicable personal sources* receive eligible passive Cost XP (equipment never does).
+- Persisted Mana marks belong to **Mind**, not Soul; changing the schema does not implicitly migrate any live character's mark histories.

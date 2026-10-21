@@ -17,4 +17,4 @@ Locked upstream separation:
 
 See [MIGRATION_BACKLOG.md](../MIGRATION_BACKLOG.md).
 
-**Countermagic:** an available counterspell can instead select **Wits + Mysticism** (with applicable Talent/Specialty), floored as one combined static defense, not stacked onto Dodge or an already-chosen ward. A school spell's **self-Cost** uses **Will + the spell's own School Skill** static resistance. See [Magic](../design/MAGIC.md). Reaction cost/action legality are still open.
+**Countermagic:** an available counterspell can instead select **Wits + Mysticism** (with applicable Talent/Specialty), floored as one combined static defense, not stacked onto Dodge or an already-chosen ward. A school spell's **self-Cost** uses **Will + governed Talent + the spell's own School Skill + relevant declared Spell Specialty + eligible gear** static resistance. Mind/Will sets Mana capacity independently of these extra threshold contributions. See [Magic](../design/MAGIC.md). Reaction cost/action legality are still open.

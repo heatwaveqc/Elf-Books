@@ -1,41 +1,38 @@
 # Elder Scrolls magic on Geard Lif — working cast and Cost bridge
 
-Use the [local Geard Lif rules](../engine/geard-lif/README.md), especially [Resource Tracks](../engine/geard-lif/source/Resource_Tracks.tid). This is **not** the former D20 spell economy: no fixed MP subtraction or spell slots.
+Use the [local Geard Lif resource rules](../engine/geard-lif/source/Resource_Tracks.tid). **Mana and Spirit belong to Mind, governed by Will**; Soul/Conviction instead governs social and identity resilience via **Plasticity and Attention**. The six tracks remain graded, not fixed HP/MP pools. D20 spell slots are retired.
 
-## School-based three-part cast
+## School-based casting: three applications of the same four sources
 
-Each spell has a **school Skill**, which is used for all three sides of its operation:
+| Spell function | Relevant attribute | Other eligible personal contributions | Resolution |
+| --- | --- | --- | --- |
+| Spell aiming/application | **Perception** | Applicable Talent + School Skill + Spell Specialty | Roll **Accuracy** |
+| Damage/effect | **Intelligence** | Applicable Talent + same School Skill + Spell Specialty | Roll **Potence** |
+| Resist Magicka (Mana) Cost | **Will** | Applicable Talent + same School Skill + Spell Specialty | **Static Cost resistance**, no resistance roll |
 
-| Spell function | Attribute + school Skill | Mode |
-| --- | --- | --- |
-| Hit/apply spell | **Perception + that school** | Rolled Accuracy vs chosen target's effective Avoidance |
-| Effect/damage | **Intelligence + that school** | Rolled Potence vs effective target Resilience |
-| Resist personal Magicka (Mana) Cost | **Will + that same school** | **Static** resistance = floor(total qualifying dice/2); no additional resistance roll |
+For a Destruction spell, the Skill is **Destruction** for *all three*. The character's chosen five-skill Talent contributes **when it governs Destruction**, including the self-Cost; it never prohibits using another school. The **one relevant, declared Spell Specialty** (e.g. Firebolt) contributes to all three when applicable. Both can substantially reduce the actual severity of repeated Costs. Tier prerequisites stay in force: a Skill needs at least one same-Tier Attribute die; a Specialty needs one same-Tier Skill die. Talent neither gates nor caps either.
 
-For targeted Destruction spells, all three use the **Destruction** Skill; there is **no need to switch to Restoration/Mysticism** to resist the spell's self-Cost. Standard five-skill Talent and one appropriate named spell Specialty can contribute to the two **active casting** rolls when genuinely applicable. By default, the self-Cost resistance uses the specified **Will + School Skill only** (plus applicable cost-reducing gear); Talent/Spell Specialty do **not** silently increase resistance.
+The spell itself still rolls its **Cost rating** as an independent unopposed Effect (no Application roll). Do **not** subtract the caster's Will, Talent, Skill, Specialty or robe bonus from that Cost's dice or rolled successes.
 
-**The spell's Cost magnitude is still rolled independently, unchanged**, with **no Application roll**, under Geard Lif. Compare the rolled magnitude (after any separately legal Tier conversion) to the **static effective Cost threshold**. Resisting that Cost does **not** mean rolling another pool. The same Minor/Middling/Major/Final grade rules apply. No armor-like mitigation removes dice from the Cost roll.
+**Static Cost resistance** = `floor((Will dice + applicable Talent dice + School Skill dice + declared Spell Specialty dice + legal cost-reducing equipment dice) / 2)`. All eligibility/rating conversions happen **before** summing and flooring once. Compare the unchanged rolled Cost magnitude against that effective threshold using ordinary graded mark rules.
 
-**Crucially:** **Conviction** determines the number of available **Mana marks at every grade**, via its own Resilience rating. It is **not** replaced by Will; Will and the School Skill determine *only the effective severity threshold for that particular Cost*. A cost-reducing robe adds eligible **equipment dice to the Will + School Cost-resistance pool before halving and rounding down**. It does **not** give more Mana mark slots, lower the original Cost dice or grant equipment practice XP. The current provisional equipment dice ceiling (at most personal dice contributed) still applies. The actual robe bonuses remain to be priced.
+**Mana mark capacity** is separately `floor(Will rating / 5)` slots at each of the four grades at the resource's Tier. Mind's **Spirit** track also uses Will for mark capacity. Soul's **Plasticity** and **Attention** instead have `floor(Conviction rating / 5)` slots per grade. **Talent, Skill, Specialty and robes may improve the static Cost threshold but never increase these slot capacities.** Robe/equipment dice generate no personal XP.
 
-### Illustrative Destruction Cost
+### Example: Firebolt and cost-reducing robes
 
-At Tier 0, Will 10 contributes **2 dice**, Destruction 10 **2 dice**: 4 dice, hence static Cost resistance **2**. Conviction 15 provides **3 slots per Mana grade**. A Cost that rolled **2** successes therefore inflicts **one Middling Mana mark**. Add robes granting two legal resistance dice: the static resistance is now **3**; the same rolled Cost 2 causes **one Minor Mana mark**, while mark capacity stays at **3 per grade**.
+At Tier 0, Will **10** (2 dice), a governed Mage Talent **10** (2 dice), Destruction **10** (2 dice), and Firebolt Specialty **5** (1 die) give **7 resistance dice**, static resistance **3**. Will 10 supplies **two Mana slots per grade**, regardless of this pool's total.
 
-The zero-static-threshold edge case remains open, rather than silently imposing one mark or an unstated minimum.
+A separately rolled Cost of **3** successes inflicts **one Middling Mana mark**. Robes adding one eligible Cost-resistance die bring the total to **8 dice**, static resistance **4**, making the *same* Cost result **one Minor Mana mark**, with exactly **two** Mana slots per grade still available. The +1 robe die is illustrative, not a published item stat.
 
-## Defending against hostile magic
+## Countering hostile magic
 
-When the defender can legitimately attempt a reactive **counterspell**, use **Wits + Mysticism** as the normal defensive package, plus their chosen Talent if it governs Mysticism and any applicable counterspell Specialty. Treat the result as a chosen static defensive option: `floor(total qualifying dice / 2)`, **not an additional bonus stacked on Dodge**. Spell Accuracy **meets or exceeds** this opposition to land the spell. Reaction availability, counterspell costs, timing, and interaction with persistent wards still need definitions.
+When a defender may use a reactive counterspell, the normal Elf-Books option is **Wits + Mysticism**, with an applicable Talent and counterspell Specialty. This yields a *selected alternative* static Avoidance, `floor(total dice / 2)`, not something automatically stacked with Dodge or an independent ward. **Mysticism** fits the Oblivion dispelling tradition; Restoration can represent Skyrim-like wards and Alteration can protect the body. Exact timing, reaction limits and counterspell Costs remain open.
 
-**School rationale:** Mysticism is a better TES fit for direct Dispel/countermagic (see [Oblivion Mysticism](https://cs.uesp.net/wiki/mysticism) and [Oblivion's Dispel spell list](https://www.gamebanshee.com/oblivion/spells/mysticismnovice.php)). Restoration remains home to Skyrim-style wards; Alteration to flesh/altered-body protection and other alteration effects. Particular spells/perks can specify a justified different method.
+## Costs, XP, and remaining spell mechanics
 
-## Other magical effects and scope
+- **On a genuine Magicka Cost**, each *actually contributing personal resistance trait*—Will, School Skill, governed Talent, and declared Spell Specialty—may receive passive practice XP: `ceil(rating/10)` at Tier 0, exact `rating/10 × 10^Tier` at higher Tiers. The spell's active Accuracy/Potence dice separately earn their usual source XP. No invented resistance roll or robe XP.
+- **Oakflesh** raises the effective Injury-grade threshold without increasing Health capacity. The specific protection bonus is unfinished.
+- Restoration recovery, summoning, duration, concentration, area, range, school-specific spell Costs, resource-exhaustion consequences, and ward mechanics still require content design.
+- The existing zero-static-Cost-threshold case remains open; don't silently divide by zero or invent free spellcasting.
 
-- **Oakflesh-like protection** raises the effective **Injury grade threshold**, never Health mark capacity.
-- **Restoration** can perform recovery work consistent with the existing graded resource engine; detailed Potence-to-recovery and timing still need definitions.
-- **Conjuration, Illusion, Alteration, Mysticism**, and optionally **Alchemy/Enchanting** all use the universal Project system; custom time, control, duration, and scope still need conversion.
-- **Passive practice XP:** on a genuine rolled Destruction Cost, Will and Destruction can each receive their Tier-specific **passive** XP (`ceil(rating/10)` at Tier 0; `rating/10×10^Tier` at Tier 1+). The caster may also earn separate source-tagged active XP from the casting Accuracy/Potence dice; do not invent defensive rolls or give robe dice personal XP.
-- **Tier gating:** School dice at the selected Tier require at least one governing Attribute die at that Tier. The same skill can participate in Accuracy, Potence and Cost checks with their respective governing Attributes. Higher-Tier Costs still respect the selected resource Tier and Cost Effect conversion.
-
-See [prototype cast/Cost arithmetic](../scripts/magic.py) and [magic tests](../tests/test_magic.py). Full live casting, Cost dice configuration, spell lists, reaction costs, Wards and balance need a later pass. [Return-to-parity backlog](../MIGRATION_BACKLOG.md).
+See the [tested helper](../scripts/magic.py), [unit tests](../tests/test_magic.py), and [migration checklist](../MIGRATION_BACKLOG.md).

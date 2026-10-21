@@ -1,74 +1,139 @@
+import json
 import sys
 import unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 from trait_pools import Talent
-from magic import casting_pools,mana_cost_resistance,resolve_mana_cost,mana_cost_practice_xp,counterspell_avoidance
+from geard_core import RESOURCE_TRACKS
+from magic import (
+    casting_pools,mana_cost_resistance,resolve_mana_cost,
+    mana_cost_practice_xp,counterspell_avoidance
+)
 
 class MagicTests(unittest.TestCase):
     def setUp(self):
-        self.talent=Talent("Mage",frozenset({"alteration","conjuration","destruction",
-                                                "illusion","restoration"}),10)
+        self.talent=Talent("Mage",frozenset({
+            "alteration","conjuration","destruction","illusion","restoration"}),10)
         self.base=dict(talent={0:10},skill={0:15},specialty={0:5})
     def ratings(self,attribute):
         return dict(attribute={0:attribute},**self.base)
+
+    def cost(self,**kwargs):
+        defaults=dict(tier=0,talent=self.talent,school_id="destruction",
+            will_tiers={0:10},school_skill_tiers={0:10},talent_tiers={0:10},
+            specialty_tiers={0:5},specialty_declared=True)
+        defaults.update(kwargs)
+        return resolve_mana_cost(**defaults)
+
+    def test_resources_mind_magic_and_soul_social(self):
+        self.assertEqual(RESOURCE_TRACKS["mind"],
+            {"resilience":"will","slow":"spirit","fast":"mana"})
+        self.assertEqual(RESOURCE_TRACKS["soul"],
+            {"resilience":"conviction","slow":"plasticity","fast":"attention"})
+        self.assertEqual(RESOURCE_TRACKS["body"],
+            {"resilience":"health","slow":"injury","fast":"fatigue"})
+        character=json.loads((ROOT/"templates/character.json").read_text())
+        for aspect,spec in RESOURCE_TRACKS.items():
+            self.assertEqual(set(character["resources"][aspect]),
+                             {spec["slow"],spec["fast"]})
+            for name in (spec["slow"],spec["fast"]):
+                self.assertEqual(character["resources"][aspect][name],[0,0,0,0])
 
     def test_same_school_distinct_accuracy_and_potence_attribute(self):
         pools=casting_pools(tier=0,talent=self.talent,school_id="destruction",
             accuracy_ratings=self.ratings(15),potence_ratings=self.ratings(20))
         self.assertEqual((pools.accuracy_dice,pools.potence_dice),(9,10))
 
-    def test_mana_cost_same_school_will_static_conviction_capacity(self):
-        r=resolve_mana_cost(tier=0,cost_magnitude=2,
-            will_tiers={0:10},school_skill_tiers={0:10},conviction_tiers={0:15})
+    def test_mana_cost_full_sources_and_will_capacity(self):
+        r=self.cost(cost_magnitude=3)
+        # Will 2d + Mage Talent 2d + Destruction 2d + Firebolt 1d = 7d.
         self.assertEqual((r.resistance_dice,r.effective_threshold,
-                          r.mark_capacity_per_grade),(4,2,3))
+                          r.mark_capacity_per_grade),(7,3,2))
         self.assertEqual(r.new_mana.marks,(0,1,0,0))
-        self.assertEqual(r.new_mana.resilience,3)
-        protected=resolve_mana_cost(tier=0,cost_magnitude=2,
-            will_tiers={0:10},school_skill_tiers={0:10},conviction_tiers={0:15},
-            robe_dice=2)
-        self.assertEqual((protected.effective_threshold,protected.mark_capacity_per_grade),(3,3))
-        self.assertEqual(protected.new_mana.marks,(1,0,0,0))
+        self.assertEqual(r.new_mana.resilience,2)
+        robe=self.cost(cost_magnitude=3,robe_dice=1)
+        self.assertEqual((robe.resistance_dice,robe.effective_threshold,
+                          robe.mark_capacity_per_grade),(8,4,2))
+        self.assertEqual(robe.new_mana.marks,(1,0,0,0))
+        self.assertEqual(robe.cost_magnitude,3)
 
-    def test_robe_never_reduces_cost_faces_or_increases_marks(self):
-        natural=resolve_mana_cost(tier=0,cost_magnitude=4,will_tiers={0:15},
-            school_skill_tiers={0:10},conviction_tiers={0:10})
-        robe=resolve_mana_cost(tier=0,cost_magnitude=4,will_tiers={0:15},
-            school_skill_tiers={0:10},conviction_tiers={0:10},robe_dice=1)
-        self.assertEqual((natural.cost_magnitude,robe.cost_magnitude),(4,4))
-        self.assertEqual((natural.mark_capacity_per_grade,robe.mark_capacity_per_grade),(2,2))
-        self.assertGreater(robe.effective_threshold,natural.effective_threshold)
+    def test_talent_and_spell_specialty_each_reduce_cost(self):
+        base=self.cost(cost_magnitude=3,specialty_declared=False,
+                       talent_tiers={0:0})
+        mage=self.cost(cost_magnitude=3,specialty_declared=False)
+        specialized=self.cost(cost_magnitude=3)
+        self.assertEqual([x.resistance_dice for x in (base,mage,specialized)],
+                         [4,6,7])
+        self.assertEqual([x.effective_threshold for x in (base,mage,specialized)],
+                         [2,3,3])
+        self.assertEqual([x.mark_capacity_per_grade for x in (base,mage,specialized)],
+                         [2,2,2])
+        # Higher relevant Specialty, unlike adding capacity, can further raise guard.
+        specialist=self.cost(cost_magnitude=3,specialty_tiers={0:10})
+        self.assertEqual(specialist.effective_threshold,4)
+        self.assertEqual(specialist.new_mana.marks,(1,0,0,0))
 
-    def test_actual_school_training_without_robe_training(self):
-        # Tier 0 rounds fractional passive XP UP for Will and School separately.
-        self.assertEqual(mana_cost_practice_xp(tier=0,will_rating=5,
-                                                school_skill_rating=5),
-                         {"will":10,"school_skill":10})
-        self.assertEqual(mana_cost_practice_xp(tier=1,will_rating=5,
-                                                school_skill_rating=5),
-                         {"will":50,"school_skill":50})
+    def test_outside_talent_still_casts_but_no_talent_cost_dice(self):
+        r=mana_cost_resistance(tier=0,talent=self.talent,school_id="mysticism",
+            will_tiers={0:10},school_skill_tiers={0:10},
+            talent_tiers={0:10},specialty_tiers={0:5},
+            specialty_declared=True)
+        self.assertEqual(r,(5,2))
+        self.assertEqual(mana_cost_practice_xp(tier=0,talent=self.talent,
+            school_id="mysticism",will_rating=10,school_skill_rating=10,
+            talent_rating=10,specialty_rating=5,specialty_declared=True),
+            {"will":10,"school_skill":10,"specialty":10})
 
-    def test_counterspell_mysticism_wits_not_alteration(self):
-        t=Talent("Scholar",frozenset({"mysticism","lore","alchemy",
-                                      "alteration","restoration"}),10)
+    def test_cost_passive_xp_all_sources_except_robes(self):
+        xp=mana_cost_practice_xp(tier=0,talent=self.talent,school_id="destruction",
+            will_rating=10,school_skill_rating=10,talent_rating=5,
+            specialty_rating=5,specialty_declared=True)
+        self.assertEqual(xp,{"will":10,"school_skill":10,"talent":10,"specialty":10})
+        advanced=mana_cost_practice_xp(tier=1,talent=self.talent,
+            school_id="destruction",will_rating=5,school_skill_rating=5,
+            talent_rating=5,specialty_rating=5,specialty_declared=True)
+        self.assertEqual(advanced,{"will":50,"school_skill":50,
+                                   "talent":50,"specialty":50})
+
+    def test_robe_never_reduces_rolled_cost_or_increases_slots(self):
+        a=self.cost(cost_magnitude=8,robe_dice=0)
+        b=self.cost(cost_magnitude=8,robe_dice=2)
+        self.assertEqual((a.cost_magnitude,b.cost_magnitude),(8,8))
+        self.assertEqual((a.mark_capacity_per_grade,b.mark_capacity_per_grade),(2,2))
+        self.assertEqual((a.new_mana.resilience,b.new_mana.resilience),(2,2))
+
+    def test_will_not_conviction_governs_mana_capacity(self):
+        r=self.cost(cost_magnitude=1,will_tiers={0:15})
+        self.assertEqual(r.mark_capacity_per_grade,3)
+        # There is intentionally no Conviction parameter in this API.
+
+    def test_counterspell_mysticism_wits(self):
+        t=Talent("Scholar",frozenset({
+            "mysticism","lore","alchemy","alteration","restoration"}),10)
         ratings=dict(attribute={0:15},talent={0:10},skill={0:10},specialty={0:0})
         self.assertEqual(counterspell_avoidance(tier=0,talent=t,ratings=ratings),3)
         self.assertEqual(counterspell_avoidance(tier=0,talent=self.talent,ratings=ratings),2)
 
-    def test_zero_effective_threshold_not_silently_one(self):
+    def test_zero_effective_threshold_preserved_as_open(self):
         with self.assertRaisesRegex(ValueError,"zero Cost-resistance"):
-            mana_cost_resistance(tier=0,will_tiers={0:5},
-                                 school_skill_tiers={0:0})
+            mana_cost_resistance(tier=0,talent=self.talent,school_id="mysticism",
+                will_tiers={0:5},school_skill_tiers={0:0},talent_tiers={0:0})
 
-    def test_tier_prereqs_apply_to_cost_resistance(self):
-        with self.assertRaisesRegex(ValueError,"Will Attribute"):
-            mana_cost_resistance(tier=1,will_tiers={0:25,1:4},
-                                 school_skill_tiers={0:25,1:5})
+    def test_skill_specialty_tier_prerequisites(self):
+        with self.assertRaisesRegex(ValueError,"Attribute die"):
+            mana_cost_resistance(tier=1,talent=self.talent,school_id="destruction",
+                will_tiers={0:25,1:4},school_skill_tiers={0:25,1:5},
+                talent_tiers={0:25,1:5})
+        with self.assertRaisesRegex(ValueError,"Skill die"):
+            mana_cost_resistance(tier=1,talent=self.talent,school_id="destruction",
+                will_tiers={0:25,1:5},school_skill_tiers={0:25,1:4},
+                talent_tiers={0:25,1:5},specialty_tiers={0:25,1:5},
+                specialty_declared=True)
         with self.assertRaisesRegex(ValueError,"budget"):
-            mana_cost_resistance(tier=0,will_tiers={0:5},
-                                 school_skill_tiers={0:5},robe_dice=3)
+            mana_cost_resistance(tier=0,talent=self.talent,school_id="destruction",
+                will_tiers={0:5},school_skill_tiers={0:5},
+                talent_tiers={0:0},robe_dice=3)
 
 if __name__=="__main__":
     unittest.main()
