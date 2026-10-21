@@ -1,4 +1,4 @@
-name: Validate Elf-Books scaffold
+name: Validate Elf-Books (Geard Lif migration)
 on:
   push:
   pull_request:
@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Validate repository and templates
+      - name: Validate local Geard Lif snapshot and private templates
         run: python3 scripts/validate_scaffold.py
-      - name: Run unit tests
+      - name: Test arithmetic and scaffold
         run: python3 -m unittest discover -s tests -v

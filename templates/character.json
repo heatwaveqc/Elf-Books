@@ -1,25 +1,80 @@
 {
   "schema_version": 1,
-  "id": null,
   "campaign_id": null,
+  "id": null,
   "name": null,
   "ancestry": null,
   "culture": null,
   "background": null,
   "archetype_optional": null,
-  "attributes": {},
-  "skills": {},
-  "advancement": {
-    "scheme": null,
-    "skill_events": [],
-    "practice_progress": {},
-    "training_records": []
+  "engine": {
+    "id": "geard-lif",
+    "upstream_commit": "237448aa78d0305070b503ab85af612a0b381a93",
+    "adapter_rules_commit": null
   },
-  "derived": {
+  "resilience": {
+    "will": null,
     "health": null,
-    "magicka": null,
-    "stamina": null,
-    "defenses": {}
+    "conviction": null
+  },
+  "traits": {
+    "attributes": {},
+    "talents": {},
+    "skills": {},
+    "specialties": {}
+  },
+  "tiers": {},
+  "resources": {
+    "mind": {
+      "plasticity": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "attention": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "body": {
+      "injury": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "fatigue": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "soul": {
+      "spirit": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "mana": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "active_effects": [],
+  "projects": [],
+  "advancement": {
+    "status": "UNDEFINED_PENDING_GEARD_CONVERSION",
+    "practice_events": [],
+    "perk_points": null,
+    "owned_perks": []
   },
   "inventory": [],
   "relationships": [],

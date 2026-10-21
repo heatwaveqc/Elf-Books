@@ -1,0 +1,115 @@
+title: Resource Tracks
+type: text/markdown
+geard-audience: player
+tags: Rules Resources
+
+# Resource Tracks
+
+Characters have three aspects: **Mind**, **Body**, and **Soul**. Each aspect has a
+Resilience trait and two resource tracks: one slow-recovering track and one
+fast-recovering track.
+
+| Aspect | Resilience | Slow track | Fast track |
+| --- | --- | --- | --- |
+| Mind | **Will** | **Plasticity** | **Attention** |
+| Body | **Health** | **Injury** | **Fatigue** |
+| Soul | **Conviction** | **Spirit** | **Mana** |
+
+The Resilience trait for an aspect determines the number of slots at **each
+severity** on both of that aspect's tracks.
+
+## Severity Grades
+
+Resource marks have four grades:
+
+| Grade | Penalty |
+| --- | ---: |
+| Minor | 0 |
+| Middling | -1 |
+| Major | -2 |
+| Final | -4 |
+
+**Injury** calls its Final grade **Fatal**.
+
+For each track, apply only the penalty from its highest occupied grade. Multiple
+marks at the same grade do not increase that track's penalty. Penalties from
+different tracks stack.
+
+For example, a character with a Final-or-Fatal mark on all six tracks suffers
+-24 to rolls.
+
+## Applying Marks
+
+When an Effect produces a magnitude against a personal resource, compare that
+magnitude to the appropriate Resilience trait, R:
+
+- magnitude 0: no mark;
+- positive magnitude less than R: one Minor mark;
+- R to less than 2 x R: one Middling mark;
+- 2 x R to less than 3 x R: one Major mark;
+- 3 x R to less than 4 x R: one Final mark;
+- each additional full multiple of R adds another Final mark.
+
+A single sufficiently large incident can therefore inflict several Final marks at
+once.
+
+For example, against Health 4, an Injury Effect of 1-3 causes a Minor Injury,
+4-7 a Middling Injury, 8-11 a Major Injury, 12-15 one Fatal Injury, 16-19 two
+Fatal Injuries, and 20-23 three Fatal Injuries. An Effect of 24 or more fills all
+four Fatal slots from an otherwise uninjured state and kills the character.
+
+## Promotion
+
+If every slot at a grade is already filled and another mark of that grade is
+applied, clear all marks at that grade and add one mark at the next higher grade.
+Promotion can cascade.
+
+Final is the top grade and does not promote further. When all Final slots on a
+track are filled, that track is **exhausted**.
+
+## Recovery
+
+A recovery step always works on the lowest occupied grade.
+
+- If Minor marks are present, clear one Minor mark.
+- Otherwise, remove one Middling mark and fill all Minor slots.
+- Otherwise, remove one Major mark and fill all Middling slots.
+- Otherwise, remove one Final mark and fill all Major slots.
+
+Fast tracks take one recovery step **per action**. Slow tracks take one recovery
+step **per day**.
+
+## Exhaustion
+
+Exhausting a fast track renders the character unconscious. It may also spill Minor
+harm into the corresponding slow track; the exact spillover rule is still under
+development.
+
+Exhausting **Injury** kills the character. The catastrophic consequences of
+exhausting Plasticity or Spirit remain to be defined.
+
+## Ordinary Uses
+
+Some ordinary actions interact with these tracks directly:
+
+- mundane weapons normally attack **Injury**;
+- mundane exertion costs **Fatigue**;
+- study costs **Attention**;
+- supernatural Domains define their own resource costs and interactions.
+
+## Costs
+
+A resource **Cost** uses the same Effect resolution as any other Power.
+
+A Cost has a rating and a target resource. Roll the Cost rating; there is no
+Application roll. Nothing reduces the Cost rating before it is rolled: armor,
+external defenses, and other mitigation do not discount it. The user's Resilience
+does not reduce the roll; it determines the severity of the marks produced by the
+rolled Effect magnitude.
+
+Apply those marks to the target resource normally.
+
+A Cost roll can produce zero magnitude, in which case it inflicts no mark.
+
+Tier applies to Cost rolls in the same way it applies to other Effect rolls. The
+exact Tier mechanics are still under development.

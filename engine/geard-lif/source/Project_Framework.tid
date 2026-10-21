@@ -1,0 +1,63 @@
+title: Project Framework
+type: text/markdown
+geard-audience: player
+tags: Rules
+
+# Project Framework
+
+A **Project** is the universal framework for consequential action in Raven's Heart.
+Combat, crafting, research, travel, negotiation, and other extended or contested
+tasks use the same underlying structure rather than separate resolution engines.
+
+The core structure below is settled. The current dice implementation and Tier
+scaling are still tentative; see [[Tentative d10 Resolution]] and
+[[Tentative Tier Scaling]].
+
+## Project Traits
+
+Every Project can be described with four core traits:
+
+- **Complexity** — how difficult it is to successfully engage with the problem and
+  make meaningful progress.
+- **Recalcitrance** — how difficult the problem is to actually change once it has
+  been successfully engaged.
+- **Scope** — how much progress is required before the Project is complete.
+- **Time** — how long one meaningful attempt or unit of work takes.
+
+Combat is a special case of a Project. Its details should plug into these same
+concepts rather than replace them with a separate core system.
+
+Projects and their individual traits or Effects may also have a **Tier** when scale
+matters. Tier belongs to the quantity being resolved rather than automatically to
+the acting character.
+
+## Application and Effect
+
+Consequential actions are resolved along two different axes:
+
+- **Application:** Accuracy acts against **Complexity**, or against a target's
+  **Avoidance** when another character is resisting the application.
+- **Effect:** Potence acts against **Recalcitrance**, or against a target's
+  **Resilience** when another character is resisting the effect.
+
+Avoidance is normally a **static defensive difficulty**, not a separate defensive
+roll. It represents the expected defensive performance of the target. Complexity
+plays the same role for non-character Projects.
+
+Resilience is likewise static opposition to the magnitude of an effect.
+Recalcitrance plays the same role for non-character Projects.
+
+Personal Effects can apply their magnitude to [[Resource Tracks]], where the
+relevant Resilience trait converts magnitude into graded marks.
+
+## Application Does Not Normally Increase Effect
+
+By default, exceeding the difficulty on the Application step does **not**
+automatically increase Potence or otherwise improve the Effect result.
+
+Accuracy and Potence are separate functions: applying something exceptionally well
+does not inherently make it more powerful.
+
+Specific traits, techniques, equipment, or powers may explicitly create a bridge
+between the two steps. Such exceptions can convert, spend, or otherwise use excess
+Application success to improve Effect, but they do so only when their rules say so.

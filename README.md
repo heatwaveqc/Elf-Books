@@ -1,52 +1,32 @@
 # Elf-Books
 
-**Unofficial, free fan-made Elder Scrolls-inspired solo tabletop RPG, designed for an LLM game master.** The goal is a classless, skill-forward fantasy campaign using a freely reusable d20 rules foundation and an evolving Tamrielic setting. This is not affiliated with or endorsed by Bethesda Softworks, ZeniMax, or Wizards of the Coast.
+**Unofficial, free, noncommercial Elder Scrolls-inspired solo AI-GM RPG.** This is an adaptation of the **Geard Lif / Raven's Heart** engine, **not** a D20 or D&D-based game. This project is not affiliated with Bethesda or ZeniMax.
 
 ## Status
 
-**Foundation / not yet playable.** Campaign-management scaffolding is being developed. **Numerical skill XP rules are accepted**, but complete character creation, perk advancement, skill roster, combat, magic effects/resources, balance and era-specific setting references are **not yet fully implemented or approved**. Do not improvise these as if they were authoritative.
+**FOUNDATION / NOT PLAYABLE.** A local snapshot of Geard Lif's player-facing Project, resource, tentative d10 and Tier rules is in [engine/geard-lif/](engine/geard-lif/README.md). The character/skill adapter, exact effect resolution, combat, spellcasting, use-based XP, and campaign integration still need work.
+
+Geard Lif is the mechanical upstream; Elf-Books provides Elder Scrolls characters, magic traditions, setting, NPCs, perks, and an independent solo-GM experience. Changes to upstream engine mechanics must be reviewed and repinned, not improvised differently here.
 
 ## Start here
 
-- [LLM/game-master operating instructions](AGENTS.md)
-- [Rules boundaries and open decisions](rules/RULES_INDEX.md)
-- **[Agreed AC and defense progression](rules/DEFENSE.md)** (core formula agreed; combat system not fully playable)
-- **[Agreed skill XP rules](rules/ADVANCEMENT.md)** — one reference for rank cost, offensive/defensive/magic/quick/extended awards
-- **[Perk point breakthroughs](rules/PERKS.md)** — bankable shared points from meaningful natural 20s and credible enemy natural 1s; trainers cannot teach perks
-- **[TES game-perk source survey](design/TES_PERK_PORT_SURVEY.md)** — 24-skill mapping of vanilla Skyrim and Oblivion perks, with near-direct candidates and conversion caveats
-- [Accepted core weapon training](design/WEAPON_SKILL_DAMAGE_XP.md) — weapon skill adds to hit and damage; next rank costs 5× current skill, offense earns 2× real HP damage
-- [Magic, armor and avoided-attack XP details](design/MAGIC_DEFENSE_XP.md) — accepted multipliers, source attribution and remaining spell-specific details
-- [Combat vs quick checks vs projects in solo-chat pacing](design/SOLO_PACING_COMPARISON.md) — simulated exchanges versus fictional weeks; numerical rates still in trial
-- [Generalized extended-roll and quick-check XP model](design/GENERALIZED_EXTENDED_XP.md) — progress = check result × DC, optional XP per credited progress, quick successes/failures based on static or opposed DC
-- [Earlier crafting-only DC award trial](design/CRAFTING_DC_XP.md) (superseded baseline)
-- [Earlier actual-damage XP, fivefold rank-cost candidate](design/ACTUAL_DAMAGE_XP.md) (comparison)
-- [Earlier skill XP benchmarks using weapon base damage](design/XP_CALIBRATION.md) (comparison)
-- [Older high-end AC stress test and base-10 alternatives](design/HIGH_END_AC_STRESS_TEST.md) (historical comparison)
-- [24-skill consolidation and original defense model](design/CONSOLIDATED_SKILLS_DEFENSE.md) (proposed, under revision)
-- [52-skill historical catalog and perk seeds](rules/SKILLS.md) (older candidate)
-- [Skill catalog as structured data](rules/skills.json)
-- [Progression design options](design/PROGRESSION.md)
-- [Use-based skill XP and perk critical design proposal](design/USE_BASED_ADVANCEMENT.md)
-- [Earlier learning-check/ECL math prototype](design/ADVANCEMENT_MATH.md)
-- [Character creation](game/CHARACTER_CREATION.md)
-- [Campaign preparation](game/PRE_SESSION_PREP.md)
-- [Campaign saving](game/PERSISTENCE.md)
-- [Lore and timeline policy](lore/LORE_POLICY.md)
-- [Licensing, attribution, and fan-work boundaries](LEGAL.md)
+- [Solo-GM entrypoint](START_HERE.md) · [Contributor / AI instructions](AGENTS.md)
+- [Current authority and design status](rules/RULES_INDEX.md)
+- **[Local Geard Lif core rules](engine/geard-lif/README.md)** — four complete player-audience source rule pages, pinned to upstream
+- [Locked vs provisional upstream mechanics](engine/geard-lif/SYSTEM_STATUS.md)
+- **[Return-to-parity migration checklist](MIGRATION_BACKLOG.md)** — a concrete prioritized list
+- [Foundation and conversion boundaries](rules/FOUNDATION.md)
+- [24 candidate Elder Scrolls skills](rules/SKILLS.md) · [structured names](rules/skills.json)
+- [75 historical Elder Scrolls perk inspirations](design/tes_perk_seeds.json) · [perk migration](rules/PERKS.md)
+- [Skill-by-doing advancement design](rules/ADVANCEMENT.md)
+- [Combat, Avoidance and Injury migration](rules/DEFENSE.md)
+- [Magic, Mana and spell-school migration](design/MAGIC.md)
+- [Lore and chronology](lore/LORE_POLICY.md) · [GM protocol](game/GM_PROTOCOL.md)
+- [Character creation](game/CHARACTER_CREATION.md) · [pre-session prep](game/PRE_SESSION_PREP.md) · [private save contract](game/PERSISTENCE.md)
+- [Validation and tests](game/TEST_PLAN.md) · [copyright and provenance](LEGAL.md)
 
-A future playable release will have a one-prompt entrypoint, validated campaign templates, and repeatable dice/save behavior.
+## Archived former D20 version
 
-## Design direction
+**[archive/d20-pre-geard-lif](https://github.com/heatwaveqc/Elf-Books/tree/archive/d20-pre-geard-lif)** preserves the previous D20 rules, tests, XP equations, 0–100 skill roster, spell/defense work, and perk survey. No fork was required; that branch and its Git history are retained for comparison. **It is deprecated and is not a second current rules engine.**
 
-- **Classless by default:** background and occupational labels describe where skills came from; they do not gate development.
-- **Progress by doing:** meaningful-use, difficulty-sensitive and chance-based skill growth remain candidates; compare them in [progression design](design/PROGRESSION.md).
-- **D20 resolution, Elder Scrolls freedom:** preserve transparent dice mechanics without silently importing level-dependent class features.
-- **Era-aware sandbox:** choose time and place; facts, factions, availability and magic reflect that starting era.
-- **Prepared situations, open outcomes:** each campaign has committed private causes, adversaries, factions, clues and escalating pressures before play starts.
-- **Durable independent saves:** private campaign histories and GM secrets live in access-controlled storage, *not this public code/lore repository*.
-
-## License boundaries
-
-The planned fifth-edition base is the [SRD 5.2.1](https://www.dndbeyond.com/srd), licensed by Wizards of the Coast LLC under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This repository does not currently redistribute the SRD. See [LEGAL.md](LEGAL.md) for the exact attribution required if SRD text is incorporated.
-
-Elder Scrolls setting material and protected assets are **not** included in the SRD license. This is a fan project, not an Elder Scrolls asset archive: write original mechanical conversions and concise original lore notes with source links; do not mirror copyrighted books, wikis, game scripts or images.
+Do not infer a usable campaign from passing unit tests. Production GM play remains blocked until the unresolved engine/adapter mechanics and private persistence pass the readiness gate.

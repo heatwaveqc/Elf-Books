@@ -1,0 +1,24 @@
+{
+  "source_repository": "heatwaveqc/geard-lif",
+  "upstream_commit": "237448aa78d0305070b503ab85af612a0b381a93",
+  "import_kind": "verbatim player-audience wiki rule snapshot",
+  "upstream_paths": [
+    "tiddlers/Content/Rules/Project_Framework.tid",
+    "tiddlers/Content/Rules/Resource_Tracks.tid",
+    "tiddlers/Content/Rules/Tentative_D10_Resolution.tid",
+    "tiddlers/Content/Rules/Tentative_Tier_Scaling.tid"
+  ],
+  "local_paths": [
+    "engine/geard-lif/source/Project_Framework.tid",
+    "engine/geard-lif/source/Resource_Tracks.tid",
+    "engine/geard-lif/source/Tentative_D10_Resolution.tid",
+    "engine/geard-lif/source/Tentative_Tier_Scaling.tid"
+  ],
+  "note": "Public player-audience rules only. Upstream AI/GM-only design content is not automatically published or synchronized. Re-import by explicit reviewed PR.",
+  "status": {
+    "project": "locked",
+    "resource_tracks": "locked",
+    "d10_randomizer": "provisional",
+    "tier_scaling": "provisional"
+  }
+}

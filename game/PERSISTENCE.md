@@ -1,31 +1,28 @@
-# Private campaign persistence specification (v0 design)
+# Private solo-campaign persistence — Geard Lif migration contract
 
-**Public Elf-Books is for framework and shareable original reference material only.** Use one separately controlled **private** repository or authorized private store for campaign instances. Directory separation in a shared repo is organizational, NOT an access boundary; collaborators can read secrets and commit history.
+Public Elf-Books includes reusable original lore, rules adapter, templates and tests **only**. Individual campaign state, GM secrets and private clocks live in an authorized **separate private repository/store**, never inside this public repo.
 
-Suggested private layout:
+Proposed private structure remains:
 
 ```text
 campaigns/<opaque-id>/
-  campaign.json              # public setup, era, rules SHA, status
-  characters/<id>.json       # skill ratings, progress, attributes, resources
-  world.json                 # player-discovered local facts, era-specific changes
-  threads.json               # player-known leads/promises
-  state.json                 # current scene/time/location, last sequence
-  events.jsonl               # append-only player-safe material outcomes and rolls
-  journal.md                 # player-safe recap
-  gm/secrets.json            # never expose to player
-  gm/private_events.jsonl   # secret rolls, motives, hidden clock changes
+  campaign.json
+  characters/<id>.json
+  world.json
+  threads.json
+  state.json
+  events.jsonl
+  journal.md
+  gm/secrets.json
+  gm/private_events.jsonl
 ```
 
-The `templates/` in this repo provide reference schemas only; actual game files, especially `gm/secrets.json`, are **not** committed to this public repository.
+Every campaign pins a full **Elf-Books rules commit SHA**, **Geard upstream import SHA** and any adapter version. No engine auto-upgrades mid-campaign.
 
-## Contract
-- All updates apply to **one identified campaign** and pin the 40-character rules commit used to interpret the sheet. The GM never searches others' campaigns for ideas or saves.
-- A game transitions `character_creation` → `preparing` → `active` → `paused` or `complete`. `active` requires fully resolved mechanics, player-approved session zero, and the pre-session readiness gate.
-- Skill progress is canonical **only** in the character file. HP/Magicka/items live in that file, world facts in world, scene in state, secret actor clocks in GM secrets, and public leads in threads. Logs describe changes but do not duplicate current fields.
-- Every consequential save advances `state.event_seq` and adds matching numbered public event(s); a private event uses its own sequence and may reference the public event. Save a coherent set of files atomically, ideally a single commit.
-- Compare previous branch revision and event sequence before saving; never overwrite concurrent progress. Validate and read back committed files. Report commit/revision only after confirmation.
-- Do not inject secret lore into player-facing files. A player-facing model that can directly read the GM repo is **not securely isolated**; separate access or GM-only tool context is necessary for genuine secrecy.
+Character state (new schema, still under design) will have current approved Geard Attributes/Talents/Skills/Specialties, Tiers, Will/Health/Conviction, six graded resource tracks (resilience and severity occupancy), actual Project progress, active Effects and Costs, inventory and perk awards. It will **not** contain D20 HP, fixed Magicka, six-ability-score-derived AC, or 0–100 rating assumptions.
 
-## Failure and migration
-If the store or dice are unavailable, declare a temporary unsaved state and log pending changes for later authorized reconciliation. Do not silently save in chat memory. Changing advancement policy or upgrading rules needs a documented player-approved character migration, with old/new values visible.
+Logs must preserve the exact d10 faces, applied success convention, Tier conversion, resource marks/costs and changing world clocks for reproducibility and revalidation. One event ID grants progression/critical rewards only once. Save whole changed state coherently and read back a confirmed commit. Verify sequence continuity and correct authorized campaign before every write.
+
+The pre-session private prep gate remains mandatory. A campaign may not become active until the actual engine, adaptation and save validator are ready. Existing D20 campaign saves are **not automatically migratable**; preserve the pinned D20 branch or explicitly plan an approved conversion and publish what changes on the sheet.
+
+This is a specification, not evidence that private storage integrations already function.

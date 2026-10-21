@@ -1,13 +1,14 @@
-# Character creation — intended conversational sequence
+# Character creation — Geard Lif edition (not yet executable)
 
-**Not executable yet:** numerical skill ratings, combat attributes, Magicka, health and equipment purchasing await approved mechanics.
+Character creation cannot begin in a persistent live solo game until upstream Geard trait/roll numbers and Elf-Books' skill mapping are approved.
 
-1. Ask for era, starting region and character fantasy first; offer illustrative options without forcing a region/era.
-2. Discuss upbringing, social position, vocation (optional), training, strengths and weaknesses. **No compulsory class or level.** An archetype is an equitable *starting package*, not a lasting gate.
-3. Agree on a starting competence budget, skill ratings, six attributes (or approved alternate), durability and resources after those formulas are locked. Reject illegal sheets and show tradeoffs.
-4. Record race/ancestry, culture and origin as separate concepts; account for setting-specific prejudice and constraints without deciding the player's personality.
-5. Ask for one or more character-specific hooks and acceptable themes. Establish player boundaries, desired lethality, advancement policy and campaign scale.
-6. Present a concise public pitch and exact mechanical sheet for affirmative approval.
-7. Run the mandatory private pre-session campaign generation and validation **before** starting play. The PC need not know secrets.
+1. Choose historical era, initial region, canon continuity, and character concept.
+2. Choose ancestry/culture/background and optional archetype. No classes or character levels.
+3. Identify Mind, Body and Soul and their Resilience values (**Will, Health, Conviction**) using the eventual approved creation budget; initialize all six resource tracks from those ratings.
+4. Allocate appropriate Geard Attributes, Talents, Skills and Specialties using their final, not-assumed dice caps. Map the 24 TES labels to these categories.
+5. Set equipment, starting Effects/Tiers, spell schools and legal resource Costs. Do not reuse D20 HP, MP, AC, hit bonus, or 0–100 skill ratings.
+6. Review eligible perks and advancement only after the d10 critical and use-based practice mechanics are approved.
+7. Confirm personal hooks, danger/lethality preferences, style of play and boundaries.
+8. Approve a complete public sheet, then conduct [private pre-session work](PRE_SESSION_PREP.md) before opening the first scene.
 
-If a setting element (magic, vampirism, species trait, standing stone) has no approved rule, mark it pending rather than making up a permanent mechanical choice.
+Never fill unimplemented mechanics with unsupported numbers or start a game simply because the template is syntactically valid. See [P0 prerequisites](../MIGRATION_BACKLOG.md).

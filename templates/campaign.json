@@ -3,6 +3,11 @@
   "id": null,
   "status": "character_creation",
   "rules_commit": null,
+  "engine": {
+    "id": "geard-lif",
+    "upstream_commit": "237448aa78d0305070b503ab85af612a0b381a93",
+    "local_snapshot": "engine/geard-lif"
+  },
   "setup": {
     "era": null,
     "date": null,
