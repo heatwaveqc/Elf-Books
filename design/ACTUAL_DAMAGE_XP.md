@@ -1,6 +1,8 @@
 # Actual damage skill XP, fivefold rank costs — calibration candidate
 
-**Status: recommended trial, not yet the agreed operating XP rule.** Following the design discussion, test **actual effective HP loss** for offensive weapon XP, with five times the previous rank cost. Keep the already-agreed AC/armor risk mechanics in [DEFENSE.md](../rules/DEFENSE.md). This supersedes the **base weapon die XP** candidate in [XP_CALIBRATION.md](XP_CALIBRATION.md) as the preferred weapon experiment, but that earlier benchmark remains useful.
+**Status: PREVIOUS TRIAL RETAINED FOR COMPARISON.** The next candidate adds skill bonus to flat weapon damage and doubles XP per applied HP while retaining 5× rank cost; see [WEAPON_SKILL_DAMAGE_XP.md](WEAPON_SKILL_DAMAGE_XP.md). This older K=5 and 1 XP/HP version is not the preferred test.
+
+**Prior status: recommended trial, not yet the agreed operating XP rule.** Following the design discussion, test **actual effective HP loss** for offensive weapon XP, with five times the previous rank cost. Keep the already-agreed AC/armor risk mechanics in [DEFENSE.md](../rules/DEFENSE.md). This supersedes the **base weapon die XP** candidate in [XP_CALIBRATION.md](XP_CALIBRATION.md) as the preferred weapon experiment, but that earlier benchmark remains useful.
 
 ## Suggested formulas
 

@@ -36,6 +36,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - Test that skill 20→25 can become ~3 times slower than the previous base-damage model with only 1d8+3 actual HP per hit; high-end 1d8+7+3 damage is below the 22.5 XP/hit break-even.
 - Recalibrate armor, Block/Dodge, schools of magic, crafting and social rewards whenever the rank-cost scale changes. No new XP numbers are operative without approval.
 
+## Skill bonus to weapon damage / fractional-to-integer XP equivalence
+- [Latest proposed weapon formula](../design/WEAPON_SKILL_DAMAGE_XP.md) and [arithmetic tests](../tests/test_weapon_skill_xp.py) verify flat +floor(skill/5) weapon damage and 5×rank / 2 XP per actual HP equivalence to 2.5×rank / 1 XP per damage.
+- Model a skill-20 novice, 50 journeyman, 95 master; natural-20 crits double damage dice **not** flat bonuses. Distinguish attack attempts from successful hits and cap XP by applied actual HP.
+- Stress-test dual-wield and multiattack, early HP versus high skill-based damage, and armor/spell/noncombat relative XP under the new shared XP units.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.
