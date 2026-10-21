@@ -11,7 +11,8 @@
 - [LLM/game-master operating instructions](AGENTS.md)
 - [Rules boundaries and open decisions](rules/RULES_INDEX.md)
 - **[Agreed AC and defense progression](rules/DEFENSE.md)** (core formula agreed; combat system not fully playable)
-- **[Weapon skill bonus to damage and 2.5× effective XP cost](design/WEAPON_SKILL_DAMAGE_XP.md)** (current recommended experiment; not approved)
+- **[Accepted core weapon training](design/WEAPON_SKILL_DAMAGE_XP.md)** — weapon skill adds to hit and damage; next rank costs 5× current skill, offense earns 2× real HP damage
+- **[Crafting and noncombat DC-based skill XP trial](design/CRAFTING_DC_XP.md)** — proposed award 2×DC per completed work unit, rather than sale price or every roll
 - [Earlier actual-damage XP, fivefold rank-cost candidate](design/ACTUAL_DAMAGE_XP.md) (comparison)
 - [Earlier skill XP benchmarks using weapon base damage](design/XP_CALIBRATION.md) (comparison)
 - [Older high-end AC stress test and base-10 alternatives](design/HIGH_END_AC_STRESS_TEST.md) (historical comparison)
