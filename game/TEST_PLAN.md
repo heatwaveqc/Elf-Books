@@ -16,6 +16,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - Test armor attribution: enemy total below unarmored AC → no XP, between unarmored and armored AC → armor XP, between armored and shield AC → Block XP, above full AC → no prevented-hit XP. Honor automatic hit/miss natural rolls.
 - Test that burst damage, overkill, no-cost spells, self-harm, invulnerable targets and repeatable trivial transactions cannot produce infinite progression.
 
+## 24-skill and defense candidate checks
+- [Consolidated 24-skill proposal](../design/CONSOLIDATED_SKILLS_DEFENSE.md) maps all 52 old skills to 8 Warrior, 8 Mage and 8 Rogue skills; preserve prior catalog only for crosswalk/history, not as additive ratings.
+- [Defense prototype](../scripts/defense_math.py) asserts one chosen defense skill against each attack, natural 1/20 attack behavior, XP credit only for defense-mediated credible miss, gear-only novice defense, and separately rolled defense perk breakthrough. It is a testing artifact, not live mechanics.
+- Test peer and mismatch attack-versus-AC curves before treating a +20 defense bonus as operative, and retest ECL pooling after cutting category sizes.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.

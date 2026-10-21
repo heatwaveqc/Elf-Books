@@ -1,6 +1,6 @@
 # Skill advancement v2 — consequential-use XP and critical perk discovery
 
-**Status: working proposal, NOT operative rules.** This supersedes the *learning-check advancement recommendation* in [ADVANCEMENT_MATH.md](ADVANCEMENT_MATH.md), but not the still-proposed 0–100 skill scale, +1 skill bonus per 5 ranks, or Warrior/Mage/Rogue ECL formulas. Do not migrate characters or begin play until the quantitative details are approved.
+**Status: working proposal, NOT operative rules.** A newer [24-skill consolidation and defense draft](CONSOLIDATED_SKILLS_DEFENSE.md) supersedes the earlier AC-attribution examples below for **single-method defense**; the general concept of use-based XP remains current. This supersedes the *learning-check advancement recommendation* in [ADVANCEMENT_MATH.md](ADVANCEMENT_MATH.md), but not the still-proposed 0–100 skill scale, +1 skill bonus per 5 ranks, or Warrior/Mage/Rogue ECL formulas. Do not migrate characters or begin play until the quantitative details are approved.
 
 ## Why replace successful learning checks?
 

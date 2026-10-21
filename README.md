@@ -10,7 +10,8 @@
 
 - [LLM/game-master operating instructions](AGENTS.md)
 - [Rules boundaries and open decisions](rules/RULES_INDEX.md)
-- [52-skill catalog and 104 draft perk seeds](rules/SKILLS.md)
+- **[Preferred 24-skill consolidation and defensive AC proposal](design/CONSOLIDATED_SKILLS_DEFENSE.md)** (proposed, not final)
+- [52-skill historical catalog and perk seeds](rules/SKILLS.md) (older candidate)
 - [Skill catalog as structured data](rules/skills.json)
 - [Progression design options](design/PROGRESSION.md)
 - [Use-based skill XP and perk critical design proposal](design/USE_BASED_ADVANCEMENT.md)
