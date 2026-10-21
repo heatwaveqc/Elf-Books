@@ -10,7 +10,8 @@ from geard_core import RESOURCE_TRACKS
 from magic import (
     casting_pools,mana_cost_resistance,resolve_mana_cost,
     mana_cost_practice_xp,counterspell_avoidance,spell_is_learned,
-    spell_cost_from_potence,resolve_spell_cast_cost
+    spell_cost_from_potence,resolve_spell_cast_cost,
+    validate_spell_design,resolve_compound_spell_costs
 )
 
 class MagicTests(unittest.TestCase):
@@ -78,6 +79,60 @@ class MagicTests(unittest.TestCase):
         self.assertEqual(routed.applied_resource,"spirit")
         self.assertEqual(routed.cost_magnitude,4)
         self.assertEqual(routed.new_spirit.marks,(0,0,1,0))
+
+    def test_compound_spell_requires_perk_only_for_design(self):
+        validate_spell_design(effect_count=1,has_multi_effect_design_perk=False)
+        validate_spell_design(effect_count=2,has_multi_effect_design_perk=True)
+        with self.assertRaisesRegex(ValueError,"perk"):
+            validate_spell_design(effect_count=2,has_multi_effect_design_perk=False)
+        for invalid in (0,-1,True):
+            with self.assertRaises(ValueError):
+                validate_spell_design(effect_count=invalid,
+                                      has_multi_effect_design_perk=True)
+
+    def test_compound_spell_separate_effects_and_cost_incidents(self):
+        # A known combined formula can be cast regardless of designer perk.
+        base=dict(spell_specialty_tiers={0:5},tier=0,talent=self.talent,
+                  school_id="destruction",will_tiers={0:10},
+                  school_skill_tiers={0:10},talent_tiers={0:10})
+        two=resolve_compound_spell_costs(components=[(4,0),(4,1)],**base)
+        self.assertEqual(len(two),2)
+        self.assertEqual([r.cost_magnitude for r in two],[4,5])
+        self.assertEqual(two[0].new_mana.marks,(0,1,0,0))
+        self.assertEqual(two[1].new_mana.marks,(0,2,0,0))
+        # Caller must not treat 9 combined Cost successes as one incident.
+        combined=self.spell_cast_cost(potence_successes=8,parameter_surcharge=1)
+        self.assertNotEqual(two[-1].new_mana.marks,combined.new_mana.marks)
+
+    def test_compound_second_effect_overflows_to_spirit_same_cast(self):
+        base=dict(spell_specialty_tiers={0:5},tier=0,talent=self.talent,
+                  school_id="destruction",will_tiers={0:10},
+                  school_skill_tiers={0:10},talent_tiers={0:10})
+        # 12 produces 2 Final Mana marks, exhausting Mana for a Will-10 mage.
+        result=resolve_compound_spell_costs(components=[(12,0),(1,1)],**base)
+        self.assertTrue(result[0].new_mana.exhausted)
+        self.assertFalse(result[0].redirected)
+        self.assertTrue(result[1].redirected)
+        self.assertEqual(result[1].applied_resource,"spirit")
+        self.assertEqual(result[1].cost_magnitude,2)
+        self.assertEqual(result[1].new_spirit.marks,(0,1,0,0))
+        # The previously exhausted initial Mana state persists across components.
+        initial=Track(2,marks=(0,0,0,2))
+        ret=resolve_compound_spell_costs(components=[(1,0),(1,1)],**base,
+               existing_mana=initial,existing_spirit=Track(2))
+        self.assertEqual([r.applied_resource for r in ret],["spirit","spirit"])
+        self.assertEqual(ret[-1].new_mana,initial)
+
+    def test_compound_invalid_component_rejected(self):
+        base=dict(spell_specialty_tiers={0:5},tier=0,talent=self.talent,
+                  school_id="destruction",will_tiers={0:10},
+                  school_skill_tiers={0:10},talent_tiers={0:10})
+        with self.assertRaisesRegex(ValueError,"at least one"):
+            resolve_compound_spell_costs(components=[],**base)
+        with self.assertRaises(ValueError):
+            resolve_compound_spell_costs(components=[(-1,1)],**base)
+        with self.assertRaises(ValueError):
+            resolve_compound_spell_costs(components=[(2,-1)],**base)
 
     def test_resources_mind_magic_and_soul_social(self):
         self.assertEqual(RESOURCE_TRACKS["mind"],
