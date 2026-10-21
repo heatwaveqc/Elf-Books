@@ -5,7 +5,7 @@ Outputs XP in integer tenths. These awards may be tuned later:
   armor:         4 XP per real HP lost [candidate]
   guard spell:   2 XP per real HP lost while relevant [candidate]
   avoided blow:  2 XP per full attack total [candidate]
-  Magicka:       1 XP per actual MP spent by default [candidate, compare 2]
+  Magicka:       2 XP per actual MP spent [accepted]
 """
 from dataclasses import dataclass
 
@@ -22,7 +22,7 @@ def skill_rank_xp_tenths(rank: int) -> int:
 def outgoing_damage_xp_tenths(actual_hp_removed: int) -> int:
     return 20 * _whole_nonnegative(actual_hp_removed, "HP damage")
 
-def magicka_spend_xp_tenths(actual_mp_spent: int, xp_per_mp: int = 1) -> int:
+def magicka_spend_xp_tenths(actual_mp_spent: int, xp_per_mp: int = 2) -> int:
     _whole_nonnegative(xp_per_mp,"Magicka multiplier")
     return _whole_nonnegative(actual_mp_spent,"Magicka spent") * 10 * xp_per_mp
 

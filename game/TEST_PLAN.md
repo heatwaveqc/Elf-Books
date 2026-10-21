@@ -64,6 +64,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - Ensure independent damage sources do not collectively claim more outgoing HP than a victim actually lost; document optional parallel learning for *worn armor plus active protection spell* from one genuinely damaging event.
 - Test utility school's low XP from Magicka-only casts against damaging spells' output+Magicka; settle MP multiplier after spell costs, Magicka pools and recovery are defined.
 
+## Accepted advancement integration
+- [Rules/ADVANCEMENT.md](../rules/ADVANCEMENT.md) now consolidates universal skill rank cost and all selected XP multipliers. The default Magicka award is 2 XP per actual MP spent, in addition to other genuinely attributable effects; previous 1 XP/MP run was a comparison only.
+- Update all GM event processing and persistent XP ledgers to use accepted rules, preserving fractional tenths, valid project progress caps and counterfactual defensive avoidance attribution. The test calculator [magic_defense_xp.py](../scripts/magic_defense_xp.py) uses the approved 2 XP/MP default.
+- Next design priority: perk thresholds, real-use critical discovery, armor/other passive breakthrough opportunities, and trainer interactions. The existence of XP formulas does not make a campaign ready to play.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.
