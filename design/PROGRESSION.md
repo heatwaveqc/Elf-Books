@@ -1,6 +1,6 @@
 # Skill-based advancement — candidates for decision
 
-**Design status: OPEN.** A specific mathematical prototype matching the latest proposed approach lives in [ADVANCEMENT_MATH.md](ADVANCEMENT_MATH.md) and [scripts/skill_math.py](../scripts/skill_math.py); it is not yet an adopted rule. The mandatory default is classless, with no required character levels. This file records competing implementation choices, not a rule to use during a session.
+**Design status: OPEN.** The current preferred direction is **deterministic XP from consequential skill use**, with critical successes used for perk discovery instead of direct skill jumps. Read [USE_BASED_ADVANCEMENT.md](USE_BASED_ADVANCEMENT.md). The older learning-check math below remains historical exploration only. A specific mathematical prototype matching the latest proposed approach lives in [ADVANCEMENT_MATH.md](ADVANCEMENT_MATH.md) and [scripts/skill_math.py](../scripts/skill_math.py); it is not yet an adopted rule. The mandatory default is classless, with no required character levels. This file records competing implementation choices, not a rule to use during a session.
 
 ## Goals
 - Learning by use, risk, study, instruction and genuine experiences; no repetitive action spam.

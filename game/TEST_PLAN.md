@@ -11,6 +11,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - [Skill and draft perk catalog](../rules/SKILLS.md) has 52 rated skills and 104 candidate unlock hooks; aliases and historical umbrella names don't receive their own advancement.
 - [Prototype calculator](../scripts/skill_math.py) and tests cover 0–100 conversion, category ECL caps, half-Rogue contribution, empty-category behavior and learning natural 20s. These tests verify specified formulas, **not gameplay balance or approval**.
 
+## Use-based design calibration
+- [Proposed action-output XP and critical-perk discovery](../design/USE_BASED_ADVANCEMENT.md) supersedes success-based learning checks, but quantitative XP conversion and passive armor/magic perk opportunities remain undecided.
+- Test armor attribution: enemy total below unarmored AC → no XP, between unarmored and armored AC → armor XP, between armored and shield AC → Block XP, above full AC → no prevented-hit XP. Honor automatic hit/miss natural rolls.
+- Test that burst damage, overkill, no-cost spells, self-harm, invulnerable targets and repeatable trivial transactions cannot produce infinite progression.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.

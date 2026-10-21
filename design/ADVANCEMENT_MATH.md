@@ -1,6 +1,8 @@
-# Advancement and derived resources — working prototype, NOT approved rules
+# Superseded learning-check advancement and ECL — archival prototype
 
-This implements the user's **skill-driven, classless** direction in [scripts/skill_math.py](../scripts/skill_math.py). The prototype supports deterministic calculations and externally supplied d20 learning rolls. **No runnable campaigns** until the choices below are approved, and until combat, spellcasting, perks and independent private saves are developed.
+**The learning-check progression in this file has been superseded as the preferred design by [USE_BASED_ADVANCEMENT.md](USE_BASED_ADVANCEMENT.md).** The skill-to-d20 modifier and category ECL formulas remain open for approval. The old `learn()` code remains only for comparing designs.
+
+This earlier proposal implemented the classless direction in [scripts/skill_math.py](../scripts/skill_math.py). The prototype supports deterministic calculations and externally supplied d20 learning rolls. **No runnable campaigns** until the choices below are approved, and until combat, spellcasting, perks and independent private saves are developed.
 
 ## 1. Rated skill and check modifier
 
