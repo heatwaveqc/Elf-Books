@@ -1,6 +1,6 @@
 # Elf-Books Talents: five-skill custom classes
 
-**Status:** Structure agreed: one Talent per character, exactly five governed Skills, preset or custom, and a personal progression tree. Twelve independent Geard attributes are also agreed. The **rating cap of 5, starting budget, Talent improvement and actual tree-node mechanics** remain provisional. Core upstream explanation: [Attributes and Talents](../engine/geard-lif/source/Attributes_and_Talents.tid).
+**Status:** Structure agreed: one Talent per character, exactly five governed Skills, preset or custom, and a personal progression tree. Twelve independent Geard attributes are also agreed. The **working 0–25 rating scale and 10×-rating XP curve** are specified; total starting budget, passive-defense XP and Talent tree-node mechanics remain open. Core upstream explanation: [Attributes and Talents](../engine/geard-lif/source/Attributes_and_Talents.tid).
 
 ## Attributes (all independent)
 
@@ -21,9 +21,11 @@ A character chooses **exactly one named Talent** at creation. It must govern **e
 
 This is *not* a class restriction. A Nightblade can train Smithing, cast Restoration, purchase ordinary Restoration perks, and learn a Smithing Specialty despite neither skill being part of Nightblade. The only difference is that these Skills receive **no Talent dice** from Nightblade.
 
-One legal active Accuracy/Potence pool provisionally consists of **one suitable Attribute + the chosen Talent rating if it governs the used Skill + that Skill's rating + one applicable Specialty rating**. No multiple Talents, no stacking multiple Specialties. The provisional cap is five dice per source, not an approved starting budget. Relevance selects the attribute based on *the actual action*, not automatically based on the Talent name.
+One legal active Accuracy/Potence pool consists of **floor(Attribute/5) + floor(Talent/5) if it governs the used Skill + floor(Skill/5) + floor(applicable Specialty/5)**. Each rating is 0–25 and supplies up to five dice; this is a working calibration, not an approved starting budget. No multiple Talents, no stacking multiple Specialties. Relevance selects the attribute based on *the actual action*, not automatically based on the Talent name.
 
-**Worked examples** (illustrative ratings): a Spellsword with Talent 2, Dexterity 3, Strength 4, One-Handed 4, and Longswords Specialty 1 rolls **10d10 physical Accuracy** and **11d10 physical Potence** with a longsword. Smithing 3 without a related Specialty, using Strength 4 for a physically forceful smithing Potence roll, provides **7d10**: Talent contributes zero because Smithing is not governed.
+**Worked examples** (illustrative ratings): a Spellsword with Talent 10, Dexterity 15, Strength 20, One-Handed 20, and Longswords Specialty 5 rolls **10d10 physical Accuracy** and **11d10 physical Potence** with a longsword. Smithing 15 without a related Specialty, using Strength 20 for a physically forceful smithing Potence roll, provides **7d10**: Talent contributes zero because Smithing is not governed.
+
+**Starting character floor:** All five Skills named in the chosen Talent begin at **rating 5 or higher**, giving at least one die apiece; other Skills and Specialties may start at zero. All twelve Attributes begin at least rating 5. See [advancement](ADVANCEMENT.md) for the 2/1/5/10 XP multipliers and natural-10 bootstrap.
 
 ## Initial preset options
 
@@ -58,8 +60,8 @@ A Talent also owns an **additional advancement tree**, representing its distinct
 
 ## Outstanding decisions
 
-1. **Starting budgets and actual trait-rating progression**: the 0–5 individual rating cap, personal total pool ceiling and equipment caps are upstream provisional.
-2. **How a Talent learns** from varied use of five governed skills; ensure extra dice do not grow faster than challenge capacity and don't incentivize selecting only the highest-volume combat skills.
+1. **Starting budget and advancement pacing**: ratings are 0–25, one die per five levels, with a working 10×-rating XP cost and 2/1/5/10 source multipliers. The exact character creation point budget, equipment rules and long-term balance are open.
+2. **Talent XP**: its own contributed dice earn one XP per success on governed skills; monitor how rapidly five-skill breadth advances its rating. The separate Talent progression **tree** remains undefined.
 3. **How the Talent tree awards nodes** (level thresholds, choices, use-based triggers or perk points); custom-tree generation requirements, GM consistency and documentation.
 4. **Attribute-selection and static defenses**: four roles named, but which aspect applies to a particular legal roll, how Avoidance is calculated, and how armor adjusts severity remain to be settled.
 5. **Talent change or retraining** after character creation: one Talent at a time, but whether extraordinary circumstances allow replacing the five governed skills is not decided.

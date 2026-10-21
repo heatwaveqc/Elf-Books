@@ -26,6 +26,7 @@ REQUIRED_DOCS = (
 UPSTREAM_PAGES = (
     "Project_Framework", "Resource_Tracks", "Attributes_and_Talents",
     "Tentative_D10_Resolution", "Tentative_Tier_Scaling",
+    "Use_Based_Trait_Advancement",
 )
 TEMPLATES = (
     "campaign.json", "character.json", "state.json", "world.json",
@@ -77,12 +78,22 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
     observed = [v for aspect in attributes.get("aspects", []) for v in aspect.get("attributes", {}).values()]
     if len(observed) != 12 or len(set(observed)) != 12:
         errors.append("attributes must be exactly 12 independent names")
+    rating = attributes.get("rating", {})
+    if (rating.get("min"),rating.get("max"),rating.get("dice_per_five"),
+        rating.get("starting_floor"),rating.get("xp_per_success")) != (0,25,1,5,2):
+        errors.append("working Attribute rating/XP calibration mismatch")
     talent_data = _load_json(root / "rules/talents.json", errors)
     skill_ids = {x.get("id") for x in skills.get("skills", [])}
     if talent_data.get("selection", {}).get("governed_skill_count") != 5:
         errors.append("one Talent must govern five skills")
     if talent_data.get("selection", {}).get("one_per_character") is not True:
         errors.append("characters must have one Talent")
+    if talent_data.get("selection", {}).get("starting_governed_skill_floor") != 5:
+        errors.append("starting governed Skills must have rating >=5")
+    if talent_data.get("selection", {}).get("talent_rating_cap_provisional") != 25:
+        errors.append("working Talent rating cap must be 25")
+    if any(skill.get("rank_scale") != "0..25_WORKING" for skill in skills.get("skills", [])):
+        errors.append("Skill rating scale must be 0..25")
     for preset in talent_data.get("presets", []):
         chosen = preset.get("skills", [])
         if len(chosen) != 5 or len(set(chosen)) != 5 or not set(chosen)<=skill_ids:
@@ -171,6 +182,22 @@ def validate_campaign(directory: Path) -> list[str]:
         character = _load_json(character_path, errors)
         if character.get("campaign_id") != cid:
             errors.append(f"character campaign mismatch: {character_path.name}")
+        if campaign.get("status") in {"preparing", "active", "paused", "complete"}:
+            try:
+                from trait_pools import Talent
+                from advancement import validate_starting_allocation
+                traits = character.get("traits", {})
+                t = traits.get("talent", {})
+                chosen = Talent(t.get("name"), frozenset(t.get("governed_skills", [])), t.get("rating"))
+                skill_catalog = {
+                    s["id"] for s in _load_json(ROOT / "rules/skills.json", errors).get("skills", [])
+                }
+                validate_starting_allocation(
+                    traits.get("attributes", {}), traits.get("skills", {}),
+                    chosen, skill_catalog,
+                )
+            except (ValueError, TypeError, KeyError) as exc:
+                errors.append(f"invalid starting trait minimums: {character_path.name}: {exc}")
 
     event_path = directory / "events.jsonl"
     if not event_path.is_file():

@@ -9,7 +9,7 @@
   "archetype_optional": null,
   "engine": {
     "id": "geard-lif",
-    "upstream_commit": "ac172d47bcb0f0d6b5db42df98f67cc3abd54c3d",
+    "upstream_commit": "b7700d5f7d8ac4115ec8f4f83ae13b5f2f6ff700",
     "adapter_rules_commit": null
   },
   "traits": {
@@ -86,11 +86,18 @@
   "active_effects": [],
   "projects": [],
   "advancement": {
-    "status": "UNDEFINED_PENDING_GEARD_CONVERSION",
+    "status": "SOURCE_DICE_XP_WORKING_PASSIVE_DEFENSE_PENDING",
     "practice_events": [],
     "perk_points": null,
     "owned_perks": [],
-    "talent_events": []
+    "talent_events": [],
+    "xp_banks": {
+      "attributes": {},
+      "talent": 0,
+      "skills": {},
+      "specialties": {}
+    },
+    "source_die_roll_log": []
   },
   "inventory": [],
   "relationships": [],

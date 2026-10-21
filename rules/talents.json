@@ -33,9 +33,11 @@
       "survival",
       "lore"
     ],
-    "talent_rating_cap_provisional": 5
+    "talent_rating_cap_provisional": 25,
+    "starting_governed_skill_floor": 5,
+    "rating_per_die": 5
   },
-  "rule": "One selected Talent contributes its rated dice only to its 5 governed skills; a character can freely use and advance all 24 other skills. Talent has a personal progression tree, with nodes/rates pending; presets may be modified only by choosing custom at creation.",
+  "rule": "One selected Talent contributes floor(its 0..25 rating/5) dice only to its five governed skills; all 24 Skills remain freely trainable. Each of the five governed Skills starts >= rating 5 in Elf-Books. Talent has a separate progression tree (nodes still open).",
   "presets": [
     {
       "id": "warrior",
