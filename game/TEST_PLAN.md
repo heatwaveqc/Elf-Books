@@ -53,6 +53,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - Confirm proposed scalar 1 XP/10 credited progress and quick 2×DC success / 0.5×DC failure separately; learn from substantial failure without granting free reroll-based farming.
 - Determine Perception/observation opposed skill mapping within the consolidated 24-skill catalog.
 
+## Solo pacing model and calibration
+- [Reproducible seeded comparison](../scripts/pacing_comparisons.py) and [test suite](../tests/test_pacing_comparisons.py) compare skill 20/50/95 across 1d8 60%-to-hit combats, static DC-based meaningful quick checks, and weekly extended projects, with HP-capped damage and natural 20s.
+- [Methodology/report](../design/SOLO_PACING_COMPARISON.md) separates one-chat-project summaries from the actual week-by-week simulation; compare goal 1000/2500/6000 against constant 1000 goals.
+- Do not attempt to equalize XP per *chat turn* with an artificial reward cap. World clocks, expenses and fiction elapsed are real costs for downtime.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.

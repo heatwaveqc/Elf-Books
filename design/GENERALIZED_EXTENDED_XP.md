@@ -1,5 +1,7 @@
 # Generalized skill checks, extended projects and XP
 
+**Pacing follow-up:** [simulated solo-chat comparisons](SOLO_PACING_COMPARISON.md) investigate XP by player exchange versus in-world weeks and demonstrate why project goals must be grounded in real work. The 0.1 XP/progress and quick 2×DC/0.5×DC rates remain trials, not finalized.
+
 **Rule design status:** The player selected D&D 3.5-style extended progress for *all* substantial skill projects: a **DC**, a **fixed interval**, a **progress goal**, and `Progress Gained = Check Result × DC` on a successful interval check. The XP multiplier for actual project progress is **not yet final**. For quick checks, **2×DC on success** and **0.5×DC on failure** are the current candidate rates. Opposed checks use the opponent's actual check result as the effective DC. Existing approved XP threshold and combat formula are unchanged.
 
 ## Accepted underlying XP scale
