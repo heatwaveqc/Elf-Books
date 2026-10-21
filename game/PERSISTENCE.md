@@ -26,3 +26,5 @@ Logs must preserve the **source category of every personal die** (Attribute/Tale
 The pre-session private prep gate remains mandatory. A campaign may not become active until the actual engine, adaptation and save validator are ready. Existing D20 campaign saves are **not automatically migratable**; preserve the pinned D20 branch or explicitly plan an approved conversion and publish what changes on the sheet.
 
 This is a specification, not evidence that private storage integrations already function.
+
+**Trait-Tier ledger:** Tier-0 ratings remain in the base character trait fields. Additional per-trait Tier ratings are held under `trait_tiers` with explicit category/trait/Tier keys. XP banks are integer **tenths** of base XP, recording the destination trait and chosen Tier, source award, and whether it cascaded or remained for up-tier purchase. Passive event records include the actual chosen defense/Cost and participating traits, not invented defensive rolls. This addition is a schema contract, not a completed live campaign migration.

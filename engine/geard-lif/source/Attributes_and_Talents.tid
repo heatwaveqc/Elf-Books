@@ -48,4 +48,4 @@ For the working dice-pool implementation, each source is rated **0–25** and co
 
 **Example:** A character's Talent “Spellsword” governs One-Handed, Light Armor, Alteration, Destruction, and Restoration. With Dexterity 15 (3 dice), Talent 10 (2), One-Handed 20 (4) and Longswords Specialty 5 (1), physical sword Accuracy rolls 10d10; a Strength 20 (4 dice) sword Potence roll uses 11d10. For non-governed Smithing with Strength 20 (4 dice), Smithing 15 (3 dice) and no Specialty, the same character uses **7d10**; Smithing remains trainable. These example numbers are demonstrations, not official creation values.
 
-See [[Project Framework]] and [[Tentative d10 Resolution]] for what the resulting pool does. The choice of advancement rules and trait purchasing is deliberately separate.
+See [[Project Framework]], [[Tentative d10 Resolution]], and [[Trait Tiers and Experience Cascade]] for roll-tier prerequisites, maxed-trait XP cascade and passive practice. The choice of advancement rules and trait purchasing is deliberately separate.

@@ -38,8 +38,14 @@ A bootstrap credit is **one learning credit**, not two, even though the natural 
 
 This rewards actual consequential practice, not empty repetitions manufactured solely to roll extra dice. A GM determines whether the action is real; do not impose an artificial daily cap on legitimate work.
 
-## Passive roles and remaining work
+## Trait Tiers, cascade and passive practice
 
-The ordinary passive Resilience/Avoidance experience loop does not roll dice and therefore needs **its own award rule**: resisting real Fatigue/Attention/Mana/Spirit strain, injury or credible attacks can train Health/Will/Conviction or Avoidance attributes. We have not yet fixed those passive XP quantities or armor-specific interactions. The Talent's *separate progression tree* and critical-generated bankable perk points are also not covered by this XP formula.
+The separate [[Trait Tiers and Experience Cascade]] rule defines per-trait Tiers, **one same-Tier Attribute die to enable Skill and one same-Tier Skill die to enable Specialty**, no rating cap between them, Talent exemption, 10× Tier-scaled costs and earned XP, raw-XP cascade **Talent → Attribute → Skill → Specialty**, and fractional passive defense/resistance awards.
+
+For static defense, each contributing source supplies `floor(rating/5)/2` expected successes (no assumed rounding); for passive XP, each actually used trait receives `rating/10 × 10^Tier` base XP. Those are **passive awards**, not extra active-success multiplier awards. Maxed trait XP can be banked toward up-tiering or cascaded once; not both.
+
+## Remaining integrations
+
+Credible passive defense and resistance now have a **rating/10 per actually participating trait** working XP award, scaled by Tier; how a particular armor reaction or a spell's Mana Cost selects contributors remains to be specified. The Talent's separate progression tree and critical-generated bankable perk points are not covered by this XP formula.
 
 A setting may require starting characters to have rating **5 or higher in all five Talent-governed Skills**; see Elf-Books' character creation overlay. This is **not a universal Geard Lif class restriction**.

@@ -13,3 +13,5 @@ For each legitimate consequential action when playable:
 7. End with an actionable player choice; do not dictate the PC's action or retrofit clues and antagonists to force a plot.
 
 Protect GM mysteries from public files, maintain chronological TES lore, and let independent actors act. See [P0 four-scene tests](../MIGRATION_BACKLOG.md).
+
+**When play is eventually enabled:** record the *chosen Tier* of each roll and the same-Tier governing-Attribute/Skill die gates; no silent import of lower-Tier personal dice. Award raw XP with one `10^Tier` multiplier and let the player bank maxed-source XP for up-tier advancement or cascade it along Talent→Attribute→Skill→Specialty. For genuine selected passive defense or Cost resistance, credit `rating/10×10^Tier` XP only to participants, in **integer tenths**. Verify all spend/cascade and selection against the pinned campaign state. Static defensive value is half of contributed dice, exact until a rounding rule is approved.

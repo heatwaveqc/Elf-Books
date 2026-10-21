@@ -49,3 +49,10 @@
 - Unique campaign save isolation, stale revision rejection, secret leak tests and authorizing a real store.
 
 [Full prioritized checklist](../MIGRATION_BACKLOG.md) is the current readiness ledger.
+
+## Tier and passive XP acceptance
+
+- Same-Tier governing-die prerequisites: Dexterity Tier 1 **5**, One-Handed Tier 1 **25**, Longswords Tier 1 **20** is legal; Dexterity Tier 1 **4** bars the latter dice, and Skill Tier 1 **4** bars Specialty dice. Talent Tier 1 **25** does **not** substitute for missing Attribute dice. No cap requires child rating ≤ parent rating.
+- A trait cannot purchase Tier 1 until its Tier 0 rating is 25. Tier 1 rating 20→21 costs **2,000 XP**, versus Tier 0 **200 XP**. Source rewards multiply by 10 **once**, not again after Tier-scaled Effect magnitude.
+- Test choice between keeping maxed Talent XP to unlock Tier 1 and cascading **unchanged raw XP** to the first unmaxed Attribute/Skill/Specialty. No double award and no arbitrary related-skill recipient.
+- Static four-die Dodge = **2**. Agility rating 10 + Talent 5 + Dodge 5 + Specialty 0 passive awards **1.0 / 0.5 / 0.5 / 0 XP**, not 2/1/5/10 times that amount. Verify fractional, Tier 1, and true resource-Cost resistance cases.

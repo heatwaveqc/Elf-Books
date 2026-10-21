@@ -1,6 +1,6 @@
 # Geard Lif compatibility status — snapshot review
 
-This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/b7700d5f7d8ac4115ec8f4f83ae13b5f2f6ff700/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
+This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/6332383e3dbf68d0f0c7184ab704758125055f83/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
 
 ## Locked upstream concepts
 
@@ -28,7 +28,7 @@ This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://g
 
 ## Open upstream, therefore open here
 
-- Which *specific* methods select each of the 12 attributes, how static Avoidance is derived, and **total starting budgets, passive/defensive XP and Talent-tree node rules**. Active source-die XP is now a working calibrated formula.
+- Which *specific* methods select each of the 12 attributes, how static Avoidance is derived, and **total starting budgets, selection of passive defense/Cost contributors and Talent-tree node rules**. Active source-die XP is now a working calibrated formula.
 - Exact d10 critical success/failure and special cases, including zero Recalcitrance; ordinary Project **equality succeeds**, and static target comparison is known. Do not port natural 20 or natural 1 perk triggers unchanged.
 - Exact armor/ward severity-threshold adjustment, how projects suffer setbacks or repair/undo marks, and any policy for zero Recalcitrance. The universal Scope-as-mark-capacity rule is already settled.
 - Tier anchor calibration; high-Tier equipment Control Tier versus Effect Tier.
@@ -37,3 +37,7 @@ This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://g
 - Character sheets, NPCs/monsters, enchanting/alchemy and solo-campaign save semantics.
 
 This document is descriptive, not a patch or silent rule change to upstream Geard Lif.
+
+## Working trait Tier and passive XP rules
+
+Every trait begins at Tier 0, and buying the next Tier requires rating 25 at the preceding Tier. Cost and earned XP scale by `10^Tier`. A same-Tier Skill needs at least one die from its governing Attribute and a Specialty needs at least one die from its Skill; their *ratings* may be higher than the parent rating. Talent is not a prerequisite. Maxed-trait **raw XP** is either banked for up-tier advancement or cascaded Talent→Attribute→Skill→Specialty without reapplying the receiving trait's XP multiplier. Static defense equals half the relevant dice pool (fractional rounding not settled), and each actually used defensive/resisting trait earns `rating/10×10^Tier` base XP. See [the imported canonical player rule](source/Trait_Tiers_and_Experience_Cascade.tid).
