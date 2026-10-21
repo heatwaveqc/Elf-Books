@@ -93,6 +93,41 @@ class Track:
         return self
 
 @dataclass(frozen=True)
+class ProjectRollOutcome:
+    """Resolved strict Project gates; no assumption about Scope units."""
+    applied: bool
+    potence_rolled: bool
+    progressed: bool
+    tier_upgrades: int
+
+
+def resolve_project_roll(accuracy_successes: int, application_opposition: int,
+                         potence_successes: int | None, effect_opposition: int) -> ProjectRollOutcome:
+    """Two independent stages from Geard Lif's clarified Project rule.
+
+    Potence is rolled only after a *strictly successful* Accuracy roll.
+    Once Potence > positive effect opposition, each full multiple adds
+    one progress-tier upgrade. Converting upgrades to Scope is still open.
+    Resource mark thresholds are a separate preexisting subsystem.
+    """
+    if any(type(v)!=int or v<0 for v in
+           (accuracy_successes,application_opposition,effect_opposition)):
+        raise ValueError("successes/opposition must be nonnegative integers")
+    if effect_opposition==0:
+        raise ValueError("progress multiples with zero opposition are undefined")
+    applied=accuracy_successes>application_opposition
+    if not applied:
+        if potence_successes is not None:
+            raise ValueError("Potence should not be rolled on failed Application")
+        return ProjectRollOutcome(False,False,False,0)
+    if type(potence_successes)!=int or potence_successes<0:
+        raise ValueError("Potence successes required after successful Application")
+    if potence_successes<=effect_opposition:
+        return ProjectRollOutcome(True,True,False,0)
+    return ProjectRollOutcome(True,True,True,potence_successes//effect_opposition)
+
+
+@dataclass(frozen=True)
 class Project:
     """Locked Project dimensions, without inventing resolution mechanics."""
     complexity:int

@@ -8,14 +8,15 @@
 
 - [x] **Old D20 version recoverable:** separate immutable-by-policy archive branch, no fork or history rewrite.
 - [x] **Local Geard Lif core:** four source player-audience rule tiddlers, pinned upstream SHA, import/provenance policy and locked/provisional status summary.
-- [x] **Core arithmetic reference:** tentative d10 success counting, Tier conversion, graded-resource mark/recovery and explicit Project tracking with tests. Does not invent unresolved checks.
+- [x] **Core arithmetic reference:** tentative d10 success counting, Tier conversion, graded-resource mark/recovery, strict Accuracy/Potence Project gates and progress-tier upgrades, and explicit Project tracking with tests. Does not invent unknown progress-to-Scope units.
 - [x] **Elder Scrolls scope/lore:** era, region, canon divergence, provenance, and per-campaign private world facts preserved.
 - [x] **Independent solo campaign concept:** GM preflight, antagonists/clocks, private saves and event logs retained as requirements, but character/runtime mapping requires implementation.
 - [x] **24 skill names and 75 TES perk inspirations:** preserve as *content* and provenance without treating obsolete 0–100 gates as Geard Lif mechanics.
 
 ## P0 — before even a reliable four-scene vertical slice
 
-- [ ] **A. Resolution contract (UPSTREAM + ADAPTER):** choose/confirm exact d10 success threshold, tie policy and how Accuracy successes compare to Complexity/Avoidance; select the rule by which Potence successes translate into effect against Recalcitrance/Resilience and project progress. Keep Accuracy and Potence independent by default.
+- [x] **A. Project success and progress tiers (UPSTREAM):** Accuracy successes must **exceed** Complexity/Avoidance; only then roll independent Potence, whose successes must **exceed** Recalcitrance/Resilience for ordinary Project progress. For positive R, each full R multiple upgrades progress tier; `floor(Potence_successes/R)` on a successful effect. No boost from excess Accuracy unless a special trait permits it. Recorded upstream and in the local engine with arithmetic tests.
+- [ ] **A2. Progress-to-Scope units and personal-resource boundary (UPSTREAM + ADAPTER):** map progress tiers into accumulated Project Scope, settle zero Recalcitrance, and reconcile the strict Project progress threshold with locked Injury/Mana rules that yield Minor marks below Resilience and Middling at equality. These are narrow **edge/integration questions**, not a missing two-roll resolution procedure.
 - [ ] **B. Trait model (UPSTREAM + ADAPTER):** finalize broad attributes (around Will, Health and Conviction), Talent/Skill/Specialty meaning, dice contribution, advancement ranges and untrained use. Decide 24-skill TES roster: Weapon skills, magic schools, armor, Dodge, Survival, Lore; decide how training maps to dice ratings and which traits modify Accuracy vs Potence. Do not carry +floor(skill/5) over.
 - [ ] **C. First-tier survivability (UPSTREAM):** validate Injury, Fatigue, Attention and Mana tracks, recovery cadence, Costs, peer-level threat odds and solo PC survival; choose starting Resilience capacity and initial gear. No numeric HP/MP pool assumed.
 - [ ] **D. Combat adapter (ADAPTER):** one attack as a Project; static Avoidance, armor and shield effects, Block/Dodge legal action cost and reactive options, natural defenses, damage-to-mark handling and applied attack resolution. Decide where spells/armor intervene, including magical wards and Oakflesh.

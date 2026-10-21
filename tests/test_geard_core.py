@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
-from geard_core import d10_successes,convert_tier,severity_marks,Track,Project
+from geard_core import d10_successes,convert_tier,severity_marks,Track,Project,resolve_project_roll
 
 class LocalCoreTests(unittest.TestCase):
     def test_tentative_randomizer_and_zero(self):
@@ -43,6 +43,29 @@ class LocalCoreTests(unittest.TestCase):
         t=t.recover_step()
         self.assertEqual(t.marks,(2,1,0,0))
         self.assertEqual(t.penalty,-1)
+
+    def test_strict_project_application_and_progress_tiers(self):
+        # Equality is NOT success. No Potence roll if Accuracy fails.
+        a=resolve_project_roll(3,3,None,4)
+        self.assertFalse(a.applied)
+        self.assertFalse(a.potence_rolled)
+        with self.assertRaises(ValueError):
+            resolve_project_roll(3,3,10,4)
+        self.assertEqual(resolve_project_roll(4,3,4,4).tier_upgrades,0)
+        self.assertFalse(resolve_project_roll(4,3,4,4).progressed)
+        for p,tier in [(5,1),(7,1),(8,2),(11,2),(12,3)]:
+            out=resolve_project_roll(4,3,p,4)
+            self.assertTrue(out.applied)
+            self.assertTrue(out.progressed)
+            self.assertEqual(out.tier_upgrades,tier)
+
+    def test_zero_recalcitrance_unresolved_not_division_by_zero(self):
+        with self.assertRaises(ValueError):
+            resolve_project_roll(4,3,5,0)
+        # The existing locked personal-resource Minor mark still occurs
+        # at sub-Resilience magnitudes, independently of Project progress.
+        self.assertEqual(severity_marks(3,4),(0,1))
+        self.assertEqual(severity_marks(4,4),(1,1))
 
     def test_project_has_independent_dimensions(self):
         p=Project(complexity=3,recalcitrance=5,scope=100,time_per_attempt="one week")
