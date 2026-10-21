@@ -41,6 +41,12 @@ These are **structural** tests; passing them does **not** declare the game playa
 - Model a skill-20 novice, 50 journeyman, 95 master; natural-20 crits double damage dice **not** flat bonuses. Distinguish attack attempts from successful hits and cap XP by applied actual HP.
 - Stress-test dual-wield and multiattack, early HP versus high skill-based damage, and armor/spell/noncombat relative XP under the new shared XP units.
 
+## Crafting and task DC XP calibration
+- [Candidate DC-based crafting award](../design/CRAFTING_DC_XP.md) and [calculator/tests](../tests/test_crafting_xp.py) compare candidate `2 × declared intrinsic DC` XP per actual finished work unit at 20/50/95 skill with the now-agreed universal 5× rank cost.
+- A batch of five real products earns five units; five gratuitous dice rolls for one product earn only one unit. Low-DC mass production remains valid real practice if materials/time are spent.
+- Check skill 100 vs extended DC 35–45 mastery items; normal 5e 5–30 difficulties assume much smaller proficiency bonuses.
+- Decide failed substantial-work XP, master-project milestone sizing, economics vs complexity, and social/research skill applicability before adopting numerical crafting awards.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.
