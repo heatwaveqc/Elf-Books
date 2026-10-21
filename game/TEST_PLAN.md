@@ -21,6 +21,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - [Defense prototype](../scripts/defense_math.py) asserts one chosen defense skill against each attack, natural 1/20 attack behavior, XP credit only for defense-mediated credible miss, gear-only novice defense, and separately rolled defense perk breakthrough. It is a testing artifact, not live mechanics.
 - Test peer and mismatch attack-versus-AC curves before treating a +20 defense bonus as operative, and retest ECL pooling after cutting category sizes.
 
+## AC stress tests
+- [Full-endgame and unarmored parity comparison](../design/HIGH_END_AC_STRESS_TEST.md) and [calculator](../scripts/ac_stress.py) confirm 5% hit against full +5 plate/+5 shield/+5 natural at 100 skills regardless of base10; 95% hit in matched unarmored duels if base10 is removed.
+- Reassess defensive scale, gear stacking and damage absorption. This is a design issue, **not** a failing test: unit tests validate the arithmetic and make unacceptable extremes visible.
+- Allow actual, risky HP damage to train worn armor regardless of defensive method. Avoidance XP remains separate. Do not automatically mark deliberate risk as abuse.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.
