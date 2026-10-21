@@ -1,0 +1,12 @@
+# Never store actual player saves or GM secrets in this public reference repo
+campaigns/
+private-campaigns/
+*.sqlite
+*.db
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store

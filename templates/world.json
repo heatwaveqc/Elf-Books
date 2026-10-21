@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "campaign_id": null,
+  "era_snapshot": {
+    "era": null,
+    "date": null,
+    "region": null,
+    "sources": [],
+    "divergences": []
+  },
+  "known_locations": [],
+  "known_factions": [],
+  "known_npcs": [],
+  "travel_links": []
+}
