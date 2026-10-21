@@ -69,6 +69,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - Update all GM event processing and persistent XP ledgers to use accepted rules, preserving fractional tenths, valid project progress caps and counterfactual defensive avoidance attribution. The test calculator [magic_defense_xp.py](../scripts/magic_defense_xp.py) uses the approved 2 XP/MP default.
 - Next design priority: perk thresholds, real-use critical discovery, armor/other passive breakthrough opportunities, and trainer interactions. The existence of XP formulas does not make a campaign ready to play.
 
+## Perk-point progression tests and remaining content
+- [New perk breakthrough and spending rules](../rules/PERKS.md) support an untyped bank of points from meaningful successful natural-20 events and credible enemy natural-1 attacks, independent of numeric skill XP; points may later purchase any eligible perk.
+- [Perk bank prototype/tests](../tests/test_perk_points.py) check cross-skill banking, requirement gating, single point per unique event, legitimate sparring, no point from trivial/nonwinning criticals, and explicitly exceptional artifact direct rewards.
+- Next implement real perk effects, authoritative skill threshold catalog, event-ID-based persistence and item-specific rewards. Ordinary trainers can teach skills but **cannot teach perks**.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.
