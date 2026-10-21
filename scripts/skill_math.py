@@ -1,5 +1,7 @@
-"""Exploratory Elf-Books skill learning / derived-pool math.
+"""Exploratory Elf-Books math: category ECL and *superseded* learning checks.
 
+Use-based practice XP is the new design direction in design/USE_BASED_ADVANCEMENT.md.
+This old learn() function is retained ONLY for comparative calibration and tests.
 Not authoritative rules. External dice only; does not create random results.
 """
 from __future__ import annotations
