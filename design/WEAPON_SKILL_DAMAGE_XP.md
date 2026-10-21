@@ -1,6 +1,6 @@
 # Weapon skill contributes to damage; 2.5× effective XP cost — design candidate
 
-**Status: core formulas approved by player (not a complete playable game).** The user explicitly approved the five-times-current-skill XP requirement and two XP per point of actual offensive damage, and previously endorsed adding floor(skill/5) to flat weapon damage. The pacing examples, separate source attribution, exact reactions/perks and off-hand/extra-attack interaction remain calibration topics. Read [CRAFTING_DC_XP.md](CRAFTING_DC_XP.md) for the next noncombat design candidate.
+**Status: core formulas approved by player (not a complete playable game).** The user explicitly approved the five-times-current-skill XP requirement and two XP per point of actual offensive damage, and previously endorsed adding floor(skill/5) to flat weapon damage. The pacing examples, separate source attribution, exact reactions/perks and off-hand/extra-attack interaction remain calibration topics. Read [GENERALIZED_EXTENDED_XP.md](GENERALIZED_EXTENDED_XP.md) for the newest generalized quick/extended noncombat advancement model; [CRAFTING_DC_XP.md](CRAFTING_DC_XP.md) is a prior comparison.
 
 **Previous status: preferred numerical experiment.** This follows [actual-damage K=5 experiment](ACTUAL_DAMAGE_XP.md), but adds offensive mastery to damage and replaces the high effective XP cost with an algebraically equivalent integer scheme. The skill and AC architecture is described in [DEFENSE.md](../rules/DEFENSE.md).
 

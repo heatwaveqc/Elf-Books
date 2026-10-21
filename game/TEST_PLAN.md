@@ -47,6 +47,12 @@ These are **structural** tests; passing them does **not** declare the game playa
 - Check skill 100 vs extended DC 35–45 mastery items; normal 5e 5–30 difficulties assume much smaller proficiency bonuses.
 - Decide failed substantial-work XP, master-project milestone sizing, economics vs complexity, and social/research skill applicability before adopting numerical crafting awards.
 
+## Generalized quick / opposed / extended XP prototype
+- [New progress-and-XP model](../design/GENERALIZED_EXTENDED_XP.md) and [targeted tests](../tests/test_generalized_skill_xp.py) cover project DC/interval/progress-goal, successful check-result × DC progress, fractional XP represented as integer tenths, failure margin, no double credit for overproduction, and opponent-result DC with 3.5 tie behavior.
+- Verify externally that shorter arbitrary intervals cannot increase project XP from the same fixed goal; fix project units and interval up front and prohibit treating administrative subdivisions as fresh checks.
+- Confirm proposed scalar 1 XP/10 credited progress and quick 2×DC success / 0.5×DC failure separately; learn from substantial failure without granting free reroll-based farming.
+- Determine Perception/observation opposed skill mapping within the consolidated 24-skill catalog.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.

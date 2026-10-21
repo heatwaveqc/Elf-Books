@@ -1,6 +1,8 @@
 # Crafting and task DC as skill XP — design candidate
 
-**Status:** The core XP threshold and offensive damage award are agreed. **Crafting XP = 2 × DC per finished work unit remains a proposal, not an adopted rule.** Compare the earlier [weapon/XP prototype](WEAPON_SKILL_DAMAGE_XP.md), now accepted in principle, and [defenses](../rules/DEFENSE.md).
+**Status: SUPERSEDED CRAFTING-ONLY XP CANDIDATE.** The newer [generalized extended actions and quick-check design](GENERALIZED_EXTENDED_XP.md) separates finished-project progress from quick-roll difficulty XP, including opposed rolls. The older finished-item `2×DC` candidate in this file is retained only to compare pacing.
+
+**Earlier status:** The core XP threshold and offensive damage award are agreed. **Crafting XP = 2 × DC per finished work unit remains a proposal, not an adopted rule.** Compare the earlier [weapon/XP prototype](WEAPON_SKILL_DAMAGE_XP.md), now accepted in principle, and [defenses](../rules/DEFENSE.md).
 
 ## Already accepted advancement math
 
