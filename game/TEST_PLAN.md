@@ -26,6 +26,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - Reassess defensive scale, gear stacking and damage absorption. This is a design issue, **not** a failing test: unit tests validate the arithmetic and make unacceptable extremes visible.
 - Allow actual, risky HP damage to train worn armor regardless of defensive method. Avoidance XP remains separate. Do not automatically mark deliberate risk as abuse.
 
+## Accepted defense core and XP calibration
+- [Core defensive formula](../rules/DEFENSE.md) replaces innate +10 with skill/5, retains fifth-edition equipment *contributions*, distinguishes Heavy-CON / Light-DEX / Block-STR / Dodge-DEX, and requires reactions for active Block/Dodge until perks.
+- [XP benchmarking](../design/XP_CALIBRATION.md) tests 20→25, 50→55, 95→100 and 20→100 with d8 expected nominal damage, actual HP lost to armor, and candidate magic/noncombat scales. XP magnitudes are **not approved**.
+- [Core defense smoke tests](../tests/test_xp_calibration.py) check without-10 AC, +3 plate/shield endgame matchup, reaction consumption/perk bypass, and armor gaining XP from actual HP loss despite a failed Block.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.

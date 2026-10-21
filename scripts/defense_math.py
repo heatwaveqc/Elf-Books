@@ -1,4 +1,6 @@
-"""Proposed single-method defensive AC and XP credit for Elf-Books.
+"""SUPERSEDED historic single-method defense proposal with base-10-style baseline supplied externally.
+
+Use scripts/defense_core.py for the accepted no-base-10 AC arithmetic.
 
 This is not an approved or playable combat engine. The caller must supply
 base AC excluding the selected method, its equipment/attribute contribution,
