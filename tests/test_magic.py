@@ -5,6 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 from trait_pools import Talent
+from geard_core import Track
 from geard_core import RESOURCE_TRACKS
 from magic import (
     casting_pools,mana_cost_resistance,resolve_mana_cost,
@@ -120,6 +121,43 @@ class MagicTests(unittest.TestCase):
         self.assertEqual((a.cost_magnitude,b.cost_magnitude),(8,8))
         self.assertEqual((a.mark_capacity_per_grade,b.mark_capacity_per_grade),(2,2))
         self.assertEqual((a.new_mana.resilience,b.new_mana.resilience),(2,2))
+
+    def test_exhausted_mana_cost_redirects_into_spirit(self):
+        mana=Track(2,marks=(0,0,0,2))
+        spirit=Track(2)
+        result=self.cost(cost_magnitude=3,existing_mana=mana,
+                         existing_spirit=spirit,robe_dice=1)
+        self.assertEqual(result.applied_resource,"spirit")
+        self.assertTrue(result.redirected)
+        self.assertEqual(result.new_mana,mana)
+        # The former Mana Cost guard would have had threshold 4, but
+        # the destination Spirit threshold defaults to Will-based 2.
+        self.assertEqual(result.effective_threshold,2)
+        self.assertEqual(result.new_spirit.marks,(0,1,0,0))
+        self.assertEqual(result.cost_magnitude,3)
+        self.assertEqual(result.mark_capacity_per_grade,2)
+
+    def test_cost_that_exhausts_mana_does_not_double_hit_spirit(self):
+        first=self.cost(cost_magnitude=12)
+        self.assertTrue(first.new_mana.exhausted)
+        self.assertEqual(first.new_spirit.marks,(0,0,0,0))
+        self.assertFalse(first.redirected)
+        second=self.cost(cost_magnitude=1,
+                         existing_mana=first.new_mana,
+                         existing_spirit=first.new_spirit)
+        self.assertEqual(second.applied_resource,"spirit")
+        self.assertEqual(second.new_spirit.marks,(1,0,0,0))
+        third=self.cost(cost_magnitude=1,
+                        existing_mana=first.new_mana.recover_step(),
+                        existing_spirit=second.new_spirit)
+        self.assertEqual(third.applied_resource,"mana")
+        self.assertEqual(third.new_spirit,second.new_spirit)
+
+    def test_saved_cost_state_requires_both_tracks(self):
+        with self.assertRaisesRegex(ValueError,"both saved Mana and Spirit"):
+            self.cost(cost_magnitude=1,existing_mana=Track(2))
+        with self.assertRaisesRegex(ValueError,"both saved Mana and Spirit"):
+            self.cost(cost_magnitude=1,existing_spirit=Track(2))
 
     def test_will_not_conviction_governs_mana_capacity(self):
         r=self.cost(cost_magnitude=1,will_tiers={0:15})

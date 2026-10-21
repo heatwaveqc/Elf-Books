@@ -90,3 +90,9 @@ We're back at approximately the previous design milestone when **all P0 entries*
 - [x] Align Geard Lif **×5 Tier magnitude** with Elf-Books' **×5 Tier XP cost and award** calculators, cross-Tier success converter, source snapshots and tests. Base rank cost stays **10 × current rating**; only Tier exponent changes. Tier 1+ passive awards can be fractional halves, preserved in tenths.
 - [x] Mundane social modes directly affect **Attention only** and must not name Plasticity as a direct or long-term mark track. Add supernatural identity Malediction as the legal direct Plasticity example. **Conviction is Soul soak/capacity, not social Avoidance.** Physical intimidation may use **Strength + Speechcraft** against composure/discernment defenses.
 - [ ] Finalize special attack consent, social consequences, and the full supernatural identity spell's balancing and resistance conditions.
+
+## Universal fast-resource exhaustion overflow
+
+- [x] **Geard Lif:** an effect targeting an **already-exhausted** fast track reroutes wholly to the paired slow track, including Costs, environmental effects, attacks and social influence: **Fatigue→Injury, Mana→Spirit, Attention→Plasticity**. The incident which first exhausts fast does not split or add free slow marks; slow grade uses its own resistance threshold. Fast recovery reopens normal routing. Nonpersonal Projects unaffected.
+- [x] **Elf-Books:** tested generic aspect-resource resolver, attack-mode effect adapter and spell Cost bridge preserving *both* Mana and Spirit track histories. Mundane social attacks still directly target Attention but can inflict Plasticity by exhaustion **overflow**, without claiming supernatural direct targeting.
+- [ ] **Campaign save migration:** wire `requested_resource`, `applied_resource`, and redirect flags through actual persistent event records; no existing private play saves are automatically modified by this rules update.

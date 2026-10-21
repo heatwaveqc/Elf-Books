@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Mapping
 from trait_pools import Talent, compose_tier_pool, dice_for_rating, validate_tier_ratings
-from geard_core import Track
+from geard_core import Track, apply_resource_effect
 from advancement import passive_xp_tenths
 from attack_modes import compose_named_pool
 
@@ -53,6 +53,9 @@ class ManaCostResolution:
     effective_threshold: int
     mark_capacity_per_grade: int
     new_mana: Track
+    new_spirit: Track
+    applied_resource: str
+    redirected: bool
 
 
 def mana_cost_resistance(*, tier:int, talent:Talent, school_id:str,
@@ -106,12 +109,14 @@ def resolve_mana_cost(*, tier:int, cost_magnitude:int, talent:Talent,
                       specialty_declared:bool=False,
                       robe_dice:int=0,
                       external_bonuses:Mapping[str,int]|None=None,
-                      existing_mana:Track|None=None)->ManaCostResolution:
+                      existing_mana:Track|None=None,
+                      existing_spirit:Track|None=None,
+                      spirit_effective_threshold:int|None=None)->ManaCostResolution:
     """Grade the separately rolled Cost against static resistance.
 
     **Will**, the Resilience of the Mind aspect, defines Mana mark slots.
     Spell Specialty/Talent/robes can change the severity THRESHOLD only.
-    Cost magnitude must already be converted to the chosen resource Tier.
+    Cost magnitude must already be converted to the chosen resource Tier.\n    If Mana is already exhausted BEFORE the Cost, route the whole Cost into\n    Spirit. Spirit uses its own severity threshold (default Will capacity),\n    not automatically the spell's Mana Cost-reduction robe bonuses.\n    Saved pairs must be supplied together; never silently wipe Spirit.
     """
     if type(cost_magnitude) is not int or cost_magnitude<0:
         raise ValueError("Cost must be nonnegative rolled magnitude")
@@ -125,11 +130,21 @@ def resolve_mana_cost(*, tier:int, cost_magnitude:int, talent:Talent,
         talent_tiers=talent_tiers,specialty_tiers=specialty_tiers,
         specialty_declared=specialty_declared,robe_dice=robe_dice,
         external_bonuses=external_bonuses)
-    track=Track(capacity) if existing_mana is None else existing_mana
-    if track.resilience!=capacity:
-        raise ValueError("Mana mark capacity must be Will-based, not gear/Talent/School")
-    next_track=track.apply_effect(cost_magnitude,effective_threshold=threshold)
-    return ManaCostResolution(cost_magnitude,pool,threshold,capacity,next_track)
+    if (existing_mana is None) != (existing_spirit is None):
+        raise ValueError("pass both saved Mana and Spirit tracks together to preserve state")
+    mana=Track(capacity) if existing_mana is None else existing_mana
+    spirit=Track(capacity) if existing_spirit is None else existing_spirit
+    if mana.resilience!=capacity or spirit.resilience!=capacity:
+        raise ValueError("Mind/Mana and Spirit capacities must derive from Will, not gear/Talent/School")
+    routed=apply_resource_effect(
+        aspect="mind",requested_resource="mana",magnitude=cost_magnitude,
+        fast=mana,slow=spirit,fast_effective_threshold=threshold,
+        slow_effective_threshold=spirit_effective_threshold)
+    actual_threshold = (capacity if spirit_effective_threshold is None
+                        else spirit_effective_threshold) if routed.redirected else threshold
+    return ManaCostResolution(cost_magnitude,pool,actual_threshold,capacity,
+                              routed.fast,routed.slow,routed.applied_resource,
+                              routed.redirected)
 
 
 def mana_cost_practice_xp(*, tier:int, talent:Talent, school_id:str,

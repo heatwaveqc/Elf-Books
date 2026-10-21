@@ -35,3 +35,5 @@ Do not infer a usable campaign from passing unit tests. Production GM play remai
 **Combat and social resistance:** [Attack modes and legal defenses](rules/ATTACK_MODES.md) include projectiles, direct cold curses, environmental cold and four social modes. Shorthand automatically applies relevant Talent and Specialty; all items and temporary magic share one aggregate external-dice cap equal to unmodified personal dice.
 
 **Current scale and social rules:** Tier effectiveness and XP economies use ×5 per Tier. Mundane social conflict directly marks Attention only; direct Plasticity marks require supernatural effects. Conviction remains Soul soak and capacity, not an Avoidance pool. See [attack modes](rules/ATTACK_MODES.md) and [advancement](rules/ADVANCEMENT.md).
+
+**Exhaustion escalation:** once a fast resource is exhausted, subsequent fast-targeted effects damage its paired slow track—**Fatigue→Injury, Mana→Spirit, Attention→Plasticity**. Mundane social attacks can therefore reach Plasticity through Attention exhaustion; only direct Plasticity targeting requires supernatural power. See [resource rules](engine/geard-lif/source/Resource_Tracks.tid).

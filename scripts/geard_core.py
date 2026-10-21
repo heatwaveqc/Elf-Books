@@ -109,6 +109,53 @@ class Track:
         return self
 
 @dataclass(frozen=True)
+class ResourceEffectOutcome:
+    """Result of one incident; targets remain tracked by their aspect's names."""
+    aspect: str
+    requested_resource: str
+    applied_resource: str
+    fast: Track
+    slow: Track
+
+    @property
+    def redirected(self) -> bool:
+        return self.requested_resource != self.applied_resource
+
+
+def apply_resource_effect(*, aspect: str, requested_resource: str,
+                          magnitude: int, fast: Track, slow: Track,
+                          fast_effective_threshold: int | None = None,
+                          slow_effective_threshold: int | None = None
+                          ) -> ResourceEffectOutcome:
+    """Apply one personal resource effect; route already-exhausted fast to slow.
+
+    Check exhaustion at the START of this incident. It is not a splitting
+    mechanism: the hit that finishes fast stays fast, and only a later hit
+    can mark slow. Regrade the unchanged magnitude with the DESTINATION
+    track's appropriate effective threshold. Explicit slow targeting is
+    unchanged. The same routing applies to rolled self-Cost magnitudes.
+    """
+    if aspect not in RESOURCE_TRACKS:
+        raise ValueError("unknown resource aspect")
+    info = RESOURCE_TRACKS[aspect]
+    if requested_resource not in (info["fast"], info["slow"]):
+        raise ValueError("resource target must belong to selected aspect")
+    if not isinstance(fast, Track) or not isinstance(slow, Track):
+        raise ValueError("both aspect resource tracks must be Track objects")
+    if fast.resilience != slow.resilience:
+        raise ValueError("paired tracks must share their aspect Resilience")
+    if type(magnitude) is not int or magnitude < 0:
+        raise ValueError("effect magnitude must be a nonnegative integer")
+    redirect = requested_resource == info["fast"] and fast.exhausted
+    actual = info["slow"] if redirect else requested_resource
+    if actual == info["fast"]:
+        fast = fast.apply_effect(magnitude, effective_threshold=fast_effective_threshold)
+    else:
+        slow = slow.apply_effect(magnitude, effective_threshold=slow_effective_threshold)
+    return ResourceEffectOutcome(aspect,requested_resource,actual,fast,slow)
+
+
+@dataclass(frozen=True)
 class ProjectRollOutcome:
     """A complete Project attempt; grade is -1 for zero/no Effect."""
     applied:bool

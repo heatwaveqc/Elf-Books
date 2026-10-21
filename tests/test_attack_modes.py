@@ -7,9 +7,10 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 from trait_pools import Talent
+from geard_core import Track, RESOURCE_TRACKS
 import attack_modes
 from attack_modes import (compose_named_pool,compose_mode_defense,
-                          valid_defense_choices,load_attack_modes)
+                          valid_defense_choices,load_attack_modes,apply_mode_resource_effect)
 
 class ModeAndGearTests(unittest.TestCase):
     def setUp(self):
@@ -110,6 +111,41 @@ class ModeAndGearTests(unittest.TestCase):
         social["valid_defenses"].append({"id":"soak_as_avoidance","attribute":"conviction",
                                          "skill":"speechcraft","condition":"wrong"})
         check_invalid(two,"Conviction is social Resilience")
+
+    def test_mundane_social_attention_spills_only_after_exhaustion(self):
+        fast=Track(2)
+        slow=Track(2)
+        exhausting=apply_mode_resource_effect(mode_id="social_intimidation",
+            magnitude=12,fast=fast,slow=slow)
+        self.assertEqual(exhausting.requested_resource,"attention")
+        self.assertEqual(exhausting.applied_resource,"attention")
+        self.assertTrue(exhausting.fast.exhausted)
+        self.assertEqual(exhausting.slow.marks,(0,0,0,0))
+        # Following MUNDANE intimidation hits Plasticity through the universal rule.
+        social_overflow=apply_mode_resource_effect(mode_id="social_intimidation",
+            magnitude=2,fast=exhausting.fast,slow=exhausting.slow)
+        self.assertEqual(social_overflow.requested_resource,"attention")
+        self.assertEqual(social_overflow.applied_resource,"plasticity")
+        self.assertEqual(social_overflow.slow.marks,(0,1,0,0))
+        self.assertTrue(social_overflow.redirected)
+        recovered=apply_mode_resource_effect(mode_id="social_intimidation",
+            magnitude=1,fast=social_overflow.fast.recover_step(),
+            slow=social_overflow.slow)
+        self.assertEqual(recovered.applied_resource,"attention")
+        self.assertEqual(recovered.slow,social_overflow.slow)
+
+    def test_cold_fatigue_injury_and_supernatural_plasticity(self):
+        fatigued=Track(2,marks=(0,0,0,2))
+        cold=apply_mode_resource_effect(mode_id="cold_exposure",magnitude=1,
+            fast=fatigued,slow=Track(2))
+        self.assertEqual((cold.requested_resource,cold.applied_resource),
+                         ("fatigue","injury"))
+        self.assertEqual(cold.slow.marks,(1,0,0,0))
+        # Supernatural mode is directly eligible to target the slow resource.
+        curse=apply_mode_resource_effect(mode_id="supernatural_identity_malediction",
+            magnitude=2,fast=Track(2),slow=Track(2))
+        self.assertEqual(curse.applied_resource,"plasticity")
+        self.assertFalse(curse.redirected)
 
     def test_auto_talent_and_specialty(self):
         a=compose_named_pool(attribute="agility",skill="dodge",tier=0,
