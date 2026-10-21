@@ -1,0 +1,763 @@
+{
+  "schema_version": 2,
+  "status": "CANDIDATE_NOT_YET_APPROVED",
+  "replaces": "rules/skills.json (52-skill first draft remains for comparison)",
+  "source_skill_count": 52,
+  "category_count": {
+    "warrior": 8,
+    "mage": 8,
+    "rogue": 8
+  },
+  "notes": [
+    "One and only one rated attack skill for each attack and one chosen defensive skill for each incoming attack.",
+    "Historic specialty skills map by actual technique/weapon, not by their original label.",
+    "Language fluencies become separate learned credentials or specializations, not nine additive ECL skills.",
+    "Medium armor receives a classification per armor model (light or heavy), never double credit.",
+    "These original perk hooks do not have implemented actions or costs; passive defenses need their own breakthrough rule."
+  ],
+  "skills": [
+    {
+      "id": "one_handed",
+      "name": "One-Handed",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "One-hand weapons: swords, daggers, axes, maces, and one-handed spears.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "one_handed_25",
+          "unlocks_at": 25,
+          "name": "Ready Grip",
+          "summary": "Draw or shift grip without abandoning a useful action.",
+          "status": "design_only"
+        },
+        {
+          "id": "one_handed_75",
+          "unlocks_at": 75,
+          "name": "Flowing Strike",
+          "summary": "Reposition after landing a one-handed hit.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "two_handed",
+      "name": "Two-Handed",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "Weapons and polearms used with two hands; not limited to swords.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "two_handed_25",
+          "unlocks_at": 25,
+          "name": "Braced Swing",
+          "summary": "Maintain control when a foe attempts to disrupt a committed swing.",
+          "status": "design_only"
+        },
+        {
+          "id": "two_handed_75",
+          "unlocks_at": 75,
+          "name": "Sweeping Arc",
+          "summary": "Challenge a second nearby foe after a decisive strike.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "archery",
+      "name": "Archery",
+      "category": "warrior",
+      "attribute": "dex",
+      "description": "Bows, crossbows, and other mundane ranged projectile skill (throwing as a specialty).",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "archery_25",
+          "unlocks_at": 25,
+          "name": "Steady Draw",
+          "summary": "Reduce aim disruption caused by a modest movement.",
+          "status": "design_only"
+        },
+        {
+          "id": "archery_75",
+          "unlocks_at": 75,
+          "name": "Called Flight",
+          "summary": "Take a deliberate precision shot against partial cover.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "block",
+      "name": "Block",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "Shield positioning, weapon parries, interposition, and guarded maneuvers.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "block_25",
+          "unlocks_at": 25,
+          "name": "Shield Wall",
+          "summary": "Protect an adjacent ally with a well-positioned shield.",
+          "status": "design_only"
+        },
+        {
+          "id": "block_75",
+          "unlocks_at": 75,
+          "name": "Turn the Blow",
+          "summary": "Convert an especially good block into repositioning.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "heavy_armor",
+      "name": "Heavy Armor",
+      "category": "warrior",
+      "attribute": "con",
+      "description": "Mobility and effective interception using rigid/heavy armor; some medium suits.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "heavy_armor_25",
+          "unlocks_at": 25,
+          "name": "Load Bearing",
+          "summary": "Reduce armor-related encumbrance penalties.",
+          "status": "design_only"
+        },
+        {
+          "id": "heavy_armor_75",
+          "unlocks_at": 75,
+          "name": "Iron Stance",
+          "summary": "Avoid involuntary movement when braced in heavy armor.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "unarmed",
+      "name": "Unarmed",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "Punching, kicking, clinching, grappling, and other hand-to-hand fighting.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "unarmed_25",
+          "unlocks_at": 25,
+          "name": "Grappler's Poise",
+          "summary": "Control position while a grappler attempts an escape.",
+          "status": "design_only"
+        },
+        {
+          "id": "unarmed_75",
+          "unlocks_at": 75,
+          "name": "Unarmed Counter",
+          "summary": "Exploit a foe who overcommits in close combat.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "athletics",
+      "name": "Athletics",
+      "category": "warrior",
+      "attribute": "con",
+      "description": "Climbing, jumping, running, swimming and sustained physical exertion.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "athletics_25",
+          "unlocks_at": 25,
+          "name": "Enduring Pace",
+          "summary": "Sustain exertion through a long journey.",
+          "status": "design_only"
+        },
+        {
+          "id": "athletics_75",
+          "unlocks_at": 75,
+          "name": "Burst of Effort",
+          "summary": "Push through strenuous movement in an urgent scene.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "smithing",
+      "name": "Smithing",
+      "category": "warrior",
+      "attribute": "int",
+      "description": "Crafting, tuning, maintaining and repairing mundane arms, tools and armor.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "smithing_25",
+          "unlocks_at": 25,
+          "name": "Tempered Edge",
+          "summary": "Produce a reliably hardened mundane blade.",
+          "status": "design_only"
+        },
+        {
+          "id": "smithing_75",
+          "unlocks_at": 75,
+          "name": "Masterwork Forge",
+          "summary": "Craft sophisticated designs from suitable materials.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "alteration",
+      "name": "Alteration",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Changing physical properties and constraints with magic.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "alteration_25",
+          "unlocks_at": 25,
+          "name": "Measured Change",
+          "summary": "Tune a minor alteration effect more precisely.",
+          "status": "design_only"
+        },
+        {
+          "id": "alteration_75",
+          "unlocks_at": 75,
+          "name": "Adaptive Pattern",
+          "summary": "Adjust an ongoing alteration within its approved parameters.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "conjuration",
+      "name": "Conjuration",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Summoning, bindings, and external beings.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "conjuration_25",
+          "unlocks_at": 25,
+          "name": "Stable Summons",
+          "summary": "Maintain order when an entity answers a summons.",
+          "status": "design_only"
+        },
+        {
+          "id": "conjuration_75",
+          "unlocks_at": 75,
+          "name": "Binding Circle",
+          "summary": "Improve safety and control in a negotiated summoning.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "destruction",
+      "name": "Destruction",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Harmful and elemental magical effects.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "destruction_25",
+          "unlocks_at": 25,
+          "name": "Elemental Shaping",
+          "summary": "Avoid incidental damage while aiming a destructive spell.",
+          "status": "design_only"
+        },
+        {
+          "id": "destruction_75",
+          "unlocks_at": 75,
+          "name": "Focused Ruin",
+          "summary": "Concentrate power against a narrow target.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "illusion",
+      "name": "Illusion",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Perception, influence and magical deception.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "illusion_25",
+          "unlocks_at": 25,
+          "name": "Subtle Glamour",
+          "summary": "Mask a small tell within an illusion.",
+          "status": "design_only"
+        },
+        {
+          "id": "illusion_75",
+          "unlocks_at": 75,
+          "name": "Layered Misdirection",
+          "summary": "Maintain a believable deception under scrutiny.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "mysticism",
+      "name": "Mysticism",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Souls, magical detection, unusual movement and legacy Thaumaturgy effects.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "mysticism_25",
+          "unlocks_at": 25,
+          "name": "Soul Perception",
+          "summary": "Notice disturbances in soul-affecting enchantments.",
+          "status": "design_only"
+        },
+        {
+          "id": "mysticism_75",
+          "unlocks_at": 75,
+          "name": "Arcane Thread",
+          "summary": "Trace lingering magical relationships between objects.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "restoration",
+      "name": "Restoration",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Magical recovery, restoration, warding and support.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "restoration_25",
+          "unlocks_at": 25,
+          "name": "Precise Mending",
+          "summary": "Control a healing effect around a delicate injury.",
+          "status": "design_only"
+        },
+        {
+          "id": "restoration_75",
+          "unlocks_at": 75,
+          "name": "Steady Renewal",
+          "summary": "Sustain restorative work in a difficult scene.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "alchemy",
+      "name": "Alchemy",
+      "category": "mage",
+      "attribute": "int",
+      "description": "Study and extraction of properties of material reagents, potions and poisons.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "alchemy_25",
+          "unlocks_at": 25,
+          "name": "Reagent Insight",
+          "summary": "Infer likely effects of an unfamiliar ingredient.",
+          "status": "design_only"
+        },
+        {
+          "id": "alchemy_75",
+          "unlocks_at": 75,
+          "name": "Careful Extraction",
+          "summary": "Separate valuable properties from a difficult mixture.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "enchanting",
+      "name": "Enchanting",
+      "category": "mage",
+      "attribute": "int",
+      "description": "Binding lasting supernatural effects into items.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "enchanting_25",
+          "unlocks_at": 25,
+          "name": "Stable Imprint",
+          "summary": "Reduce risk of losing an enchantment during a delicate step.",
+          "status": "design_only"
+        },
+        {
+          "id": "enchanting_75",
+          "unlocks_at": 75,
+          "name": "Soulwright",
+          "summary": "Control sophisticated soul-powered equipment.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "light_armor",
+      "name": "Light Armor",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Wearing flexible light and designated light-medium armor effectively.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "light_armor_25",
+          "unlocks_at": 25,
+          "name": "Silent Fit",
+          "summary": "Reduce the audible interference of worn armor.",
+          "status": "design_only"
+        },
+        {
+          "id": "light_armor_75",
+          "unlocks_at": 75,
+          "name": "Quick Slip",
+          "summary": "Escapingly reposition while lightly protected.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "dodge",
+      "name": "Dodge",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Active evasions, tumbling, falls and unarmored defense.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "dodge_25",
+          "unlocks_at": 25,
+          "name": "Soft Landing",
+          "summary": "Use agility and positioning to absorb a controlled fall.",
+          "status": "design_only"
+        },
+        {
+          "id": "dodge_75",
+          "unlocks_at": 75,
+          "name": "Unfettered Step",
+          "summary": "Escape a constrained position with precise footwork.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "sneak",
+      "name": "Sneak",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Concealment, movement unseen and setting up ambushes.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "sneak_25",
+          "unlocks_at": 25,
+          "name": "Shadow Passage",
+          "summary": "Cross short exposed stretches between hiding places.",
+          "status": "design_only"
+        },
+        {
+          "id": "sneak_75",
+          "unlocks_at": 75,
+          "name": "Ghost Trail",
+          "summary": "Leave fewer traces of covert passage.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Locks, traps, alarms and mechanical bypasses.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "security_25",
+          "unlocks_at": 25,
+          "name": "Trap Sense",
+          "summary": "Identify a likely trigger before interacting with a device.",
+          "status": "design_only"
+        },
+        {
+          "id": "security_75",
+          "unlocks_at": 75,
+          "name": "Clean Disarm",
+          "summary": "Disable a complex mechanism while preserving evidence.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "legerdemain",
+      "name": "Legerdemain",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Pickpocketing, palming, substitutions and other unobtrusive manipulation.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "legerdemain_25",
+          "unlocks_at": 25,
+          "name": "Light Fingers",
+          "summary": "Conceal a small manipulation in an ordinary exchange.",
+          "status": "design_only"
+        },
+        {
+          "id": "legerdemain_75",
+          "unlocks_at": 75,
+          "name": "Invisible Exchange",
+          "summary": "Swap or plant an object while attention is elsewhere.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "speechcraft",
+      "name": "Speechcraft",
+      "category": "rogue",
+      "attribute": "cha",
+      "description": "Persuasion, trade, etiquette, social networks and streetwise dealings.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "speechcraft_25",
+          "unlocks_at": 25,
+          "name": "Read the Room",
+          "summary": "Notice a listener's immediate priorities.",
+          "status": "design_only"
+        },
+        {
+          "id": "speechcraft_75",
+          "unlocks_at": 75,
+          "name": "Careful Appeal",
+          "summary": "Tailor a consequential argument to an audience.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "survival",
+      "name": "Survival",
+      "category": "rogue",
+      "attribute": "wis",
+      "description": "Wilderness skills, navigation, observation, basic mundane medicine and field triage.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "survival_25",
+          "unlocks_at": 25,
+          "name": "Triage",
+          "summary": "Identify the most dangerous injuries in a challenging scene.",
+          "status": "design_only"
+        },
+        {
+          "id": "survival_75",
+          "unlocks_at": 75,
+          "name": "Field Surgeon",
+          "summary": "Stabilize a difficult injury without magical help.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "lore",
+      "name": "Lore",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Research, history, cultures, investigation and specialized scholarly knowledge; not universal fluency.",
+      "status": "candidate_v2",
+      "perks": [
+        {
+          "id": "lore_25",
+          "unlocks_at": 25,
+          "name": "Focused Research",
+          "summary": "Locate reliable material in an unfamiliar archive.",
+          "status": "design_only"
+        },
+        {
+          "id": "lore_75",
+          "unlocks_at": 75,
+          "name": "Scholar's Insight",
+          "summary": "Connect apparently unrelated credible clues from a specialized field.",
+          "status": "design_only"
+        }
+      ]
+    }
+  ],
+  "historical_crosswalk": {
+    "one_handed": [
+      "one_handed"
+    ],
+    "two_handed": [
+      "two_handed"
+    ],
+    "long_blade": [
+      "one_handed",
+      "two_handed"
+    ],
+    "short_blade": [
+      "one_handed"
+    ],
+    "axe": [
+      "one_handed",
+      "two_handed"
+    ],
+    "blunt_weapon": [
+      "one_handed",
+      "two_handed"
+    ],
+    "spear": [
+      "one_handed",
+      "two_handed"
+    ],
+    "hand_to_hand": [
+      "unarmed"
+    ],
+    "archery": [
+      "archery"
+    ],
+    "block": [
+      "block"
+    ],
+    "heavy_armor": [
+      "heavy_armor"
+    ],
+    "medium_armor": [
+      "heavy_armor",
+      "light_armor"
+    ],
+    "unarmored": [
+      "dodge"
+    ],
+    "armorer": [
+      "smithing"
+    ],
+    "smithing": [
+      "smithing"
+    ],
+    "athletics": [
+      "athletics"
+    ],
+    "running": [
+      "athletics"
+    ],
+    "swimming": [
+      "athletics"
+    ],
+    "medical": [
+      "survival"
+    ],
+    "acrobatics": [
+      "dodge"
+    ],
+    "jumping": [
+      "athletics"
+    ],
+    "climbing": [
+      "athletics"
+    ],
+    "light_armor": [
+      "light_armor"
+    ],
+    "dodging": [
+      "dodge"
+    ],
+    "sneak": [
+      "sneak"
+    ],
+    "lockpicking": [
+      "security"
+    ],
+    "security": [
+      "security"
+    ],
+    "pickpocket": [
+      "legerdemain"
+    ],
+    "backstabbing": [
+      "sneak"
+    ],
+    "critical_strike": [
+      "one_handed",
+      "two_handed",
+      "archery",
+      "unarmed"
+    ],
+    "mercantile": [
+      "speechcraft"
+    ],
+    "speechcraft": [
+      "speechcraft"
+    ],
+    "etiquette": [
+      "speechcraft"
+    ],
+    "streetwise": [
+      "speechcraft"
+    ],
+    "alteration": [
+      "alteration"
+    ],
+    "conjuration": [
+      "conjuration"
+    ],
+    "destruction": [
+      "destruction"
+    ],
+    "illusion": [
+      "illusion"
+    ],
+    "mysticism": [
+      "mysticism"
+    ],
+    "restoration": [
+      "restoration"
+    ],
+    "thaumaturgy": [
+      "alteration",
+      "mysticism"
+    ],
+    "alchemy": [
+      "alchemy"
+    ],
+    "enchanting": [
+      "enchanting"
+    ],
+    "centaurian": [
+      "lore"
+    ],
+    "daedric": [
+      "lore"
+    ],
+    "dragonish": [
+      "lore"
+    ],
+    "giantish": [
+      "lore"
+    ],
+    "harpy": [
+      "lore"
+    ],
+    "impish": [
+      "lore"
+    ],
+    "nymph": [
+      "lore"
+    ],
+    "orcish": [
+      "lore"
+    ],
+    "spriggan": [
+      "lore"
+    ]
+  }
+}

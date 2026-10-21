@@ -2,7 +2,7 @@
 
 [Structured roster](skills.json) · [Progression proposal](../design/PROGRESSION.md) · [Prototype math](../scripts/skill_math.py)
 
-**Status: candidate design; not yet playable.** The canonical roster presently contains **52 distinct rated skills** (19 Warrior, 9 Mage, 24 Rogue including nine Daggerfall language skills), each with a proposed perk at skill 25 and 75 (**104 initial perk seeds**).
+**Status: OLD CANDIDATE RETAINED FOR COMPARISON, not yet playable.** The preferred new consolidation proposal is [24 skills with explicit defensive AC mechanics](../design/CONSOLIDATED_SKILLS_DEFENSE.md) and its [structured v2 draft](../design/skills_v2.json). The older candidate in this file contains **52 distinct rated skills** (19 Warrior, 9 Mage, 24 Rogue including nine Daggerfall language skills), each with a proposed perk at skill 25 and 75 (**104 initial perk seeds**).
 
 ## Coverage and version differences
 
