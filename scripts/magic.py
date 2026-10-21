@@ -1,11 +1,10 @@
-"""Elf-Books magic: school-linked spell rolls and full-source static Mana Cost resistance.
+"""Elf-Books magic: one spell Potence roll supplies Effect and variable Mana Cost.
 
 Casting uses Perception + School for Accuracy, Intelligence + School for
 Potence, and Will + applicable Talent + School + Spell Specialty for
-static Mana Cost resistance, plus qualifying cost-reducing gear.
-
-Cost magnitude STILL rolls unmodified, no resistance roll; Mind/Will
-sets Mana track capacity. Soul/Conviction governs Plasticity/Attention.
+static Mana Cost resistance. A spell's Cost is its SAME Potence successes
+plus recorded fixed parameter surcharges, NOT a separate Cost roll.
+Mind/Will sets Mana/Spirit capacity; Soul/Conviction sets social tracks.
 """
 from __future__ import annotations
 from dataclasses import dataclass
@@ -56,6 +55,26 @@ class ManaCostResolution:
     new_spirit: Track
     applied_resource: str
     redirected: bool
+
+
+def spell_is_learned(specialty_tiers:Mapping[int,int])->bool:
+    """Rating 1+ in a spell's Specialty unlocks casting (even without a die)."""
+    validate_tier_ratings(specialty_tiers)
+    return any(rating >= 1 for rating in specialty_tiers.values())
+
+
+def spell_cost_from_potence(*, potence_successes:int,
+                            parameter_surcharge:int=0)->int:
+    """One shared Potence result plus FIXED designed cost-success surcharges.
+
+    The caller must obtain the surcharge from the learned formula, never
+    invent parameters during casting. This also applies after Accuracy misses.
+    """
+    if type(potence_successes) is not int or potence_successes < 0:
+        raise ValueError("Potence successes must be a nonnegative integer")
+    if type(parameter_surcharge) is not int or parameter_surcharge < 0:
+        raise ValueError("fixed parameter surcharge must be a nonnegative integer")
+    return potence_successes + parameter_surcharge
 
 
 def mana_cost_resistance(*, tier:int, talent:Talent, school_id:str,
@@ -112,14 +131,18 @@ def resolve_mana_cost(*, tier:int, cost_magnitude:int, talent:Talent,
                       existing_mana:Track|None=None,
                       existing_spirit:Track|None=None,
                       spirit_effective_threshold:int|None=None)->ManaCostResolution:
-    """Grade the separately rolled Cost against static resistance.
+    """Grade an already computed Cost magnitude against static resistance.
+
+    Spells MUST feed this resolver the result of spell_cost_from_potence,
+    rather than a separately rolled Cost value. Other Cost effects can
+    continue to compute magnitudes from their own source rules.
 
     **Will**, the Resilience of the Mind aspect, defines Mana mark slots.
     Spell Specialty/Talent/robes can change the severity THRESHOLD only.
     Cost magnitude must already be converted to the chosen resource Tier.\n    If Mana is already exhausted BEFORE the Cost, route the whole Cost into\n    Spirit. Spirit uses its own severity threshold (default Will capacity),\n    not automatically the spell's Mana Cost-reduction robe bonuses.\n    Saved pairs must be supplied together; never silently wipe Spirit.
     """
     if type(cost_magnitude) is not int or cost_magnitude<0:
-        raise ValueError("Cost must be nonnegative rolled magnitude")
+        raise ValueError("Cost must be nonnegative magnitude")
     validate_tier_ratings(will_tiers)
     capacity=dice_for_rating(will_tiers.get(tier,0))
     if capacity<1:
@@ -145,6 +168,39 @@ def resolve_mana_cost(*, tier:int, cost_magnitude:int, talent:Talent,
     return ManaCostResolution(cost_magnitude,pool,actual_threshold,capacity,
                               routed.fast,routed.slow,routed.applied_resource,
                               routed.redirected)
+
+
+def resolve_spell_cast_cost(*, potence_successes:int,
+                            parameter_surcharge:int,
+                            spell_specialty_tiers:Mapping[int,int],
+                            tier:int, talent:Talent, school_id:str,
+                            will_tiers:Mapping[int,int],
+                            school_skill_tiers:Mapping[int,int],
+                            talent_tiers:Mapping[int,int]|None=None,
+                            robe_dice:int=0,
+                            external_bonuses:Mapping[str,int]|None=None,
+                            existing_mana:Track|None=None,
+                            existing_spirit:Track|None=None,
+                            spirit_effective_threshold:int|None=None)->ManaCostResolution:
+    """Use ONE Potence roll for the spell's output and Cost, even on a miss.
+
+    This helper grades Cost independent of whether Accuracy applied:
+    a missed spell still incurs its Potence plus fixed parameter surcharge.
+    The learned formula's parameters are supplied by the caller.
+    """
+    if not spell_is_learned(spell_specialty_tiers):
+        raise ValueError("spell Specialty rating 1+ is required to cast")
+    return resolve_mana_cost(
+        tier=tier,
+        cost_magnitude=spell_cost_from_potence(
+            potence_successes=potence_successes,
+            parameter_surcharge=parameter_surcharge),
+        talent=talent,school_id=school_id,will_tiers=will_tiers,
+        school_skill_tiers=school_skill_tiers,talent_tiers=talent_tiers,
+        specialty_tiers=spell_specialty_tiers,specialty_declared=True,
+        robe_dice=robe_dice,external_bonuses=external_bonuses,
+        existing_mana=existing_mana,existing_spirit=existing_spirit,
+        spirit_effective_threshold=spirit_effective_threshold)
 
 
 def mana_cost_practice_xp(*, tier:int, talent:Talent, school_id:str,
