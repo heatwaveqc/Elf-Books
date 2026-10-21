@@ -9,7 +9,8 @@ from geard_core import Track
 from geard_core import RESOURCE_TRACKS
 from magic import (
     casting_pools,mana_cost_resistance,resolve_mana_cost,
-    mana_cost_practice_xp,counterspell_avoidance
+    mana_cost_practice_xp,counterspell_avoidance,spell_is_learned,
+    spell_cost_from_potence,resolve_spell_cast_cost
 )
 
 class MagicTests(unittest.TestCase):
@@ -26,6 +27,57 @@ class MagicTests(unittest.TestCase):
             specialty_tiers={0:5},specialty_declared=True)
         defaults.update(kwargs)
         return resolve_mana_cost(**defaults)
+
+    def spell_cast_cost(self,**kwargs):
+        defaults=dict(potence_successes=4,parameter_surcharge=0,
+            spell_specialty_tiers={0:5},tier=0,talent=self.talent,
+            school_id="destruction",will_tiers={0:10},
+            school_skill_tiers={0:10},talent_tiers={0:10})
+        defaults.update(kwargs)
+        return resolve_spell_cast_cost(**defaults)
+
+    def test_spell_specialty_unlock_requires_rating_one(self):
+        self.assertFalse(spell_is_learned({0:0}))
+        self.assertTrue(spell_is_learned({0:1}))
+        self.assertTrue(spell_is_learned({0:4}))
+        with self.assertRaisesRegex(ValueError,"rating 1"):
+            self.spell_cast_cost(spell_specialty_tiers={0:0})
+        # Ratings 1-4 are castable, yet have no Specialty dice.
+        novice=self.spell_cast_cost(spell_specialty_tiers={0:1})
+        self.assertEqual(novice.resistance_dice,6)
+
+    def test_one_potence_roll_shared_with_cost_and_fixed_surcharge(self):
+        base=self.spell_cast_cost()
+        self.assertEqual(base.cost_magnitude,4)
+        self.assertEqual(base.new_mana.marks,(0,1,0,0))
+        wide=self.spell_cast_cost(parameter_surcharge=2)
+        self.assertEqual(wide.cost_magnitude,6)
+        self.assertEqual(wide.new_mana.marks,(0,0,1,0))
+        # A missed Accuracy attempt still calls the same helper and pays Cost.
+        missed=self.spell_cast_cost(parameter_surcharge=2)
+        self.assertEqual(missed.cost_magnitude,wide.cost_magnitude)
+        # Potence 0 can still incur a surcharge.
+        none=self.spell_cast_cost(potence_successes=0,parameter_surcharge=2)
+        self.assertEqual(none.cost_magnitude,2)
+        self.assertEqual(none.new_mana.marks,(1,0,0,0))
+
+    def test_cost_parameter_validation_and_spirit_overflow(self):
+        for kwargs in (
+            {"potence_successes":-1},
+            {"potence_successes":True},
+            {"parameter_surcharge":-1},
+            {"parameter_surcharge":False}):
+            with self.assertRaises(ValueError):
+                spell_cost_from_potence(**({"potence_successes":1,
+                    "parameter_surcharge":0}|kwargs))
+        mana=Track(2,marks=(0,0,0,2))
+        routed=self.spell_cast_cost(potence_successes=1,
+            parameter_surcharge=3,existing_mana=mana,
+            existing_spirit=Track(2))
+        self.assertTrue(routed.redirected)
+        self.assertEqual(routed.applied_resource,"spirit")
+        self.assertEqual(routed.cost_magnitude,4)
+        self.assertEqual(routed.new_spirit.marks,(0,0,1,0))
 
     def test_resources_mind_magic_and_soul_social(self):
         self.assertEqual(RESOURCE_TRACKS["mind"],
