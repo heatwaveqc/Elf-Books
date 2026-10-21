@@ -38,6 +38,6 @@ This excludes independent, potentially nonstacking natural-armor effects. Do **n
 - Enemy **natural 1**: automatic miss, but not a Block/Dodge defensive feat. Enemy **natural 20**: automatic hit; armor may still earn XP if real HP is lost.
 - Defensive perk breakthroughs are **separate qualifying critical experiences**, not automatically granted by an opponent rolling natural 1. How armor receives these breakthroughs from real damage, and exactly when a breakthrough yields a perk, remain for perk system design.
 
-Draft numeric XP rates and examples: [XP_CALIBRATION.md](../design/XP_CALIBRATION.md).
+**Latest proposed amounts**: armor learns at 4 XP per actual HP lost; the selected applicable trained defense learns 2 XP per full attack check result when it actually turns a threatening hit into a miss (except natural 1 automatic miss). These are **proposals, not locked rates**. Protective spell layering and spell-school XP are discussed in [MAGIC_DEFENSE_XP.md](../design/MAGIC_DEFENSE_XP.md). Earlier benchmarks: [XP_CALIBRATION.md](../design/XP_CALIBRATION.md).
 
 Legacy [CONSOLIDATED_SKILLS_DEFENSE.md](../design/CONSOLIDATED_SKILLS_DEFENSE.md) and [HIGH_END_AC_STRESS_TEST.md](../design/HIGH_END_AC_STRESS_TEST.md) contain earlier comparative proposals, **not current AC authority**.
