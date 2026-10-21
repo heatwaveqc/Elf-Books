@@ -1,0 +1,45 @@
+title: Use-Based Trait Advancement
+type: text/markdown
+geard-audience: player
+tags: Rules Traits Advancement Tentative
+
+# Use-Based Trait Advancement — Working Calibration
+
+**Status:** Adopted as the current **working** advancement calibration, subject to numerical playtesting; this is *not* a complete character creation budget or a final passive-defense/perk-point system. Settings can adjust XP multiplier profiles deliberately without changing the underlying dice or mark engine.
+
+## Ratings and dice
+
+Attribute, Talent, Skill and Specialty have **integer ratings from 0 through 25**, not 0–5. Each contributes `floor(rating / 5)` dice when applicable, capped at **five dice per source**. Rating levels between multiples of five contribute to the next die. Thus the existing maximum is **20 personal d10** when all four sources apply, **15** without Talent, and **10** without Talent and Specialty (before equipment).
+
+Every starting attribute must be at least **rating 5** (one die). The remaining starting allocation and Talent rating budget are setting-specific. **For personal Resilience** (Health/Will/Conviction), the numeric Resilience threshold and per-grade mark capacity use the corresponding attribute's **dice-equivalent rating**, `floor(attribute rating / 5)`; armor and wards can adjust the *injury threshold*, not capacity. Further interaction with static Avoidance and non-attribute defense ratings is under design.
+
+## Experience cost
+
+Increase one rating at a time. From current rating `r`, the XP cost for the next point is **`10 × max(1, r)`**. At 25, no further rating increases occur. Unspent XP carries forward; pay each successive rank's cost separately on level-up. Thus rating 20 → 21 costs **200 XP**, not 100 or 20.
+
+## XP gained from source-tagged dice
+
+The d10 randomizer currently gives 7–9 **one success** and a natural 10 **two successes**. Preserve the originating trait category for **each personal die** in a real, consequential action, then award XP to that **source trait**, including successes from a roll that fails its Accuracy gate:
+
+| Dice source | XP for each success |
+| --- | ---: |
+| Attribute | **2 XP** |
+| Chosen Talent (only on governed Skills) | **1 XP** |
+| Used Skill | **5 XP** |
+| Declared applicable Specialty | **10 XP** |
+
+A 10 on a contributed die therefore earns twice that die's normal success XP (e.g. 4 Attribute XP or 20 Specialty XP). Equipment dice have no intrinsic character-trait XP owner. Attribute, Talent, Skill and Specialty progress independently; **no pooled result is reassigned to another category**.
+
+## Bootstrap: natural 10s teach untrained Skills and Specialties
+
+A Skill or a *specifically declared, relevant* Specialty at ratings **0–4** contributes no dice. For **each natural 10 anywhere in the genuine action's rolled pool**, award **one surrogate bootstrap success** to each of the used Skill and the declared Specialty *if that recipient is still below rating 5*. This grants **5 Skill XP** and/or **10 Specialty XP** per 10. **Both can learn from the same 10**, including when both begin at 0. This is *in addition* to the normal two successes (and XP) attributed to whichever source actually rolled the 10.
+
+A bootstrap credit is **one learning credit**, not two, even though the natural 10 produces two ordinary roll successes. If a Skill or Specialty is already at 5 or higher, it receives **only its own dice-source XP**, never bootstrap XP. A roll uses its **pre-roll ratings and dice sources** for all XP calculations; apply level-ups afterward. All Skill types can start at 0 where the setting allows; Specialties can start at 0. This does not make an arbitrary untrained action automatically succeed.
+
+This rewards actual consequential practice, not empty repetitions manufactured solely to roll extra dice. A GM determines whether the action is real; do not impose an artificial daily cap on legitimate work.
+
+## Passive roles and remaining work
+
+The ordinary passive Resilience/Avoidance experience loop does not roll dice and therefore needs **its own award rule**: resisting real Fatigue/Attention/Mana/Spirit strain, injury or credible attacks can train Health/Will/Conviction or Avoidance attributes. We have not yet fixed those passive XP quantities or armor-specific interactions. The Talent's *separate progression tree* and critical-generated bankable perk points are also not covered by this XP formula.
+
+A setting may require starting characters to have rating **5 or higher in all five Talent-governed Skills**; see Elf-Books' character creation overlay. This is **not a universal Geard Lif class restriction**.

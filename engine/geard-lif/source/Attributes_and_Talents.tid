@@ -5,7 +5,7 @@ tags: Rules Traits
 
 # Attributes, Talent, Skills, and Specialties
 
-**Status:** 12-attribute names and the single five-skill Talent structure are adopted. The precise numeric dice caps, character-creation budget, advancement rates, and Talent-tree benefits remain provisional. Different settings supply their own skill catalog and preset Talents.
+**Status:** 12-attribute names, one five-skill Talent, and the current 0–25 rating / use-based XP *working calibration* are adopted. Full creation budgets, passive XP awards and Talent-tree benefits remain open. Different settings supply their own skill catalog and preset Talents.
 
 ## Twelve attributes in three aspects
 
@@ -33,9 +33,9 @@ An applicable active roll provisionally combines:
 - **Skill:** A learnable ability anyone may use and advance whether or not it belongs to their Talent.
 - **Specialty:** A single narrow application under a parent Skill, such as a particular weapon, spell or technical activity. Only a directly applicable Specialty adds dice; owning several doesn't stack them.
 
-For the tentative dice-pool implementation, each source has a provisional **0–5** rating cap and contributes its rating in d10s. One applicable contribution from each category makes a provisional personal maximum of 20d10; no Talent contribution means the character simply rolls fewer dice, not that the skill is forbidden. Suitable equipment can contribute additional dice under the existing provisional gear ceiling. These caps and starting budgets are subject to playtesting.
+For the working dice-pool implementation, each source is rated **0–25** and contributes **floor(rating/5)** d10s (maximum five dice per source). All twelve starting Attributes have a minimum **rating 5**. One applicable contribution from each of the four categories makes a maximum of 20 personal dice; without Talent, 15; without Talent and Specialty, 10. Suitable equipment can add dice within the provisional gear ceiling. See [[Use-Based Trait Advancement]] for XP, natural-10 bootstrapping and remaining open budgets.
 
-**Resilience** is normally passive/static; its attribute is used directly as the appropriate threshold/capacity, not presumed to be an additional active die contribution to every Accuracy/Potence roll. The derivation of **static Avoidance** from Avoidance attributes, skill, gear or circumstances still requires a separate rule.
+**Resilience** is normally passive/static; its **dice-equivalent rating** (floor of the 0–25 rating divided by 5) is used as the appropriate threshold/capacity, not presumed to be an additional active die contribution to every Accuracy/Potence roll. The derivation of **static Avoidance** from Avoidance attributes, skill, gear or circumstances still requires a separate rule.
 
 ## What a Talent does and doesn't do
 
@@ -46,6 +46,6 @@ For the tentative dice-pool implementation, each source has a provisional **0–
 - Treat a Skill as governed by Talent based on the **actual Skill used**, not on whether the GM finds the situation similar in theme. A physical swordsman can still use a social Attribute for an appropriate swordsman-related social action, but doesn't gain a Mage Talent bonus unless the declared governed Skill is being used.
 - Multiple Specialties or multiple Talents never pile onto one roll.
 
-**Example:** A character's Talent “Spellsword” governs One-Handed, Light Armor, Alteration, Destruction, and Restoration. With Dexterity 3, Talent 2, One-Handed 4 and Longswords Specialty 1, physical sword Accuracy rolls 10d10; a Strength 4 sword Potence roll uses 11d10. For non-governed Smithing with Strength 4, Smithing 3 and no Specialty, the same character uses **7d10**; Smithing remains trainable. These example numbers are demonstrations, not official creation values.
+**Example:** A character's Talent “Spellsword” governs One-Handed, Light Armor, Alteration, Destruction, and Restoration. With Dexterity 15 (3 dice), Talent 10 (2), One-Handed 20 (4) and Longswords Specialty 5 (1), physical sword Accuracy rolls 10d10; a Strength 20 (4 dice) sword Potence roll uses 11d10. For non-governed Smithing with Strength 20 (4 dice), Smithing 15 (3 dice) and no Specialty, the same character uses **7d10**; Smithing remains trainable. These example numbers are demonstrations, not official creation values.
 
 See [[Project Framework]] and [[Tentative d10 Resolution]] for what the resulting pool does. The choice of advancement rules and trait purchasing is deliberately separate.

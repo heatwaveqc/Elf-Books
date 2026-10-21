@@ -4,7 +4,7 @@
 
 ## Status
 
-**FOUNDATION / NOT PLAYABLE.** A local snapshot of Geard Lif's player-facing Project, resource, tentative d10 and Tier rules is in [engine/geard-lif/](engine/geard-lif/README.md). The twelve attributes, five-skill Talent model and 24-skill vocabulary are defined, but creation budgets, Talent progression trees, full combat, spellcasting, use-based XP and campaign integration still need work.
+**FOUNDATION / NOT PLAYABLE.** A local snapshot of Geard Lif's player-facing Project, resource, tentative d10 and Tier rules is in [engine/geard-lif/](engine/geard-lif/README.md). The twelve attributes, five-skill Talent model and 24-skill vocabulary are defined, and the 0–25 source-dice XP model is now implemented for active rolls, with all twelve starting Attributes >=5 and five governed starting Skills >=5; complete budgets, passive defense XP, Talent trees, combat, magic and persistence still need work.
 
 Geard Lif is the mechanical upstream; Elf-Books provides Elder Scrolls characters, magic traditions, setting, NPCs, perks, and an independent solo-GM experience. Changes to upstream engine mechanics must be reviewed and repinned, not improvised differently here.
 
@@ -12,14 +12,14 @@ Geard Lif is the mechanical upstream; Elf-Books provides Elder Scrolls character
 
 - [Solo-GM entrypoint](START_HERE.md) · [Contributor / AI instructions](AGENTS.md)
 - [Current authority and design status](rules/RULES_INDEX.md)
-- **[Local Geard Lif core rules](engine/geard-lif/README.md)** — five player-facing core-rule pages, pinned to upstream
+- **[Local Geard Lif core rules](engine/geard-lif/README.md)** — six player-facing core-rule pages, pinned to upstream
 - [Locked vs provisional upstream mechanics](engine/geard-lif/SYSTEM_STATUS.md)
 - **[Return-to-parity migration checklist](MIGRATION_BACKLOG.md)** — a concrete prioritized list
 - [Foundation and conversion boundaries](rules/FOUNDATION.md)
 - **[Twelve attributes and five-skill Talents](rules/TALENTS.md)** · [12 presets and custom-class schema](rules/talents.json)
 - [24 Elder Scrolls skills](rules/SKILLS.md) · [structured names](rules/skills.json)
 - [75 historical Elder Scrolls perk inspirations](design/tes_perk_seeds.json) · [perk migration](rules/PERKS.md)
-- [Skill-by-doing advancement design](rules/ADVANCEMENT.md)
+- **[Use-based XP: 2/1/5/10 XP per source success, and natural-10 learning](rules/ADVANCEMENT.md)**
 - [Combat, Avoidance and Injury migration](rules/DEFENSE.md)
 - [Magic, Mana and spell-school migration](design/MAGIC.md)
 - [Lore and chronology](lore/LORE_POLICY.md) · [GM protocol](game/GM_PROTOCOL.md)

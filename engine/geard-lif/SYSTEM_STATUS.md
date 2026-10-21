@@ -1,6 +1,6 @@
 # Geard Lif compatibility status — snapshot review
 
-This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/ac172d47bcb0f0d6b5db42df98f67cc3abd54c3d/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
+This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/b7700d5f7d8ac4115ec8f4f83ae13b5f2f6ff700/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
 
 ## Locked upstream concepts
 
@@ -22,13 +22,13 @@ This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://g
 ## Provisional upstream formulas
 
 - d10 pool: 7,8,9 = 1 success; 10 = 2, with other faces = 0.
-- Personal dice pools from Attribute, Talent, Skill, Specialty (each provisionally capped at 5); up to 20 character dice, gear up to the personal contribution, provisional combined ceiling 40.
+- **Working trait ratings 0–25**, one d10 per five rating levels, five dice per source (up to 20 personal, provisional 40 with gear). **XP per contributed success:** Attribute 2, Talent 1, Skill 5, Specialty 10; 10×current rating cost (minimum 10). Each natural 10 may separately bootstrap an under-5 used Skill **and** an under-5 declared Specialty. The entire pace remains subject to balance testing.
 - Tier belongs to each quantity, not the character's level; provisional conversion 10-fold between Tiers, flooring upward and multiplying downward.
 - Combat uses the project framework, but equipment, hit locations, reactions, magic effects and opposed-action details are incomplete.
 
 ## Open upstream, therefore open here
 
-- Which *specific* methods select each of the 12 attributes, how static Avoidance is derived, and the numerical starting budgets, Skill/Talent advancement rates and Talent-tree nodes.
+- Which *specific* methods select each of the 12 attributes, how static Avoidance is derived, and **total starting budgets, passive/defensive XP and Talent-tree node rules**. Active source-die XP is now a working calibrated formula.
 - Exact d10 critical success/failure and special cases, including zero Recalcitrance; ordinary Project **equality succeeds**, and static target comparison is known. Do not port natural 20 or natural 1 perk triggers unchanged.
 - Exact armor/ward severity-threshold adjustment, how projects suffer setbacks or repair/undo marks, and any policy for zero Recalcitrance. The universal Scope-as-mark-capacity rule is already settled.
 - Tier anchor calibration; high-Tier equipment Control Tier versus Effect Tier.

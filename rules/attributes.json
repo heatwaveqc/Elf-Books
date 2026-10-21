@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "engine": "Geard Lif",
-  "status": "ADOPTED_NAMES_NUMERIC_RATINGS_PROVISIONAL",
+  "status": "TWELVE_ATTRIBUTES_RATING_0_TO_25_XP_WORKING",
   "aspects": [
     {
       "id": "body",
@@ -37,6 +37,14 @@
   "notes": [
     "All twelve are independently rated; Health/Will/Conviction are not derived.",
     "Aspect Resilience determines resource mark slots; protective gear changes effective injury thresholds but not mark capacity.",
-    "One relevant attribute contributes to each legal active roll; Avoidance derivation remains to be calibrated."
-  ]
+    "One relevant attribute contributes to each legal active roll; Avoidance derivation remains to be calibrated.",
+    "Personal Resilience threshold/mark slots use floor(the corresponding Resilience attribute rating / 5); all starting Attributes must be >=5."
+  ],
+  "rating": {
+    "min": 0,
+    "max": 25,
+    "dice_per_five": 1,
+    "starting_floor": 5,
+    "xp_per_success": 2
+  }
 }

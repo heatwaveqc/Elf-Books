@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "engine": "Geard Lif / Raven's Heart",
-  "status": "CANONICAL_24_SKILL_NAMES_GEARD_RATINGS_PROVISIONAL",
+  "status": "CANONICAL_24_SKILLS_RATED_0_TO_25_WORKING",
   "notes": [
     "These 24 names are Elf-Books Skills in Geard Lif's Attribute + Talent + Skill + Specialty framework.",
     "Historical Warrior/Mage/Rogue columns are descriptive only, NOT Talent membership or class restrictions.",
     "One player-selected Talent governs exactly five distinct Skills, preset or custom. Every Skill can be used, raised and specialized outside that Talent.",
-    "Ratings currently use Geard's provisional 0..5 personal dice contribution, pending creation budgets and skill advancement rules."
+    "Current working calibration: Skill ratings 0..25, one die per five points, and 5 XP per source-die success. Every starting Talent-governed Skill >=5. Non-governed Skills may start at zero and bootstrap with natural 10s."
   ],
   "skills": [
     {
@@ -15,7 +15,7 @@
       "tes_role": "warrior",
       "description": "One-hand weapons: swords, daggers, axes, maces, and one-handed spears.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Ready Grip",
         "Flowing Strike"
@@ -27,7 +27,7 @@
       "tes_role": "warrior",
       "description": "Weapons and polearms used with two hands; not limited to swords.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Braced Swing",
         "Sweeping Arc"
@@ -39,7 +39,7 @@
       "tes_role": "warrior",
       "description": "Bows, crossbows, and other mundane ranged projectile skill (throwing as a specialty).",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Steady Draw",
         "Called Flight"
@@ -51,7 +51,7 @@
       "tes_role": "warrior",
       "description": "Shield positioning, weapon parries, interposition, and guarded maneuvers.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Shield Wall",
         "Turn the Blow"
@@ -63,7 +63,7 @@
       "tes_role": "warrior",
       "description": "Mobility and effective interception using rigid/heavy armor; some medium suits.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Load Bearing",
         "Iron Stance"
@@ -75,7 +75,7 @@
       "tes_role": "warrior",
       "description": "Punching, kicking, clinching, grappling, and other hand-to-hand fighting.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Grappler's Poise",
         "Unarmed Counter"
@@ -87,7 +87,7 @@
       "tes_role": "warrior",
       "description": "Climbing, jumping, running, swimming and sustained physical exertion.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Enduring Pace",
         "Burst of Effort"
@@ -99,7 +99,7 @@
       "tes_role": "warrior",
       "description": "Crafting, tuning, maintaining and repairing mundane arms, tools and armor.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Tempered Edge",
         "Masterwork Forge"
@@ -111,7 +111,7 @@
       "tes_role": "mage",
       "description": "Changing physical properties and constraints with magic.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Measured Change",
         "Adaptive Pattern"
@@ -123,7 +123,7 @@
       "tes_role": "mage",
       "description": "Summoning, bindings, and external beings.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Stable Summons",
         "Binding Circle"
@@ -135,7 +135,7 @@
       "tes_role": "mage",
       "description": "Harmful and elemental magical effects.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Elemental Shaping",
         "Focused Ruin"
@@ -147,7 +147,7 @@
       "tes_role": "mage",
       "description": "Perception, influence and magical deception.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Subtle Glamour",
         "Layered Misdirection"
@@ -159,7 +159,7 @@
       "tes_role": "mage",
       "description": "Souls, magical detection, unusual movement and legacy Thaumaturgy effects.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Soul Perception",
         "Arcane Thread"
@@ -171,7 +171,7 @@
       "tes_role": "mage",
       "description": "Magical recovery, restoration, warding and support.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Precise Mending",
         "Steady Renewal"
@@ -183,7 +183,7 @@
       "tes_role": "mage",
       "description": "Study and extraction of properties of material reagents, potions and poisons.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Reagent Insight",
         "Careful Extraction"
@@ -195,7 +195,7 @@
       "tes_role": "mage",
       "description": "Binding lasting supernatural effects into items.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Stable Imprint",
         "Soulwright"
@@ -207,7 +207,7 @@
       "tes_role": "rogue",
       "description": "Wearing flexible light and designated light-medium armor effectively.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Silent Fit",
         "Quick Slip"
@@ -219,7 +219,7 @@
       "tes_role": "rogue",
       "description": "Active evasions, tumbling, falls and unarmored defense.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Soft Landing",
         "Unfettered Step"
@@ -231,7 +231,7 @@
       "tes_role": "rogue",
       "description": "Concealment, movement unseen and setting up ambushes.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Shadow Passage",
         "Ghost Trail"
@@ -243,7 +243,7 @@
       "tes_role": "rogue",
       "description": "Locks, traps, alarms and mechanical bypasses.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Trap Sense",
         "Clean Disarm"
@@ -255,7 +255,7 @@
       "tes_role": "rogue",
       "description": "Pickpocketing, palming, substitutions and other unobtrusive manipulation.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Light Fingers",
         "Invisible Exchange"
@@ -267,7 +267,7 @@
       "tes_role": "rogue",
       "description": "Persuasion, trade, etiquette, social networks and streetwise dealings.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Read the Room",
         "Careful Appeal"
@@ -279,7 +279,7 @@
       "tes_role": "rogue",
       "description": "Wilderness skills, navigation, observation, basic mundane medicine and field triage.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Triage",
         "Field Surgeon"
@@ -291,7 +291,7 @@
       "tes_role": "rogue",
       "description": "Research, history, cultures, investigation and specialized scholarly knowledge; not universal fluency.",
       "geard_trait_mapping": "Skill",
-      "rank_scale": "0..5_PROVISIONAL",
+      "rank_scale": "0..25_WORKING",
       "prior_design_perks": [
         "Focused Research",
         "Scholar's Insight"

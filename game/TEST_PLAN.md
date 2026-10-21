@@ -20,9 +20,17 @@
 
 - Verify the exact twelve attributes grouped by Body/Mind/Soul and by Potence/Accuracy/Avoidance/Resilience.
 - Verify all twelve supplied preset five-skill Talents and any player-created custom Talent use only five *distinct* canonical Skill IDs.
-- A Spellsword's Talent 2 + Dexterity 3 + One-Handed 4 + Longswords 1 contributes **10d10 Accuracy**; Strength 4 produces **11d10 Potence**. Smithing 3 + Strength 4 gives **7d10** even though Smithing is *outside* Spellsword—no prohibition, just no Talent dice.
+- A Spellsword's Talent **10** (2d), Dexterity **15** (3d), One-Handed **20** (4d), Longswords **5** (1d) contributes **10d10 Accuracy**; Strength **20** (4d) produces **11d10 Potence**. Smithing **15** (3d) + Strength **20** (4d) gives **7d10** outside Spellsword.
 - Test one Talent selected per character, multiple Specialties not stacking, correctly chosen active function Attributes, rating caps currently provisional, and no deriving resource capacities from other attributes.
-- Later test balance across preset packages, 0–5 cap, Talent progress rates, and complete equivalent custom progression trees; none is finalized by the pool arithmetic alone.
+- Confirm **0–25 ratings**, one d10 per five levels, minimum rating 5 in all starting Attributes and all five Talent-governed Skills; simulate XP pace for novice/expert and equivalent custom progression trees. Creation budget, passive XP, and Talent-tree nodes still require decisions.
+
+## XP award regression tests
+
+- At rating 20, a trait generates **4 personal dice**; raising rating 20→21 costs **200 XP**. Buying from 0→5 costs **110 XP**.
+- Natural 10 yields **two ordinary successes**, granting 4 Attribute XP / 2 Talent XP / 10 Skill XP / 20 Specialty XP if rolled by that source. Attribute 7–9 grants **2 XP**.
+- Each natural 10 also gives **one** bootstrap success (5 XP) to the used Skill if under 5, and **one** (10 XP) to a specifically declared relevant Specialty if under 5; **both** may advance on the same roll. No additional bootstrap at rating 5+.
+- XP is sourced to actual face groups, including failed Accuracy applications; equipment dice do not earn personal-source XP but can trigger a genuine bootstrap event. Calculate credits on pre-roll ratings, then level up.
+- Reject a starting character with one Talent-governed Skill at 4 or with any Attribute below 5. Keep Talent starting budget and passive-defense XP open.
 
 ## Four-scene acceptance vertical slice
 

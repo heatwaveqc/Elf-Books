@@ -64,8 +64,8 @@ class TalentPoolTests(unittest.TestCase):
             compose_pool(attribute_name="health",role="accuracy",attribute_rating=3,
                          talent=t,skill_id="block",skill_rating=2)
         with self.assertRaises(ValueError):
-            compose_pool(attribute_name="dexterity",role="accuracy",attribute_rating=6,
-                         talent=t,skill_id="block",skill_rating=2)
+            compose_pool(attribute_name="dexterity",role="accuracy",attribute_rating=26,
+                         talent=t,skill_id="block",skill_rating=10)
 
 if __name__=="__main__":
     unittest.main()

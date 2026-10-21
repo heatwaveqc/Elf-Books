@@ -1,4 +1,4 @@
-"""Elf-Books four-source Geard dice pools (trait cap and budgets provisional).
+"""Elf-Books four-source Geard dice pools (0..25 ratings, 1d10 per five rating levels).
 
 One chosen Talent governs exactly five skills; ungoverned skills retain normal
 Attribute, Skill and Specialty contributions. Does not derive static Avoidance.
@@ -12,11 +12,16 @@ ATTRIBUTES={
  "soul":{"potence":"charisma","accuracy":"insight","avoidance":"temperance","resilience":"conviction"},
 }
 ATTRIBUTE_ROLE={name:role for aspect in ATTRIBUTES.values() for role,name in aspect.items()}
-PROVISIONAL_MAX=5
+MAX_RATING=25
+RATING_PER_DIE=5
+
+def dice_for_rating(rating:int)->int:
+    _rating(rating,"trait")
+    return rating//RATING_PER_DIE
 
 def _rating(value:int,name:str)->None:
-    if type(value)!=int or not 0<=value<=PROVISIONAL_MAX:
-        raise ValueError(f"{name} rating must be integer 0..{PROVISIONAL_MAX} (provisional cap)")
+    if type(value)!=int or not 0<=value<=MAX_RATING:
+        raise ValueError(f"{name} rating must be integer 0..{MAX_RATING} (current working cap)")
 
 @dataclass(frozen=True)
 class Talent:
@@ -62,6 +67,6 @@ def compose_pool(*,attribute_name:str,role:str,attribute_rating:int,
         _rating(value,name)
     if not isinstance(talent,Talent):
         raise ValueError("one character-selected Talent must be supplied")
-    return PersonalPool(attribute_rating,
-                        talent.rating if skill_id in talent.governed_skills else 0,
-                        skill_rating,specialty_rating)
+    return PersonalPool(dice_for_rating(attribute_rating),
+                        dice_for_rating(talent.rating) if skill_id in talent.governed_skills else 0,
+                        dice_for_rating(skill_rating),dice_for_rating(specialty_rating))

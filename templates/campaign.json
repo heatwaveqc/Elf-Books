@@ -5,7 +5,7 @@
   "rules_commit": null,
   "engine": {
     "id": "geard-lif",
-    "upstream_commit": "ac172d47bcb0f0d6b5db42df98f67cc3abd54c3d",
+    "upstream_commit": "b7700d5f7d8ac4115ec8f4f83ae13b5f2f6ff700",
     "local_snapshot": "engine/geard-lif"
   },
   "setup": {
