@@ -2,13 +2,14 @@
 
 Casting uses Perception + School for Accuracy, Intelligence + School for
 Potence, and Will + applicable Talent + School + Spell Specialty for
-static Mana Cost resistance. A spell's Cost is its SAME Potence successes
+static Mana Cost resistance. A spell's Cost is that effect's SAME Potence successes
 plus recorded fixed parameter surcharges, NOT a separate Cost roll.
+Compound spells generate independent effect Potence and Cost incidents.
 Mind/Will sets Mana/Spirit capacity; Soul/Conviction sets social tracks.
 """
 from __future__ import annotations
 from dataclasses import dataclass
-from typing import Mapping
+from typing import Mapping, Sequence
 from trait_pools import Talent, compose_tier_pool, dice_for_rating, validate_tier_ratings
 from geard_core import Track, apply_resource_effect
 from advancement import passive_xp_tenths
@@ -201,6 +202,65 @@ def resolve_spell_cast_cost(*, potence_successes:int,
         robe_dice=robe_dice,external_bonuses=external_bonuses,
         existing_mana=existing_mana,existing_spirit=existing_spirit,
         spirit_effective_threshold=spirit_effective_threshold)
+
+
+
+def validate_spell_design(*, effect_count:int, has_multi_effect_design_perk:bool)->None:
+    """The perk gates DESIGN of compound formulae, not casting a known one."""
+    if type(effect_count) is not int or effect_count < 1:
+        raise ValueError("spell formula must contain at least one effect")
+    if type(has_multi_effect_design_perk) is not bool:
+        raise ValueError("design perk possession must be boolean")
+    if effect_count > 1 and not has_multi_effect_design_perk:
+        raise ValueError("multi-effect spell design requires the compound-spell perk")
+
+
+def resolve_compound_spell_costs(
+        *, components:Sequence[tuple[int,int]],
+        spell_specialty_tiers:Mapping[int,int],
+        tier:int, talent:Talent, school_id:str,
+        will_tiers:Mapping[int,int],
+        school_skill_tiers:Mapping[int,int],
+        talent_tiers:Mapping[int,int]|None=None,
+        robe_dice:int=0,
+        external_bonuses:Mapping[str,int]|None=None,
+        existing_mana:Track|None=None,
+        existing_spirit:Track|None=None,
+        spirit_effective_threshold:int|None=None)->tuple[ManaCostResolution,...]:
+    """Each component has independent Potence, Cost, resistance and overflow.
+
+    components contains (ALREADY ROLLED potence successes, FIXED surcharge)
+    pairs in resolution order. Surcharges must already include the design's
+    +1 for any additional component, as well as that component's parameters.
+    This helper handles one-school formulas. Cross-school competence mapping
+    and application/resistance against targets await their own adapter.
+    A person may cast a genuinely LEARNED compound formula even without
+    possessing the perk needed to invent one.
+    """
+    if not components:
+        raise ValueError("a compound spell must have at least one component")
+    if (existing_mana is None) != (existing_spirit is None):
+        raise ValueError("pass both saved Mana and Spirit tracks together")
+    current_mana=existing_mana
+    current_spirit=existing_spirit
+    results=[]
+    for component in components:
+        if len(component)!=2:
+            raise ValueError("each component needs Potence successes and surcharge")
+        potence, surcharge = component
+        result=resolve_spell_cast_cost(
+            potence_successes=potence,parameter_surcharge=surcharge,
+            spell_specialty_tiers=spell_specialty_tiers,
+            tier=tier,talent=talent,school_id=school_id,
+            will_tiers=will_tiers,school_skill_tiers=school_skill_tiers,
+            talent_tiers=talent_tiers,robe_dice=robe_dice,
+            external_bonuses=external_bonuses,
+            existing_mana=current_mana,existing_spirit=current_spirit,
+            spirit_effective_threshold=spirit_effective_threshold)
+        results.append(result)
+        current_mana=result.new_mana
+        current_spirit=result.new_spirit
+    return tuple(results)
 
 
 def mana_cost_practice_xp(*, tier:int, talent:Talent, school_id:str,
