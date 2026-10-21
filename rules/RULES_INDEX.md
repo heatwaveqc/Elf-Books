@@ -1,6 +1,6 @@
 # Elf-Books rules authority — Geard Lif migration
 
-**Overall status: FOUNDATION / NOT PLAYABLE.** Do not use archived D20 mechanics. **Geard Lif / Raven's Heart is the base engine**, vendored at [engine/geard-lif](../engine/geard-lif/README.md) from upstream commit `237448aa78d0305070b503ab85af612a0b381a93`.
+**Overall status: FOUNDATION / NOT PLAYABLE.** Do not use archived D20 mechanics. **Geard Lif / Raven's Heart is the base engine**, vendored at [engine/geard-lif](../engine/geard-lif/README.md) from upstream commit `a9c72763c41663e51d5aa03722f53658b48410d3`.
 
 ## Authority order
 
@@ -13,7 +13,7 @@
 ## Locked upstream, inherited by Elf-Books
 
 - Consequential action as a **Project**: Complexity, Recalcitrance, Scope, Time; applies to combat and downtime.
-- Two axes: Accuracy versus Complexity/Avoidance, Potence versus Recalcitrance/Resilience; static target opposition; excess Accuracy does not boost effect by default.
+- Two axes: Accuracy successes **>** Complexity/Avoidance to apply, then independent Potence successes **>** Recalcitrance/Resilience for ordinary Project progress; each full multiple of positive opposition upgrades progress tier once. Static target opposition; excess Accuracy does not boost Potence by default.
 - Six graded resource tracks under Mind (Will), Body (Health) and Soul (Conviction); tracked severity marks and per-action/per-day recovery.
 - Costs are rolled self-targeted Effects; not deducted from a numerical Magicka pool.
 
@@ -21,7 +21,7 @@
 
 - d10 successes (7–9=1, 10=2); trait pools from Attribute/Talent/Skill/Specialty; 5 cap per category, up to 20 personal dice and 40 including gear.
 - Approximate 10× Tier difference, converted rolled magnitude, static opposition stays at its own Tier.
-- Combat mappings, critical event frequency, ties, effects versus Recalcitrance, and exact character traits remain incomplete.
+- Full combat mappings, critical event frequency, progress-tier to Scope conversion, the personal resource-mark boundary, and exact character traits remain incomplete. Ordinary Project equality **fails**, not an unresolved tie.
 
 ## Elf-Books material preserved but awaiting conversion
 
@@ -32,4 +32,4 @@
 - [Spell/Mana design](../design/MAGIC.md); costs follow rolled resource Effects, not old MP totals.
 - [Solo GM protocol](../game/GM_PROTOCOL.md), independent private campaign architecture, historical Elder Scrolls lore and GM pre-session design.
 
-**Next development:** See [MIGRATION_BACKLOG.md](../MIGRATION_BACKLOG.md), especially P0 resolution, traits, survivability, combat, magic, use-based advancement, d10 perk breakthroughs and four-scene test. Implement, test, seek explicit design approval, then permit any actual game to start. CI validation confirms structure, **not playability**.
+**Next development:** See [MIGRATION_BACKLOG.md](../MIGRATION_BACKLOG.md), especially remaining P0 Scope accounting/resource-boundary work, traits, survivability, combat, magic, use-based advancement, d10 perk breakthroughs and four-scene test. Implement, test, seek explicit design approval, then permit any actual game to start. CI validation confirms structure, **not playability**.

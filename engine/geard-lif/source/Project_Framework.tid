@@ -50,6 +50,21 @@ Recalcitrance plays the same role for non-character Projects.
 Personal Effects can apply their magnitude to [[Resource Tracks]], where the
 relevant Resilience trait converts magnitude into graded marks.
 
+## Project Resolution: Successes and Progress Tier
+
+For a Project attempt, resolve **application and effect separately**:
+
+1. Roll **Accuracy** and count successes. Application succeeds only when its success total is **strictly greater than** Complexity (for a task) or the target's static Avoidance. Equality does not succeed.
+2. If application succeeds, roll **Potence** independently and count successes.
+3. Substantive Project progress occurs only when Potence successes are **strictly greater than** the Project's Recalcitrance or target's Resilience. Equality does not count as Project progress.
+4. Every **full multiple of Recalcitrance/Resilience in the Potence success total** upgrades the progress result by one tier. For positive opposition `R`, a successful progress roll of `P` successes has `floor(P / R)` progress-tier upgrades. The eventual Project-specific conversion of those tiers to credited Scope is not yet standardized.
+
+Example: with Complexity 3 and Recalcitrance 4, Accuracy 4 permits the Potence roll, but Accuracy 3 does not. After successful application, Potence 4 yields no Project progress; Potence 5–7 yields one tier upgrade, 8–11 yields two, and 12–15 yields three.
+
+**Boundary with personal resource tracks:** The separate, previously adopted [[Resource Tracks]] graded-mark system applies Minor harm for positive Effect below Resilience and Middling harm at exactly Resilience. This does **not** match the strict-above threshold for ordinary Project progress. Until reconciled, retain the established resource-mark chart for Injury/Mana/etc.; do not silently interpret failed Project progress as zero resource harm. The exact relationship of Project progress tiers and personal resource mark grades requires an explicit follow-up.
+
+If the opposition value is zero, the multiples formula requires a separate rule; do not divide by zero or invent unlimited tier upgrades.
+
 ## Application Does Not Normally Increase Effect
 
 By default, exceeding the difficulty on the Application step does **not**

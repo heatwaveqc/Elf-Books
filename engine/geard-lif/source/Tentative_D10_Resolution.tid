@@ -31,8 +31,9 @@ Effect rolls use their success total as the magnitude applied against
 **Recalcitrance** or **Resilience**. Personal resource tracks translate that
 magnitude into graded marks according to [[Resource Tracks]].
 
-The exact handling of ties, critical success and failure, and other edge cases is
-still under development.
+**Project application** succeeds on Accuracy successes **greater than** Complexity/Avoidance (equality fails). If applied, make a separate Potence roll. **Project progress** requires Potence successes **greater than** Recalcitrance/Resilience; each full multiple of that positive opposition in the Potence total upgrades the progress tier by one. See [[Project Framework]] for examples and for the existing distinct resource-mark boundary.
+
+The handling of critical successes/failures, opposition of zero, translating project tiers into units of Scope, and reconciliation with the existing below-Resilience Minor injury grades remain under development.
 
 ## Tier
 

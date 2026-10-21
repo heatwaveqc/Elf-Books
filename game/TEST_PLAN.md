@@ -7,7 +7,13 @@
 - `python3 scripts/validate_scaffold.py`: required Geard snapshot/manifest, reader docs, 24 skills, public-only import, private-campaign boundary and template sanity.
 - `python3 -m unittest discover -s tests -v`: provisional d10 7–9/10 counting, upward/downward Tier conversion, graded resource severity/promotion/recovery/exhaustion, Project progress clip and template/validator tests.
 - GitHub Actions runs both on pushes/PRs.
-- Test arithmetic is only a demonstrator; exact action-to-Effect, ties, advancement and criticals are still open.
+- Strict Accuracy > Complexity/Avoidance and Potence > Recalcitrance/Resilience gates, plus one progress-tier upgrade per full multiple, are now **specified and tested**. How each tier credits actual Scope, the below-Resilience resource-mark rule, advancement and criticals still need further design.
+
+## Clarified Project gate tests
+
+- **Equality fails** for ordinary Project application and progress: Accuracy 3 vs Complexity 3 does not roll Potence; successful Accuracy 4 vs 3 followed by Potence 4 vs Recalcitrance 4 makes no ordinary Project progress.
+- With R=4 and application succeeded, Potence 5/8/12 successes yield **1/2/3 progress-tier upgrades**. These do **not** automatically equal 1/2/3 Scope points until an upstream rule specifies their magnitudes.
+- Personal Injury against Health 4 retains existing Minor for Effect 1–3 and Middling for Effect 4; document/reconcile the threshold difference without silently discarding the resource chart.
 
 ## Four-scene acceptance vertical slice
 

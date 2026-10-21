@@ -4,7 +4,7 @@ The **local Geard Lif snapshot** at [engine/geard-lif/](../engine/geard-lif/READ
 
 ## Fundamental resolution (upstream)
 
-Every consequential action, **including combat**, is a Project characterized by **Complexity, Recalcitrance, Scope, Time**. Accuracy applies against static Complexity/Avoidance, then Potence expresses the Effect against Recalcitrance/Resilience. Excess Accuracy does **not** automatically increase Potence. The precise application/effect algorithms and ties remain provisional/open and must not be guessed.
+Every consequential action, **including combat**, is a Project characterized by **Complexity, Recalcitrance, Scope, Time**. Accuracy applies against static Complexity/Avoidance, then Potence expresses the Effect against Recalcitrance/Resilience. Excess Accuracy does **not** automatically increase Potence. **Accuracy successes must exceed Complexity/Avoidance** to apply; only then roll Potence independently. **Potence successes must exceed Recalcitrance/Resilience** to make ordinary Project progress; every full multiple of positive opposition upgrades progress tier by one. Scope-unit conversion and the resource-mark boundary remain open; see the latest imported source rules.
 
 Personal aspects are **Mind/Body/Soul** with Resilience **Will/Health/Conviction**. Each has fast and slow graded resources: Attention/Plasticity; Fatigue/Injury; Mana/Spirit. They use Minor/Middling/Major/Final marks and recovery. A Cost is a self-targeted Effect, not a fixed amount of Magicka deducted.
 

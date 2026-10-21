@@ -1,6 +1,6 @@
 # Geard Lif core snapshot for Elf-Books
 
-This directory is a **local, reviewed snapshot** of four player-audience Geard Lif rules, imported from [heatwaveqc/geard-lif](https://github.com/heatwaveqc/geard-lif) at pinned commit `237448aa78d0305070b503ab85af612a0b381a93`. The upstream repository is private; the copied pages were deliberately marked **player-facing** upstream. Nothing in the source repository's GM or AI-only layers is imported.
+This directory is a **local, reviewed snapshot** of four player-audience Geard Lif rules, imported from [heatwaveqc/geard-lif](https://github.com/heatwaveqc/geard-lif) at pinned commit `a9c72763c41663e51d5aa03722f53658b48410d3`. The upstream repository is private; the copied pages were deliberately marked **player-facing** upstream. Nothing in the source repository's GM or AI-only layers is imported.
 
 Elf-Books follows Geard Lif (internally documented as Raven's Heart) as its **base rules engine**, not D&D/d20. The canonical upstream engine remains Geard Lif. The checked-in snapshot is the version actually available to public Elf-Books readers and GM runtimes: upstream changes do **not** silently change a pinned campaign.
 
@@ -14,7 +14,7 @@ Elf-Books follows Geard Lif (internally documented as Raven's Heart) as its **ba
 6. [Elder Scrolls implementation boundaries](../../rules/RULES_INDEX.md)
 7. [Migration and critical path](../../MIGRATION_BACKLOG.md)
 
-For executable **pure arithmetic exercises**, see [`scripts/geard_core.py`](../../scripts/geard_core.py). This script can compute d10 successes, Tier conversion, resource severity/mark/recovery and track project progress. It cannot run a complete encounter: upstream success ties, precise Effect-vs-Recalcitrance mechanics, skills, damage/equipment and advancement are still unresolved.
+For executable **pure arithmetic exercises**, see [`scripts/geard_core.py`](../../scripts/geard_core.py). This script can compute d10 successes, Tier conversion, resource severity/mark/recovery and track project progress. It can evaluate **strict Accuracy/Potence success gates and progress-tier upgrades**. It cannot run a complete encounter: conversion from progress tiers to Scope, exact effect/resource boundary, skills, damage/equipment and advancement are still unresolved.
 
 ## Updating the snapshot
 
