@@ -14,9 +14,9 @@ class SharedMagicDefenseXP(unittest.TestCase):
         self.assertEqual(outgoing_damage_xp_tenths(10),200)
 
     def test_casting_spends_once_and_utility_alternative(self):
-        self.assertEqual(magicka_spend_xp_tenths(8),80)
-        self.assertEqual(magicka_spend_xp_tenths(8,2),160)
-        self.assertEqual(outgoing_damage_xp_tenths(12)+magicka_spend_xp_tenths(8),320)
+        self.assertEqual(magicka_spend_xp_tenths(8),160)
+        self.assertEqual(magicka_spend_xp_tenths(8,1),80)
+        self.assertEqual(outgoing_damage_xp_tenths(12)+magicka_spend_xp_tenths(8),400)
         self.assertEqual(magicka_spend_xp_tenths(0),0)
 
     def test_wound_teaches_armor_and_ward_as_distinct_skills(self):

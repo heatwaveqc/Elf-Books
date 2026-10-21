@@ -4,15 +4,16 @@
 
 ## Status
 
-**Foundation / not yet playable.** Campaign-management scaffolding is being developed. In particular, progression mathematics, attributes and skill ratings, magic, balance, era-specific setting references, and combat conversions are **not yet approved rules**. Do not improvise these as if they were authoritative.
+**Foundation / not yet playable.** Campaign-management scaffolding is being developed. **Numerical skill XP rules are accepted**, but complete character creation, perk advancement, skill roster, combat, magic effects/resources, balance and era-specific setting references are **not yet fully implemented or approved**. Do not improvise these as if they were authoritative.
 
 ## Start here
 
 - [LLM/game-master operating instructions](AGENTS.md)
 - [Rules boundaries and open decisions](rules/RULES_INDEX.md)
 - **[Agreed AC and defense progression](rules/DEFENSE.md)** (core formula agreed; combat system not fully playable)
-- **[Accepted core weapon training](design/WEAPON_SKILL_DAMAGE_XP.md)** — weapon skill adds to hit and damage; next rank costs 5× current skill, offense earns 2× real HP damage
-- **[Magic, armor and avoided-attack XP trial](design/MAGIC_DEFENSE_XP.md)** — spell damage/injury plus Magicka spent; candidate 4× armor wounds and 2× attacker total for defenses
+- **[Agreed skill XP rules](rules/ADVANCEMENT.md)** — one reference for rank cost, offensive/defensive/magic/quick/extended awards; perks next
+- [Accepted core weapon training](design/WEAPON_SKILL_DAMAGE_XP.md) — weapon skill adds to hit and damage; next rank costs 5× current skill, offense earns 2× real HP damage
+- [Magic, armor and avoided-attack XP details](design/MAGIC_DEFENSE_XP.md) — accepted multipliers, source attribution and remaining spell-specific details
 - [Combat vs quick checks vs projects in solo-chat pacing](design/SOLO_PACING_COMPARISON.md) — simulated exchanges versus fictional weeks; numerical rates still in trial
 - [Generalized extended-roll and quick-check XP model](design/GENERALIZED_EXTENDED_XP.md) — progress = check result × DC, optional XP per credited progress, quick successes/failures based on static or opposed DC
 - [Earlier crafting-only DC award trial](design/CRAFTING_DC_XP.md) (superseded baseline)

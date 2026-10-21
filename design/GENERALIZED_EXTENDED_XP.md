@@ -1,5 +1,7 @@
 # Generalized skill checks, extended projects and XP
 
+**Approved award rates:** The numeric quick- and extended-check rules are consolidated in [ADVANCEMENT.md](../rules/ADVANCEMENT.md): quick success 2×DC, meaningful failure 0.5×DC, and extended 0.1×credited progress. This document retains its earlier proposal language and explains the adjudication and design rationale.
+
 **Defensive application:** [MAGIC_DEFENSE_XP.md](MAGIC_DEFENSE_XP.md) proposes 2× the attacker's *full result* for a meaningful defense-mediated avoidance; this extends quick-check effective-DC thinking to combat without inventing a fresh d20 roll.
 
 **Pacing follow-up:** [simulated solo-chat comparisons](SOLO_PACING_COMPARISON.md) investigate XP by player exchange versus in-world weeks and demonstrate why project goals must be grounded in real work. The 0.1 XP/progress and quick 2×DC/0.5×DC rates remain trials, not finalized.
