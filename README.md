@@ -10,7 +10,9 @@
 
 - [LLM/game-master operating instructions](AGENTS.md)
 - [Rules boundaries and open decisions](rules/RULES_INDEX.md)
-- **[High-end AC stress test and base-10 alternatives](design/HIGH_END_AC_STRESS_TEST.md)** (design evaluation)
+- **[Agreed AC and defense progression](rules/DEFENSE.md)** (core formula agreed; combat system not fully playable)
+- **[Skill XP benchmark and candidate award rates](design/XP_CALIBRATION.md)** (numerical choices still open)
+- [Older high-end AC stress test and base-10 alternatives](design/HIGH_END_AC_STRESS_TEST.md) (historical comparison)
 - [24-skill consolidation and original defense model](design/CONSOLIDATED_SKILLS_DEFENSE.md) (proposed, under revision)
 - [52-skill historical catalog and perk seeds](rules/SKILLS.md) (older candidate)
 - [Skill catalog as structured data](rules/skills.json)

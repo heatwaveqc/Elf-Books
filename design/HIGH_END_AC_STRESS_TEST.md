@@ -1,6 +1,8 @@
 # High-end AC stress test — base 10, gear stacking, and unarmored parity
 
-**Status: numerical investigation and proposed alternatives, not approved rules.** This revisits [CONSOLIDATED_SKILLS_DEFENSE.md](CONSOLIDATED_SKILLS_DEFENSE.md), where `AC = 10 + attribute + armor + shield + selected defensive skill` was originally proposed. Do **not** silently interpret this document as an adopted rule.
+**Status: HISTORICAL STRESS TEST ONLY.** The user subsequently accepted [DEFENSE.md](../rules/DEFENSE.md): fifth-edition equipment contributions, full +1-per-5 defensive skill, and **no base 10**, including lethal unarmored parity. The former 3.5 +5 stacked item case here is not current equipment policy. This remains a useful record of earlier alternatives.
+
+**Original test status: numerical investigation and alternatives.** This revisits [CONSOLIDATED_SKILLS_DEFENSE.md](CONSOLIDATED_SKILLS_DEFENSE.md), where `AC = 10 + attribute + armor + shield + selected defensive skill` was originally proposed. Do **not** silently interpret this document as an adopted rule.
 
 ## Player's proposed revision
 
