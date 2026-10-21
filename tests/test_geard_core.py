@@ -10,9 +10,9 @@ class LocalCoreTests(unittest.TestCase):
         self.assertEqual(d10_successes([1,2,6]),0)
         self.assertEqual(d10_successes([7,8,9,10,10]),7)
         with self.assertRaises(ValueError):d10_successes([0])
-        self.assertEqual(convert_tier(27,0,1),2)
-        self.assertEqual(convert_tier(27,1,3),0)
-        self.assertEqual(convert_tier(3,5,4),30)
+        self.assertEqual(convert_tier(27,0,1),5)
+        self.assertEqual(convert_tier(27,1,3),1)
+        self.assertEqual(convert_tier(3,5,4),15)
         self.assertEqual(convert_tier(9,1,1),9)
 
     def test_meet_to_beat_and_effect_grade_exact_edges(self):

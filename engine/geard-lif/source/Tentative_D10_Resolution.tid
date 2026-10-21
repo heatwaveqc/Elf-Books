@@ -44,7 +44,7 @@ Critical-success/failure predicates and equipment-specific defense/threshold adj
 Scale differences are currently handled by [[Tentative Tier Scaling]].
 
 The working model keeps ordinary dice pools bounded and converts a rolled result
-into the Tier of its opposition by a factor of 10 per Tier of difference: divide
+into the Tier of its opposition by a factor of **5** per Tier of difference: divide
 when rolling upward in Tier, multiply when rolling downward. Static opposition
 stays at its own Tier. Exact Tier anchors and special exceptions remain
 provisional.

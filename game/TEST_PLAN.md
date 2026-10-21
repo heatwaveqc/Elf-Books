@@ -53,13 +53,13 @@
 ## Tier and passive XP acceptance
 
 - Same-Tier governing-die prerequisites: Dexterity Tier 1 **5**, One-Handed Tier 1 **25**, Longswords Tier 1 **20** is legal; Dexterity Tier 1 **4** bars the latter dice, and Skill Tier 1 **4** bars Specialty dice. Talent Tier 1 **25** does **not** substitute for missing Attribute dice. No cap requires child rating ≤ parent rating.
-- A trait cannot purchase Tier 1 until its Tier 0 rating is 25. Tier 1 rating 20→21 costs **2,000 XP**, versus Tier 0 **200 XP**. Source rewards multiply by 10 **once**, not again after Tier-scaled Effect magnitude.
+- A trait cannot purchase Tier 1 until its Tier 0 rating is 25. Tier 1 rating 20→21 costs **1,000 XP**, versus Tier 0 **200 XP**. Source rewards multiply by 5 **once**, not again after Tier-scaled Effect magnitude.
 - Test choice between keeping maxed Talent XP to unlock Tier 1 and cascading **unchanged raw XP** to the first unmaxed Attribute/Skill/Specialty. No double award and no arbitrary related-skill recipient.
 - Static four-die Dodge = **2**. Agility rating 10 + Talent 5 + Dodge 5 + Specialty 0 passive awards **1 / 1 / 1 / 0 whole XP** at Tier 0, rounded up per contributing trait. Test the Tier 1+ exact formula and genuine resource-Cost events.
 
 ## Spell Cost and rounding tests
 
-- At Tier 0, a rating 5/11/15 participant receives **1/2/2 whole passive XP** (rounded up per source); zero earns zero. At Tier 1, ratings 5/11/15 earn **5/11/15 XP** (no ceiling needed).
+- At Tier 0, a rating 5/11/15 participant receives **1/2/2 whole passive XP** (rounded up per source); zero earns zero. At Tier 1, ratings 5/11/15 earn **2.5/5.5/7.5 XP** exactly (do not round; save tenths).
 - Static defense **floors the combined dice/2**, not per-source halves: one total die 0, two dice 1, three dice 1, four dice 2.
 - Destruction Accuracy uses **Perception + applicable Talent + Destruction + Spell Specialty**, Potence **Intelligence + the same three**, and its rolled self-Cost is measured against static **Will + the same Talent + Destruction + relevant Spell Specialty + eligible cost-reducing robes**; **Will** sets the independent Mind/Mana mark capacity. Cost dice themselves are never reduced by robes, and no extra resistance roll occurs.
 - Default counterspell uses **Wits + Mysticism** as a chosen alternative static Avoidance. Appropriate Talent/Specialty are applicable where legitimate; counterspell reaction cost and timing remain unsettled.
@@ -76,5 +76,11 @@
 
 - Test shorthand Attribute + Skill automatically contributes governed Talent and one relevant declared Specialty. Health + Survival must be allowed as a defensive pool even though Health is a Resilience attribute.
 - Cold weather and a direct freezing Malediction both defend with **Health + Survival**; launched ice spears/arrows normally allow Dodge/Block and exclude default Parry. Counterspelling is a separate available reaction, not an additive defense.
-- The four social modes (persuasion, deception, intimidation, reputation) specify valid social defense pools and typically pressure Soul's Attention/Plasticity when a legitimate contest is involved; Conviction controls their capacity.
+- The four social modes (persuasion, deception, intimidation, reputation) specify valid social defense pools and directly pressure **Attention only**; only supernatural identity attacks directly mark **Plasticity**. Conviction controls their capacity/severity, not ordinary Avoidance.
 - Combined shield, enchanted ring, ensorcellment and temporary magic **external dice sum must not exceed the unmodified personal dice**, even when each bonus separately is under that limit. Check applied to static defenses, spell Cost, ordinary casting and mundane actions.
+
+## Fivefold advancement and supernatural social boundary
+
+- Verify **Tier effectiveness, XP costs and XP rewards are all fivefold per Tier**. Tier 0 rating 20→21 costs 200 XP; Tier 1 **1,000**; Tier 2 **5,000**. Cross-Tier successes 27 Tier 0→1 convert to 5, 27 Tier 1→3 convert to 1, and 3 Tier 5→4 convert to 15.
+- Tier 1 passive practice at rating 5 yields **2.5 XP**; at rating 11 yields **5.5 XP**. Fractional higher-Tier awards are stored in integer tenths, not rounded away. Tier 0 still rounds passive XP upward per participating trait.
+- Validate all mundane social modes target Attention only, with no `long_term_target_track: plasticity` or Conviction-based Avoidance. Physically imposing Intimidation application is **Strength + Speechcraft**, while ordinary defenses use Temperance/Insight. A separate supernatural identity Malediction *may* directly mark Plasticity using its own declared defensive pool; Conviction still supplies Soul soak/capacity.

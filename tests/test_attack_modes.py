@@ -1,10 +1,13 @@
 import json
 import sys
 import unittest
+from unittest.mock import patch
+from types import SimpleNamespace
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 from trait_pools import Talent
+import attack_modes
 from attack_modes import (compose_named_pool,compose_mode_defense,
                           valid_defense_choices,load_attack_modes)
 
@@ -65,15 +68,48 @@ class ModeAndGearTests(unittest.TestCase):
             m=modes[mid]
             self.assertEqual(m["kind"],"social")
             self.assertEqual(m["typical_target_track"],"attention")
-            self.assertEqual(m["long_term_target_track"],"plasticity")
+            self.assertNotIn("long_term_target_track",m)
+            self.assertFalse(m["supernatural_attack"])
+            self.assertFalse(any(d["attribute"]=="conviction" for d in m["valid_defenses"]))
             self.assertGreaterEqual(len(m["valid_defenses"]),2)
             for defense in m["valid_defenses"]:
                 self.assertNotIn(defense["skill"],{"block","dodge","one_handed"})
         r=compose_mode_defense(mode_id="social_intimidation",
-            defense_id="stand_firm",tier=0,talent=self.talent,
+            defense_id="keep_calm",tier=0,talent=self.talent,
             ratings=self.ratings(specialty=0))
-        # Conviction 2d + Speechcraft 2d; no Scout talent
+        # Temperance 2d + Speechcraft 2d; no Scout talent
         self.assertEqual((r.dice,r.static_opposition),(4,2))
+
+    def test_supernatural_plasticity_only_and_strength_intimidation(self):
+        modes=load_attack_modes()
+        for mid in ("social_persuasion","social_deception","social_intimidation","social_reputation"):
+            mode=modes[mid]
+            self.assertEqual(mode["typical_target_track"],"attention")
+            self.assertFalse(mode["supernatural_attack"])
+            self.assertFalse(any(d["attribute"]=="conviction" for d in mode["valid_defenses"]))
+        self.assertEqual(modes["social_intimidation"]["attack_accuracy"],
+                         {"attribute":"strength","skill":"speechcraft"})
+        self.assertEqual(modes["social_intimidation"]["attack_potence"],
+                         {"attribute":"charisma","skill":"speechcraft"})
+        magical=modes["supernatural_identity_malediction"]
+        self.assertTrue(magical["supernatural_attack"])
+        self.assertEqual(magical["typical_target_track"],"plasticity")
+        self.assertFalse(any(d["attribute"]=="conviction" for d in magical["valid_defenses"]))
+
+    def test_catalog_rejects_illegal_plasticity_and_conviction_avoidance(self):
+        source=json.loads((ROOT/"rules/attack_modes.json").read_text())
+        def check_invalid(bad,reason):
+            fake=SimpleNamespace(read_text=lambda:json.dumps(bad))
+            with patch.object(attack_modes,"CATALOG",fake), self.assertRaisesRegex(ValueError,reason):
+                load_attack_modes()
+        one=json.loads(json.dumps(source))
+        one["modes"][0]["typical_target_track"]="plasticity"
+        check_invalid(one,"only supernatural")
+        two=json.loads(json.dumps(source))
+        social=next(x for x in two["modes"] if x["id"]=="social_intimidation")
+        social["valid_defenses"].append({"id":"soak_as_avoidance","attribute":"conviction",
+                                         "skill":"speechcraft","condition":"wrong"})
+        check_invalid(two,"Conviction is social Resilience")
 
     def test_auto_talent_and_specialty(self):
         a=compose_named_pool(attribute="agility",skill="dodge",tier=0,
@@ -101,7 +137,7 @@ class ModeAndGearTests(unittest.TestCase):
                                   "ensorcellment":1})
 
     def test_off_talent_and_unspecialized_capped_lower(self):
-        r=compose_named_pool(attribute="conviction",skill="speechcraft",tier=0,
+        r=compose_named_pool(attribute="temperance",skill="speechcraft",tier=0,
             talent=self.talent,ratings=self.ratings(specialty=0),
             external_bonuses={"charm":4})
         self.assertEqual((r.personal_dice,r.external_dice),(4,4))

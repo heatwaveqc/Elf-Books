@@ -120,7 +120,7 @@ def validate_starting_allocation(
 def tier_multiplier(tier: int) -> int:
     if type(tier) is not int or tier < 0:
         raise ValueError("Tier must be a nonnegative integer")
-    return 10 ** tier
+    return 5 ** tier
 
 
 def xp_to_next_at_tier(rating: int, tier: int) -> int:
@@ -231,7 +231,7 @@ def passive_xp_tenths(contributing_ratings: Mapping[str,int],
     """Award per-trait passive XP in tenths, rounding UP at Tier 0 only.
 
     Tier 0: ceil(rating / 10) whole XP per participating trait.
-    Tier >=1: exactly rating/10 * 10**tier XP (always an integer).
+    Tier >=1: exactly rating/10 * 5**tier XP; may include 0.5 XP. Return integer tenths without rounding.
     Existing rating and actual source participation determine the award;
     never apply the active 2/1/5/10 success multipliers again.
     """

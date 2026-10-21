@@ -13,7 +13,7 @@ Tier is a measure of **scale**, not character level. Characters, tools, defenses
 Projects, attacks, Effects, Costs, and other resolved quantities may each have a
 Tier.
 
-This rule is provisional while the exact scale bands are tested.
+**Adopted scale rule:** each Tier represents a **fivefold (×5)** difference in effective scale. The ×5 multiplier is the current official rule. Exact Tier benchmarks, equipment integrations, and other unsettled details remain subject to testing.
 
 ## Dice-Pool Ceiling
 
@@ -34,14 +34,13 @@ than from ever-larger dice pools.
 
 ## Tier Scale
 
-Each Tier is provisionally treated as about **ten times the scale** of the Tier
-below it.
+Each Tier represents **five times the effective scale** of the Tier below it.
 
 When a rolled result is compared to opposition or a target at another Tier,
 convert the **rolled result** into the Tier of that opposition:
 
-- if the result is lower-Tier, divide by **10^(Tier difference)** and round down;
-- if the result is higher-Tier, multiply by **10^(Tier difference)**;
+- if the result is lower-Tier, divide by **5^(Tier difference)** and round down;
+- if the result is higher-Tier, multiply by **5^(Tier difference)**;
 - if the Tiers match, use the result unchanged.
 
 Static opposition such as Avoidance, Resilience, Complexity, and Recalcitrance
@@ -49,9 +48,9 @@ therefore remains written at its own Tier.
 
 For example:
 
-- Tier 0 result 27 against Tier 1 opposition becomes 2.
-- Tier 1 result 27 against Tier 3 opposition becomes 0.
-- Tier 5 result 3 against Tier 4 opposition becomes 30.
+- Tier 0 result 27 against Tier 1 opposition becomes **5**.
+- Tier 1 result 27 against Tier 3 opposition becomes **1** (divide by 25).
+- Tier 5 result 3 against Tier 4 opposition becomes **15**.
 
 For graded Effects, convert the Effect magnitude into the Tier of the target's
 Resilience or Recalcitrance before determining the grade or amount of progress.
@@ -68,7 +67,12 @@ other explicit bridge.
 
 ## Tier Belongs to the Quantity
 
-A roll does not automatically use the character's personal Tier.
+A roll does not automatically use the character's personal Tier. **Tier is
+origin-neutral**: mundane tools, advanced machines, enchanted swords, divine
+relics, and any other equipment use the same scale rule. The system does not
+assign a separate technological Tier or change the math based on how an item
+was created. What matters mechanically is the Tier of the thing's output and
+the requirements for using it.
 
 Different parts of the same action may resolve at different Tiers. For example, a
 character might have:
@@ -83,7 +87,9 @@ something designed to make that possible.
 
 ## Control and Effect Tier
 
-High-Tier equipment may have a **Control Tier** separate from its **Effect Tier**.
+Equipment may have a **Control Tier** separate from its **Effect Tier**,
+regardless of whether it is mundane, magical, technological, or otherwise
+produced.
 
 The working default is that operating a device requires at least one effective
 success at its Control Tier. A lower-Tier user's raw successes are converted by the
@@ -94,7 +100,10 @@ Tier. For example, a Tier 3 weapon might be built with Tier 0 controls so that a
 ordinary person can fire it while still producing a Tier 3 Effect.
 
 This accessibility is a property of the device, not an automatic consequence of
-possessing it.
+possessing it. Creating a higher-Tier item likewise does not automatically
+change its creator's or its society's personal Tier. Societies can advance
+by accumulating, reproducing, and improving equipment of higher Tiers
+without introducing a separate civilization or technology Tier.
 
 ## Scale Range
 

@@ -93,8 +93,8 @@ class MagicTests(unittest.TestCase):
         advanced=mana_cost_practice_xp(tier=1,talent=self.talent,
             school_id="destruction",will_rating=5,school_skill_rating=5,
             talent_rating=5,specialty_rating=5,specialty_declared=True)
-        self.assertEqual(advanced,{"will":50,"school_skill":50,
-                                   "talent":50,"specialty":50})
+        self.assertEqual(advanced,{"will":25,"school_skill":25,
+                                   "talent":25,"specialty":25})
 
     def test_multi_source_buff_cap_across_spell_cast_and_cost(self):
         # Unmodified Cost personal = Will 2 + Mage 2 + School 2 + Specialty 1 = 7.

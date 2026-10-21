@@ -63,11 +63,11 @@ class TierAdvancementTests(unittest.TestCase):
         validate_tier_ratings({0:25,1:25,2:5})
         with self.assertRaisesRegex(ValueError,"prior Tier"):
             spend_tier_xp_tenths({0:24},1,100000)
-        bought,left=spend_tier_xp_tenths({0:25},1,1000)
+        bought,left=spend_tier_xp_tenths({0:25},1,500)
         self.assertEqual((bought,left),({0:25,1:1},0))
         self.assertEqual(xp_to_next_at_tier(20,0),200)
-        self.assertEqual(xp_to_next_at_tier(20,1),2000)
-        self.assertEqual(xp_to_next_at_tier(20,2),20000)
+        self.assertEqual(xp_to_next_at_tier(20,1),1000)
+        self.assertEqual(xp_to_next_at_tier(20,2),5000)
 
     def test_tier_awards_scale_once_and_respect_origin(self):
         ratings=self.tiered(attribute={0:25,1:5},talent={0:25},
@@ -76,12 +76,12 @@ class TierAdvancementTests(unittest.TestCase):
         outcome=award_tier_roll_xp(faces,attribute_name="dexterity",
                  role="accuracy",tier=1,talent=self.talent,
                  skill_id="one_handed",ratings=ratings,specialty_declared=True)
-        self.assertEqual(outcome.xp,{"attribute":40,"talent":0,
-                                     "skill":50,"specialty":100})
+        self.assertEqual(outcome.xp,{"attribute":20,"talent":0,
+                                     "skill":25,"specialty":50})
         self.assertEqual(outcome.natural_tens,1)
-        self.assertEqual(outcome.bootstrap_specialty_xp,100)
-        # Note: specialty total is a 10× scaled bootstrap credit at Tier 1.
-        self.assertEqual(outcome.xp["specialty"],100)
+        self.assertEqual(outcome.bootstrap_specialty_xp,50)
+        # Note: specialty total is a 5× scaled bootstrap credit at Tier 1.
+        self.assertEqual(outcome.xp["specialty"],50)
 
     def test_bootstrap_both_skill_and_specialty_in_new_tier(self):
         ratings=self.tiered(attribute={0:25,1:5},talent={0:25},
@@ -91,8 +91,8 @@ class TierAdvancementTests(unittest.TestCase):
                  attribute_name="dexterity",role="accuracy",tier=1,
                  talent=self.talent,skill_id="one_handed",ratings=ratings,
                  specialty_declared=True)
-        self.assertEqual(outcome.xp,{"attribute":40,"talent":0,
-                                    "skill":50,"specialty":100})
+        self.assertEqual(outcome.xp,{"attribute":20,"talent":0,
+                                    "skill":25,"specialty":50})
 
     def test_cascade_raw_xp_without_reapplying_success_multiplier(self):
         ratings=self.tiered(attribute={0:25},talent={0:25},
@@ -128,12 +128,12 @@ class TierAdvancementTests(unittest.TestCase):
         self.assertEqual(static_defense_value(involved),2)
         self.assertEqual(passive_xp_tenths(involved),{
             "agility":10,"talent":10,"dodge":10,"specialty":0})
-        self.assertEqual(passive_xp_tenths(involved,tier=1)["talent"],50)
+        self.assertEqual(passive_xp_tenths(involved,tier=1)["talent"],25)
         self.assertEqual(static_defense_value({"agility":5}),0)
         self.assertEqual(static_defense_value({"agility":5,"dodge":5}),1)
-        # At rating 11, Tier 0 grants ceil(1.1)=2 XP; Tier 1 gives exact 11 XP.
+        # At rating 11, Tier 0 grants ceil(1.1)=2 XP; Tier 1 gives exact 5.5 XP.
         self.assertEqual(passive_xp_tenths({"agility":11},tier=0)["agility"],20)
-        self.assertEqual(passive_xp_tenths({"agility":11},tier=1)["agility"],110)
+        self.assertEqual(passive_xp_tenths({"agility":11},tier=1)["agility"],55)
         self.assertEqual(passive_xp_tenths({"conviction":15},tier=0),
                          {"conviction":20})
         # At Tier 0, 1.5 XP rounds up to 2 XP for resisting real Mana Costs.
