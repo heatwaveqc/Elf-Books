@@ -9,7 +9,7 @@
   "archetype_optional": null,
   "engine": {
     "id": "geard-lif",
-    "upstream_commit": "5f4f5473a53873e83aaee82a8e3e3ae4c508af50",
+    "upstream_commit": "4ba2934cbb34cf8f43584016fadd2e339fad23fe",
     "adapter_rules_commit": null
   },
   "traits": {
@@ -41,13 +41,13 @@
   "tiers": {},
   "resources": {
     "mind": {
-      "spirit": [
+      "plasticity": [
         0,
         0,
         0,
         0
       ],
-      "mana": [
+      "attention": [
         0,
         0,
         0,
@@ -69,13 +69,13 @@
       ]
     },
     "soul": {
-      "plasticity": [
+      "spirit": [
         0,
         0,
         0,
         0
       ],
-      "attention": [
+      "mana": [
         0,
         0,
         0,

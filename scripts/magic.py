@@ -13,6 +13,7 @@ from typing import Mapping
 from trait_pools import Talent, compose_tier_pool, dice_for_rating, validate_tier_ratings
 from geard_core import Track
 from advancement import passive_xp_tenths
+from attack_modes import compose_named_pool
 
 
 @dataclass(frozen=True)
@@ -24,7 +25,9 @@ class SpellPools:
 def casting_pools(*, tier:int, talent:Talent, school_id:str,
                   accuracy_ratings:Mapping[str,Mapping[int,int]],
                   potence_ratings:Mapping[str,Mapping[int,int]],
-                  specialty_declared:bool=True)->SpellPools:
+                  specialty_declared:bool=True,
+                  accuracy_external_bonuses:Mapping[str,int]|None=None,
+                  potence_external_bonuses:Mapping[str,int]|None=None)->SpellPools:
     """Same school Skill, different Accuracy/Potence Attributes."""
     a=compose_tier_pool(attribute_name="perception",role="accuracy",tier=tier,
                         talent=talent,skill_id=school_id,ratings=accuracy_ratings,
@@ -32,7 +35,15 @@ def casting_pools(*, tier:int, talent:Talent, school_id:str,
     p=compose_tier_pool(attribute_name="intelligence",role="potence",tier=tier,
                         talent=talent,skill_id=school_id,ratings=potence_ratings,
                         specialty_declared=specialty_declared)
-    return SpellPools(a.dice,p.dice)
+    acc_external=compose_named_pool(attribute="perception",skill=school_id,tier=tier,
+        talent=talent,ratings=accuracy_ratings,specialty_declared=specialty_declared,
+        external_bonuses=accuracy_external_bonuses)
+    pot_external=compose_named_pool(attribute="intelligence",skill=school_id,tier=tier,
+        talent=talent,ratings=potence_ratings,specialty_declared=specialty_declared,
+        external_bonuses=potence_external_bonuses)
+    assert acc_external.personal_dice == a.dice
+    assert pot_external.personal_dice == p.dice
+    return SpellPools(acc_external.dice,pot_external.dice)
 
 
 @dataclass(frozen=True)
@@ -50,7 +61,8 @@ def mana_cost_resistance(*, tier:int, talent:Talent, school_id:str,
                          talent_tiers:Mapping[int,int]|None=None,
                          specialty_tiers:Mapping[int,int]|None=None,
                          specialty_declared:bool=False,
-                         robe_dice:int=0)->tuple[int,int]:
+                         robe_dice:int=0,
+                         external_bonuses:Mapping[str,int]|None=None)->tuple[int,int]:
     """Static Will + Talent(if governed) + School + Spell Specialty + robe.
 
     At chosen Tier the Skill requires a Will die and the Specialty a
@@ -73,9 +85,13 @@ def mana_cost_resistance(*, tier:int, talent:Talent, school_id:str,
                                specialty_declared=specialty_declared)
     if type(robe_dice) is not int or robe_dice<0:
         raise ValueError("robe dice must be a nonnegative integer")
-    if robe_dice>personal.dice:
-        raise ValueError("gear cannot exceed personal Cost resistance dice budget")
-    total=personal.dice+robe_dice
+    bonuses={} if external_bonuses is None else dict(external_bonuses)
+    if robe_dice:
+        bonuses["cost_reducing_robe"]=bonuses.get("cost_reducing_robe",0)+robe_dice
+    combined=compose_named_pool(attribute="will",skill=school_id,tier=tier,
+        talent=talent,ratings=ratings,specialty_declared=specialty_declared,
+        external_bonuses=bonuses)
+    total=combined.dice
     threshold=total//2
     if threshold<1:
         raise ValueError("zero Cost-resistance threshold remains undefined")
@@ -89,6 +105,7 @@ def resolve_mana_cost(*, tier:int, cost_magnitude:int, talent:Talent,
                       specialty_tiers:Mapping[int,int]|None=None,
                       specialty_declared:bool=False,
                       robe_dice:int=0,
+                      external_bonuses:Mapping[str,int]|None=None,
                       existing_mana:Track|None=None)->ManaCostResolution:
     """Grade the separately rolled Cost against static resistance.
 
@@ -106,7 +123,8 @@ def resolve_mana_cost(*, tier:int, cost_magnitude:int, talent:Talent,
         tier=tier,talent=talent,school_id=school_id,
         will_tiers=will_tiers,school_skill_tiers=school_skill_tiers,
         talent_tiers=talent_tiers,specialty_tiers=specialty_tiers,
-        specialty_declared=specialty_declared,robe_dice=robe_dice)
+        specialty_declared=specialty_declared,robe_dice=robe_dice,
+        external_bonuses=external_bonuses)
     track=Track(capacity) if existing_mana is None else existing_mana
     if track.resilience!=capacity:
         raise ValueError("Mana mark capacity must be Will-based, not gear/Talent/School")
@@ -136,7 +154,8 @@ def mana_cost_practice_xp(*, tier:int, talent:Talent, school_id:str,
 
 def counterspell_avoidance(*,tier:int,talent:Talent,
                            ratings:Mapping[str,Mapping[int,int]],
-                           specialty_declared:bool=False)->int:
+                           specialty_declared:bool=False,
+                           external_bonuses:Mapping[str,int]|None=None)->int:
     """Chosen reactive counterspell uses Wits + Mysticism, Talent and Specialty.
 
     This remains a separate selected defense; it doesn't stack with Dodge
@@ -145,4 +164,6 @@ def counterspell_avoidance(*,tier:int,talent:Talent,
     pool=compose_tier_pool(attribute_name="wits",role="avoidance",tier=tier,
                            talent=talent,skill_id="mysticism",
                            ratings=ratings,specialty_declared=specialty_declared)
-    return pool.dice//2
+    return compose_named_pool(attribute="wits",skill="mysticism",tier=tier,
+        talent=talent,ratings=ratings,specialty_declared=specialty_declared,
+        external_bonuses=external_bonuses).static_opposition

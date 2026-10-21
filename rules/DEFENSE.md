@@ -18,3 +18,5 @@ Locked upstream separation:
 See [MIGRATION_BACKLOG.md](../MIGRATION_BACKLOG.md).
 
 **Countermagic:** an available counterspell can instead select **Wits + Mysticism** (with applicable Talent/Specialty), floored as one combined static defense, not stacked onto Dodge or an already-chosen ward. A school spell's **self-Cost** uses **Will + governed Talent + the spell's own School Skill + relevant declared Spell Specialty + eligible gear** static resistance. Mind/Will sets Mana capacity independently of these extra threshold contributions. See [Magic](../design/MAGIC.md). Reaction cost/action legality are still open.
+
+**Mode-specific defenses:** See [Attack Modes](ATTACK_MODES.md). A contested effect declares its attack mode and allowed defensive Attribute + Skill pools. Cold weather and a direct freezing Malediction both use **Health + Survival**; ice spears/arrows allow Dodge or shield Block, not normal Parry. Four social attack modes specify social/factual defenses. Add governed-Skill Talent, relevant Specialty, and only eligible external bonuses; equipment/enchantments/ensorcellments/temporary magic together may add at most the unmodified personal dice pool.

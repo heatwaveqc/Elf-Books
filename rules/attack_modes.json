@@ -1,0 +1,285 @@
+{
+  "schema_version": 1,
+  "status": "WORKING_DEFAULTS",
+  "rule_reference": "engine/geard-lif/source/Named_Action_Pools_and_Defense_Modes.tid",
+  "notes": [
+    "Named pools omit automatically applicable governed-Skill Talent, one declared Specialty and relevant external dice.",
+    "Defense depends on how the attack reaches the target, not whether it is magic or physical.",
+    "Pick one available named defensive response, which supplies floor(total dice/2) static opposition. A declared mode must contain one or more defenses or explicitly say that no defense applies.",
+    "Physical projectiles do not allow default Parry; direct nonmissile Maledictions cannot be Dodged, Blocked or Parried.",
+    "Social attacks affect Soul's Attention or Plasticity only for genuinely consequential hostile influence, not everyday conversation. Mark capacity for both is Conviction.",
+    "Alternate defenses require circumstances in catalog; countermagic requires access to a reaction or counterspell, not free universal use."
+  ],
+  "modes": [
+    {
+      "id": "melee_contact",
+      "label": "Melee contact",
+      "kind": "physical",
+      "attack_accuracy": {
+        "attribute": "dexterity",
+        "skill": "one_handed",
+        "illustrative": true
+      },
+      "valid_defenses": [
+        {
+          "id": "dodge",
+          "attribute": "agility",
+          "skill": "dodge",
+          "condition": "space and awareness to evade"
+        },
+        {
+          "id": "block",
+          "attribute": "dexterity",
+          "skill": "block",
+          "condition": "appropriate shield or guarding implement"
+        },
+        {
+          "id": "parry_one_handed",
+          "attribute": "dexterity",
+          "skill": "one_handed",
+          "condition": "suitable held one-handed weapon and timing"
+        },
+        {
+          "id": "parry_two_handed",
+          "attribute": "dexterity",
+          "skill": "two_handed",
+          "condition": "suitable held two-handed weapon and timing"
+        }
+      ],
+      "typical_target_track": "injury"
+    },
+    {
+      "id": "launched_projectile",
+      "label": "Arrow or thrown weapon",
+      "kind": "projectile",
+      "attack_accuracy": {
+        "attribute": "dexterity",
+        "skill": "archery",
+        "illustrative": true
+      },
+      "valid_defenses": [
+        {
+          "id": "dodge",
+          "attribute": "agility",
+          "skill": "dodge",
+          "condition": "aware and able to move"
+        },
+        {
+          "id": "block",
+          "attribute": "dexterity",
+          "skill": "block",
+          "condition": "suitable shield/interceptor with the required coverage"
+        }
+      ],
+      "forbidden_defaults": [
+        "parry"
+      ],
+      "typical_target_track": "injury"
+    },
+    {
+      "id": "ice_spear_projectile",
+      "label": "Ice spear (physical missile)",
+      "kind": "projectile",
+      "attack_accuracy": {
+        "attribute": "perception",
+        "skill": "destruction"
+      },
+      "valid_defenses": [
+        {
+          "id": "dodge",
+          "attribute": "agility",
+          "skill": "dodge",
+          "condition": "aware and able to move"
+        },
+        {
+          "id": "block",
+          "attribute": "dexterity",
+          "skill": "block",
+          "condition": "shield or appropriate blocking capability"
+        },
+        {
+          "id": "counterspell",
+          "attribute": "wits",
+          "skill": "mysticism",
+          "condition": "legally available counterspell reaction"
+        }
+      ],
+      "forbidden_defaults": [
+        "parry"
+      ],
+      "typical_target_track": "injury"
+    },
+    {
+      "id": "cold_exposure",
+      "label": "Cold weather or environmental freezing",
+      "kind": "environmental",
+      "attack_accuracy": null,
+      "valid_defenses": [
+        {
+          "id": "endure_cold",
+          "attribute": "health",
+          "skill": "survival",
+          "condition": "actually exposed to cold and able to adapt or endure"
+        }
+      ],
+      "typical_target_track": "fatigue"
+    },
+    {
+      "id": "direct_freezing_malediction",
+      "label": "Direct freezing curse (nonmissile)",
+      "kind": "direct_malediction",
+      "attack_accuracy": {
+        "attribute": "perception",
+        "skill": "destruction"
+      },
+      "valid_defenses": [
+        {
+          "id": "endure_cold",
+          "attribute": "health",
+          "skill": "survival",
+          "condition": "cold-endurance response, same pool as environmental exposure"
+        },
+        {
+          "id": "counterspell",
+          "attribute": "wits",
+          "skill": "mysticism",
+          "condition": "a counterspell reaction is specifically available"
+        }
+      ],
+      "forbidden_defaults": [
+        "dodge",
+        "block",
+        "parry"
+      ],
+      "typical_target_track": "fatigue"
+    },
+    {
+      "id": "social_persuasion",
+      "label": "Persuasion or argument",
+      "kind": "social",
+      "attack_accuracy": {
+        "attribute": "insight",
+        "skill": "speechcraft"
+      },
+      "attack_potence": {
+        "attribute": "charisma",
+        "skill": "speechcraft"
+      },
+      "valid_defenses": [
+        {
+          "id": "evaluate_claim",
+          "attribute": "insight",
+          "skill": "speechcraft",
+          "condition": "critically assess framing, motives and terms"
+        },
+        {
+          "id": "maintain_composure",
+          "attribute": "temperance",
+          "skill": "speechcraft",
+          "condition": "deliberately resist emotional pressure"
+        },
+        {
+          "id": "stand_by_values",
+          "attribute": "conviction",
+          "skill": "speechcraft",
+          "condition": "appeal challenges explicitly held commitments"
+        }
+      ],
+      "typical_target_track": "attention",
+      "long_term_target_track": "plasticity"
+    },
+    {
+      "id": "social_deception",
+      "label": "Deception or misdirection",
+      "kind": "social",
+      "attack_accuracy": {
+        "attribute": "insight",
+        "skill": "speechcraft"
+      },
+      "attack_potence": {
+        "attribute": "charisma",
+        "skill": "speechcraft"
+      },
+      "valid_defenses": [
+        {
+          "id": "read_deception",
+          "attribute": "insight",
+          "skill": "speechcraft",
+          "condition": "discern inconsistent intent or performance"
+        },
+        {
+          "id": "verify_facts",
+          "attribute": "wits",
+          "skill": "lore",
+          "condition": "relevant facts can be checked against known lore or evidence"
+        }
+      ],
+      "typical_target_track": "attention",
+      "long_term_target_track": "plasticity"
+    },
+    {
+      "id": "social_intimidation",
+      "label": "Intimidation and social coercion",
+      "kind": "social",
+      "attack_accuracy": {
+        "attribute": "insight",
+        "skill": "speechcraft"
+      },
+      "attack_potence": {
+        "attribute": "charisma",
+        "skill": "speechcraft"
+      },
+      "valid_defenses": [
+        {
+          "id": "keep_calm",
+          "attribute": "temperance",
+          "skill": "speechcraft",
+          "condition": "resisting social pressure and emotional dysregulation"
+        },
+        {
+          "id": "stand_firm",
+          "attribute": "conviction",
+          "skill": "speechcraft",
+          "condition": "refusing pressure to abandon convictions"
+        }
+      ],
+      "typical_target_track": "attention",
+      "long_term_target_track": "plasticity"
+    },
+    {
+      "id": "social_reputation",
+      "label": "Rumor, shame or reputational isolation",
+      "kind": "social",
+      "attack_accuracy": {
+        "attribute": "insight",
+        "skill": "speechcraft"
+      },
+      "attack_potence": {
+        "attribute": "charisma",
+        "skill": "speechcraft"
+      },
+      "valid_defenses": [
+        {
+          "id": "challenge_narrative",
+          "attribute": "insight",
+          "skill": "speechcraft",
+          "condition": "able to expose manipulation or rebut claims"
+        },
+        {
+          "id": "stand_by_identity",
+          "attribute": "conviction",
+          "skill": "speechcraft",
+          "condition": "defending self-image and personal integrity"
+        },
+        {
+          "id": "verify_reputation",
+          "attribute": "wits",
+          "skill": "lore",
+          "condition": "concrete evidence or contextual knowledge is available"
+        }
+      ],
+      "typical_target_track": "attention",
+      "long_term_target_track": "plasticity"
+    }
+  ]
+}

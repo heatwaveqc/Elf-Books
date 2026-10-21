@@ -24,6 +24,8 @@ The aspects remain **Body, Mind, Soul** in the engine. Soul represents social, e
 
 ## Four sources of competence
 
+A rule **names only the Attribute + Skill**; the engine automatically adds an applicable five-skill Talent, one relevant declared Specialty and any legal external bonuses. The Talent governs the **Skill**, never the Attribute. See [[Named Action Pools and Defense Modes]] for all source and gear rules.
+
 An applicable active roll provisionally combines:
 
 `relevant Attribute + selected Talent (only if it governs the used Skill) + Skill + applicable Specialty`

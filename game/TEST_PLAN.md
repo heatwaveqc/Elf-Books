@@ -71,3 +71,10 @@
 - With Will 10, Mage Talent 10, Destruction 10, Firebolt 5, **7 personal dice** give static resistance 3 and **two Mana marks per grade**. One robe die raises resistance to 4, not capacity. A rolled Cost 3 is therefore Middling without the robe and Minor with it.
 - Tests must show both **governing Talent** and **specific spell Specialty** affect cost severity, that off-Talent spells do not gain Talent dice, and that *all four applicable personal sources* receive eligible passive Cost XP (equipment never does).
 - Persisted Mana marks belong to **Mind**, not Soul; changing the schema does not implicitly migrate any live character's mark histories.
+
+## Named pool, contested attack modes and bonuses
+
+- Test shorthand Attribute + Skill automatically contributes governed Talent and one relevant declared Specialty. Health + Survival must be allowed as a defensive pool even though Health is a Resilience attribute.
+- Cold weather and a direct freezing Malediction both defend with **Health + Survival**; launched ice spears/arrows normally allow Dodge/Block and exclude default Parry. Counterspelling is a separate available reaction, not an additive defense.
+- The four social modes (persuasion, deception, intimidation, reputation) specify valid social defense pools and typically pressure Soul's Attention/Plasticity when a legitimate contest is involved; Conviction controls their capacity.
+- Combined shield, enchanted ring, ensorcellment and temporary magic **external dice sum must not exceed the unmodified personal dice**, even when each bonus separately is under that limit. Check applied to static defenses, spell Cost, ordinary casting and mundane actions.

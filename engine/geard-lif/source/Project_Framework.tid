@@ -39,7 +39,7 @@ Consequential actions are resolved along two different axes:
 - **Effect:** Potence acts against **Recalcitrance**, or against a target's
   **Resilience** when another character is resisting the effect.
 
-Avoidance is normally a **static defensive difficulty**, not a separate defensive
+A rule names both its attack **mode** and the **valid defensive Attribute + Skill pools**; the actual mode governs whether a target may Dodge, Block, Parry, resist directly, counterspell, or use a listed social response. See [[Named Action Pools and Defense Modes]]. Avoidance is normally a **static defensive difficulty**, not a separate defensive
 roll. It represents the expected defensive performance of the target. Complexity
 plays the same role for non-character Projects.
 

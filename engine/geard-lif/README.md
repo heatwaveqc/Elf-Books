@@ -31,3 +31,5 @@ For executable **pure arithmetic exercises**, see [`scripts/geard_core.py`](../.
 The preserved prior d20 system is on [`archive/d20-pre-geard-lif`](https://github.com/heatwaveqc/Elf-Books/tree/archive/d20-pre-geard-lif); **it is historical**, not an alternate active engine.
 
 **Current aspect ownership:** Mind/Will holds Spirit and Mana; Soul/Conviction holds Plasticity and Attention; Body/Health holds Injury and Fatigue. See [resource tracks](source/Resource_Tracks.tid) and [Elf-Books' four-source Cost rule](../../design/MAGIC.md).
+
+Eighth imported public-player rule: [Named Action Pools and Defense Modes](source/Named_Action_Pools_and_Defense_Modes.tid). Shorthand is Attribute + Skill, with applicable governed-Skill Talent, Specialty and external bonuses. Every contested effect declares legitimate defensive pairs. All gear/enchantment/ensorcellment/temporary-buff dice share a combined cap equal to the unmodified applicable personal dice. [TES attack modes](../../rules/ATTACK_MODES.md).

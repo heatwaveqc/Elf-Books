@@ -1,6 +1,6 @@
 {
   "source_repository": "heatwaveqc/geard-lif",
-  "upstream_commit": "5f4f5473a53873e83aaee82a8e3e3ae4c508af50",
+  "upstream_commit": "d38a29d902750a2d4b222399fd32d96eb3ec6e4e",
   "import_kind": "verbatim player-audience wiki rule snapshot",
   "upstream_paths": [
     "tiddlers/Content/Rules/Project_Framework.tid",
@@ -9,7 +9,8 @@
     "tiddlers/Content/Rules/Tentative_Tier_Scaling.tid",
     "tiddlers/Content/Rules/Attributes_and_Talents.tid",
     "tiddlers/Content/Rules/Use_Based_Trait_Advancement.tid",
-    "tiddlers/Content/Rules/Trait_Tiers_and_Experience_Cascade.tid"
+    "tiddlers/Content/Rules/Trait_Tiers_and_Experience_Cascade.tid",
+    "tiddlers/Content/Rules/Named_Action_Pools_and_Defense_Modes.tid"
   ],
   "local_paths": [
     "engine/geard-lif/source/Project_Framework.tid",
@@ -18,7 +19,8 @@
     "engine/geard-lif/source/Tentative_Tier_Scaling.tid",
     "engine/geard-lif/source/Attributes_and_Talents.tid",
     "engine/geard-lif/source/Use_Based_Trait_Advancement.tid",
-    "engine/geard-lif/source/Trait_Tiers_and_Experience_Cascade.tid"
+    "engine/geard-lif/source/Trait_Tiers_and_Experience_Cascade.tid",
+    "engine/geard-lif/source/Named_Action_Pools_and_Defense_Modes.tid"
   ],
   "note": "Public player-audience rules only. Upstream AI/GM-only design content is not automatically published or synchronized. Re-import by explicit reviewed PR.",
   "status": {
@@ -35,6 +37,8 @@
     "static_defense": "floor-half-of-total-pool",
     "cost_resistance": "setting-defined threshold modifiers",
     "resource_aspects": "mind-spirit-mana;body-injury-fatigue;soul-plasticity-attention",
-    "elder_scrolls_mana_resistance": "Will+governing Talent+School Skill+Spell Specialty+eligible gear; capacity Will"
+    "elder_scrolls_mana_resistance": "Will+governing Talent+School Skill+Spell Specialty+eligible gear; capacity Will",
+    "attack_modes": "named pool contract; setting default modes in Elf Books",
+    "external_bonus_cap": "sum external sources <= same-Tier unmodified personal dice"
   }
 }

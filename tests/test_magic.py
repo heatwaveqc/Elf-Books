@@ -96,6 +96,24 @@ class MagicTests(unittest.TestCase):
         self.assertEqual(advanced,{"will":50,"school_skill":50,
                                    "talent":50,"specialty":50})
 
+    def test_multi_source_buff_cap_across_spell_cast_and_cost(self):
+        # Unmodified Cost personal = Will 2 + Mage 2 + School 2 + Specialty 1 = 7.
+        combined=self.cost(cost_magnitude=4,robe_dice=2,
+            external_bonuses={"enchantment":3,"temporary_magic":2})
+        self.assertEqual(combined.resistance_dice,14)
+        with self.assertRaisesRegex(ValueError,"aggregate"):
+            self.cost(cost_magnitude=4,robe_dice=2,
+                external_bonuses={"enchantment":3,"temporary_magic":3})
+        accuracy=casting_pools(tier=0,talent=self.talent,school_id="destruction",
+            accuracy_ratings=self.ratings(15),potence_ratings=self.ratings(20),
+            accuracy_external_bonuses={"staff":5,"ensorcellment":4},
+            potence_external_bonuses={"magic_focus":10})
+        self.assertEqual((accuracy.accuracy_dice,accuracy.potence_dice),(18,20))
+        with self.assertRaisesRegex(ValueError,"aggregate"):
+            casting_pools(tier=0,talent=self.talent,school_id="destruction",
+                accuracy_ratings=self.ratings(15),potence_ratings=self.ratings(20),
+                accuracy_external_bonuses={"staff":6,"ensorcellment":4})
+
     def test_robe_never_reduces_rolled_cost_or_increases_slots(self):
         a=self.cost(cost_magnitude=8,robe_dice=0)
         b=self.cost(cost_magnitude=8,robe_dice=2)
@@ -130,7 +148,7 @@ class MagicTests(unittest.TestCase):
                 will_tiers={0:25,1:5},school_skill_tiers={0:25,1:4},
                 talent_tiers={0:25,1:5},specialty_tiers={0:25,1:5},
                 specialty_declared=True)
-        with self.assertRaisesRegex(ValueError,"budget"):
+        with self.assertRaisesRegex(ValueError,"aggregate"):
             mana_cost_resistance(tier=0,talent=self.talent,school_id="destruction",
                 will_tiers={0:5},school_skill_tiers={0:5},
                 talent_tiers={0:0},robe_dice=3)

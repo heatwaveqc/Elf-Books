@@ -67,3 +67,5 @@ A Talent also owns an **additional advancement tree**, representing its distinct
 5. **Talent change or retraining** after character creation: one Talent at a time, but whether extraordinary circumstances allow replacing the five governed skills is not decided.
 
 Unit-tested pool calculation and five-skill validation: [trait_pools.py](../scripts/trait_pools.py). No actual live campaign character creation until the other P0 blockers are settled.
+
+**Universal shorthand:** Specify Attribute + Skill only. A Talent applies when it governs the named **Skill** (not the Attribute); an applicable Specialty under that Skill also contributes. One shared gear/temporary magic cap equal to unmodified personal dice applies to each pool. See [Attack Modes](ATTACK_MODES.md).

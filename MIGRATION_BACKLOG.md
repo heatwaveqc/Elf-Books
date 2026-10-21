@@ -7,7 +7,7 @@
 ## Already migrated / preserved
 
 - [x] **Old D20 version recoverable:** separate immutable-by-policy archive branch, no fork or history rewrite.
-- [x] **Local Geard Lif core:** seven source player-audience rule tiddlers, pinned upstream SHA, import/provenance policy and locked/provisional status summary.
+- [x] **Local Geard Lif core:** eight source player-audience rule tiddlers, pinned upstream SHA, import/provenance policy and locked/provisional status summary.
 - [x] **Core arithmetic reference:** tentative d10 success counting and Tier conversion, *meet-to-beat* Accuracy, shared graded severity/promotion/recovery, Project Scope-as-marks completion and adjustable injury thresholds. No obsolete D20-like progress pool.
 - [x] **Elder Scrolls scope/lore:** era, region, canon divergence, provenance, and per-campaign private world facts preserved.
 - [x] **Independent solo campaign concept:** GM preflight, antagonists/clocks, private saves and event logs retained as requirements, but character/runtime mapping requires implementation.
@@ -77,3 +77,10 @@ We're back at approximately the previous design milestone when **all P0 entries*
 - [x] **Geard Lif / Elf-Books resource assignment:** Mind/Will → Spirit (slow), Mana (fast); Body/Health → Injury (slow), Fatigue (fast); Soul/Conviction → Plasticity (slow), Attention (fast). Both player rules and new-character schema agree.
 - [x] **School-Talent-Specialty Cost mitigation:** static resistance now uses all applicable personal sources and legal gear, rounded down once; Cost dice unchanged. Tests include robe threshold and distinct Will capacity.
 - [ ] **Historical private-save migration:** if any character from the former resource arrangement exists, move each track's marks with its name to the destination aspect and explicitly revalidate Resilience capacity. No automatic live save mutation.
+
+## Named pools, defense modes and single gear cap
+
+- [x] **Generic Geard Lif rule:** name Attribute + Skill; automatically add governing five-skill Talent and one applicable Specialty. Every contestable effect specifies attack mode and permitted named defensive pools.
+- [x] **Elf-Books modes:** melee, arrows, ice spears, environmental cold, direct freezing Malediction, persuasion, deception, intimidation and reputation. Cold exposure and direct freezing curses both permit Health + Survival; projectiles permit Dodge/Block but not ordinary Parry. Four social defaults have explicit alternative pools.
+- [x] **Aggregate external dice cap:** equipment, enchantments, ensorcellments and temporary magic buffs collectively grant no more dice than the unmodified personal dice pool at chosen Tier; tested for defenses and spell Cost/casting.
+- [ ] **Detailed combat/social integration:** reaction timing, shield/weapon requirements, area/multitarget mechanics, reputation/crowd Projects and balancing exact bonus values.

@@ -7,13 +7,13 @@ tags: Rules Resources
 
 Characters have three aspects: **Mind**, **Body**, and **Soul**. Each aspect has a
 Resilience trait and two resource tracks: one slow-recovering track and one
-fast-recovering track. **Mind resources support magic** (Spirit and Mana); **Soul resources track social/identity endurance** (Plasticity and Attention). Body remains physical.
+fast-recovering track.
 
 | Aspect | Resilience | Slow track | Fast track |
 | --- | --- | --- | --- |
-| Mind | **Will** | **Spirit** | **Mana** |
+| Mind | **Will** | **Plasticity** | **Attention** |
 | Body | **Health** | **Injury** | **Fatigue** |
-| Soul | **Conviction** | **Plasticity** | **Attention** |
+| Soul | **Conviction** | **Spirit** | **Mana** |
 
 The Resilience trait for an aspect determines the number of slots at **each
 severity** on both of that aspect's tracks. It also supplies the *unmodified* Effect threshold. Armor and other relevant protective effects can modify the **effective threshold for injury** without altering the number of available mark slots; see [[Project Framework]].
@@ -88,7 +88,7 @@ harm into the corresponding slow track; the exact spillover rule is still under
 development.
 
 Exhausting **Injury** kills the character. The catastrophic consequences of
-exhausting Spirit (Mind) or Plasticity (Soul) remain to be defined.
+exhausting Plasticity or Spirit remain to be defined.
 
 ## Ordinary Uses
 
@@ -96,9 +96,7 @@ Some ordinary actions interact with these tracks directly:
 
 - mundane weapons normally attack **Injury**;
 - mundane exertion costs **Fatigue**;
-- socially and psychologically demanding engagement can cost **Attention**;
-- prolonged challenges to identity, relationships, or social adaptation can affect **Plasticity**;
-- magical exertion usually costs **Mana**, with lasting supernatural damage on **Spirit**;
+- study costs **Attention**;
 - supernatural Domains define their own resource costs and interactions.
 
 ## Costs
