@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": null,
+  "status": "character_creation",
+  "rules_commit": null,
+  "setup": {
+    "era": null,
+    "date": null,
+    "region": null,
+    "continuity": "canon-with-documented-divergence",
+    "session_zero": {
+      "approved": false,
+      "public_pitch": null,
+      "character_hooks": [],
+      "tone": null,
+      "lethality": null,
+      "content_boundaries": []
+    },
+    "advancement": {
+      "model": null,
+      "pace": null
+    }
+  },
+  "storage": {
+    "kind": null,
+    "location": null
+  },
+  "characters": [],
+  "created_at": null
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "campaign_id": null,
+  "event_seq": 0,
+  "game_time": null,
+  "location_id": null,
+  "scene": {
+    "id": null,
+    "summary": null,
+    "player_choices_pending": []
+  },
+  "active_characters": [],
+  "pending_effects": [],
+  "last_save_revision": null
+}
