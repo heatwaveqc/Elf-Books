@@ -18,6 +18,7 @@ REQUIRED_DOCS = (
     "lore/LORE_POLICY.md", "lore/ERAS.md",
     "game/CHARACTER_CREATION.md", "game/PRE_SESSION_PREP.md",
     "game/GM_PROTOCOL.md", "game/PERSISTENCE.md", "game/TEST_PLAN.md",
+    "rules/SKILLS.md", "design/ADVANCEMENT_MATH.md",
 )
 TEMPLATES = (
     "campaign.json", "character.json", "state.json", "world.json",

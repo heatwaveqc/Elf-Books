@@ -1,0 +1,1571 @@
+{
+  "schema_version": 1,
+  "status": "PROPOSAL_NOT_PLAYABLE",
+  "scope": "Daggerfall, Morrowind, Oblivion, Skyrim named player skill catalogs; Arena has no independently advanced skill list. ESO class/guild/world ability lines are excluded as perks/abilities rather than direct 0-100 skill equivalents.",
+  "ranges": {
+    "min": 0,
+    "max": 100,
+    "perk_candidate_thresholds": [
+      25,
+      75
+    ]
+  },
+  "categories": {
+    "warrior": {
+      "resource": "health",
+      "weight": 1
+    },
+    "mage": {
+      "resource": "magicka",
+      "weight": 1
+    },
+    "rogue": {
+      "resource": "both",
+      "weight": 0.5
+    }
+  },
+  "advancement_note": "One qualifying action may advance exactly one selected canonical skill; synonyms and historical umbrella labels are not independently rated. Overlapping specialties cannot stack modifiers on a single roll.",
+  "entries": [
+    {
+      "id": "one_handed",
+      "name": "One-Handed",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "One-handed weapon attacks.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "one_handed_25",
+          "name": "Ready Grip",
+          "unlocks_at": 25,
+          "summary": "Draw or shift grip without abandoning a useful action.",
+          "status": "design_only"
+        },
+        {
+          "id": "one_handed_75",
+          "name": "Flowing Strike",
+          "unlocks_at": 75,
+          "summary": "Reposition after landing a one-handed hit.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "two_handed",
+      "name": "Two-Handed",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "Two-handed weapon attacks.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "two_handed_25",
+          "name": "Braced Swing",
+          "unlocks_at": 25,
+          "summary": "Maintain control when a foe attempts to disrupt a committed swing.",
+          "status": "design_only"
+        },
+        {
+          "id": "two_handed_75",
+          "name": "Sweeping Arc",
+          "unlocks_at": 75,
+          "summary": "Challenge a second nearby foe after a decisive strike.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "long_blade",
+      "name": "Long Blade",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "Long swords and other long-bladed weapon techniques, regardless of grip.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind"
+      ],
+      "perks": [
+        {
+          "id": "long_blade_25",
+          "name": "Measured Guard",
+          "unlocks_at": 25,
+          "summary": "Keep a blade between yourself and the last target struck.",
+          "status": "design_only"
+        },
+        {
+          "id": "long_blade_75",
+          "name": "Binding Steel",
+          "unlocks_at": 75,
+          "summary": "Turn a successful blade parry into a tactical opening.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "short_blade",
+      "name": "Short Blade",
+      "category": "warrior",
+      "attribute": "dex",
+      "description": "Daggers, short swords and other compact blades.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind"
+      ],
+      "perks": [
+        {
+          "id": "short_blade_25",
+          "name": "Close Work",
+          "unlocks_at": 25,
+          "summary": "Use short blades effectively while crowded or grappling.",
+          "status": "design_only"
+        },
+        {
+          "id": "short_blade_75",
+          "name": "Seam Finder",
+          "unlocks_at": 75,
+          "summary": "Exploit a distracted opponent's weak protection.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "axe",
+      "name": "Axe",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "Hand axes and great axes, including leverage and chopping.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind"
+      ],
+      "perks": [
+        {
+          "id": "axe_25",
+          "name": "Cleaving Grip",
+          "unlocks_at": 25,
+          "summary": "Use an axe for a deliberate hook or object-cutting maneuver.",
+          "status": "design_only"
+        },
+        {
+          "id": "axe_75",
+          "name": "Split Defense",
+          "unlocks_at": 75,
+          "summary": "A strong axe hit can compromise a shield or guard.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "blunt_weapon",
+      "name": "Blunt Weapon",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "Clubs, maces, warhammers and crushing arms.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind"
+      ],
+      "perks": [
+        {
+          "id": "blunt_weapon_25",
+          "name": "Hammering Blow",
+          "unlocks_at": 25,
+          "summary": "Press an opponent who relies on rigid armor.",
+          "status": "design_only"
+        },
+        {
+          "id": "blunt_weapon_75",
+          "name": "Concussive Hit",
+          "unlocks_at": 75,
+          "summary": "A well-placed blunt strike can briefly stagger its target.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "spear",
+      "name": "Spear",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "Spears, polearms and pointed reach weapons.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind"
+      ],
+      "perks": [
+        {
+          "id": "spear_25",
+          "name": "Set Point",
+          "unlocks_at": 25,
+          "summary": "Prepare a spear against an approaching enemy.",
+          "status": "design_only"
+        },
+        {
+          "id": "spear_75",
+          "name": "Controlling Reach",
+          "unlocks_at": 75,
+          "summary": "Punish an opponent for closing inside your preferred distance.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "hand_to_hand",
+      "name": "Hand-to-Hand",
+      "category": "warrior",
+      "attribute": "str",
+      "description": "Unarmed striking, wrestling and close-combat defense.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind",
+        "Oblivion"
+      ],
+      "perks": [
+        {
+          "id": "hand_to_hand_25",
+          "name": "Close Clinch",
+          "unlocks_at": 25,
+          "summary": "Improve control of an engaged or grappled opponent.",
+          "status": "design_only"
+        },
+        {
+          "id": "hand_to_hand_75",
+          "name": "Open-Hand Counter",
+          "unlocks_at": 75,
+          "summary": "Counter a committed melee attack with an unarmed technique.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "archery",
+      "name": "Archery",
+      "category": "warrior",
+      "attribute": "dex",
+      "description": "Bow and other ranged-weapon aiming; earlier Marksman usages include thrown arms.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "archery_25",
+          "name": "Steady Draw",
+          "unlocks_at": 25,
+          "summary": "Reduce aim disruption caused by a modest movement.",
+          "status": "design_only"
+        },
+        {
+          "id": "archery_75",
+          "name": "Called Flight",
+          "unlocks_at": 75,
+          "summary": "Take a deliberate precision shot against partial cover.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "block",
+      "name": "Block",
+      "category": "warrior",
+      "attribute": "con",
+      "description": "Shield and weapon blocking, including reading incoming attacks.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "block_25",
+          "name": "Shield Wall",
+          "unlocks_at": 25,
+          "summary": "Protect an adjacent ally with a well-positioned shield.",
+          "status": "design_only"
+        },
+        {
+          "id": "block_75",
+          "name": "Turn the Blow",
+          "unlocks_at": 75,
+          "summary": "Convert an especially good block into repositioning.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "heavy_armor",
+      "name": "Heavy Armor",
+      "category": "warrior",
+      "attribute": "con",
+      "description": "Operating effectively while protected by rigid, weighty armor.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "heavy_armor_25",
+          "name": "Load Bearing",
+          "unlocks_at": 25,
+          "summary": "Reduce armor-related encumbrance penalties.",
+          "status": "design_only"
+        },
+        {
+          "id": "heavy_armor_75",
+          "name": "Iron Stance",
+          "unlocks_at": 75,
+          "summary": "Avoid involuntary movement when braced in heavy armor.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "medium_armor",
+      "name": "Medium Armor",
+      "category": "warrior",
+      "attribute": "con",
+      "description": "Mail, scaled, and midweight protection used effectively.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind"
+      ],
+      "perks": [
+        {
+          "id": "medium_armor_25",
+          "name": "Balanced Harness",
+          "unlocks_at": 25,
+          "summary": "Keep mobility while wearing substantial armor.",
+          "status": "design_only"
+        },
+        {
+          "id": "medium_armor_75",
+          "name": "Rolling Guard",
+          "unlocks_at": 75,
+          "summary": "Reposition without surrendering your armor advantage.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "unarmored",
+      "name": "Unarmored",
+      "category": "warrior",
+      "attribute": "dex",
+      "description": "Avoiding injury without worn armor.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind"
+      ],
+      "perks": [
+        {
+          "id": "unarmored_25",
+          "name": "Empty-Hand Guard",
+          "unlocks_at": 25,
+          "summary": "Gain defensive options without a shield or armor.",
+          "status": "design_only"
+        },
+        {
+          "id": "unarmored_75",
+          "name": "Unfettered Step",
+          "unlocks_at": 75,
+          "summary": "Evade or escape when unrestricted by armor.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "armorer",
+      "name": "Armorer",
+      "category": "warrior",
+      "attribute": "int",
+      "description": "Diagnose, maintain and repair arms and armor.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion"
+      ],
+      "perks": [
+        {
+          "id": "armorer_25",
+          "name": "Field Repair",
+          "unlocks_at": 25,
+          "summary": "Restore useful function with improvised tools.",
+          "status": "design_only"
+        },
+        {
+          "id": "armorer_75",
+          "name": "Master Fitter",
+          "unlocks_at": 75,
+          "summary": "Custom-fit equipment to a specific wearer.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "smithing",
+      "name": "Smithing",
+      "category": "warrior",
+      "attribute": "int",
+      "description": "Forge and improve metal arms, tools and armor.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "smithing_25",
+          "name": "Tempered Edge",
+          "unlocks_at": 25,
+          "summary": "Produce a reliably hardened mundane blade.",
+          "status": "design_only"
+        },
+        {
+          "id": "smithing_75",
+          "name": "Masterwork Forge",
+          "unlocks_at": 75,
+          "summary": "Craft sophisticated designs from suitable materials.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "athletics",
+      "name": "Athletics",
+      "category": "warrior",
+      "attribute": "con",
+      "description": "Sustained physical effort and demanding locomotion.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion"
+      ],
+      "perks": [
+        {
+          "id": "athletics_25",
+          "name": "Enduring Pace",
+          "unlocks_at": 25,
+          "summary": "Sustain exertion through a long journey.",
+          "status": "design_only"
+        },
+        {
+          "id": "athletics_75",
+          "name": "Burst of Effort",
+          "unlocks_at": 75,
+          "summary": "Push through strenuous movement in an urgent scene.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "running",
+      "name": "Running",
+      "category": "warrior",
+      "attribute": "con",
+      "description": "Travel pace, foot races and pursuit.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "running_25",
+          "name": "Sure Sprint",
+          "unlocks_at": 25,
+          "summary": "Accelerate cleanly on bad terrain.",
+          "status": "design_only"
+        },
+        {
+          "id": "running_75",
+          "name": "Relentless Pursuit",
+          "unlocks_at": 75,
+          "summary": "Maintain speed through a difficult chase.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "swimming",
+      "name": "Swimming",
+      "category": "warrior",
+      "attribute": "con",
+      "description": "Moving, diving and surviving in water.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "swimming_25",
+          "name": "Strong Stroke",
+          "unlocks_at": 25,
+          "summary": "Handle dangerous currents without losing orientation.",
+          "status": "design_only"
+        },
+        {
+          "id": "swimming_75",
+          "name": "Deep Diver",
+          "unlocks_at": 75,
+          "summary": "Extend effective underwater work and rescue.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "medical",
+      "name": "Medical",
+      "category": "warrior",
+      "attribute": "wis",
+      "description": "Nonmagical treatment, recovery and field surgery.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "medical_25",
+          "name": "Triage",
+          "unlocks_at": 25,
+          "summary": "Identify injuries that demand immediate attention.",
+          "status": "design_only"
+        },
+        {
+          "id": "medical_75",
+          "name": "Field Surgeon",
+          "unlocks_at": 75,
+          "summary": "Stabilize a difficult injury with limited equipment.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "acrobatics",
+      "name": "Acrobatics",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Tumbling, balance, falls and aerial positioning.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion"
+      ],
+      "perks": [
+        {
+          "id": "acrobatics_25",
+          "name": "Soft Landing",
+          "unlocks_at": 25,
+          "summary": "Reduce harm from a controlled fall.",
+          "status": "design_only"
+        },
+        {
+          "id": "acrobatics_75",
+          "name": "Unlikely Escape",
+          "unlocks_at": 75,
+          "summary": "Find a narrow route through a dangerous space.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "jumping",
+      "name": "Jumping",
+      "category": "rogue",
+      "attribute": "str",
+      "description": "Precision leaps and vertical movement.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "jumping_25",
+          "name": "Vault",
+          "unlocks_at": 25,
+          "summary": "Clear a small obstacle while moving.",
+          "status": "design_only"
+        },
+        {
+          "id": "jumping_75",
+          "name": "Impossible Leap",
+          "unlocks_at": 75,
+          "summary": "Attempt an extraordinary running or vertical jump.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "climbing",
+      "name": "Climbing",
+      "category": "rogue",
+      "attribute": "str",
+      "description": "Cliffs, walls, ropes and vertical routefinding.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "climbing_25",
+          "name": "Secure Hold",
+          "unlocks_at": 25,
+          "summary": "Avoid losing a grip under minor disruption.",
+          "status": "design_only"
+        },
+        {
+          "id": "climbing_75",
+          "name": "Rapid Ascent",
+          "unlocks_at": 75,
+          "summary": "Climb challenging terrain under urgent time pressure.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "light_armor",
+      "name": "Light Armor",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Maintaining movement and defense in flexible light armor.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "light_armor_25",
+          "name": "Silent Fit",
+          "unlocks_at": 25,
+          "summary": "Reduce the audible interference of worn armor.",
+          "status": "design_only"
+        },
+        {
+          "id": "light_armor_75",
+          "name": "Quick Slip",
+          "unlocks_at": 75,
+          "summary": "Escapingly reposition while lightly protected.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "dodging",
+      "name": "Dodging",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Active evasions distinct from static armor.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "dodging_25",
+          "name": "Sidestep",
+          "unlocks_at": 25,
+          "summary": "Avoid a threatened square on a successful dodge.",
+          "status": "design_only"
+        },
+        {
+          "id": "dodging_75",
+          "name": "Dance Through",
+          "unlocks_at": 75,
+          "summary": "Evade without giving up your next movement opportunity.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "sneak",
+      "name": "Sneak",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Concealment, quiet movement and remaining unnoticed.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "sneak_25",
+          "name": "Shadow Passage",
+          "unlocks_at": 25,
+          "summary": "Cross short exposed stretches between hiding places.",
+          "status": "design_only"
+        },
+        {
+          "id": "sneak_75",
+          "name": "Ghost Trail",
+          "unlocks_at": 75,
+          "summary": "Leave fewer traces of covert passage.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "lockpicking",
+      "name": "Lockpicking",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Physical lock manipulation.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "lockpicking_25",
+          "name": "Gentle Touch",
+          "unlocks_at": 25,
+          "summary": "Reduce risk of damaging a fragile lock.",
+          "status": "design_only"
+        },
+        {
+          "id": "lockpicking_75",
+          "name": "Patient Mechanism",
+          "unlocks_at": 75,
+          "summary": "Work through a complicated lock using its feedback.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Bypass traps, alarms and integrated physical security.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion"
+      ],
+      "perks": [
+        {
+          "id": "security_25",
+          "name": "Trap Sense",
+          "unlocks_at": 25,
+          "summary": "Identify a likely trigger before interacting with a device.",
+          "status": "design_only"
+        },
+        {
+          "id": "security_75",
+          "name": "Clean Disarm",
+          "unlocks_at": 75,
+          "summary": "Disable a complex mechanism while preserving evidence.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "pickpocket",
+      "name": "Pickpocket",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Palming and removing objects without detection.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "pickpocket_25",
+          "name": "Light Fingers",
+          "unlocks_at": 25,
+          "summary": "Conceal a small manipulation in an ordinary exchange.",
+          "status": "design_only"
+        },
+        {
+          "id": "pickpocket_75",
+          "name": "Invisible Exchange",
+          "unlocks_at": 75,
+          "summary": "Swap or plant an object while attention is elsewhere.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "backstabbing",
+      "name": "Backstabbing",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Exploiting surprise and unguarded positions in close combat.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "backstabbing_25",
+          "name": "Approach Angle",
+          "unlocks_at": 25,
+          "summary": "Find a path into striking distance without alerting a target.",
+          "status": "design_only"
+        },
+        {
+          "id": "backstabbing_75",
+          "name": "Silent Opening",
+          "unlocks_at": 75,
+          "summary": "Take advantage of a genuinely unaware foe.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "critical_strike",
+      "name": "Critical Strike",
+      "category": "rogue",
+      "attribute": "dex",
+      "description": "Recognizing vulnerable attack angles and timing.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "critical_strike_25",
+          "name": "Weak Point",
+          "unlocks_at": 25,
+          "summary": "Identify a target's exposed anatomy or structure.",
+          "status": "design_only"
+        },
+        {
+          "id": "critical_strike_75",
+          "name": "Decisive Opening",
+          "unlocks_at": 75,
+          "summary": "Make an unusually accurate strike especially consequential.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "mercantile",
+      "name": "Mercantile",
+      "category": "rogue",
+      "attribute": "cha",
+      "description": "Price evaluation, negotiation and commercial practice.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind",
+        "Oblivion"
+      ],
+      "perks": [
+        {
+          "id": "mercantile_25",
+          "name": "Fair Appraisal",
+          "unlocks_at": 25,
+          "summary": "Identify a suspicious price or hidden trade cost.",
+          "status": "design_only"
+        },
+        {
+          "id": "mercantile_75",
+          "name": "Market Network",
+          "unlocks_at": 75,
+          "summary": "Locate hard-to-find goods using commercial contacts.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "speechcraft",
+      "name": "Speechcraft",
+      "category": "rogue",
+      "attribute": "cha",
+      "description": "General persuasion, performance and social influence.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "speechcraft_25",
+          "name": "Read the Room",
+          "unlocks_at": 25,
+          "summary": "Notice a listener's immediate priorities.",
+          "status": "design_only"
+        },
+        {
+          "id": "speechcraft_75",
+          "name": "Careful Appeal",
+          "unlocks_at": 75,
+          "summary": "Tailor a consequential argument to an audience.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "etiquette",
+      "name": "Etiquette",
+      "category": "rogue",
+      "attribute": "cha",
+      "description": "Formal protocol, noble audiences and diplomacy.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "etiquette_25",
+          "name": "Right Address",
+          "unlocks_at": 25,
+          "summary": "Avoid an unintended insult in formal company.",
+          "status": "design_only"
+        },
+        {
+          "id": "etiquette_75",
+          "name": "Courtly Maneuver",
+          "unlocks_at": 75,
+          "summary": "Navigate competing interests at an elite gathering.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "streetwise",
+      "name": "Streetwise",
+      "category": "rogue",
+      "attribute": "cha",
+      "description": "Informal communities, rumors and local networks.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "streetwise_25",
+          "name": "Local Ear",
+          "unlocks_at": 25,
+          "summary": "Find useful neighborhood rumors without alarming contacts.",
+          "status": "design_only"
+        },
+        {
+          "id": "streetwise_75",
+          "name": "Underworld Introduction",
+          "unlocks_at": 75,
+          "summary": "Secure a cautious meeting through mutual intermediaries.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "alteration",
+      "name": "Alteration",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Changing physical properties and magical constraints.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "alteration_25",
+          "name": "Measured Change",
+          "unlocks_at": 25,
+          "summary": "Tune a minor alteration effect more precisely.",
+          "status": "design_only"
+        },
+        {
+          "id": "alteration_75",
+          "name": "Adaptive Pattern",
+          "unlocks_at": 75,
+          "summary": "Adjust an ongoing alteration within its approved parameters.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "conjuration",
+      "name": "Conjuration",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Calling, binding and directing extraplanar aid.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "conjuration_25",
+          "name": "Stable Summons",
+          "unlocks_at": 25,
+          "summary": "Maintain order when an entity answers a summons.",
+          "status": "design_only"
+        },
+        {
+          "id": "conjuration_75",
+          "name": "Binding Circle",
+          "unlocks_at": 75,
+          "summary": "Improve safety and control in a negotiated summoning.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "destruction",
+      "name": "Destruction",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Elemental and other overt harmful spell effects.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "destruction_25",
+          "name": "Elemental Shaping",
+          "unlocks_at": 25,
+          "summary": "Avoid incidental damage while aiming a destructive spell.",
+          "status": "design_only"
+        },
+        {
+          "id": "destruction_75",
+          "name": "Focused Ruin",
+          "unlocks_at": 75,
+          "summary": "Concentrate power against a narrow target.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "illusion",
+      "name": "Illusion",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Minds, perception, concealment and sensory deception.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "illusion_25",
+          "name": "Subtle Glamour",
+          "unlocks_at": 25,
+          "summary": "Mask a small tell within an illusion.",
+          "status": "design_only"
+        },
+        {
+          "id": "illusion_75",
+          "name": "Layered Misdirection",
+          "unlocks_at": 75,
+          "summary": "Maintain a believable deception under scrutiny.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "mysticism",
+      "name": "Mysticism",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Souls, detection, movement and magical forces in historical systems.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind",
+        "Oblivion"
+      ],
+      "perks": [
+        {
+          "id": "mysticism_25",
+          "name": "Soul Perception",
+          "unlocks_at": 25,
+          "summary": "Notice disturbances in soul-affecting enchantments.",
+          "status": "design_only"
+        },
+        {
+          "id": "mysticism_75",
+          "name": "Arcane Thread",
+          "unlocks_at": 75,
+          "summary": "Trace lingering magical relationships between objects.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "restoration",
+      "name": "Restoration",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Healing, warding and revitalizing effects.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall",
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "restoration_25",
+          "name": "Precise Mending",
+          "unlocks_at": 25,
+          "summary": "Control a healing effect around a delicate injury.",
+          "status": "design_only"
+        },
+        {
+          "id": "restoration_75",
+          "name": "Steady Renewal",
+          "unlocks_at": 75,
+          "summary": "Sustain restorative work in a difficult scene.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "thaumaturgy",
+      "name": "Thaumaturgy",
+      "category": "mage",
+      "attribute": "wis",
+      "description": "Legacy spell school including levitation and reflective protections.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "thaumaturgy_25",
+          "name": "Lesser Reflection",
+          "unlocks_at": 25,
+          "summary": "Set a small reflective ward using this school.",
+          "status": "design_only"
+        },
+        {
+          "id": "thaumaturgy_75",
+          "name": "Unbound Movement",
+          "unlocks_at": 75,
+          "summary": "Control movement magic under awkward conditions.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "alchemy",
+      "name": "Alchemy",
+      "category": "mage",
+      "attribute": "int",
+      "description": "Recognize reagents and compound potions and poisons.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "alchemy_25",
+          "name": "Reagent Insight",
+          "unlocks_at": 25,
+          "summary": "Infer likely effects of an unfamiliar ingredient.",
+          "status": "design_only"
+        },
+        {
+          "id": "alchemy_75",
+          "name": "Careful Extraction",
+          "unlocks_at": 75,
+          "summary": "Separate valuable properties from a difficult mixture.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "enchanting",
+      "name": "Enchanting",
+      "category": "mage",
+      "attribute": "int",
+      "description": "Infuse gear with enduring magical effects using appropriate resources.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Morrowind",
+        "Skyrim"
+      ],
+      "perks": [
+        {
+          "id": "enchanting_25",
+          "name": "Stable Imprint",
+          "unlocks_at": 25,
+          "summary": "Reduce risk of losing an enchantment during a delicate step.",
+          "status": "design_only"
+        },
+        {
+          "id": "enchanting_75",
+          "name": "Soulwright",
+          "unlocks_at": 75,
+          "summary": "Control sophisticated soul-powered equipment.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "centaurian",
+      "name": "Centaurian",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Understand and communicate in the historically recognized Centaurian language.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "centaurian_25",
+          "name": "Careful Listener",
+          "unlocks_at": 25,
+          "summary": "Recognize intent or a familiar phrase despite imperfect comprehension.",
+          "status": "design_only"
+        },
+        {
+          "id": "centaurian_75",
+          "name": "Cultural Interpreter",
+          "unlocks_at": 75,
+          "summary": "Handle a delicate exchange requiring idiom, context and ritual.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "daedric",
+      "name": "Daedric",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Understand and communicate in the historically recognized Daedric language.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "daedric_25",
+          "name": "Careful Listener",
+          "unlocks_at": 25,
+          "summary": "Recognize intent or a familiar phrase despite imperfect comprehension.",
+          "status": "design_only"
+        },
+        {
+          "id": "daedric_75",
+          "name": "Cultural Interpreter",
+          "unlocks_at": 75,
+          "summary": "Handle a delicate exchange requiring idiom, context and ritual.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "dragonish",
+      "name": "Dragonish",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Understand and communicate in the historically recognized Dragonish language.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "dragonish_25",
+          "name": "Careful Listener",
+          "unlocks_at": 25,
+          "summary": "Recognize intent or a familiar phrase despite imperfect comprehension.",
+          "status": "design_only"
+        },
+        {
+          "id": "dragonish_75",
+          "name": "Cultural Interpreter",
+          "unlocks_at": 75,
+          "summary": "Handle a delicate exchange requiring idiom, context and ritual.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "giantish",
+      "name": "Giantish",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Understand and communicate in the historically recognized Giantish language.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "giantish_25",
+          "name": "Careful Listener",
+          "unlocks_at": 25,
+          "summary": "Recognize intent or a familiar phrase despite imperfect comprehension.",
+          "status": "design_only"
+        },
+        {
+          "id": "giantish_75",
+          "name": "Cultural Interpreter",
+          "unlocks_at": 75,
+          "summary": "Handle a delicate exchange requiring idiom, context and ritual.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "harpy",
+      "name": "Harpy",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Understand and communicate in the historically recognized Harpy language.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "harpy_25",
+          "name": "Careful Listener",
+          "unlocks_at": 25,
+          "summary": "Recognize intent or a familiar phrase despite imperfect comprehension.",
+          "status": "design_only"
+        },
+        {
+          "id": "harpy_75",
+          "name": "Cultural Interpreter",
+          "unlocks_at": 75,
+          "summary": "Handle a delicate exchange requiring idiom, context and ritual.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "impish",
+      "name": "Impish",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Understand and communicate in the historically recognized Impish language.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "impish_25",
+          "name": "Careful Listener",
+          "unlocks_at": 25,
+          "summary": "Recognize intent or a familiar phrase despite imperfect comprehension.",
+          "status": "design_only"
+        },
+        {
+          "id": "impish_75",
+          "name": "Cultural Interpreter",
+          "unlocks_at": 75,
+          "summary": "Handle a delicate exchange requiring idiom, context and ritual.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "nymph",
+      "name": "Nymph",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Understand and communicate in the historically recognized Nymph language.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "nymph_25",
+          "name": "Careful Listener",
+          "unlocks_at": 25,
+          "summary": "Recognize intent or a familiar phrase despite imperfect comprehension.",
+          "status": "design_only"
+        },
+        {
+          "id": "nymph_75",
+          "name": "Cultural Interpreter",
+          "unlocks_at": 75,
+          "summary": "Handle a delicate exchange requiring idiom, context and ritual.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "orcish",
+      "name": "Orcish",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Understand and communicate in the historically recognized Orcish language.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "orcish_25",
+          "name": "Careful Listener",
+          "unlocks_at": 25,
+          "summary": "Recognize intent or a familiar phrase despite imperfect comprehension.",
+          "status": "design_only"
+        },
+        {
+          "id": "orcish_75",
+          "name": "Cultural Interpreter",
+          "unlocks_at": 75,
+          "summary": "Handle a delicate exchange requiring idiom, context and ritual.",
+          "status": "design_only"
+        }
+      ]
+    },
+    {
+      "id": "spriggan",
+      "name": "Spriggan",
+      "category": "rogue",
+      "attribute": "int",
+      "description": "Understand and communicate in the historically recognized Spriggan language.",
+      "first_classification": "proposed",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "perks": [
+        {
+          "id": "spriggan_25",
+          "name": "Careful Listener",
+          "unlocks_at": 25,
+          "summary": "Recognize intent or a familiar phrase despite imperfect comprehension.",
+          "status": "design_only"
+        },
+        {
+          "id": "spriggan_75",
+          "name": "Cultural Interpreter",
+          "unlocks_at": 75,
+          "summary": "Handle a delicate exchange requiring idiom, context and ritual.",
+          "status": "design_only"
+        }
+      ]
+    }
+  ],
+  "historical_names": {
+    "marksman": {
+      "maps_to": [
+        "archery"
+      ],
+      "kind": "near_equivalent",
+      "attested_games": [
+        "Morrowind",
+        "Oblivion"
+      ],
+      "note": "Historically covers bows/crossbows/throwing; archery is the broader proposed Elf-Books ranged label."
+    },
+    "blade": {
+      "maps_to": [
+        "long_blade",
+        "short_blade",
+        "one_handed",
+        "two_handed"
+      ],
+      "kind": "historical_umbrella",
+      "attested_games": [
+        "Oblivion"
+      ],
+      "note": "Oblivion Blade handles sword/dagger weapons across grips; choose the relevant distinct weapon skill, never stack."
+    },
+    "blunt": {
+      "maps_to": [
+        "blunt_weapon"
+      ],
+      "kind": "alias",
+      "attested_games": [
+        "Oblivion"
+      ],
+      "note": "Oblivion term Blunt; older Blunt Weapon retained."
+    },
+    "stealth": {
+      "maps_to": [
+        "sneak"
+      ],
+      "kind": "alias",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "note": "Both cover hidden movement and detection avoidance."
+    },
+    "pickpocketing": {
+      "maps_to": [
+        "pickpocket"
+      ],
+      "kind": "alias",
+      "attested_games": [
+        "Daggerfall"
+      ],
+      "note": "Equivalent name form."
+    },
+    "enchant": {
+      "maps_to": [
+        "enchanting"
+      ],
+      "kind": "alias",
+      "attested_games": [
+        "Morrowind"
+      ],
+      "note": "Equivalent crafting discipline."
+    },
+    "speech": {
+      "maps_to": [
+        "speechcraft"
+      ],
+      "kind": "alias",
+      "attested_games": [
+        "Skyrim"
+      ],
+      "note": "Skyrim Speech is combined social/bargaining; Elf-Books retains separate Mercantile."
+    },
+    "lockpicking_skyrim": {
+      "maps_to": [
+        "lockpicking"
+      ],
+      "kind": "alias",
+      "attested_games": [
+        "Skyrim"
+      ],
+      "note": "Same skill, source label clarifier only."
+    }
+  },
+  "source_urls": [
+    "https://github.com/Interkarma/daggerfall-unity/blob/master/Assets/Scripts/API/DFCareer.cs",
+    "https://help.bethesda.net/app/answers/detail/a_id/17546/",
+    "https://help.bethesda.net/app/answers/detail/a_id/69731/",
+    "https://www.gamebanshee.com/oblivion/skills.php",
+    "https://gamefaqs.gamespot.com/pc/615805-the-elder-scrolls-v-skyrim/faqs/75930/skills"
+  ]
+}

@@ -7,6 +7,10 @@
 
 These are **structural** tests; passing them does **not** declare the game playable.
 
+## Skill model structural prototype
+- [Skill and draft perk catalog](../rules/SKILLS.md) has 52 rated skills and 104 candidate unlock hooks; aliases and historical umbrella names don't receive their own advancement.
+- [Prototype calculator](../scripts/skill_math.py) and tests cover 0–100 conversion, category ECL caps, half-Rogue contribution, empty-category behavior and learning natural 20s. These tests verify specified formulas, **not gameplay balance or approval**.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.
