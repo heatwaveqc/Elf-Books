@@ -12,7 +12,7 @@ Elf-Books follows Geard Lif (internally documented as Raven's Heart) as its **ba
 4. [Trait Tiers and Experience Cascade](source/Trait_Tiers_and_Experience_Cascade.tid): governing-die gates, Tier purchases, raw XP cascade, passive resistance XP
 5. [Resource Tracks](source/Resource_Tracks.tid): Mind/Body/Soul, six graded resources, marks, promotion, recovery and Costs
 6. [Tentative d10 Resolution](source/Tentative_D10_Resolution.tid): pool 7–9 = one success, 10 = two; not finalized
-7. [Tentative Tier Scaling](source/Tentative_Tier_Scaling.tid): provisional 10× per Tier, individual quantities have Tiers
+7. [Tentative Tier Scaling](source/Tentative_Tier_Scaling.tid): adopted ×5 per Tier, individual quantities have Tiers
 8. [Status and missing fundamentals](SYSTEM_STATUS.md)
 9. [Elder Scrolls implementation boundaries](../../rules/RULES_INDEX.md)
 10. [Migration and critical path](../../MIGRATION_BACKLOG.md)
