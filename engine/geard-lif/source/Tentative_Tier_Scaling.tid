@@ -1,0 +1,111 @@
+title: Tentative Tier Scaling
+type: text/markdown
+geard-audience: player
+tags: Rules Resolution Tier Tentative
+
+# Tentative Tier Scaling
+
+**Tier** is Raven's Heart's provisional scale mechanic. Its purpose is to let the
+same resolution system describe contests ranging from ordinary people to
+astronomical and divine effects without requiring enormous dice pools.
+
+Tier is a measure of **scale**, not character level. Characters, tools, defenses,
+Projects, attacks, Effects, Costs, and other resolved quantities may each have a
+Tier.
+
+This rule is provisional while the exact scale bands are tested.
+
+## Dice-Pool Ceiling
+
+For the current d10 model, a character's own contribution to a roll is built from
+four trait categories:
+
+- Attribute
+- Talent
+- Skill
+- Specialty
+
+Each is currently capped at 5, for a maximum personal contribution of **20 dice**.
+
+Appropriate tools or gear can add at most as many dice as the character
+contributes from their own traits. This means the current intended ordinary ceiling
+is **40 dice**. Teamwork and other forms of assistance are still to be defined.
+
+This cap is deliberate: advancement in scale should come primarily from Tier rather
+than from ever-larger dice pools.
+
+## Tier Scale
+
+Each Tier is provisionally treated as about **ten times the scale** of the Tier
+below it.
+
+When a rolled result is compared to opposition or a target at another Tier,
+convert the **rolled result** into the Tier of that opposition:
+
+- if the result is lower-Tier, divide by **10^(Tier difference)** and round down;
+- if the result is higher-Tier, multiply by **10^(Tier difference)**;
+- if the Tiers match, use the result unchanged.
+
+Static opposition such as Avoidance, Resilience, Complexity, and Recalcitrance
+therefore remains written at its own Tier.
+
+For example:
+
+- Tier 0 result 27 against Tier 1 opposition becomes 2.
+- Tier 1 result 27 against Tier 3 opposition becomes 0.
+- Tier 5 result 3 against Tier 4 opposition becomes 30.
+
+For graded Effects, convert the Effect magnitude into the Tier of the target's
+Resilience or Recalcitrance before determining the grade or amount of progress.
+
+## Why the Dice Pool Still Matters
+
+The tentative d10 pool can produce at most two successes per die. Under the current
+40-die ceiling, the absolute theoretical maximum is therefore 80 successes.
+
+That means an exceptional result from the very top of one Tier can still matter
+against the next Tier, but cross-Tier effectiveness is strongly compressed. Larger
+Tier differences rapidly become impossible without a higher-Tier effect, tool, or
+other explicit bridge.
+
+## Tier Belongs to the Quantity
+
+A roll does not automatically use the character's personal Tier.
+
+Different parts of the same action may resolve at different Tiers. For example, a
+character might have:
+
+- one Tier for Application or control;
+- another Tier for the Effect produced by a weapon or power;
+- another Tier for a Cost;
+- different Tiers supplied by tools or defenses.
+
+A low-Tier character can therefore wield a much higher-Tier Effect if they possess
+something designed to make that possible.
+
+## Control and Effect Tier
+
+High-Tier equipment may have a **Control Tier** separate from its **Effect Tier**.
+
+The working default is that operating a device requires at least one effective
+success at its Control Tier. A lower-Tier user's raw successes are converted by the
+normal Tier rule before checking that requirement.
+
+A device can be deliberately engineered with a lower Control Tier than its Effect
+Tier. For example, a Tier 3 weapon might be built with Tier 0 controls so that an
+ordinary person can fire it while still producing a Tier 3 Effect.
+
+This accessibility is a property of the device, not an automatic consequence of
+possessing it.
+
+## Scale Range
+
+The Tier scale is intentionally open-ended.
+
+Ordinary character-scale play is expected to occupy a relatively small number of
+Tiers. Current design intuition is that the distance from a peasant to a divinity
+may be well under ten Tiers, while creating a universe might plausibly be around
+Tier 50-60.
+
+Those numbers are orientation, not fixed anchors. Exact benchmarks remain to be
+defined.

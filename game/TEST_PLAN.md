@@ -1,92 +1,28 @@
-# Roadmap and acceptance tests
+# Validation and return-to-parity test plan — Geard Lif
 
-## Current scaffold checks
-- `python3 scripts/validate_scaffold.py` validates links/file layout, template structure, and the absence of real public campaign files.
-- `python3 -m unittest discover -s tests` exercises validator happy/failure paths.
-- GitHub Actions runs those checks for pushes and PRs.
+**Passing CI does not mean the game is playable.** The former D20 calculators/tests are retained solely in [archive/d20-pre-geard-lif](https://github.com/heatwaveqc/Elf-Books/tree/archive/d20-pre-geard-lif).
 
-These are **structural** tests; passing them does **not** declare the game playable.
+## Current structural and arithmetic tests
 
-## Skill model structural prototype
-- [Skill and draft perk catalog](../rules/SKILLS.md) has 52 rated skills and 104 candidate unlock hooks; aliases and historical umbrella names don't receive their own advancement.
-- [Prototype calculator](../scripts/skill_math.py) and tests cover 0–100 conversion, category ECL caps, half-Rogue contribution, empty-category behavior and learning natural 20s. These tests verify specified formulas, **not gameplay balance or approval**.
+- `python3 scripts/validate_scaffold.py`: required Geard snapshot/manifest, reader docs, 24 skills, public-only import, private-campaign boundary and template sanity.
+- `python3 -m unittest discover -s tests -v`: provisional d10 7–9/10 counting, upward/downward Tier conversion, graded resource severity/promotion/recovery/exhaustion, Project progress clip and template/validator tests.
+- GitHub Actions runs both on pushes/PRs.
+- Test arithmetic is only a demonstrator; exact action-to-Effect, ties, advancement and criticals are still open.
 
-## Use-based design calibration
-- [Proposed action-output XP and critical-perk discovery](../design/USE_BASED_ADVANCEMENT.md) supersedes success-based learning checks, but quantitative XP conversion and passive armor/magic perk opportunities remain undecided.
-- Test armor attribution: enemy total below unarmored AC → no XP, between unarmored and armored AC → armor XP, between armored and shield AC → Block XP, above full AC → no prevented-hit XP. Honor automatic hit/miss natural rolls.
-- Test that burst damage, overkill, no-cost spells, self-harm, invulnerable targets and repeatable trivial transactions cannot produce infinite progression.
+## Four-scene acceptance vertical slice
 
-## 24-skill and defense candidate checks
-- [Consolidated 24-skill proposal](../design/CONSOLIDATED_SKILLS_DEFENSE.md) maps all 52 old skills to 8 Warrior, 8 Mage and 8 Rogue skills; preserve prior catalog only for crosswalk/history, not as additive ratings.
-- [Defense prototype](../scripts/defense_math.py) asserts one chosen defense skill against each attack, natural 1/20 attack behavior, XP credit only for defense-mediated credible miss, gear-only novice defense, and separately rolled defense perk breakthrough. It is a testing artifact, not live mechanics.
-- Test peer and mismatch attack-versus-AC curves before treating a +20 defense bonus as operative, and retest ECL pooling after cutting category sizes.
+1. **Swordsman/bandit:** compare Accuracy to static Avoidance; Potence to Health; apply real Injury marks; demonstrate armor/shield/block/dodge intervention, genuine risk, recording and legal actions.
+2. **Thief/lock under time pressure:** one Project with meaningful Complexity, Recalcitrance, Scope and Time, interference and resource strain; show solo compression cannot erase clock changes.
+3. **Mage/Oakflesh:** cast, roll a **Cost** against Mana, apply protective Effect to legal defense, then resolve a hit through resource marks. Explain what practice XP applies.
+4. **Smith/month of work:** declare genuine Project Scope and Time; roll enough real work intervals, account for progress/setbacks/materials and NPC clocks, update skill practice and save state.
 
-## AC stress tests
-- [Full-endgame and unarmored parity comparison](../design/HIGH_END_AC_STRESS_TEST.md) and [calculator](../scripts/ac_stress.py) confirm 5% hit against full +5 plate/+5 shield/+5 natural at 100 skills regardless of base10; 95% hit in matched unarmored duels if base10 is removed.
-- Reassess defensive scale, gear stacking and damage absorption. This is a design issue, **not** a failing test: unit tests validate the arithmetic and make unacceptable extremes visible.
-- Allow actual, risky HP damage to train worn armor regardless of defensive method. Avoidance XP remains separate. Do not automatically mark deliberate risk as abuse.
+## Other explicit tests
 
-## Accepted defense core and XP calibration
-- [Core defensive formula](../rules/DEFENSE.md) replaces innate +10 with skill/5, retains fifth-edition equipment *contributions*, distinguishes Heavy-CON / Light-DEX / Block-STR / Dodge-DEX, and requires reactions for active Block/Dodge until perks.
-- [XP benchmarking](../design/XP_CALIBRATION.md) tests 20→25, 50→55, 95→100 and 20→100 with d8 expected nominal damage, actual HP lost to armor, and candidate magic/noncombat scales. XP magnitudes are **not approved**.
-- [Core defense smoke tests](../tests/test_xp_calibration.py) check without-10 AC, +3 plate/shield endgame matchup, reaction consumption/perk bypass, and armor gaining XP from actual HP loss despite a failed Block.
+- Peer vs overwhelming Tier and armor equipment; low/high dice pools and resource survival.
+- Physical, mental and spiritual injuries and fatigue, Mana and Attention recovery for solo PCs.
+- Bankable perk breakthrough probability for different d10 pool sizes and passive defense; no natural-20 import.
+- Distinct character skill learning including Destruction vs Alteration, passive Armor and noncombat Projects.
+- Original TES perk imports: first Quiet Casting, Green Thumb, Arcane Blacksmith, then difficult Sweeping attacks/dual summons.
+- Unique campaign save isolation, stale revision rejection, secret leak tests and authorizing a real store.
 
-## Actual-damage XP and fivefold rank-cost candidate
-- [New XP experiment](../design/ACTUAL_DAMAGE_XP.md) tests K=5 versus K=1 and base d8 versus applied real HP loss. [Pure calculator](../scripts/actual_damage_xp.py) tests that overkill is not extra learning, mitigated damage earns less, and a 20-HP enemy awards no more than 20 damage XP regardless of hit count.
-- Test that skill 20→25 can become ~3 times slower than the previous base-damage model with only 1d8+3 actual HP per hit; high-end 1d8+7+3 damage is below the 22.5 XP/hit break-even.
-- Recalibrate armor, Block/Dodge, schools of magic, crafting and social rewards whenever the rank-cost scale changes. No new XP numbers are operative without approval.
-
-## Skill bonus to weapon damage / fractional-to-integer XP equivalence
-- [Latest proposed weapon formula](../design/WEAPON_SKILL_DAMAGE_XP.md) and [arithmetic tests](../tests/test_weapon_skill_xp.py) verify flat +floor(skill/5) weapon damage and 5×rank / 2 XP per actual HP equivalence to 2.5×rank / 1 XP per damage.
-- Model a skill-20 novice, 50 journeyman, 95 master; natural-20 crits double damage dice **not** flat bonuses. Distinguish attack attempts from successful hits and cap XP by applied actual HP.
-- Stress-test dual-wield and multiattack, early HP versus high skill-based damage, and armor/spell/noncombat relative XP under the new shared XP units.
-
-## Crafting and task DC XP calibration
-- [Candidate DC-based crafting award](../design/CRAFTING_DC_XP.md) and [calculator/tests](../tests/test_crafting_xp.py) compare candidate `2 × declared intrinsic DC` XP per actual finished work unit at 20/50/95 skill with the now-agreed universal 5× rank cost.
-- A batch of five real products earns five units; five gratuitous dice rolls for one product earn only one unit. Low-DC mass production remains valid real practice if materials/time are spent.
-- Check skill 100 vs extended DC 35–45 mastery items; normal 5e 5–30 difficulties assume much smaller proficiency bonuses.
-- Decide failed substantial-work XP, master-project milestone sizing, economics vs complexity, and social/research skill applicability before adopting numerical crafting awards.
-
-## Generalized quick / opposed / extended XP prototype
-- [New progress-and-XP model](../design/GENERALIZED_EXTENDED_XP.md) and [targeted tests](../tests/test_generalized_skill_xp.py) cover project DC/interval/progress-goal, successful check-result × DC progress, fractional XP represented as integer tenths, failure margin, no double credit for overproduction, and opponent-result DC with 3.5 tie behavior.
-- Verify externally that shorter arbitrary intervals cannot increase project XP from the same fixed goal; fix project units and interval up front and prohibit treating administrative subdivisions as fresh checks.
-- Confirm proposed scalar 1 XP/10 credited progress and quick 2×DC success / 0.5×DC failure separately; learn from substantial failure without granting free reroll-based farming.
-- Determine Perception/observation opposed skill mapping within the consolidated 24-skill catalog.
-
-## Solo pacing model and calibration
-- [Reproducible seeded comparison](../scripts/pacing_comparisons.py) and [test suite](../tests/test_pacing_comparisons.py) compare skill 20/50/95 across 1d8 60%-to-hit combats, static DC-based meaningful quick checks, and weekly extended projects, with HP-capped damage and natural 20s.
-- [Methodology/report](../design/SOLO_PACING_COMPARISON.md) separates one-chat-project summaries from the actual week-by-week simulation; compare goal 1000/2500/6000 against constant 1000 goals.
-- Do not attempt to equalize XP per *chat turn* with an artificial reward cap. World clocks, expenses and fiction elapsed are real costs for downtime.
-
-## Armor and magic XP calibration
-- [Candidate formulas, examples and layering rules](../design/MAGIC_DEFENSE_XP.md) and [testable arithmetic](../tests/test_magic_defense_xp.py) cover 2 XP per actually attributable offensive HP, candidate 1×/2× actual MP spent, candidate armor 4 XP/HP suffered, active protection 2 XP/HP suffered, and credited avoidance 2× full enemy attack total.
-- Avoided hits require a legal chosen defense and counterfactual AC test; natural-1 attacker misses and natural-20 attacker hits regardless of AC, so neither is a defender avoided-attack XP event. Spells get avoidance XP only if their increment uniquely prevents a hit.
-- Ensure independent damage sources do not collectively claim more outgoing HP than a victim actually lost; document optional parallel learning for *worn armor plus active protection spell* from one genuinely damaging event.
-- Test utility school's low XP from Magicka-only casts against damaging spells' output+Magicka; settle MP multiplier after spell costs, Magicka pools and recovery are defined.
-
-## Accepted advancement integration
-- [Rules/ADVANCEMENT.md](../rules/ADVANCEMENT.md) now consolidates universal skill rank cost and all selected XP multipliers. The default Magicka award is 2 XP per actual MP spent, in addition to other genuinely attributable effects; previous 1 XP/MP run was a comparison only.
-- Update all GM event processing and persistent XP ledgers to use accepted rules, preserving fractional tenths, valid project progress caps and counterfactual defensive avoidance attribution. The test calculator [magic_defense_xp.py](../scripts/magic_defense_xp.py) uses the approved 2 XP/MP default.
-- Next design priority: perk thresholds, real-use critical discovery, armor/other passive breakthrough opportunities, and trainer interactions. The existence of XP formulas does not make a campaign ready to play.
-
-## Perk-point progression tests and remaining content
-- [New perk breakthrough and spending rules](../rules/PERKS.md) support an untyped bank of points from meaningful successful natural-20 events and credible enemy natural-1 attacks, independent of numeric skill XP; points may later purchase any eligible perk.
-- [Perk bank prototype/tests](../tests/test_perk_points.py) check cross-skill banking, requirement gating, single point per unique event, legitimate sparring, no point from trivial/nonwinning criticals, and explicitly exceptional artifact direct rewards.
-- Next implement real perk effects, authoritative skill threshold catalog, event-ID-based persistence and item-specific rewards. Ordinary trainers can teach skills but **cannot teach perks**.
-
-## Perk source-port review
-- [TES perk crosswalk](../design/TES_PERK_PORT_SURVEY.md) uses cited Skyrim vanilla and Oblivion mastery benefits across all 24 candidate skills, distinguishing near-direct permissions/techniques, D20-conversion candidates, poor-fit numeric effects, and absent trees.
-- [Machine-checkable candidate inventory](../design/tes_perk_candidates.json) and [unit tests](../tests/test_tes_perk_survey.py) check 24-skill coverage, 75 research entries, valid skill thresholds, source links, and leave the existing 48 provisional perks untouched.
-- Source perks are **not automatically live**; after player chooses a shortlist, define exact triggers/actions/requirements for adoptable perks, avoid clashing with flat skill damage and existing no-Stamina system, and ensure perk points remain bankable skill-gated purchases.
-
-## Before first real campaign
-- Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
-- Decide HP, damage, initiative, armor and saves without character levels.
-- Build Magicka, schools, basic spell creation, spell learning, alchemy/enchanting starter rules.
-- Populate source-linked era snapshot for a playable region and date.
-- Create real private-store saver/loader with atomic event/checkpoint behavior; test simulated save conflicts and tool outage.
-- Validate pre-session private spine and three independent clue paths; audit GM discretion and spoiler leaks.
-- Run two character-creation tests and a 5-scene campaign, including a departure from the expected plot. Check that skill gain is fair and persisted.
-
-## Quality bar
-No generated outcomes based on fabricated rolls; no class-gated learning; no accidental level-based modifiers; no undated anachronisms; no leaking public campaign secrets; no broken continuation after restart. The user approves progression and combat balance before any release is called playable.
+[Full prioritized checklist](../MIGRATION_BACKLOG.md) is the current readiness ledger.

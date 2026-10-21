@@ -13,19 +13,25 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 REQUIRED_DOCS = (
     "README.md", "AGENTS.md", "START_HERE.md", "LEGAL.md",
-    "rules/RULES_INDEX.md", "rules/FOUNDATION.md",
-    "design/PROGRESSION.md", "design/MAGIC.md",
-    "lore/LORE_POLICY.md", "lore/ERAS.md",
+    "MIGRATION_BACKLOG.md", "engine/geard-lif/README.md",
+    "engine/geard-lif/SYSTEM_STATUS.md", "engine/geard-lif/UPSTREAM.json",
+    "rules/RULES_INDEX.md", "rules/FOUNDATION.md", "rules/SKILLS.md",
+    "rules/ADVANCEMENT.md", "rules/PERKS.md", "rules/DEFENSE.md",
+    "rules/skills.json", "design/MAGIC.md", "design/PROGRESSION.md",
+    "design/tes_perk_seeds.json", "lore/LORE_POLICY.md", "lore/ERAS.md",
     "game/CHARACTER_CREATION.md", "game/PRE_SESSION_PREP.md",
     "game/GM_PROTOCOL.md", "game/PERSISTENCE.md", "game/TEST_PLAN.md",
-    "rules/SKILLS.md", "design/ADVANCEMENT_MATH.md",
+)
+UPSTREAM_PAGES = (
+    "Project_Framework", "Resource_Tracks",
+    "Tentative_D10_Resolution", "Tentative_Tier_Scaling",
 )
 TEMPLATES = (
     "campaign.json", "character.json", "state.json", "world.json",
     "threads.json", "gm-secrets.json",
 )
 STATES = {"character_creation", "preparing", "active", "paused", "complete"}
-MODELS = {"use-progress", "use-chance", "hybrid"}
+MODELS = {"geard-lif-use-based"}
 
 
 def _load_json(path: Path, errors: list[str]) -> dict:
@@ -45,13 +51,51 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
     for rel in REQUIRED_DOCS:
         if not (root / rel).is_file():
             errors.append(f"missing document: {rel}")
+    manifest = _load_json(root / "engine/geard-lif/UPSTREAM.json", errors)
+    upstream = manifest.get("upstream_commit")
+    if not isinstance(upstream, str) or not re.fullmatch(r"[0-9a-f]{40}", upstream):
+        errors.append("Geard Lif upstream pin must be a full SHA")
+    if manifest.get("source_repository") != "heatwaveqc/geard-lif":
+        errors.append("unexpected mechanical upstream")
+    for name in UPSTREAM_PAGES:
+        path = root / "engine/geard-lif/source" / (name + ".tid")
+        try:
+            contents = path.read_text(encoding="utf-8")
+        except OSError:
+            errors.append(f"missing imported Geard Lif rule: {name}")
+            continue
+        if "geard-audience: player" not in contents.split("#",1)[0]:
+            errors.append(f"imported rule must be player-audience only: {name}")
+    skills = _load_json(root / "rules/skills.json", errors)
+    if len(skills.get("skills", [])) != 24:
+        errors.append("current Elf-Books roster must contain 24 candidate skills")
+    perks = _load_json(root / "design/tes_perk_seeds.json", errors)
+    if len(perks.get("items", [])) != 75:
+        errors.append("TES perk inspiration catalog requires 75 entries")
     for name in TEMPLATES:
         path = root / "templates" / name
         item = _load_json(path, errors)
         if item and item.get("schema_version") != 1:
             errors.append(f"{name}: unsupported schema version")
-        if name == "campaign.json" and item.get("status") != "character_creation":
-            errors.append("campaign template must not be active")
+        if name == "campaign.json":
+            if item.get("status") != "character_creation":
+                errors.append("campaign template must not be active")
+            if item.get("engine",{}).get("id") != "geard-lif":
+                errors.append("campaign template must use local Geard Lif")
+            if item.get("engine",{}).get("upstream_commit") != upstream:
+                errors.append("campaign upstream pin mismatch")
+        if name == "character.json":
+            if item.get("engine",{}).get("id") != "geard-lif":
+                errors.append("character template must use Geard Lif")
+            if "derived" in item or "magicka" in item or "attributes" in item:
+                errors.append("legacy character template fields may not be active")
+            if set(item.get("resources",{})) != {"mind","body","soul"}:
+                errors.append("character must have three Geard resource aspects")
+            for aspect,tracks in (("mind",("attention","plasticity")),
+                                  ("body",("injury","fatigue")),
+                                  ("soul",("mana","spirit"))):
+                if any(item.get("resources",{}).get(aspect,{}).get(t) != [0,0,0,0] for t in tracks):
+                    errors.append(f"character resource aspect missing four-grade track: {aspect}")
         if name == "gm-secrets.json" and item.get("preflight", {}).get("status") != "pending":
             errors.append("GM secrets template must not be ready")
     if (root / "campaigns").exists() or (root / "private-campaigns").exists():
@@ -124,6 +168,10 @@ def validate_campaign(directory: Path) -> list[str]:
         if not re.fullmatch(r"[0-9a-fA-F]{40}", str(campaign.get("rules_commit", ""))):
             errors.append("active campaign needs a pinned 40-character rules commit")
         setup = campaign.get("setup", {})
+        if campaign.get("engine",{}).get("id") != "geard-lif":
+            errors.append("active campaign must pin Geard Lif")
+        if not re.fullmatch(r"[0-9a-fA-F]{40}", str(campaign.get("engine",{}).get("upstream_commit",""))):
+            errors.append("active campaign must pin Geard Lif upstream commit")
         if setup.get("advancement", {}).get("model") not in MODELS:
             errors.append("active campaign requires an approved advancement model")
         if setup.get("session_zero", {}).get("approved") is not True:

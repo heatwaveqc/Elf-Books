@@ -1,0 +1,45 @@
+title: Tentative d10 Resolution
+type: text/markdown
+geard-audience: player
+tags: Rules Resolution Tentative
+
+# Tentative d10 Resolution
+
+Raven's Heart is currently using a **Storyteller-style d10 dice pool** as its
+tentative core randomizer while the resolution engine is tested.
+
+This is a provisional implementation, not a locked final dice engine.
+
+## Dice Pool
+
+Roll a number of d10s equal to the relevant rating or pool.
+
+- 7, 8, or 9 = **1 success**
+- 10 = **2 successes**
+- lower results currently contribute no successes
+
+The total number of successes is the roll's result.
+
+A roll may produce **zero successes**. This is intentional, including on resource
+Cost rolls.
+
+## Application and Effect
+
+Application rolls use their success total against **Complexity** or **Avoidance**.
+
+Effect rolls use their success total as the magnitude applied against
+**Recalcitrance** or **Resilience**. Personal resource tracks translate that
+magnitude into graded marks according to [[Resource Tracks]].
+
+The exact handling of ties, critical success and failure, and other edge cases is
+still under development.
+
+## Tier
+
+Scale differences are currently handled by [[Tentative Tier Scaling]].
+
+The working model keeps ordinary dice pools bounded and converts a rolled result
+into the Tier of its opposition by a factor of 10 per Tier of difference: divide
+when rolling upward in Tier, multiply when rolling downward. Static opposition
+stays at its own Tier. Exact Tier anchors and special exceptions remain
+provisional.

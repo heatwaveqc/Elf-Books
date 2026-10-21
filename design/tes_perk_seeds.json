@@ -1,0 +1,687 @@
+{
+  "schema_version": 1,
+  "engine": "Geard Lif",
+  "status": "INSPIRATION_ONLY_NOT_PURCHASABLE",
+  "notes": [
+    "75 source examples were surveyed during D20 design. None have operative Geard mechanics.",
+    "Do not use previous D20 fit/reject classifications as final. Stamina-type effects can be adapted to Geard's Fatigue, while percentual combat effects require Potence/Resilience design.",
+    "Original game gates are references, not Geard trait prerequisites."
+  ],
+  "items": [
+    {
+      "skill": "one_handed",
+      "name": "Critical Charge",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/one-handed.php",
+      "prior_note": "Sprint into a stronger one-handed attack; map sprint/power attack and critical damage.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "one_handed",
+      "name": "Dual Flurry",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/one-handed.php",
+      "prior_note": "Faster dual attacks require a specific extra-attack/action-economy rule.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "one_handed",
+      "name": "Hack and Slash",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/one-handed.php",
+      "prior_note": "Axe attacks inflict additional bleed; define ongoing damage/stacking.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "one_handed",
+      "name": "Armsman",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/one-handed.php",
+      "prior_note": "Percentage damage multiplier duplicates the accepted +skill/5 flat damage scaling.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 0
+    },
+    {
+      "skill": "two_handed",
+      "name": "Sweep",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/two-handed.php",
+      "prior_note": "A sideways power attack catches multiple nearby enemies; define threatened arc and attacks.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "two_handed",
+      "name": "Great Critical Charge",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/two-handed.php",
+      "prior_note": "Sprinting two-handed power attack; requires power-attack and critical action rules.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "two_handed",
+      "name": "Barbarian",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/two-handed.php",
+      "prior_note": "Percentage base damage duplicates skill-derived damage bonuses.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 0
+    },
+    {
+      "skill": "archery",
+      "name": "Hunter's Discipline",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/archery.php",
+      "prior_note": "Retrieve twice as many usable arrows after combat; ammo recovery is narrative bookkeeping.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "archery",
+      "name": "Ranger",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/archery.php",
+      "prior_note": "Move without losing readied bow/aim; specify move/ready interaction.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 60
+    },
+    {
+      "skill": "archery",
+      "name": "Power Shot",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/archery.php",
+      "prior_note": "On a strong arrow hit, stagger; need condition/defense procedure.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "archery",
+      "name": "Steady Hand",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/archery.php",
+      "prior_note": "Slow-time aiming becomes focus/aim/reaction rule in turn-based combat.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 40
+    },
+    {
+      "skill": "block",
+      "name": "Power Bash",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/block.php",
+      "prior_note": "Unlock shield power-bash maneuver once bash attack action is specified.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "block",
+      "name": "Deflect Arrows",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/block.php",
+      "prior_note": "Shield can fully stop arrows; replace real-time shield-hit detection with legal Block reaction.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "block",
+      "name": "Block Runner",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/block.php",
+      "prior_note": "Move while keeping shield raised; map movement/action availability.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "block",
+      "name": "Elemental Protection",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/block.php",
+      "prior_note": "Halve elemental effects when shield blocks; define timing and resource.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "heavy_armor",
+      "name": "Conditioning",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/heavyarmor.php",
+      "prior_note": "Worn heavy armor contributes no encumbrance or movement penalty.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "heavy_armor",
+      "name": "Cushioned",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/heavyarmor.php",
+      "prior_note": "Halve falling HP damage with a full heavy-armor suit.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "heavy_armor",
+      "name": "Tower of Strength",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/heavyarmor.php",
+      "prior_note": "Reduce stagger when fully heavy-armored; needs stagger rule.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "heavy_armor",
+      "name": "Juggernaut",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/heavyarmor.php",
+      "prior_note": "Percent armor-rating multiplier breaks calibrated additive AC.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 0
+    },
+    {
+      "skill": "unarmed",
+      "name": "Hand to Hand: Journeyman ghost striking",
+      "source_game": "Oblivion",
+      "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033",
+      "prior_note": "Unarmed techniques affect ghosts/ethereal targets; depends on insubstantiality rules.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "unarmed",
+      "name": "Hand to Hand: side power attack",
+      "source_game": "Oblivion",
+      "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033",
+      "prior_note": "Unarmed power maneuver can disarm; define D20 maneuver.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "athletics",
+      "name": "Athletics: sprint fatigue mastery",
+      "source_game": "Oblivion",
+      "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033",
+      "prior_note": "No Stamina pool, so fatigue regeneration perk has no direct target.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "athletics",
+      "name": "Acrobatics: attack during jumps",
+      "source_game": "Oblivion",
+      "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033",
+      "prior_note": "Allow a normal attack while leaping/falling; requires legal movement.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 25
+    },
+    {
+      "skill": "smithing",
+      "name": "Arcane Blacksmith",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/smithing.php",
+      "prior_note": "Temper/improve enchanted weapons and armor.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 60
+    },
+    {
+      "skill": "smithing",
+      "name": "Dwarven Smithing",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/smithing.php",
+      "prior_note": "Use Dwarven crafting process and improve results; requires recipe/craft DC.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "smithing",
+      "name": "Daedric Smithing",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/smithing.php",
+      "prior_note": "Craft Daedric equipment with necessary materials and recipe access.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 90
+    },
+    {
+      "skill": "alteration",
+      "name": "Stability",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/alteration.php",
+      "prior_note": "Longer Alteration duration; define duration multiplier.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "alteration",
+      "name": "Mage Armor",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/alteration.php",
+      "prior_note": "Enhances flesh protection while unarmored; AC stacking and magic scale must be defined.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "alteration",
+      "name": "Atronach",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/alteration.php",
+      "prior_note": "Absorb incoming magical energy; define resisted spell and Magicka restore.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "conjuration",
+      "name": "Summoner",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/conjuration.php",
+      "prior_note": "Extend conjuration summon/reanimate range twofold.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "conjuration",
+      "name": "Atromancy",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/conjuration.php",
+      "prior_note": "Double atronach summoning duration.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 40
+    },
+    {
+      "skill": "conjuration",
+      "name": "Soul Stealer",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/conjuration.php",
+      "prior_note": "Bound weapons also apply Soul Trap on hit, subject to soul rules.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "conjuration",
+      "name": "Oblivion Binding",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/conjuration.php",
+      "prior_note": "Bound strikes banish summons and turn reanimated foes; requires effects system.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "conjuration",
+      "name": "Twin Souls",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/conjuration.php",
+      "prior_note": "Allow two concurrent summons; encounter balance and summon-slot system needed.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "destruction",
+      "name": "Rune Master",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/destruction.php",
+      "prior_note": "Place magical runes at five times their normal range.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 40
+    },
+    {
+      "skill": "destruction",
+      "name": "Impact",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/destruction.php",
+      "prior_note": "Dual-cast Destruction spells can stagger; define dual casting and save.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 40
+    },
+    {
+      "skill": "destruction",
+      "name": "Intense Flames",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/destruction.php",
+      "prior_note": "Weak targets struck by fire may flee; define threshold and fear mechanic.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "illusion",
+      "name": "Quiet Casting",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/illusion.php",
+      "prior_note": "Spells cast from any school make no audible casting sound.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "illusion",
+      "name": "Master of the Mind",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/illusion.php",
+      "prior_note": "Mind effects can target undead, daedra and constructs; define immunities and exceptions.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 90
+    },
+    {
+      "skill": "illusion",
+      "name": "Animage",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/illusion.php",
+      "prior_note": "Improve influence on animals; no target level cap in this system.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 20
+    },
+    {
+      "skill": "mysticism",
+      "name": "Oblivion Mysticism spell mastery ranks",
+      "source_game": "Skyrim",
+      "source_url": "https://cs.uesp.net/wiki/mysticism",
+      "prior_note": "Spell-tier access isn't a perk to copy verbatim into the classless engine.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 25
+    },
+    {
+      "skill": "mysticism",
+      "name": "Skyrim ward/absorption effects from other schools",
+      "source_game": "Skyrim",
+      "source_url": "https://cs.uesp.net/wiki/mysticism",
+      "prior_note": "Spell absorption, Soul Trap and detection inspire future Mysticism perks; no direct Skyrim tree.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 60
+    },
+    {
+      "skill": "restoration",
+      "name": "Ward Absorb",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/restoration.php",
+      "prior_note": "Absorbing hostile spells with a ward restores Magicka, magnitude needs tuning.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 60
+    },
+    {
+      "skill": "restoration",
+      "name": "Necromage",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/restoration.php",
+      "prior_note": "Enhanced magic against undead; decide size/target type.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "restoration",
+      "name": "Avoid Death",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/restoration.php",
+      "prior_note": "Limited automatic emergency healing; convert fixed 250 HP to level-free Health scale.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 90
+    },
+    {
+      "skill": "restoration",
+      "name": "Respite",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/restoration.php",
+      "prior_note": "Restores Stamina, which Elf-Books deliberately removed.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 40
+    },
+    {
+      "skill": "alchemy",
+      "name": "Green Thumb",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/alchemy.php",
+      "prior_note": "Gather double the number of ingredients from plants.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "alchemy",
+      "name": "Concentrated Poison",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/alchemy.php",
+      "prior_note": "One weapon poison application remains effective for twice as many hits.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 60
+    },
+    {
+      "skill": "alchemy",
+      "name": "Experimenter",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/alchemy.php",
+      "prior_note": "Eating an ingredient reveals additional alchemical effects; rank specifics follow Skyrim.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "alchemy",
+      "name": "Purity",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/alchemy.php",
+      "prior_note": "Craft potions without unwanted harmful effects and poisons without unwanted helpful effects.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "enchanting",
+      "name": "Extra Effect",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/enchanting.php",
+      "prior_note": "A finished item can hold two enchantments, with normal resource requirements.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "enchanting",
+      "name": "Soul Squeezer",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/enchanting.php",
+      "prior_note": "Soul gems provide more recharge energy; define recharge costs.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 20
+    },
+    {
+      "skill": "enchanting",
+      "name": "Soul Siphon",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/enchanting.php",
+      "prior_note": "Defeating nonhuman foes recharges wielded enchanted weapon; needs souls model.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 40
+    },
+    {
+      "skill": "light_armor",
+      "name": "Unhindered",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/lightarmor.php",
+      "prior_note": "Light armor worn imposes no encumbrance or movement penalty.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "light_armor",
+      "name": "Deft Movement",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/lightarmor.php",
+      "prior_note": "Chance to evade all melee damage; avoid adding hidden invulnerability to AC.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "light_armor",
+      "name": "Wind Walker",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/lightarmor.php",
+      "prior_note": "Only modifies Stamina regeneration; no equivalent resource.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 60
+    },
+    {
+      "skill": "dodge",
+      "name": "Oblivion Acrobatics: jumping attacks",
+      "source_game": "Oblivion",
+      "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033",
+      "prior_note": "May attack while jumping/falling; may also fit Athletics; decide authoritative mapping.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 25
+    },
+    {
+      "skill": "dodge",
+      "name": "Oblivion Acrobatics: rolling dodge",
+      "source_game": "Oblivion",
+      "source_url": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033",
+      "prior_note": "Rapid tumble to avoid attacks, translating dodge ability into action-economy option.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "sneak",
+      "name": "Light Foot",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/sneak.php",
+      "prior_note": "Avoid activating mundane pressure plates through careful movement.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 40
+    },
+    {
+      "skill": "sneak",
+      "name": "Silence",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/sneak.php",
+      "prior_note": "Walking/running at normal pace carries no added movement-noise detection penalty.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "sneak",
+      "name": "Shadow Warrior",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/sneak.php",
+      "prior_note": "Break target tracking briefly in combat; turn-based perception and invisibility required.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "sneak",
+      "name": "Backstab",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/sneak.php",
+      "prior_note": "Sixfold damage clashes with existing flat skill damage, HP balance and ambush system.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "security",
+      "name": "Quick Hands",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/lockpicking.php",
+      "prior_note": "Can work a lock discreetly without inherently revealing the activity.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 40
+    },
+    {
+      "skill": "security",
+      "name": "Wax Key",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/lockpicking.php",
+      "prior_note": "Successful picking yields a copy of the key when a copyable key exists.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "security",
+      "name": "Unbreakable",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/lockpicking.php",
+      "prior_note": "Normal lockpicks are not destroyed by picking failures.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "security",
+      "name": "Treasure Hunter",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/lockpicking.php",
+      "prior_note": "Changes chest loot probability rather than character ability; GM owns world inventory.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "legerdemain",
+      "name": "Poisoned",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/pickpocket.php",
+      "prior_note": "Slip poison onto an unsuspecting target to cause its normal effects.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 40
+    },
+    {
+      "skill": "legerdemain",
+      "name": "Misdirection",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/pickpocket.php",
+      "prior_note": "May lift a worn/readied weapon from an unsuspecting target.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "legerdemain",
+      "name": "Perfect Touch",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/pickpocket.php",
+      "prior_note": "May remove equipped gear from an unsuspecting target.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "speechcraft",
+      "name": "Merchant",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/speech.php",
+      "prior_note": "Negotiate trade of categories outside a shop's usual merchandise, subject to NPC consent.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 50
+    },
+    {
+      "skill": "speechcraft",
+      "name": "Bribery",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/speech.php",
+      "prior_note": "Gain ability to bribe guards to overlook lesser offenses; no universal NPC mind control.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 30
+    },
+    {
+      "skill": "speechcraft",
+      "name": "Investor",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/speech.php",
+      "prior_note": "Fund businesses to increase working capital; economy/world persistence needed.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 70
+    },
+    {
+      "skill": "speechcraft",
+      "name": "Master Trader",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills/speech.php",
+      "prior_note": "Every merchant in the world receiving free gold isn't grounded in a solo GM simulation.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": 100
+    },
+    {
+      "skill": "survival",
+      "name": "No equivalent Skyrim perk tree",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills.php",
+      "prior_note": "Design separately using Elder Scrolls' environmental gameplay rather than fabricating a vanilla tree.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": null
+    },
+    {
+      "skill": "lore",
+      "name": "No equivalent Skyrim perk tree",
+      "source_game": "Skyrim",
+      "source_url": "https://www.gamebanshee.com/skyrim/skills.php",
+      "prior_note": "Design research and scholarship perks from existing gameplay; no standalone Skyrim Lore tree.",
+      "port_status": "UNREVIEWED_FOR_GEARD",
+      "original_game_skill_gate": null
+    }
+  ]
+}

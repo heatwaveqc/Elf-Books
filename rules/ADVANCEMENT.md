@@ -1,55 +1,24 @@
-# Skill Advancement — accepted numeric rules
+# Advancement — Geard Lif adaptation (OPEN)
 
-**Status: accepted XP framework, not yet a playable game.** The 24-skill catalog, perk acquisition, spell catalog, combat details and persistence are still being developed. This page supersedes older proposed XP multipliers.
+**Status:** Intention preserved, old D20 rates retired. No complete Geard Lif skill-advancement formula has been approved.
 
-## Core
+## Principles worth retaining
 
-- Skill ratings range from 0 to 100.
-- XP required to raise rating S to S+1: **5 × max(1, S)**. Keep surplus XP.
-- Weapon skill adds **floor(S/5)** to attack rolls and flat weapon damage.
-- Store XP in integer **tenths** for exact fractional awards.
+- **Learn by doing**: actual effect, work, challenging opponents and resource expenditure matter, not arbitrary narrative XP per chat response.
+- **Universal Project compatibility**: crafting/research/social actions and combat all produce meaningful Effect or Progress using the upstream Project framework.
+- **Time and risk are real**: month-long study may fit in one chat response, but still advances fictional time and consumes Attention, resources, materials, opportunity and world-clock changes.
+- **Legitimate practice remains possible**: no arbitrary per-day cap just because an action is repeatable; actual Costs, work, threats and learning conditions still apply.
+- **Bankable perk points** concept preserved separately from numerical skill ratings, subject to new d10 critical thresholds.
 
-## XP awards
+## Must redesign (do NOT use archived formulas)
 
-| Meaningful activity | Award |
-| --- | --- |
-| Actual outgoing HP damage attributable to that skill | **2 XP per HP removed** |
-| Actual Magicka spent casting | **2 XP per Magicka spent** |
-| Actual HP lost while wearing relevant armor | **4 XP per HP lost** to armor skill |
-| Genuine incoming attack stopped by the chosen defensive method | **2 XP × full enemy attack result** |
-| Actual HP lost under relevant protective magic | **2 XP per HP lost** to its school |
-| Genuine incoming attack stopped specifically by protective magic | **2 XP × full enemy attack result** to its school |
-| Successful meaningful quick check | **2 XP × DC** |
-| Failed meaningful quick check | **0.5 XP × DC** |
-| Successful extended work interval | **0.1 XP × credited progress** |
+- Upstream Skill/Talent/Specialty scales may cap at 5, not 100. Thus `XP_next=5×skill` (for ratings 0–100), `floor(skill/5)`, and former skill gates 25/50/75/100 do not port.
+- Effect on Injury is a **graded resource mark**, not HP. Magicka becomes **Mana** with rolled Costs, not fixed MP expenditure. Thus former `2 XP/HP dealt`, `4 XP/HP taken`, `2 XP/MP spent`, and Oakflesh XP need new event units.
+- Automatic hit/miss natural 1/20 rules do not port into d10. Static Avoidance is not an opponent's D20 roll; define challenging opposition and learning outcomes accordingly.
+- `check result × DC` (D&D 3.5 crafting progress) is **superseded** by Geard's Complexity/Recalcitrance/Scope/Time and as-yet-unfixed Effect-to-progress mapping.
 
-Outgoing damage counts **actual target HP removed**, after mitigation and capped by remaining HP. Source attribution for multi-part effects must not double count the same outgoing HP.
+## Proposed next comparison
 
-Magicka XP is awarded **once when actual Magicka is spent**, including utility spell practice without a damaging outcome. It may be added to genuine damage or protective results.
+Record in an experimental ledger: Project credited progress and real Time; inflicted/resisted Injury severity; meaningful defensive application; and rolled Mana/Fatigue/Attention Costs, preserving the **relevant source skill** and event IDs. Compare apprentice versus master skill growth per project, per event and per actual fictional time once rating scales and effects are locked.
 
-Worn armor learns from actual HP loss even if an attempted Block/Dodge failed; actual intentional risk is legitimate practice. Protective magic can independently learn from an injury while relevant: a 10-HP injury may therefore award 40 Armor XP and 20 Alteration XP, plus earlier XP from Magicka expended.
-
-Defensive avoidance awards require a qualifying attack that **would hit without the applicable defense** but misses with it. The attacking enemy's natural 1 is an automatic miss that teaches no defense XP; natural 20 auto-hits. Attribute XP to the **decisive defense or magical protection** rather than paying several avoidance awards for the same missed attack. For defensive magic use the same counterfactual AC test.
-
-In opposed quick checks, **effective DC is opponent's check total**. Ties are resolved before awarding XP. A genuine attempt may teach on failure, but gratuitous rerolls against an unchanged task are not separate objectives.
-
-For substantial projects, predeclare DC, work interval, progress goal, and genuine project resources. A successful interval yields **Check Result × DC** raw progress; credit only up to the remaining progress goal. Each ten credited progress points earn one XP. A failed interval makes no progress and earns no progress-based XP. Completing the same project using more check rolls cannot increase its total XP. A chat response can summarize many real work intervals while still advancing the fictional calendar and resolving costs and consequences.
-
-### Examples
-
-- Destruction: spend 8 Magicka, remove 12 actual enemy HP ⇒ **16 + 24 = 40 XP**.
-- Block: enemy roll 13 + 10 = 23 against gear AC 18 and Block AC 27 ⇒ **46 Block XP**.
-- Project: DC25, goal 1,000, result 30 ⇒ 750 progress and 75 XP; next interval can credit only the remaining 250, awarding 25 XP.
-- A successful DC25 quick check ⇒ 50 XP; a meaningful failed DC25 check ⇒ 12.5 XP.
-
-## Critical-derived perk points
-
-A **meaningful, successful natural 20** in an active skill use awards **one bankable, untyped perk point**. An opponent's **natural 1 on a credible incoming attack** similarly awards the character **one perk point**, providing passive combat defenses with critical breakthrough opportunities. This is **distinct from defensive XP**, since a natural-1 attack is an automatic miss and does not demonstrate a successful trained avoidance. Points can be saved and spent at will on one owned-once, skill-gated eligible perk. Ordinary trainers cannot teach perks; exceptional artifacts and revelations may grant points or defined perks. See [PERKS.md](PERKS.md) for full treatment.
-
-## Next development phase
-
-**Perks**: earning points from qualifying critical events and banking/spending them is defined in [PERKS.md](PERKS.md); individual perk effects, final skill-rank gates, extraordinary artifact rewards and GM save integration remain unfinished. Critical successes **do not** directly increase skill ranks.
-
-Details still needed for specific spell effects, unconventional damage mitigation, teamwork, defensive reactions and GM save integration. Numeric XP progression is settled; **Elf-Books is not yet playable**.
-
-References: [Defense](DEFENSE.md), [Generalized extended checks](../design/GENERALIZED_EXTENDED_XP.md), [Magic and defense XP study](../design/MAGIC_DEFENSE_XP.md).
+The archived D20 math is available at [archive/d20-pre-geard-lif](https://github.com/heatwaveqc/Elf-Books/tree/archive/d20-pre-geard-lif). It is research history, never the current operating XP rule.

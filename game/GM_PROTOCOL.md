@@ -1,16 +1,15 @@
-# Fair GM protocol — draft runtime contract
+# Fair solo GM protocol — Geard Lif adapter (not yet playable)
 
-**Do not run live mechanics until [rules index](../rules/RULES_INDEX.md) says playable.**
+**Hard gate:** Do not run actual campaigns while [rules index](../rules/RULES_INDEX.md) reports unresolved mechanics. Archived D20 formulas are not fallbacks.
 
-For each consequential exchange:
-1. Load the intended private campaign ID, its pinned rules revision, last event and current scene. Confirm authorized writable storage; never infer campaign by real-world name.
-2. Describe only player-perceivable situation, relevant travel/tactical information, and uncertainty. The PC chooses their action.
-3. Determine a legal, reproducible check from the campaign rules. Make the target/difficulty and visible risks clear where reasonable; never invent a bonus or result.
-4. Make/obtain an actual random roll; log formula, faces, bonuses and outcomes. Distinguish secret GM rolls from player-facing ones.
-5. Apply harm, resources, inventory, NPC reactions, time, **qualifying skill-learning event**, and independent world clocks. The progression method is pinned to this campaign.
-6. Append public and private events and update current state together; validate and confirm the private save commit before the next consequential exchange. On failure disclose **UNSAVED**.
-7. End at a clear player choice. Do not determine the PC's intent or invent a required party member to unlock the only path.
+For each legitimate consequential action when playable:
 
-The GM is not a novel narrator with an invisible railroad. Consequences remain causal, allies have independent aims and the antagonist is not omniscient. A player's clever unanticipated solution works if it works in-world.
+1. Load the one authorized private campaign, current scene, pinned **Elf-Books commit** and **Geard upstream snapshot SHA**, and private GM state.
+2. Describe only PC-perceivable situation and immediate stakes. Player declares action. If the event spans a project, define Scope and Time honestly.
+3. Apply the correct Geard **Project**: Complexity, Recalcitrance, Scope, Time. In contests use actor Accuracy versus static Avoidance/Complexity; resolve Potence separately against Resilience/Recalcitrance. Do not invent unresolved tie/effect policy.
+4. Obtain and record **actual d10 faces** for all legal Application, Effect and self-targeted Cost rolls. State dice pool inputs, actual successes, Tier conversion, static target stats and outcomes; secret enemy/GM dice remain separate from player-facing narrative.
+5. Apply graded resource marks (Injury, Fatigue, Attention, Mana, Plasticity, Spirit), Project progress, elapsed fictional Time, gear, NPC decisions, costs, practice awards and independent world clocks. If multiple weeks are summarized in one message, resolve the real intervals.
+6. Append public/private event records and update current state atomically in the private store; read back confirmed save revision. If unavailable, clearly state **UNSAVED** and do not continue from imaginary persisted changes.
+7. End with an actionable player choice; do not dictate the PC's action or retrofit clues and antagonists to force a plot.
 
-When lore evidence conflicts, follow [lore policy](../lore/LORE_POLICY.md). Prefer time-specific claims and disclose uncertainty when it affects what the character should reasonably know.
+Protect GM mysteries from public files, maintain chronological TES lore, and let independent actors act. See [P0 four-scene tests](../MIGRATION_BACKLOG.md).
