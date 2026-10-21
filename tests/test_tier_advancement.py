@@ -1,7 +1,6 @@
 """Tier prerequisites, raw-XP cascade and passive practice arithmetic."""
 import sys
 import unittest
-from fractions import Fraction
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -126,14 +125,18 @@ class TierAdvancementTests(unittest.TestCase):
 
     def test_passive_defense_half_pool_and_fractional_xp(self):
         involved={"agility":10,"talent":5,"dodge":5,"specialty":0}
-        self.assertEqual(static_defense_value(involved),Fraction(2,1))
+        self.assertEqual(static_defense_value(involved),2)
         self.assertEqual(passive_xp_tenths(involved),{
-            "agility":10,"talent":5,"dodge":5,"specialty":0})
+            "agility":10,"talent":10,"dodge":10,"specialty":0})
         self.assertEqual(passive_xp_tenths(involved,tier=1)["talent"],50)
-        self.assertEqual(static_defense_value({"agility":5}),Fraction(1,2))
+        self.assertEqual(static_defense_value({"agility":5}),0)
+        self.assertEqual(static_defense_value({"agility":5,"dodge":5}),1)
+        # At rating 11, Tier 0 grants ceil(1.1)=2 XP; Tier 1 gives exact 11 XP.
+        self.assertEqual(passive_xp_tenths({"agility":11},tier=0)["agility"],20)
+        self.assertEqual(passive_xp_tenths({"agility":11},tier=1)["agility"],110)
         self.assertEqual(passive_xp_tenths({"conviction":15},tier=0),
-                         {"conviction":15})
-        # 15 tenths is 1.5 XP for resisting real Mana Costs.
+                         {"conviction":20})
+        # At Tier 0, 1.5 XP rounds up to 2 XP for resisting real Mana Costs.
 
 if __name__=="__main__":
     unittest.main()

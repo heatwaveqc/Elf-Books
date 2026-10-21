@@ -1,6 +1,6 @@
 # Elf-Books rules authority — Geard Lif migration
 
-**Overall status: FOUNDATION / NOT PLAYABLE.** Do not use archived D20 mechanics. **Geard Lif / Raven's Heart is the base engine**, vendored at [engine/geard-lif](../engine/geard-lif/README.md) from upstream commit `6332383e3dbf68d0f0c7184ab704758125055f83`.
+**Overall status: FOUNDATION / NOT PLAYABLE.** Do not use archived D20 mechanics. **Geard Lif / Raven's Heart is the base engine**, vendored at [engine/geard-lif](../engine/geard-lif/README.md) from upstream commit `4ba2934cbb34cf8f43584016fadd2e339fad23fe`.
 
 ## Authority order
 
@@ -29,9 +29,11 @@
 - **[Twelve attributes and five-skill Talent packages](TALENTS.md)** are adopted, with [structured attributes](attributes.json), [12 sample Talents and custom option](talents.json), and a separate as-yet-undefined Talent progression tree. **All twelve starting Attributes** and **all five Talent-governed starting Skills** have minimum rating **5**.
 - [24 skill names](SKILLS.md) and [structured vocabulary](skills.json); all skills may advance regardless of Talent.
 - [Perk design](PERKS.md) and [75 TES game inspirations](../design/tes_perk_seeds.json), with no final Geard gate/effect.
-- **[Active use-based XP and natural-ten bootstrap](ADVANCEMENT.md)** are now working rules with tests; passive defensive/Resilience XP now has the **rating/10** per-contributing-trait working rate, scaled by action Tier (remaining work is legal defensive/Cost packages and equipment). Old HP/MP/D20 XP formulas remain archived.
+- **[Active use-based XP and natural-ten bootstrap](ADVANCEMENT.md)** are now working rules with tests; passive defensive/Resilience XP **rounds rating/10 UP per trait at Tier 0**; above Tier 0 use exact rating/10 ×10^Tier. Static defense is now floor(sum of eligible dice/2). The common magic self-Cost package is now Will + casting School Skill, distinct from Conviction mark capacity. Old HP/MP/D20 XP formulas remain archived.
 - [Armor/combat adaptation](DEFENSE.md); old D20 AC is **not** active.
 - [Spell/Mana design](../design/MAGIC.md); costs follow rolled resource Effects, not old MP totals.
 - [Solo GM protocol](../game/GM_PROTOCOL.md), independent private campaign architecture, historical Elder Scrolls lore and GM pre-session design.
 
 **Next development:** See [MIGRATION_BACKLOG.md](../MIGRATION_BACKLOG.md), especially remaining P0 armor/zero-threshold edge decisions, traits, survivability, combat, magic, use-based advancement, d10 perk breakthroughs and four-scene test. Implement, test, seek explicit design approval, then permit any actual game to start. CI validation confirms structure, **not playability**.
+
+**Magic prototype:** [Destruction Perception/Intelligence active casting; Will + same School Skill static Mana-Cost resistance](../design/MAGIC.md). Cost dice remain rolled without Application; Conviction sets Mana-mark capacity, and cost-reducing robes add to static Cost resistance dice (not mark slots). Mysticism is the default reactive counterspell Skill via Wits; full reaction mechanics remain open.

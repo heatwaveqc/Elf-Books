@@ -105,9 +105,7 @@ A resource **Cost** uses the same Effect resolution as any other Power.
 
 A Cost has a rating and a target resource. Roll the Cost rating; there is no
 Application roll. Nothing reduces the Cost rating before it is rolled: armor,
-external defenses, and other mitigation do not discount it. The user's Resilience
-does not reduce the roll; it determines the severity of the marks produced by the
-rolled Effect magnitude.
+external defenses, and other mitigation do not discount it. The user's Resilience **does not reduce the number of Cost dice rolled**. The target aspect's Resilience **always sets the resource mark capacity**; the **effective static severity threshold** is ordinarily that same Resilience, but a setting can define an appropriate resistance Attribute/Skill and legal protective gear that instead increase or otherwise set the effective Cost threshold. This is **not** a reduction to Cost dice, is **not** an extra resistance roll, and never adds capacity slots.
 
 Apply those marks to the target resource normally.
 
