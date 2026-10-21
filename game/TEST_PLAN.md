@@ -55,13 +55,13 @@
 - Same-Tier governing-die prerequisites: Dexterity Tier 1 **5**, One-Handed Tier 1 **25**, Longswords Tier 1 **20** is legal; Dexterity Tier 1 **4** bars the latter dice, and Skill Tier 1 **4** bars Specialty dice. Talent Tier 1 **25** does **not** substitute for missing Attribute dice. No cap requires child rating ≤ parent rating.
 - A trait cannot purchase Tier 1 until its Tier 0 rating is 25. Tier 1 rating 20→21 costs **2,000 XP**, versus Tier 0 **200 XP**. Source rewards multiply by 10 **once**, not again after Tier-scaled Effect magnitude.
 - Test choice between keeping maxed Talent XP to unlock Tier 1 and cascading **unchanged raw XP** to the first unmaxed Attribute/Skill/Specialty. No double award and no arbitrary related-skill recipient.
-- Static four-die Dodge = **2**. Agility rating 10 + Talent 5 + Dodge 5 + Specialty 0 passive awards **1.0 / 0.5 / 0.5 / 0 XP**, not 2/1/5/10 times that amount. Verify fractional, Tier 1, and true resource-Cost resistance cases.
+- Static four-die Dodge = **2**. Agility rating 10 + Talent 5 + Dodge 5 + Specialty 0 passive awards **1 / 1 / 1 / 0 whole XP** at Tier 0, rounded up per contributing trait. Test the Tier 1+ exact formula and genuine resource-Cost events.
 
 ## Spell Cost and rounding tests
 
 - At Tier 0, a rating 5/11/15 participant receives **1/2/2 whole passive XP** (rounded up per source); zero earns zero. At Tier 1, ratings 5/11/15 earn **5/11/15 XP** (no ceiling needed).
 - Static defense **floors the combined dice/2**, not per-source halves: one total die 0, two dice 1, three dice 1, four dice 2.
-- Destruction Accuracy uses **Perception + Destruction**, Potence **Intelligence + Destruction**, and its rolled self-Cost is measured against static **Will + Destruction**, plus cost-reducing robes; **Conviction** sets the independent Mana mark capacity. Cost dice themselves are never reduced by robes, no extra resistance roll occurs.
+- Destruction Accuracy uses **Perception + applicable Talent + Destruction + Spell Specialty**, Potence **Intelligence + the same three**, and its rolled self-Cost is measured against static **Will + the same Talent + Destruction + relevant Spell Specialty + eligible cost-reducing robes**; **Will** sets the independent Mind/Mana mark capacity. Cost dice themselves are never reduced by robes, and no extra resistance roll occurs.
 - Default counterspell uses **Wits + Mysticism** as a chosen alternative static Avoidance. Appropriate Talent/Specialty are applicable where legitimate; counterspell reaction cost and timing remain unsettled.
 
 ## Mind/Soul resource swap and all-source magic Cost resistance
