@@ -10,7 +10,8 @@
 
 - [LLM/game-master operating instructions](AGENTS.md)
 - [Rules boundaries and open decisions](rules/RULES_INDEX.md)
-- **[Preferred 24-skill consolidation and defensive AC proposal](design/CONSOLIDATED_SKILLS_DEFENSE.md)** (proposed, not final)
+- **[High-end AC stress test and base-10 alternatives](design/HIGH_END_AC_STRESS_TEST.md)** (design evaluation)
+- [24-skill consolidation and original defense model](design/CONSOLIDATED_SKILLS_DEFENSE.md) (proposed, under revision)
 - [52-skill historical catalog and perk seeds](rules/SKILLS.md) (older candidate)
 - [Skill catalog as structured data](rules/skills.json)
 - [Progression design options](design/PROGRESSION.md)

@@ -1,6 +1,8 @@
 # Consolidated skills and defensive resolution — v2 design
 
-**Status: proposed, not authoritative or playable.** This is the preferred *discussion draft*. The older [52-skill roster](../rules/skills.json) remains in the repository solely for historical comparison; [24-skill structured candidate](skills_v2.json) has not yet replaced it as executable character-sheet data. No existing game is migrated.
+**Status: proposed, not authoritative or playable.** **IMPORTANT NEW STRESS TEST:** [high-end AC and base-10 revisions](HIGH_END_AC_STRESS_TEST.md) expose unbalanced peer matchups in both directions. The +10 in the draft below is not approved, and the no-10 variant also remains unapproved. Armor skill must also earn experience from actual HP damage suffered even when the defender selected Block/Dodge, according to the more recent player proposal. The earlier defensive-credit section below covers *avoidance-based* progress only, not HP-damage XP.
+
+ This is the preferred *discussion draft*. The older [52-skill roster](../rules/skills.json) remains in the repository solely for historical comparison; [24-skill structured candidate](skills_v2.json) has not yet replaced it as executable character-sheet data. No existing game is migrated.
 
 ## Why consolidate
 
