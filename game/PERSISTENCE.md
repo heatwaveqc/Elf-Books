@@ -19,7 +19,7 @@ campaigns/<opaque-id>/
 
 Every campaign pins a full **Elf-Books rules commit SHA**, **Geard upstream import SHA** and any adapter version. No engine auto-upgrades mid-campaign.
 
-Character state (new schema, still under design) will have current approved Geard Attributes/Talents/Skills/Specialties, Tiers, Will/Health/Conviction, six graded resource tracks (resilience and severity occupancy), Projects with Scope-sized **four-grade mark arrays**, Recalcitrance and Time, active Effects and Costs, inventory and perk awards. It will **not** contain D20 HP, fixed Magicka, six-ability-score-derived AC, or 0–100 rating assumptions.
+Character state (new schema, still under design) will have all twelve independently rated attributes, exactly one five-skill Talent with rating, chosen package ID or custom name, Talent-tree progression, all 24 Skill ratings and their Specialties, Tiers, Health/Will/Conviction as attributes, six graded resource tracks (resilience and severity occupancy), Projects with Scope-sized **four-grade mark arrays**, Recalcitrance and Time, active Effects and Costs, inventory and perk awards. It will **not** contain D20 HP, fixed Magicka, six-ability-score-derived AC, or 0–100 rating assumptions.
 
 Logs must preserve the exact d10 faces, applied success convention, Tier conversion, resource marks/costs and changing world clocks for reproducibility and revalidation. One event ID grants progression/critical rewards only once. Save whole changed state coherently and read back a confirmed commit. Verify sequence continuity and correct authorized campaign before every write.
 

@@ -9,6 +9,10 @@
 - Rare artifacts, supernatural revelations and exceptional story rewards **may** grant a point or a particular perk when explicitly defined.
 - Preserve actual skill/trait prerequisites for powerful techniques, but **retire** old 0–100 rank gates.
 
+## Personal Talent progression trees
+
+Each character now also has exactly one **five-skill Talent**, offering extra applicable dice and its own progression tree. This **does not remove any ordinary skill's perk options**, including those outside the Talent. The Talent tree is separate, and it is **not yet decided** whether advancing that tree consumes general bankable perk points, distinct Talent advancement, or earned breakthroughs. See [Talents](TALENTS.md) for examples and open design.
+
 ## Critical triggers are unresolved
 
 Old D20 rules awarded a point from a meaningful successful natural 20, or a defender point when an attacking opponent rolled natural 1. Geard's **provisional d10 pools** have very different distributions: 10s appear on multiple dice regularly, and static defense typically does not roll a die. **Do not apply old triggers verbatim**.

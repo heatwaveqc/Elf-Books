@@ -1,11 +1,13 @@
 # Geard Lif compatibility status — snapshot review
 
-This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/37699bf629cae33743f609354cff14871d9a4e79/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
+This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/ac172d47bcb0f0d6b5db42df98f67cc3abd54c3d/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
 
 ## Locked upstream concepts
 
 - Projects universally describe meaningful action, **including combat**: Complexity, Recalcitrance, Scope, Time.
 - Accuracy governs application versus static Avoidance/Complexity; Potence governs resulting Effect versus static Resilience/Recalcitrance. High Accuracy alone does **not** automatically amplify Effect.
+- **Twelve independently rated attributes**, four per aspect: Body Strength/Dexterity/Agility/Health; Mind Intelligence/Perception/Wits/Will; Soul Charisma/Insight/Temperance/Conviction. Resilience is an independent fourth attribute per aspect.
+- **One chosen Talent per character**, governing exactly five distinct skills; preset or custom. It contributes dice only on those skills and has a separate progression tree. No class restrictions on the other skills.
 - Mind/Body/Soul each have a Resilience (Will/Health/Conviction) and slow/fast resource tracks: Plasticity/Attention, Injury/Fatigue, Spirit/Mana.
 - Four mark grades: Minor (0 penalty), Middling (-1), Major (-2), Final (-4), with promotion, cascading and recovery. Slow resources generally recover one step/day, fast resources one step/action.
 - Resource Costs are self-targeted Effect rolls without Application, not fixed-point subtractions; no reduction of Cost rating by armor or external defenses.
@@ -26,7 +28,7 @@ This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://g
 
 ## Open upstream, therefore open here
 
-- Which attributes/skills exist, which contribute to Accuracy/Potence; the 24 Elder Scrolls labels have not yet been mapped.
+- Which *specific* methods select each of the 12 attributes, how static Avoidance is derived, and the numerical starting budgets, Skill/Talent advancement rates and Talent-tree nodes.
 - Exact d10 critical success/failure and special cases, including zero Recalcitrance; ordinary Project **equality succeeds**, and static target comparison is known. Do not port natural 20 or natural 1 perk triggers unchanged.
 - Exact armor/ward severity-threshold adjustment, how projects suffer setbacks or repair/undo marks, and any policy for zero Recalcitrance. The universal Scope-as-mark-capacity rule is already settled.
 - Tier anchor calibration; high-Tier equipment Control Tier versus Effect Tier.

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "engine": "Geard Lif",
+  "status": "ADOPTED_NAMES_NUMERIC_RATINGS_PROVISIONAL",
+  "aspects": [
+    {
+      "id": "body",
+      "label": "Body / Physical",
+      "attributes": {
+        "potence": "strength",
+        "accuracy": "dexterity",
+        "avoidance": "agility",
+        "resilience": "health"
+      }
+    },
+    {
+      "id": "mind",
+      "label": "Mind / Mental",
+      "attributes": {
+        "potence": "intelligence",
+        "accuracy": "perception",
+        "avoidance": "wits",
+        "resilience": "will"
+      }
+    },
+    {
+      "id": "soul",
+      "label": "Soul / Social",
+      "attributes": {
+        "potence": "charisma",
+        "accuracy": "insight",
+        "avoidance": "temperance",
+        "resilience": "conviction"
+      }
+    }
+  ],
+  "notes": [
+    "All twelve are independently rated; Health/Will/Conviction are not derived.",
+    "Aspect Resilience determines resource mark slots; protective gear changes effective injury thresholds but not mark capacity.",
+    "One relevant attribute contributes to each legal active roll; Avoidance derivation remains to be calibrated."
+  ]
+}

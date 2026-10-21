@@ -17,13 +17,14 @@ REQUIRED_DOCS = (
     "engine/geard-lif/SYSTEM_STATUS.md", "engine/geard-lif/UPSTREAM.json",
     "rules/RULES_INDEX.md", "rules/FOUNDATION.md", "rules/SKILLS.md",
     "rules/ADVANCEMENT.md", "rules/PERKS.md", "rules/DEFENSE.md",
-    "rules/skills.json", "design/MAGIC.md", "design/PROGRESSION.md",
+    "rules/skills.json", "rules/TALENTS.md", "rules/talents.json",
+    "rules/attributes.json", "design/MAGIC.md", "design/PROGRESSION.md",
     "design/tes_perk_seeds.json", "lore/LORE_POLICY.md", "lore/ERAS.md",
     "game/CHARACTER_CREATION.md", "game/PRE_SESSION_PREP.md",
     "game/GM_PROTOCOL.md", "game/PERSISTENCE.md", "game/TEST_PLAN.md",
 )
 UPSTREAM_PAGES = (
-    "Project_Framework", "Resource_Tracks",
+    "Project_Framework", "Resource_Tracks", "Attributes_and_Talents",
     "Tentative_D10_Resolution", "Tentative_Tier_Scaling",
 )
 TEMPLATES = (
@@ -72,6 +73,20 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
     perks = _load_json(root / "design/tes_perk_seeds.json", errors)
     if len(perks.get("items", [])) != 75:
         errors.append("TES perk inspiration catalog requires 75 entries")
+    attributes = _load_json(root / "rules/attributes.json", errors)
+    observed = [v for aspect in attributes.get("aspects", []) for v in aspect.get("attributes", {}).values()]
+    if len(observed) != 12 or len(set(observed)) != 12:
+        errors.append("attributes must be exactly 12 independent names")
+    talent_data = _load_json(root / "rules/talents.json", errors)
+    skill_ids = {x.get("id") for x in skills.get("skills", [])}
+    if talent_data.get("selection", {}).get("governed_skill_count") != 5:
+        errors.append("one Talent must govern five skills")
+    if talent_data.get("selection", {}).get("one_per_character") is not True:
+        errors.append("characters must have one Talent")
+    for preset in talent_data.get("presets", []):
+        chosen = preset.get("skills", [])
+        if len(chosen) != 5 or len(set(chosen)) != 5 or not set(chosen)<=skill_ids:
+            errors.append(f"invalid Talent preset: {preset.get('name')}")
     for name in TEMPLATES:
         path = root / "templates" / name
         item = _load_json(path, errors)
@@ -87,8 +102,15 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
         if name == "character.json":
             if item.get("engine",{}).get("id") != "geard-lif":
                 errors.append("character template must use Geard Lif")
-            if "derived" in item or "magicka" in item or "attributes" in item:
+            if "derived" in item or "magicka" in item or "attributes" in item or "resilience" in item:
                 errors.append("legacy character template fields may not be active")
+            traits = item.get("traits", {})
+            if set(traits.get("attributes", {})) != set(observed):
+                errors.append("character template must declare all twelve attributes")
+            if "talents" in traits or not isinstance(traits.get("talent"), dict):
+                errors.append("character template must have one singular Talent")
+            if traits.get("talent",{}).get("governed_skills") != []:
+                errors.append("unspecified new character must not have a premade Talent")
             if set(item.get("resources",{})) != {"mind","body","soul"}:
                 errors.append("character must have three Geard resource aspects")
             for aspect,tracks in (("mind",("attention","plasticity")),

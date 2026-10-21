@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "engine": "Geard Lif / Elf-Books",
+  "status": "STRUCTURE_ADOPTED_PRESETS_EXAMPLES",
+  "selection": {
+    "one_per_character": true,
+    "governed_skill_count": 5,
+    "allow_custom": true,
+    "custom_requires_name": true,
+    "custom_allowed_skill_ids": [
+      "one_handed",
+      "two_handed",
+      "archery",
+      "block",
+      "heavy_armor",
+      "unarmed",
+      "athletics",
+      "smithing",
+      "alteration",
+      "conjuration",
+      "destruction",
+      "illusion",
+      "mysticism",
+      "restoration",
+      "alchemy",
+      "enchanting",
+      "light_armor",
+      "dodge",
+      "sneak",
+      "security",
+      "legerdemain",
+      "speechcraft",
+      "survival",
+      "lore"
+    ],
+    "talent_rating_cap_provisional": 5
+  },
+  "rule": "One selected Talent contributes its rated dice only to its 5 governed skills; a character can freely use and advance all 24 other skills. Talent has a personal progression tree, with nodes/rates pending; presets may be modified only by choosing custom at creation.",
+  "presets": [
+    {
+      "id": "warrior",
+      "name": "Warrior",
+      "skills": [
+        "one_handed",
+        "two_handed",
+        "block",
+        "heavy_armor",
+        "athletics"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "mage",
+      "name": "Mage",
+      "skills": [
+        "alteration",
+        "conjuration",
+        "destruction",
+        "illusion",
+        "restoration"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "thief",
+      "name": "Thief",
+      "skills": [
+        "sneak",
+        "security",
+        "legerdemain",
+        "speechcraft",
+        "dodge"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "spellsword",
+      "name": "Spellsword",
+      "skills": [
+        "one_handed",
+        "light_armor",
+        "alteration",
+        "destruction",
+        "restoration"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "battlemage",
+      "name": "Battlemage",
+      "skills": [
+        "destruction",
+        "alteration",
+        "heavy_armor",
+        "one_handed",
+        "enchanting"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "nightblade",
+      "name": "Nightblade",
+      "skills": [
+        "sneak",
+        "illusion",
+        "one_handed",
+        "security",
+        "legerdemain"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "skills": [
+        "archery",
+        "survival",
+        "sneak",
+        "light_armor",
+        "athletics"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "artificer",
+      "name": "Artificer",
+      "skills": [
+        "smithing",
+        "enchanting",
+        "alchemy",
+        "lore",
+        "mysticism"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "monk",
+      "name": "Monk",
+      "skills": [
+        "unarmed",
+        "dodge",
+        "restoration",
+        "athletics",
+        "illusion"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "crusader",
+      "name": "Crusader",
+      "skills": [
+        "heavy_armor",
+        "one_handed",
+        "block",
+        "restoration",
+        "speechcraft"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "scholar",
+      "name": "Scholar",
+      "skills": [
+        "lore",
+        "mysticism",
+        "alteration",
+        "alchemy",
+        "speechcraft"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "skills": [
+        "archery",
+        "survival",
+        "athletics",
+        "dodge",
+        "lore"
+      ],
+      "tree_status": "UNDEFINED_BRANCHES"
+    }
+  ]
+}
