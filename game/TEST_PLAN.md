@@ -5,15 +5,16 @@
 ## Current structural and arithmetic tests
 
 - `python3 scripts/validate_scaffold.py`: required Geard snapshot/manifest, reader docs, 24 skills, public-only import, private-campaign boundary and template sanity.
-- `python3 -m unittest discover -s tests -v`: provisional d10 7–9/10 counting, upward/downward Tier conversion, graded resource severity/promotion/recovery/exhaustion, Project progress clip and template/validator tests.
+- `python3 -m unittest discover -s tests -v`: provisional d10 7–9/10 counting, Tier conversion, meet-to-beat application, four-grade Project and resource marks, severity threshold/capacity independence, promotion/exhaustion, and validator tests.
 - GitHub Actions runs both on pushes/PRs.
-- Strict Accuracy > Complexity/Avoidance and Potence > Recalcitrance/Resilience gates, plus one progress-tier upgrade per full multiple, are now **specified and tested**. How each tier credits actual Scope, the below-Resilience resource-mark rule, advancement and criticals still need further design.
+- **Meet-to-beat Accuracy** and **graded Effect marks** are specified and tested for both people and Projects. Project Scope sets mark slots per grade, Recalcitrance sets threshold; armor adjusts threshold without altering personal Resilience capacity. Advancement and d10 criticals still need design.
 
 ## Clarified Project gate tests
 
-- **Equality fails** for ordinary Project application and progress: Accuracy 3 vs Complexity 3 does not roll Potence; successful Accuracy 4 vs 3 followed by Potence 4 vs Recalcitrance 4 makes no ordinary Project progress.
-- With R=4 and application succeeded, Potence 5/8/12 successes yield **1/2/3 progress-tier upgrades**. These do **not** automatically equal 1/2/3 Scope points until an upstream rule specifies their magnitudes.
-- Personal Injury against Health 4 retains existing Minor for Effect 1–3 and Middling for Effect 4; document/reconcile the threshold difference without silently discarding the resource chart.
+- **Equality succeeds**: Accuracy 3 against Complexity 3 applies; Accuracy 2 fails without a Potence roll.
+- With R=4, Potence 0 gives no mark; 1–3 gives Minor; 4–7 Middling; 8–11 Major; 12–15 Final; 16 gives two Final marks. These are not cross-scale Tiers.
+- A Project of Scope 2 has two slots at **each grade**, and finishes after two Final marks; low-grade marks promote when their grade's slots overflow.
+- A person with Health 4 has four Injury slots at each grade. An armor-raised threshold of 6 makes Potence 5 a Minor injury instead of Middling, but keeps four slots per grade. This threshold 6 is a **test fixture**, not a finalized armor value.
 
 ## Four-scene acceptance vertical slice
 
