@@ -27,9 +27,7 @@ four trait categories:
 
 Each has a **0–25 rating at each unlocked trait Tier**, contributing one die per full five points, so the personal maximum remains **20 dice**. See [[Trait Tiers and Experience Cascade]] for same-Tier Attribute→Skill→Specialty prerequisites (minimum one die each, not rating caps), Talent's exemption, and progression.
 
-Appropriate tools or gear can add at most as many dice as the character
-contributes from their own traits. This means the current intended ordinary ceiling
-is **40 dice**. Teamwork and other forms of assistance are still to be defined.
+**All** eligible external dice—tools, armor/shields, enchantments, ensorcellments, temporary spell buffs and comparable bonuses—**share one cap in aggregate**, equal to the unmodified applicable personal pool at the chosen Tier. Multiple sources do not each get separate limits. An inapplicable bonus adds nothing; a zero personal pool cannot be raised by gear. This means the current intended ordinary ceiling is **40 dice**. See [[Named Action Pools and Defense Modes]]. Teamwork and other forms of assistance are still to be defined.
 
 This cap is deliberate: advancement in scale should come primarily from Tier rather
 than from ever-larger dice pools.

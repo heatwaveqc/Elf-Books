@@ -36,3 +36,7 @@ When a defender may use a reactive counterspell, the normal Elf-Books option is 
 - The existing zero-static-Cost-threshold case remains open; don't silently divide by zero or invent free spellcasting.
 
 See the [tested helper](../scripts/magic.py), [unit tests](../tests/test_magic.py), and [migration checklist](../MIGRATION_BACKLOG.md).
+
+## Missile versus direct magical effect
+
+A flying ice spear is a projectile and normally permits Dodge or a suitable Block, not Parry. A *nonmissile freezing Malediction* directly affects the target and uses **Health + Survival**, exactly like cold weather. The defender may alternatively select Wits + Mysticism only where an available counterspell reaction permits it. See [Attack Modes](../rules/ATTACK_MODES.md). All eligible cost-reducing robes, enchantments, ensorcellments and temporary spell buffs share **one aggregate external-dice cap equal to unmodified personal Cost resistance dice**; it never increases Will's Mana-mark capacity.

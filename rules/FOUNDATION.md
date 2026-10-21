@@ -19,3 +19,5 @@ The current **provisional** randomizer is a Storyteller-style d10 pool (7–9 = 
 - **Solo narrative compression** is allowed; an entire week-long smithing Project may fit in one response, but Time, Costs and independent clocks are never elided.
 
 See [MIGRATION_BACKLOG.md](../MIGRATION_BACKLOG.md) for unresolved mechanics and acceptance scenarios. Until they pass, game status remains **not playable**.
+
+**Named roll convention:** Rules say only **Attribute + Skill**. Applicable five-skill Talent and one declared relevant Specialty are implicit. All legal gear, enchantments, ensorcellments and temporary magical bonuses share a **single external dice cap** equal to unmodified personal dice. [Attack modes](ATTACK_MODES.md) specify appropriate defenses, not generic Dodge against everything.

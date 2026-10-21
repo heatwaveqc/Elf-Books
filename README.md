@@ -31,3 +31,5 @@ Geard Lif is the mechanical upstream; Elf-Books provides Elder Scrolls character
 **[archive/d20-pre-geard-lif](https://github.com/heatwaveqc/Elf-Books/tree/archive/d20-pre-geard-lif)** preserves the previous D20 rules, tests, XP equations, 0–100 skill roster, spell/defense work, and perk survey. No fork was required; that branch and its Git history are retained for comparison. **It is deprecated and is not a second current rules engine.**
 
 Do not infer a usable campaign from passing unit tests. Production GM play remains blocked until the unresolved engine/adapter mechanics and private persistence pass the readiness gate.
+
+**Combat and social resistance:** [Attack modes and legal defenses](rules/ATTACK_MODES.md) include projectiles, direct cold curses, environmental cold and four social modes. Shorthand automatically applies relevant Talent and Specialty; all items and temporary magic share one aggregate external-dice cap equal to unmodified personal dice.

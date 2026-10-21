@@ -17,6 +17,7 @@ REQUIRED_DOCS = (
     "engine/geard-lif/SYSTEM_STATUS.md", "engine/geard-lif/UPSTREAM.json",
     "rules/RULES_INDEX.md", "rules/FOUNDATION.md", "rules/SKILLS.md",
     "rules/ADVANCEMENT.md", "rules/PERKS.md", "rules/DEFENSE.md",
+    "rules/ATTACK_MODES.md", "rules/attack_modes.json",
     "rules/skills.json", "rules/TALENTS.md", "rules/talents.json",
     "rules/attributes.json", "design/MAGIC.md", "design/PROGRESSION.md",
     "design/tes_perk_seeds.json", "lore/LORE_POLICY.md", "lore/ERAS.md",
@@ -27,6 +28,7 @@ UPSTREAM_PAGES = (
     "Project_Framework", "Resource_Tracks", "Attributes_and_Talents",
     "Tentative_D10_Resolution", "Tentative_Tier_Scaling",
     "Use_Based_Trait_Advancement", "Trait_Tiers_and_Experience_Cascade",
+    "Named_Action_Pools_and_Defense_Modes",
 )
 TEMPLATES = (
     "campaign.json", "character.json", "state.json", "world.json",
@@ -98,6 +100,26 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
         chosen = preset.get("skills", [])
         if len(chosen) != 5 or len(set(chosen)) != 5 or not set(chosen)<=skill_ids:
             errors.append(f"invalid Talent preset: {preset.get('name')}")
+    attack_modes = _load_json(root / "rules/attack_modes.json", errors)
+    mode_ids=set()
+    for mode in attack_modes.get("modes", []):
+        mid=mode.get("id")
+        if not mid or mid in mode_ids:
+            errors.append("attack mode IDs must be unique and nonempty")
+        mode_ids.add(mid)
+        if not mode.get("valid_defenses") and not mode.get("defense_none_explicit"):
+            errors.append(f"attack mode {mid} has no legal defenses")
+        for defense in mode.get("valid_defenses",[]):
+            if defense.get("attribute") not in set(observed) or defense.get("skill") not in skill_ids:
+                errors.append(f"attack mode {mid} has invalid defensive Attribute + Skill")
+        for key in ("attack_accuracy","attack_potence"):
+            pair=mode.get(key)
+            if pair and (pair.get("attribute") not in set(observed) or pair.get("skill") not in skill_ids):
+                errors.append(f"attack mode {mid} has invalid attacking Attribute + Skill")
+    if not {"cold_exposure","direct_freezing_malediction","ice_spear_projectile",
+            "launched_projectile","social_persuasion","social_deception",
+            "social_intimidation","social_reputation"} <= mode_ids:
+        errors.append("missing required attack-mode defaults")
     for name in TEMPLATES:
         path = root / "templates" / name
         item = _load_json(path, errors)

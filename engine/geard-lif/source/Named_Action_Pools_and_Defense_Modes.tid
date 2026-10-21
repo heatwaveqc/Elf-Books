@@ -1,0 +1,43 @@
+title: Named Action Pools and Defense Modes
+type: text/markdown
+geard-audience: player
+tags: Rules Combat Project Defense Traits
+
+# Named Action Pools, Attack Modes, and Legal Defenses
+
+**Working universal contract.** A rule may specify only **Attribute + Skill**, such as `Health + Survival` or `Perception + Destruction`. Automatically complete the pool from all legitimately applicable sources:
+
+1. **Attribute** dice = floor(the specified attribute's rating at the chosen Tier / 5).
+2. **Skill** dice = floor(the specified skill's rating at the same Tier / 5), gated by at least **one die of that governing Attribute** at that Tier.
+3. **Talent** dice = floor(the character's one Talent rating / 5) if and **only if the Talent governs the *named Skill***. Talents govern five Skills, **not attributes**.
+4. **Specialty** dice = floor(the rating / 5) of **one genuinely relevant declared Specialty under that Skill**, gated by at least one same-Tier die in the named Skill.
+5. **External bonus dice** from equipment, enchantments, ensorcellments, temporary magical enhancements and equivalent buffs are allowed **when relevant**, but their **combined total** is capped at the entire **unmodified personal dice pool** (Attribute + applicable Talent + Skill + applicable Specialty). Nothing may reset this allowance or create a fresh per-item/magic-source cap. No equipment or buff grants extra Resource mark slots without its own specific explicit rule; ordinary protection modifies a resistance or injury threshold.
+
+The personal pool is built **first**, before external bonuses; no bonus can bootstrap a zero personal pool. A permitted bonus must be eligible for the current action, defense, or Cost. The same combined cap holds for active Accuracy/Potence, static defenses, resisting environmental hazards, resource Costs and legitimate social effects. This is a bonus cap **not** a universal entitlement to use all equipment in every situation. At Tier T, use that Tier's actual legal personal pool; do not smuggle lower-Tier dice into its cap. Equipment's separate **Control Tier / Effect Tier** mechanisms are unchanged.
+
+The usual raw dice cap is 20 personal + 20 external = **40 at any one Tier**. An off-Talent or unspecialized pool has a correspondingly smaller external cap.
+
+## Declaring attack mode and legal defenses
+
+Every contested/hostile Effect rule must specify:
+
+- **attack mode**: *how* it reaches its target, not merely its damage element or whether it is “magic”;
+- **application pool**: Attribute + Skill; any separate Potence pool;
+- **valid defensive responses**: named **Attribute + Skill** pools, each with clear circumstances and target availability (or explicitly **none**, if unavoidable); and
+- **effect target**: affected Project or personal resource track, including its normal Resilience/Scope capacity and effective mark-grade threshold.
+
+The target selects **one eligible defense**; do not stack Dodge + Block + social discernment + counterspell unless an explicit technique allows combined defense. All named defensive pools receive eligible Talent/Specialty/external bonuses under the same universal rules. A defense can use an Attribute traditionally labeled Potence or Resilience—**Health + Survival** is legal when the fiction calls for cold endurance. The *method* decides the defense, not an inflexible mapping from Attribute name to “Avoidance” category.
+
+The static difficulty supplied by a defensive pool is **floor(total eligible defense dice / 2)** after combining legal external dice. It is the target's **static application opposition**; no independent reactive dice roll is added by default. **Meet it to beat it:** attacker Accuracy at least equal to the defense applies. Only then is Potence rolled and marks determined by the proper Effect threshold. Defensive Attribute+Skill are **not interchangeable with resource mark capacity**: Health may contribute to the static application guard *and* separately determines Body mark slots; protection can change thresholds but not those slots.
+
+## Attack-mode families
+
+- **Physical melee contact**: Dodge and a suitable Block or Parry are normally candidate defenses when physically possible; exact weapon maneuver availability can narrow this set.
+- **Physical or magical launched projectile** (arrows, ice spears): Dodge or suitable Block are normally possible; **Parry is not a default defense** against an incoming arrow or fast projectile.
+- **Direct nonmissile effect** (curse, Malediction, freezing the target where they stand): **no Dodge/Block/Parry**, because nothing traverses space to evade or intercept. The defensive rule must name a relevant innate resistance pool—e.g. **Health + Survival** against environmental cold *and against a direct magical freezing Malediction*. A relevant countermagic technique may separately allow a counterspell; it is **not** an automatic substitute for intrinsic resistance.
+- **Environmental exposure**: use the same defense as a mechanically equivalent direct threat whenever the underlying hazard is the same. Equipment may assist within the shared pool bonus cap.
+- **Social influence**: choose a social attack mode (e.g. persuasion, deception, intimidation, reputation/ostracism). A valid defense must be **explicit**, e.g. **Insight + Speechcraft** for discerning a deception, **Temperance + Speechcraft** for resisting coercive social pressure, **Conviction + Speechcraft** for steadfast values. The setting adapter specifies its default menu and conditions. A social argument is not automatically a physical attack that can be Dodged, Blocked or Parried.
+
+Attack mode does **not** determine grade/mark capacity by itself. Social attacks commonly pressure Soul's **Attention** (fast) or **Plasticity** (slow), which have **Conviction**-based mark slots; magical energy depletion usually pressures Mind's **Mana**. Different mechanisms can target the same resource and still allow different defenses.
+
+**Design obligations:** item bonuses and special techniques must say which pools they affect; a new attack or spell must not appear without valid defensive responses or an explicit declaration that no response applies. Some reactions require timing/availability/cost rules not yet set: naming a defense makes it *eligible*, not automatically available while unconscious or immobilized. Other status, partial cover, counterspell cost, and area effects remain to be specified.
