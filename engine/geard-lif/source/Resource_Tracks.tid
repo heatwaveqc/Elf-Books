@@ -16,7 +16,7 @@ fast-recovering track.
 | Soul | **Conviction** | **Spirit** | **Mana** |
 
 The Resilience trait for an aspect determines the number of slots at **each
-severity** on both of that aspect's tracks.
+severity** on both of that aspect's tracks. It also supplies the *unmodified* Effect threshold. Armor and other relevant protective effects can modify the **effective threshold for injury** without altering the number of available mark slots; see [[Project Framework]].
 
 ## Severity Grades
 
@@ -40,8 +40,8 @@ For example, a character with a Final-or-Fatal mark on all six tracks suffers
 
 ## Applying Marks
 
-When an Effect produces a magnitude against a personal resource, compare that
-magnitude to the appropriate Resilience trait, R:
+When a successfully applied Effect produces a magnitude against a personal resource, compare that
+magnitude to its effective threshold, R (normally the relevant Resilience; protective equipment may adjust the injury threshold, **not** mark capacity):
 
 - magnitude 0: no mark;
 - positive magnitude less than R: one Minor mark;
@@ -57,6 +57,8 @@ For example, against Health 4, an Injury Effect of 1-3 causes a Minor Injury,
 4-7 a Middling Injury, 8-11 a Major Injury, 12-15 one Fatal Injury, 16-19 two
 Fatal Injuries, and 20-23 three Fatal Injuries. An Effect of 24 or more fills all
 four Fatal slots from an otherwise uninjured state and kills the character.
+
+**Shared Project rule:** Non-character Projects use these same four mark grades and promotion rules, but their **Scope** supplies the number of slots at each grade, and **Recalcitrance** supplies the grade threshold. Personal Injury/Mana/etc. retain Resilience-sized capacity even where armor raises the effective injury threshold. A Project is complete when its Final slots are full.
 
 ## Promotion
 

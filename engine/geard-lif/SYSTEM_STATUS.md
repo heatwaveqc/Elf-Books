@@ -1,6 +1,6 @@
 # Geard Lif compatibility status — snapshot review
 
-This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/a9c72763c41663e51d5aa03722f53658b48410d3/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
+This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/37699bf629cae33743f609354cff14871d9a4e79/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
 
 ## Locked upstream concepts
 
@@ -10,12 +10,12 @@ This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://g
 - Four mark grades: Minor (0 penalty), Middling (-1), Major (-2), Final (-4), with promotion, cascading and recovery. Slow resources generally recover one step/day, fast resources one step/action.
 - Resource Costs are self-targeted Effect rolls without Application, not fixed-point subtractions; no reduction of Cost rating by armor or external defenses.
 
-## Clarified Project resolution gates
+## Unified Project and resource-mark resolution (confirmed)
 
-- Accuracy successes **strictly greater than** Complexity/Avoidance → application succeeds; equality fails.
-- After successful application, roll **Potence independently**. Potence successes **strictly greater than** Recalcitrance/Resilience → ordinary Project progress; equality fails.
-- Every full multiple of positive Recalcitrance/Resilience in a successful Potence result upgrades its progress tier by one; `floor(P/R)` upgrades. This is **defined**, though the exact credited **Scope** amount per tier remains open.
-- The older, locked personal **Resource Tracks** mark chart has Minor Effects below Resilience and Middling at equality. That exception/boundary is preserved, not silently overridden by the Project gate.
+- **Meet it to beat it:** Accuracy successes **>=** Complexity/Avoidance succeeds (equality hits). Then roll Potence independently.
+- Potence **zero** successes gives no mark; any positive below effective threshold R gives **Minor**; exactly R **Middling**; 2R **Major**; 3R **Final**; higher full multiples give extra Final marks.
+- Every person and Project carries four mark grades, with promotion/exhaustion. **Projects:** Recalcitrance controls severity threshold; **Scope** = slots at *each grade*, not a separate point total. Filling Final slots completes it. **People:** relevant Resilience controls mark slots at each grade and unmodified threshold; armor/wards may increase the *effective injury threshold* without increasing mark capacity.
+- These grades are **not** cross-scale Tiers. The prior strict-greater Project gate and imaginary progress-tier-to-Scope conversion are retired.
 
 ## Provisional upstream formulas
 
@@ -27,8 +27,8 @@ This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://g
 ## Open upstream, therefore open here
 
 - Which attributes/skills exist, which contribute to Accuracy/Potence; the 24 Elder Scrolls labels have not yet been mapped.
-- Exact d10 critical success/failure and special cases, including zero Recalcitrance; ordinary Project ties at thresholds **fail**, and static target comparison is known. Do not port natural 20 or natural 1 perk triggers unchanged.
-- How each Project progress tier converts into **units of Scope**, and how the strict Project-effect gate coexists with the existing Injury/Mana mark thresholds. Do not invent damage values.
+- Exact d10 critical success/failure and special cases, including zero Recalcitrance; ordinary Project **equality succeeds**, and static target comparison is known. Do not port natural 20 or natural 1 perk triggers unchanged.
+- Exact armor/ward severity-threshold adjustment, how projects suffer setbacks or repair/undo marks, and any policy for zero Recalcitrance. The universal Scope-as-mark-capacity rule is already settled.
 - Tier anchor calibration; high-Tier equipment Control Tier versus Effect Tier.
 - Mana/Fatigue/Attention expense versus regeneration, injury dynamics and survivability.
 - A new practice XP metric and perk breakthrough frequency/effect conversion for the d10 engine.

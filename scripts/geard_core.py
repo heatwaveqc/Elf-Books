@@ -1,9 +1,8 @@
-"""Local Geard Lif arithmetic primitives for Elf-Books.
+"""Local Geard Lif math: two-stage application and unified graded marks.
 
-Uses the player-facing rules snapshot at engine/geard-lif/source/.
-Resolution and Tier are PROVISIONAL upstream. These helpers deliberately do
-NOT guess the not-yet-defined project success/tie, Effect-vs-Recalcitrance,
-character-creation, XP, or critical-event rules.
+Player-facing Geard rules pinned under engine/geard-lif/source/.
+The d10 randomizer and cross-scale Tier conversion are provisional upstream.
+Armor/effect modifiers, advancement and GM state integration remain separate.
 """
 from __future__ import annotations
 from dataclasses import dataclass, replace
@@ -11,144 +10,162 @@ from dataclasses import dataclass, replace
 PENALTY=(0,-1,-2,-4)
 GRADES=("minor","middling","major","final")
 
-def d10_successes(faces: list[int] | tuple[int,...]) -> int:
-    """Under the upstream *tentative* convention, 7-9 =1; 10 =2."""
+def d10_successes(faces:list[int] | tuple[int,...])->int:
+    """Tentative d10: 7-9 -> one success; 10 -> two."""
     if not isinstance(faces,(list,tuple)) or any(type(x)!=int or not 1<=x<=10 for x in faces):
-        raise ValueError("faces must be a list/tuple of natural d10 values 1..10")
-    return sum(2 if v==10 else 1 if v>=7 else 0 for v in faces)
+        raise ValueError("faces must be natural d10 rolls 1..10")
+    return sum(2 if x==10 else 1 if x>=7 else 0 for x in faces)
 
 def convert_tier(magnitude:int,source:int,target:int)->int:
-    """Express rolled nonnegative result at target Tier, floor when scaling up."""
-    if type(magnitude)!=int or magnitude<0 or any(type(t)!=int for t in (source,target)):
-        raise ValueError("invalid magnitude or Tier")
+    """Provisional scale conversion; rolled value changes, target stays static."""
+    if type(magnitude)!=int or magnitude<0 or type(source)!=int or type(target)!=int:
+        raise ValueError("integer magnitude/tier required")
     if source>=target:
-        return magnitude * (10**(source-target))
-    return magnitude // (10**(target-source))
+        return magnitude*10**(source-target)
+    return magnitude//10**(target-source)
 
-def severity_marks(magnitude:int,resilience:int)->tuple[int,int]:
-    """Return (grade index 0..3, count) for a single effect or zero (-1,0).
+def severity_marks(magnitude:int,threshold:int)->tuple[int,int]:
+    """Return (grade 0..3, count). Any positive effect gets at least Minor.
 
-    Magnitude R->middling, 2R->major, 3R->final; every further full R adds
-    one additional final mark, per the locked graded resource model.
+    Grade 0 Minor if 0 < P < R; 1 Middling at R; 2 Major at 2R;
+    3 Final at 3R; floor(P/R)-2 Final marks when P >= 3R.
+    A protection-adjusted threshold affects grade, never mark capacity.
     """
-    if type(magnitude)!=int or magnitude<0 or type(resilience)!=int or resilience<=0:
-        raise ValueError("nonnegative integer magnitude and positive resilience required")
-    if magnitude==0: return -1,0
-    whole=magnitude//resilience
-    if whole==0: return 0,1
-    if whole==1: return 1,1
-    if whole==2: return 2,1
-    return 3,whole-2
+    if type(magnitude)!=int or magnitude<0 or type(threshold)!=int or threshold<=0:
+        raise ValueError("nonnegative magnitude and positive threshold required")
+    if magnitude==0:
+        return (-1,0)
+    multiples=magnitude//threshold
+    if multiples==0: return (0,1)
+    if multiples==1: return (1,1)
+    if multiples==2: return (2,1)
+    return (3,multiples-2)
+
+def _add_one(marks:list[int],capacity:int,grade:int)->None:
+    """Grade-capacity promotion; stop when Final is exhausted."""
+    if marks[3]>=capacity: return
+    if grade==3:
+        marks[3]=min(capacity,marks[3]+1)
+    elif marks[grade]<capacity:
+        marks[grade]+=1
+    else:
+        marks[grade]=0
+        _add_one(marks,capacity,grade+1)
+
+def _apply_marks(marks:tuple[int,int,int,int],capacity:int,
+                 grade:int,count:int)->tuple[int,int,int,int]:
+    result=list(marks)
+    if grade>=0:
+        for _ in range(min(count,4*capacity+1)):
+            _add_one(result,capacity,grade)
+    return tuple(result)
+
+def _valid_marks(marks:object,capacity:int)->bool:
+    return (isinstance(marks,tuple) and len(marks)==4 and
+            all(type(x)==int and 0<=x<=capacity for x in marks))
 
 @dataclass(frozen=True)
 class Track:
-    """One resource track. Counts of occupied slots at four grades."""
+    """Personal track: slots per grade = Resilience.
+
+    Effective severity threshold is normally Resilience too, but armor/wards
+    may change that threshold *without* changing track capacity.
+    """
     resilience:int
     marks:tuple[int,int,int,int]=(0,0,0,0)
 
     def __post_init__(self):
         if type(self.resilience)!=int or self.resilience<1:
             raise ValueError("positive integer resilience required")
-        if not isinstance(self.marks,tuple) or len(self.marks)!=4 or any(
-             type(n)!=int or n<0 or n>self.resilience for n in self.marks):
-            raise ValueError("four grade counts in 0..resilience required")
+        if not _valid_marks(self.marks,self.resilience):
+            raise ValueError("four grade counts must be between zero and resilience")
 
     @property
-    def exhausted(self)->bool:
-        return self.marks[3]==self.resilience
+    def exhausted(self)->bool: return self.marks[3]==self.resilience
 
     @property
     def penalty(self)->int:
         return next((PENALTY[i] for i in (3,2,1,0) if self.marks[i]),0)
 
-    def _add_one(self,index:int,marks:list[int])->None:
-        if marks[3]>=self.resilience:
-            return
-        if index==3:
-            marks[index]=min(self.resilience,marks[index]+1)
-            return
-        if marks[index]<self.resilience:
-            marks[index]+=1
-            return
-        marks[index]=0
-        self._add_one(index+1,marks)
-
-    def apply_effect(self,magnitude:int)->"Track":
-        grade,count=severity_marks(magnitude,self.resilience)
-        marks=list(self.marks)
-        if grade>=0:
-            for _ in range(min(count, self.resilience*4+1)):
-                self._add_one(grade,marks)
-        return replace(self,marks=tuple(marks))
+    def apply_effect(self,magnitude:int,*,effective_threshold:int|None=None)->"Track":
+        threshold=self.resilience if effective_threshold is None else effective_threshold
+        grade,count=severity_marks(magnitude,threshold)
+        return replace(self,marks=_apply_marks(self.marks,self.resilience,grade,count))
 
     def recover_step(self)->"Track":
-        """Take one recovery step; caller enforces action/day cadence."""
+        """One recovery step; the caller enforces per-action or per-day timing."""
         marks=list(self.marks)
         for grade in range(4):
             if marks[grade]:
                 marks[grade]-=1
-                if grade>0:
-                    marks[grade-1]=self.resilience
+                if grade>0: marks[grade-1]=self.resilience
                 return replace(self,marks=tuple(marks))
         return self
 
 @dataclass(frozen=True)
 class ProjectRollOutcome:
-    """Resolved strict Project gates; no assumption about Scope units."""
-    applied: bool
-    potence_rolled: bool
-    progressed: bool
-    tier_upgrades: int
+    """A complete Project attempt; grade is -1 for zero/no Effect."""
+    applied:bool
+    potence_rolled:bool
+    mark_grade:int
+    mark_count:int
 
+    @property
+    def progressed(self)->bool: return self.mark_count>0
 
-def resolve_project_roll(accuracy_successes: int, application_opposition: int,
-                         potence_successes: int | None, effect_opposition: int) -> ProjectRollOutcome:
-    """Two independent stages from Geard Lif's clarified Project rule.
+def resolve_project_roll(accuracy_successes:int,application_opposition:int,
+                         potence_successes:int|None,effect_opposition:int)->ProjectRollOutcome:
+    """Meet it to beat it: Accuracy >= opposition permits Potence.
 
-    Potence is rolled only after a *strictly successful* Accuracy roll.
-    Once Potence > positive effect opposition, each full multiple adds
-    one progress-tier upgrade. Converting upgrades to Scope is still open.
-    Resource mark thresholds are a separate preexisting subsystem.
+    Any positive Potence produces a mark. A threshold exactly matched gives
+    Middling. Effect opposition zero still awaits an upstream special case.
     """
-    if any(type(v)!=int or v<0 for v in
+    if any(type(x)!=int or x<0 for x in
            (accuracy_successes,application_opposition,effect_opposition)):
-        raise ValueError("successes/opposition must be nonnegative integers")
+        raise ValueError("roll successes/opposition must be nonnegative integers")
     if effect_opposition==0:
-        raise ValueError("progress multiples with zero opposition are undefined")
-    applied=accuracy_successes>application_opposition
-    if not applied:
+        raise ValueError("zero Effect threshold has no settled grade rule")
+    if accuracy_successes<application_opposition:
         if potence_successes is not None:
-            raise ValueError("Potence should not be rolled on failed Application")
-        return ProjectRollOutcome(False,False,False,0)
+            raise ValueError("failed Application must not roll Potence")
+        return ProjectRollOutcome(False,False,-1,0)
     if type(potence_successes)!=int or potence_successes<0:
-        raise ValueError("Potence successes required after successful Application")
-    if potence_successes<=effect_opposition:
-        return ProjectRollOutcome(True,True,False,0)
-    return ProjectRollOutcome(True,True,True,potence_successes//effect_opposition)
-
+        raise ValueError("successful Application requires Potence successes")
+    grade,count=severity_marks(potence_successes,effect_opposition)
+    return ProjectRollOutcome(True,True,grade,count)
 
 @dataclass(frozen=True)
 class Project:
-    """Locked Project dimensions, without inventing resolution mechanics."""
+    """Non-character Project: Recalcitrance controls grade; Scope = slots/grade."""
     complexity:int
     recalcitrance:int
     scope:int
     time_per_attempt:str
-    progress:int=0
+    marks:tuple[int,int,int,int]=(0,0,0,0)
 
     def __post_init__(self):
-        if any(type(v)!=int for v in
-               (self.complexity,self.recalcitrance,self.scope,self.progress)):
-            raise ValueError("integer project statistics required")
-        if min(self.complexity,self.recalcitrance)<0 or self.scope<1 or not 0<=self.progress<=self.scope:
-            raise ValueError("invalid project difficulty/scope/progress")
+        if any(type(x)!=int for x in (self.complexity,self.recalcitrance,self.scope)):
+            raise ValueError("integer project dimensions required")
+        if min(self.complexity,self.recalcitrance)<0 or self.scope<1:
+            raise ValueError("nonnegative opposition and positive Scope required")
         if not isinstance(self.time_per_attempt,str) or not self.time_per_attempt.strip():
-            raise ValueError("project time interval is required")
+            raise ValueError("project interval required")
+        if not _valid_marks(self.marks,self.scope):
+            raise ValueError("mark slots must be in 0..Scope at each grade")
 
     @property
-    def complete(self)->bool: return self.progress>=self.scope
+    def complete(self)->bool: return self.marks[3]==self.scope
 
-    def credit(self,points:int)->"Project":
-        """Credit *externally adjudicated* progress, never past scope."""
-        if type(points)!=int or points<0: raise ValueError("nonnegative progress required")
-        return replace(self,progress=min(self.scope,self.progress+points))
+    def apply_effect(self,magnitude:int)->"Project":
+        """Apply an already-successful Potence result; no implicit Accuracy."""
+        grade,count=severity_marks(magnitude,self.recalcitrance)
+        return replace(self,marks=_apply_marks(self.marks,self.scope,grade,count))
+
+    def attempt(self,accuracy_successes:int,potence_successes:int|None
+                )->tuple["Project",ProjectRollOutcome]:
+        out=resolve_project_roll(accuracy_successes,self.complexity,
+                                 potence_successes,self.recalcitrance)
+        if not out.progressed:
+            return self,out
+        return replace(self,marks=_apply_marks(self.marks,self.scope,
+                                              out.mark_grade,out.mark_count)),out

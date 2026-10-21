@@ -7,7 +7,7 @@ Locked upstream separation:
 - Attacking **Accuracy** is applied against normally static **Avoidance**.
 - Successful application leads to **Potence** against **Resilience**; the applicable Body resilience is **Health**, and the wound resource is **Injury**.
 - Natural body defenses, heavy/light armor, shields, parries, Dodge, cover, skills and spells must be represented as legally applicable changes to these quantities, not stacked D20 AC scores.
-- Repeated small blows accumulate graded marks; a large Effect can inflict severe marks immediately. Consult the imported resource-track rules for exact mechanics.
+- Repeated small blows accumulate graded marks; a large Effect can inflict severe marks immediately. **Armor, Oakflesh-like magic and other protection may raise the effective threshold for how severe the Injury is**, but **Health (Resilience), not armor, sets the number of mark slots at Minor/Middling/Major/Fatal**. The exact amount each protective method changes threshold remains to be designed. See the imported unified [[Resource Tracks]]/Project rules.
 
 **Open:** attack/effect roll resolution, tie policy, defense reactions, range/position, movement/initiative, armor and shield contribution, magical wards and flesh spells, weapon reach/speed, multiattack, injury prevention, combat practice and passive critical/perk opportunities.
 

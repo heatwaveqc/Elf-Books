@@ -19,9 +19,8 @@ Every Project can be described with four core traits:
 
 - **Complexity** — how difficult it is to successfully engage with the problem and
   make meaningful progress.
-- **Recalcitrance** — how difficult the problem is to actually change once it has
-  been successfully engaged.
-- **Scope** — how much progress is required before the Project is complete.
+- **Recalcitrance** — the effective magnitude threshold determining **which grade of progress mark** a successful Effect inflicts, independent of Scope.
+- **Scope** — how many marks the Project can hold **at each of four progress grades** (Minor/Middling/Major/Final) before completion.
 - **Time** — how long one meaningful attempt or unit of work takes.
 
 Combat is a special case of a Project. Its details should plug into these same
@@ -50,20 +49,27 @@ Recalcitrance plays the same role for non-character Projects.
 Personal Effects can apply their magnitude to [[Resource Tracks]], where the
 relevant Resilience trait converts magnitude into graded marks.
 
-## Project Resolution: Successes and Progress Tier
+## Universal Resolution: Essence Pings and Graded Marks
 
-For a Project attempt, resolve **application and effect separately**:
+**Meet it to beat it.** Every character and Project uses the same two-stage resolution and four-grade mark structure.
 
-1. Roll **Accuracy** and count successes. Application succeeds only when its success total is **strictly greater than** Complexity (for a task) or the target's static Avoidance. Equality does not succeed.
-2. If application succeeds, roll **Potence** independently and count successes.
-3. Substantive Project progress occurs only when Potence successes are **strictly greater than** the Project's Recalcitrance or target's Resilience. Equality does not count as Project progress.
-4. Every **full multiple of Recalcitrance/Resilience in the Potence success total** upgrades the progress result by one tier. For positive opposition `R`, a successful progress roll of `P` successes has `floor(P / R)` progress-tier upgrades. The eventual Project-specific conversion of those tiers to credited Scope is not yet standardized.
+1. Roll **Accuracy**, counting successes. Application succeeds when Accuracy successes are **at least** Complexity (Projects) or Avoidance (targets). Equality succeeds. Only a successful application proceeds to the Effect roll.
+2. Roll **Potence** separately, counting its successes. Accuracy's margin does **not** raise Potence unless an explicit trait/technique allows that bridge.
+3. If Potence produces **zero** successes, inflict **no mark**. If Potence has any positive successes, inflict at least **one Minor mark**, provided the Application succeeded.
+4. Compare Potence magnitude `P` to the **effective Effect threshold** `R`: positive below `R` gives **Minor**; `R` through below `2R` gives **Middling**; `2R` through below `3R` gives **Major**; `3R` through below `4R` gives **one Final**. For `P >= 4R`, add an extra Final mark for each further whole multiple of `R`. Thus `P = R` **is Middling**, not a failed Effect.
+5. Add the mark(s) to the appropriate graded track. When a lower grade is already at capacity, it **promotes** into the next grade; Final never promotes. Filling every Final slot **exhausts** that track. For Project work, this is project completion. For personal tracks, consult [[Resource Tracks]] for the relevant consequence.
 
-Example: with Complexity 3 and Recalcitrance 4, Accuracy 4 permits the Potence roll, but Accuracy 3 does not. After successful application, Potence 4 yields no Project progress; Potence 5–7 yields one tier upgrade, 8–11 yields two, and 12–15 yields three.
+**Difficulty and size are independent.** A Project's **Recalcitrance** supplies its Effect threshold; its **Scope** determines the number of marks it can absorb **at each of the four grades**. A character's relevant **Resilience** normally provides *both* the base Effect threshold and the number of marks **at each grade** on its resource tracks. Armor, wards and equivalent protections may raise the **effective injury threshold**, without increasing mark capacity; the precise equipment-based adjustment depends on the eventual combat rule.
 
-**Boundary with personal resource tracks:** The separate, previously adopted [[Resource Tracks]] graded-mark system applies Minor harm for positive Effect below Resilience and Middling harm at exactly Resilience. This does **not** match the strict-above threshold for ordinary Project progress. Until reconciled, retain the established resource-mark chart for Injury/Mana/etc.; do not silently interpret failed Project progress as zero resource harm. The exact relationship of Project progress tiers and personal resource mark grades requires an explicit follow-up.
+For example, Project Complexity 3, Recalcitrance 4, Scope 2:
 
-If the opposition value is zero, the multiples formula requires a separate rule; do not divide by zero or invent unlimited tier upgrades.
+- Accuracy 3 **applies successfully**; Accuracy 2 fails, and no Potence roll follows.
+- With a successful Accuracy roll, Potence 0 yields no marks; 1–3 gives one Minor mark; 4–7 gives one Middling; 8–11 gives one Major; 12–15 gives one Final; 16 gives two Final marks.
+- This Project has **two slots per grade**, regardless of its Recalcitrance. Two Final marks exhaust/complete it. Small increments can reach higher grades by promotion, as with injury.
+
+**Grade versus Tier:** *Minor, Middling, Major, Final* are **progress/severity grades**, not the separate cross-scale **Tier** concept. A higher cross-scale Tier may change the Potence magnitude before the mark comparison, using [[Tentative Tier Scaling]].
+
+The current core does not define what, if anything, a **zero Effect threshold** means for these multiples; ordinarily give consequential Projects a positive Recalcitrance. Do not divide by zero. Project setbacks, repairing prior progress, and the exact equipment/armor threshold formula need separate rules, but not a new resolution engine.
 
 ## Application Does Not Normally Increase Effect
 

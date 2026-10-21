@@ -19,6 +19,6 @@
 
 ## Proposed next comparison
 
-Record in an experimental ledger: Project credited progress and real Time; inflicted/resisted Injury severity; meaningful defensive application; and rolled Mana/Fatigue/Attention Costs, preserving the **relevant source skill** and event IDs. Compare apprentice versus master skill growth per project, per event and per actual fictional time once rating scales and effects are locked.
+Record in an experimental ledger: **Project mark grade and marks credited** (bounded by Scope slots, including promotion) and real Time; inflicted/resisted Injury severity; meaningful defensive application; and rolled Mana/Fatigue/Attention Costs, preserving the **relevant source skill** and event IDs. Compare apprentice versus master skill growth per project, per event and per actual fictional time once rating scales and effects are locked.
 
 The archived D20 math is available at [archive/d20-pre-geard-lif](https://github.com/heatwaveqc/Elf-Books/tree/archive/d20-pre-geard-lif). It is research history, never the current operating XP rule.
