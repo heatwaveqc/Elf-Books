@@ -69,6 +69,39 @@ Promotion can cascade.
 Final is the top grade and does not promote further. When all Final slots on a
 track are filled, that track is **exhausted**.
 
+## Universal fast-to-slow exhaustion routing
+
+**Once an aspect's fast-recovery track is already exhausted, any subsequent
+effect (including a self-inflicted Cost) that would normally mark that fast
+track instead marks the same aspect's slow-recovery track.** This applies
+universally: **Fatigue → Injury** (Body), **Mana → Spirit** (Mind), and
+**Attention → Plasticity** (Soul).
+
+Resolve each effect as a **single incident**. First check whether its **named
+fast target is exhausted at the start of the incident**; if so, change the
+target to the associated slow track *before assigning marks*. Keep the
+effect's rolled magnitude and Tier conversion, but determine grade from the
+**effective severity threshold appropriate to the actual destination**.
+Apply normal mark promotion and slow-track capacity. Never add the same
+incident to both tracks, divide its marks between them, or automatically
+add a Minor slow mark merely because the fast track became exhausted during
+that incident. The **next** fast-targeted incident spills into slow.
+
+The rule applies to ordinary attacks, hazards, social combat, spellcasting
+Costs, and other resource Effects. A redirected effect **does not count as
+directly targeting** its slow destination: a mundane social attack still
+targets Attention, yet once Attention is exhausted later mundane
+Attention-targeting Effects damage Plasticity by overflow. This does not
+grant mundane attacks permission to target Plasticity *directly*; that still
+requires a supernatural attack.
+
+If the fast track recovers at least one Final slot, later fast-targeted
+incidents again affect fast normally. Recovery continues on each track
+according to its own cadence. Exhausting the slow track triggers the
+aspect's slow-exhaustion consequences, which are handled separately from
+this redirection rule. Non-personal Projects are not paired resources and
+do not acquire overflow by default.
+
 ## Recovery
 
 A recovery step always works on the lowest occupied grade.
@@ -83,9 +116,11 @@ step **per day**.
 
 ## Exhaustion
 
-Exhausting a fast track renders the character unconscious. It may also spill Minor
-harm into the corresponding slow track; the exact spillover rule is still under
-development.
+Exhausting a fast track incapacitates the character in the relevant domain
+(unconsciousness for appropriate physical or mental cases; social incapacity
+need not literally cause unconsciousness). **Further fast-targeted Effects
+spill to the associated slow track** by the rule above; exhaustion itself
+does **not** automatically inflict an additional Minor slow mark.
 
 Exhausting **Injury** kills the character. The catastrophic consequences of
 exhausting Spirit (Mind) or Plasticity (Soul) remain to be defined.
@@ -97,7 +132,7 @@ Some ordinary actions interact with these tracks directly:
 - mundane weapons normally attack **Injury**;
 - mundane exertion costs **Fatigue**;
 - socially and psychologically demanding engagement can cost **Attention**;
-- direct **Plasticity** marks require **supernatural** effects; ordinary reputational or relationship consequences are handled through Attention, fiction and Projects rather than direct Plasticity marks;
+- direct **Plasticity** targeting requires **supernatural** effects, but mundane social attacks targeting Attention **overflow into Plasticity** after Attention exhaustion; reputation and relationship consequences can also be handled through fiction and Projects;
 - magical exertion usually costs **Mana**, with lasting supernatural damage on **Spirit**;
 - supernatural Domains define their own resource costs and interactions.
 
@@ -109,7 +144,11 @@ A Cost has a rating and a target resource. Roll the Cost rating; there is no
 Application roll. Nothing reduces the Cost rating before it is rolled: armor,
 external defenses, and other mitigation do not discount it. The user's Resilience **does not reduce the number of Cost dice rolled**. The target aspect's Resilience **always sets the resource mark capacity**; the **effective static severity threshold** is ordinarily that same Resilience, but a setting can define an appropriate resistance Attribute/Skill and legal protective gear that instead increase or otherwise set the effective Cost threshold. This is **not** a reduction to Cost dice, is **not** an extra resistance roll, and never adds capacity slots.
 
-Apply those marks to the target resource normally.
+Apply those marks to the target resource normally, checking **fast-track
+exhaustion before each Cost**. If its fast target is already exhausted,
+apply the *same rolled Cost magnitude* to the paired slow track instead,
+using the slow track's appropriate effective severity threshold (which
+need not inherit every fast-targeted cost-reduction bonus).
 
 A Cost roll can produce zero magnitude, in which case it inflicts no mark.
 

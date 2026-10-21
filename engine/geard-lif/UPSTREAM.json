@@ -1,6 +1,6 @@
 {
   "source_repository": "heatwaveqc/geard-lif",
-  "upstream_commit": "a870b69d1204fc90e2228d35412d0c83fa69b19c",
+  "upstream_commit": "8bf0801a9ac6731455cf70e77337ff9ebbec84d2",
   "import_kind": "verbatim player-audience wiki rule snapshot",
   "upstream_paths": [
     "tiddlers/Content/Rules/Project_Framework.tid",
@@ -43,6 +43,7 @@
     "tier_effect_scale": "fivefold",
     "tier_xp_scale": "fivefold",
     "social_resources": "Mundane direct effects only Attention; Plasticity direct marks supernatural-only",
-    "social_resilience": "Conviction sets mark capacity and severity, not Avoidance"
+    "social_resilience": "Conviction sets mark capacity and severity, not Avoidance",
+    "fast_to_slow_exhaustion": "route subsequent fast-targeted incidents into slow (Fatigue→Injury, Mana→Spirit, Attention→Plasticity); mundane social indirect overflow permitted"
   }
 }

@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 
 from trait_pools import ATTRIBUTE_ROLE, Talent, compose_tier_pool
+from geard_core import RESOURCE_TRACKS, Track, ResourceEffectOutcome, apply_resource_effect
 
 CATALOG = Path(__file__).resolve().parents[1] / "rules" / "attack_modes.json"
 
@@ -114,3 +115,32 @@ def compose_mode_defense(*,mode_id:str,defense_id:str,tier:int,
         talent=talent, ratings=ratings,specialty_declared=specialty_declared,
         external_bonuses=external_bonuses
     )
+
+def apply_mode_resource_effect(*, mode_id:str, magnitude:int,
+                               fast:Track, slow:Track,
+                               fast_effective_threshold:int|None=None,
+                               slow_effective_threshold:int|None=None
+                               )->ResourceEffectOutcome:
+    """Keep a mode's legal DIRECT resource target, then allow exhaustion routing.
+
+    Ordinary social modes always nominate Attention. Plasticity is reached
+    only after Attention is already exhausted, without turning a mundane
+    attack into a directly supernatural Plasticity attack. Mode legitimacy
+    and resource routing are separate steps.
+    """
+    modes=load_attack_modes()
+    if mode_id not in modes:
+        raise ValueError("unknown attack mode")
+    mode=modes[mode_id]
+    target=mode.get("typical_target_track")
+    matching=[aspect for aspect, resource in RESOURCE_TRACKS.items()
+              if target in (resource["fast"],resource["slow"])]
+    if len(matching)!=1:
+        raise ValueError("mode has no recognized target resource track")
+    if target=="plasticity" and not mode.get("supernatural_attack",False):
+        raise ValueError("direct Plasticity effect must be supernatural")
+    return apply_resource_effect(
+        aspect=matching[0],requested_resource=target,magnitude=magnitude,
+        fast=fast,slow=slow,
+        fast_effective_threshold=fast_effective_threshold,
+        slow_effective_threshold=slow_effective_threshold)

@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
-from geard_core import d10_successes,convert_tier,severity_marks,Track,Project,resolve_project_roll
+from geard_core import d10_successes,convert_tier,severity_marks,Track,Project,resolve_project_roll,apply_resource_effect,RESOURCE_TRACKS
 
 class LocalCoreTests(unittest.TestCase):
     def test_tentative_randomizer_and_tier(self):
@@ -74,6 +74,64 @@ class LocalCoreTests(unittest.TestCase):
         self.assertEqual(p.marks,(0,0,1,0))
         self.assertEqual(Track(2,marks=(0,0,1,0)).recover_step().marks,(0,2,0,0))
         self.assertEqual(Track(2,marks=(0,2,0,0)).recover_step().marks,(2,1,0,0))
+
+    def test_all_aspects_route_only_later_fast_targeted_incidents(self):
+        for aspect, spec in RESOURCE_TRACKS.items():
+            with self.subTest(aspect=aspect):
+                fast=Track(2)
+                slow=Track(2)
+                # One large blow exhausts the fast resource, never double marks slow.
+                final_hit=apply_resource_effect(
+                    aspect=aspect,requested_resource=spec["fast"],
+                    magnitude=12,fast=fast,slow=slow)
+                self.assertEqual(final_hit.applied_resource,spec["fast"])
+                self.assertEqual(final_hit.fast.marks,(0,0,0,2))
+                self.assertEqual(final_hit.slow.marks,(0,0,0,0))
+                self.assertFalse(final_hit.redirected)
+                # The NEXT fast-targeted attack spills into slow.
+                overflow=apply_resource_effect(
+                    aspect=aspect,requested_resource=spec["fast"],
+                    magnitude=2,fast=final_hit.fast,slow=final_hit.slow)
+                self.assertTrue(overflow.redirected)
+                self.assertEqual(overflow.applied_resource,spec["slow"])
+                self.assertEqual(overflow.fast,final_hit.fast)
+                self.assertEqual(overflow.slow.marks,(0,1,0,0))
+                # A fresh non-Final slot reopens fast on subsequent effects.
+                recovered=overflow.fast.recover_step()
+                self.assertFalse(recovered.exhausted)
+                resumed=apply_resource_effect(
+                    aspect=aspect,requested_resource=spec["fast"],
+                    magnitude=1,fast=recovered,slow=overflow.slow)
+                self.assertEqual(resumed.applied_resource,spec["fast"])
+                self.assertEqual(resumed.slow,overflow.slow)
+
+    def test_overflow_uses_destination_grade_threshold_and_direct_target(self):
+        fast=Track(2,marks=(0,0,0,2))
+        slow=Track(2)
+        overflow=apply_resource_effect(
+            aspect="soul",requested_resource="attention",magnitude=5,
+            fast=fast,slow=slow,fast_effective_threshold=2,
+            slow_effective_threshold=6)
+        self.assertEqual((overflow.applied_resource,overflow.slow.marks),
+                         ("plasticity",(1,0,0,0)))
+        # A supernatural direct hit to the slow track is legal even before
+        # the fast track exhausts; targeting legitimacy belongs to attack mode.
+        direct=apply_resource_effect(
+            aspect="soul",requested_resource="plasticity",magnitude=2,
+            fast=Track(2),slow=Track(2))
+        self.assertEqual(direct.slow.marks,(0,1,0,0))
+        self.assertFalse(direct.redirected)
+
+    def test_routing_validates_aspect_and_shared_capacity(self):
+        with self.assertRaisesRegex(ValueError,"belong"):
+            apply_resource_effect(aspect="body",requested_resource="mana",
+                                  magnitude=1,fast=Track(2),slow=Track(2))
+        with self.assertRaisesRegex(ValueError,"share"):
+            apply_resource_effect(aspect="mind",requested_resource="mana",
+                                  magnitude=1,fast=Track(2),slow=Track(3))
+        with self.assertRaisesRegex(ValueError,"nonnegative"):
+            apply_resource_effect(aspect="mind",requested_resource="mana",
+                                  magnitude=-1,fast=Track(2),slow=Track(2))
 
     def test_personal_exhaustion_and_cost_mark_boundaries(self):
         t=Track(4).apply_effect(24)

@@ -7,9 +7,10 @@
     "Defense depends on how the attack reaches the target, not whether it is magic or physical.",
     "Pick one available named defensive response, which supplies floor(total dice/2) static opposition. A declared mode must contain one or more defenses or explicitly say that no defense applies.",
     "Physical projectiles do not allow default Parry; direct nonmissile Maledictions cannot be Dodged, Blocked or Parried.",
-    "Ordinary social attacks may directly mark only Soul's Attention. Only supernatural attacks may directly mark Soul's Plasticity. Conviction provides resource capacity and effect soak, not Avoidance.",
+    "Only supernatural attacks may DIRECTLY target Soul's Plasticity. If Attention was exhausted at the start of an incident, all later ordinary Attention-targeted social effects overflow into Plasticity under the universal fast-to-slow rule.",
     "Alternate defenses require circumstances in catalog; countermagic requires access to a reaction or counterspell, not free universal use.",
-    "Social attack attributes may cross categories: physically imposing intimidation uses Strength + Speechcraft Accuracy by default; Charisma + Speechcraft Potence."
+    "Social attack attributes may cross categories: physically imposing intimidation uses Strength + Speechcraft Accuracy by default; Charisma + Speechcraft Potence.",
+    "All personal fast tracks route a subsequent fast-targeted incident to slow once fast was already exhausted at incident start: Fatigue→Injury, Mana→Spirit, Attention→Plasticity. Keep the same magnitude, regrade using slow's own threshold, never double-mark the incident that first exhausts fast."
   ],
   "modes": [
     {
@@ -193,7 +194,7 @@
       ],
       "typical_target_track": "attention",
       "supernatural_attack": false,
-      "ordinary_long_term_consequences": "Can affect relationships, reputation, status and Projects; never directly marks Plasticity"
+      "ordinary_long_term_consequences": "May affect relationships, reputation, status and Projects. Direct marks go to Attention; after Attention exhaustion, subsequent ordinary Attention-targeted effects can overflow into Plasticity."
     },
     {
       "id": "social_deception",
@@ -223,7 +224,7 @@
       ],
       "typical_target_track": "attention",
       "supernatural_attack": false,
-      "ordinary_long_term_consequences": "Can affect relationships, reputation, status and Projects; never directly marks Plasticity"
+      "ordinary_long_term_consequences": "May affect relationships, reputation, status and Projects. Direct marks go to Attention; after Attention exhaustion, subsequent ordinary Attention-targeted effects can overflow into Plasticity."
     },
     {
       "id": "social_intimidation",
@@ -253,7 +254,7 @@
       ],
       "typical_target_track": "attention",
       "supernatural_attack": false,
-      "ordinary_long_term_consequences": "Can affect relationships, reputation, status and Projects; never directly marks Plasticity"
+      "ordinary_long_term_consequences": "May affect relationships, reputation, status and Projects. Direct marks go to Attention; after Attention exhaustion, subsequent ordinary Attention-targeted effects can overflow into Plasticity."
     },
     {
       "id": "social_reputation",
@@ -289,7 +290,7 @@
       ],
       "typical_target_track": "attention",
       "supernatural_attack": false,
-      "ordinary_long_term_consequences": "Can affect relationships, reputation, status and Projects; never directly marks Plasticity"
+      "ordinary_long_term_consequences": "May affect relationships, reputation, status and Projects. Direct marks go to Attention; after Attention exhaustion, subsequent ordinary Attention-targeted effects can overflow into Plasticity."
     },
     {
       "id": "supernatural_identity_malediction",
