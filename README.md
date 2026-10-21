@@ -10,7 +10,10 @@
 
 - [LLM/game-master operating instructions](AGENTS.md)
 - [Rules boundaries and open decisions](rules/RULES_INDEX.md)
+- [52-skill catalog and 104 draft perk seeds](rules/SKILLS.md)
+- [Skill catalog as structured data](rules/skills.json)
 - [Progression design options](design/PROGRESSION.md)
+- [Skill advancement and ECL math prototype](design/ADVANCEMENT_MATH.md)
 - [Character creation](game/CHARACTER_CREATION.md)
 - [Campaign preparation](game/PRE_SESSION_PREP.md)
 - [Campaign saving](game/PERSISTENCE.md)

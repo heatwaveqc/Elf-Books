@@ -1,6 +1,6 @@
 # Skill-based advancement — candidates for decision
 
-**Design status: OPEN.** The mandatory default is classless, with no required character levels. This file records competing implementation choices, not a rule to use during a session.
+**Design status: OPEN.** A specific mathematical prototype matching the latest proposed approach lives in [ADVANCEMENT_MATH.md](ADVANCEMENT_MATH.md) and [scripts/skill_math.py](../scripts/skill_math.py); it is not yet an adopted rule. The mandatory default is classless, with no required character levels. This file records competing implementation choices, not a rule to use during a session.
 
 ## Goals
 - Learning by use, risk, study, instruction and genuine experiences; no repetitive action spam.
