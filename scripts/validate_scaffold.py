@@ -26,7 +26,7 @@ REQUIRED_DOCS = (
 UPSTREAM_PAGES = (
     "Project_Framework", "Resource_Tracks", "Attributes_and_Talents",
     "Tentative_D10_Resolution", "Tentative_Tier_Scaling",
-    "Use_Based_Trait_Advancement",
+    "Use_Based_Trait_Advancement", "Trait_Tiers_and_Experience_Cascade",
 )
 TEMPLATES = (
     "campaign.json", "character.json", "state.json", "world.json",
@@ -122,6 +122,13 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
                 errors.append("character template must have one singular Talent")
             if traits.get("talent",{}).get("governed_skills") != []:
                 errors.append("unspecified new character must not have a premade Talent")
+            if set(item.get("trait_tiers",{})) != {"attributes","talent","skills","specialties"}:
+                errors.append("character template must provide category-separated higher trait Tiers")
+            advance=item.get("advancement",{})
+            if "xp_banks" in advance or set(advance.get("xp_banks_tenths",{})) != {"attributes","talent","skills","specialties"}:
+                errors.append("character XP banks must use integer tenths and four categories")
+            if not isinstance(advance.get("passive_events"),list) or not isinstance(advance.get("xp_allocation_events"),list):
+                errors.append("character needs passive and cascade/up-tier event ledgers")
             if set(item.get("resources",{})) != {"mind","body","soul"}:
                 errors.append("character must have three Geard resource aspects")
             for aspect,tracks in (("mind",("attention","plasticity")),

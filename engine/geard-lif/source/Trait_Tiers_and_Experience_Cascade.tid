@@ -1,0 +1,55 @@
+title: Trait Tiers and Experience Cascade
+type: text/markdown
+geard-audience: player
+tags: Rules Traits Advancement Tier
+
+# Trait Tiers and Experience Cascade
+
+**Status:** Working progression rules. Every character and trait starts at **Tier 0**. The distinct four *mark grades* (Minor through Final) are not Tiers.
+
+## Trait ratings at each Tier
+
+Each Attribute, Talent, Skill, and Specialty has a **separate integer 0–25 rating per unlocked Tier**. At any Tier, `floor(rating/5)` gives 0–5 source dice. To begin *buying rating points* at Tier `T+1`, the same trait's rating at Tier `T` must be **25**. Do not automatically add Tier 0 dice to a Tier 1 roll. Up-tiering offers an alternative use of XP after maximizing a trait, not an automatic bonus.
+
+Each one-point advance from rating `r` costs `10 × max(1,r) × 10^T` **base XP** at Tier `T`. Dice successes originating from a Tier `T` roll award the existing source-category XP **times `10^T`**. Multiply *once* for the action's chosen Tier; do not also multiply the already Tier-converted numerical Effect/Accuracy successes when awarding XP.
+
+A character may choose **any available Tier** for an action. All **personal trait dice** on that chosen Tier come from the corresponding Tier ratings; gear can supply its own Control/Effect Tiers under [[Tentative Tier Scaling]], but must not be used to bypass personal trait prerequisites.
+
+## Minimum governing die, not a rating cap
+
+For the **chosen Tier** of the roll:
+
+- **Attribute**: contribute at least **one relevant Attribute die** (rating at that Tier **>=5**) for a Skill at that Tier to contribute dice.
+- **Skill**: contribute at least **one die from the actual used Skill** (rating **>=5** at that Tier) for a Specialty at that Tier to contribute dice.
+- **Specialty**: may be higher-rated than its Skill, and Skill may be higher-rated than its Attribute. Neither is capped by the parent's **rating**.
+- **Talent**: no part in either prerequisite chain. A character's one selected Talent can contribute when it governs the used Skill, whether or not Skill/Specialty ratings are similar. It must itself be rated at the chosen Tier to contribute dice.
+
+**Example:** at Tier 1, Dexterity **5** = one die, One-Handed **25** = five dice, Longswords **20** = four dice. All ten non-Talent dice are legal. Dexterity **4** instead blocks Tier 1 Skill and Specialty dice, without deleting their ratings. One-Handed **4** blocks the Tier 1 Longswords dice, even with Dexterity 25.
+
+To acquire the **first die** of a Tier `T` Skill or Specialty, its applicable higher governing trait must already provide a die at `T` (or the Skill is learning as an under-5 trait from natural 10s in a legal action at that Tier). No rule allows a Specialty to contribute before its Skill can.
+
+## Raw-XP cascade at maximum rating
+
+When a source trait **at the chosen action Tier** is already rating **25**, its newly earned XP can be **kept toward the next Tier of that same trait** or **transferred without conversion** along this directed chain:
+
+`Talent → relevant Attribute → used Skill → declared Specialty`
+
+- At an already-maxed Attribute, XP can continue into Skill, and then Specialty when maxed; maxed Skill XP can transfer to Specialty. Maxed Talent XP can transfer to the applicable Attribute.
+- Transfer **raw base XP**. Do **not** apply the destination's ordinary source multiplier again. Three XP on maxed Talent remains **three XP** wherever it eventually lands.
+- If there is no declared applicable Specialty, or the next desired recipient is unavailable, keep the XP at its source for higher-Tier spending. There is no free-for-all XP transfer to unrelated Skills.
+- Each award follows **one chosen route**. The same XP cannot simultaneously count for the next Tier *and* cascade. Cascade may pass through already-maxed intermediate traits, but never leap past an unmaxed one unless the player instead banks XP for the source's next Tier.
+- Destination trait Tier eligibility still requires its own prior Tier to be maxed before *purchasing* at Tier `T>0`. Awarding/banking XP does not itself unlock anything.
+
+This is horizontal advancement (cascade) versus vertical advancement (up-tier), chosen when assigning rewards.
+
+## Passive XP without defensive dice
+
+A credible defensive application or real Cost/backlash resistance uses a **static defensive value = half the equivalent defensive dice pool**. If source rating `r` contributes `floor(r/5)` dice, its precise expected-success contribution is **`floor(r/5)/2`**. When ratings are multiples of five, this equals `r/10`; otherwise the equivalent-dice calculation is authoritative for the **defense threshold**. This is before any optional combat-specific rounding decision.
+
+For passive **practice XP**, each *actually participating* trait earns **`r/10` base XP** at Tier 0 for that defensive event, multiplied by `10^T` for a Tier `T` action. Fractional tenths are retained; they are not rounded away. The award does **not** receive the 2/1/5/10 active-success multipliers a second time. It is based on the rating's raw `r`, not on the effective static value of the whole defense.
+
+Example: actual Dodge defense selected against a credible attack: Agility 10, governed Talent 5, Dodge 5, applicable Specialty 0 contribute 2+1+1+0 dice. Static Avoidance **2**. Passive XP: Agility **1.0**, Talent **0.5**, Dodge **0.5**, Specialty **0**. Blocking/parrying instead trains the traits actually used by that defense, not Dodge by default.
+
+Resource Cost resistance is similarly credible passive practice when a spell, hard physical work, or another real event imposes actual Fatigue/Mana/Attention/Spirit strain. It need not wound the character. The active source trait(s) used to cast a spell can separately gain rolled XP; resistance XP is for a **genuine resisting trait contribution**, not every trait on the character sheet. Health, Will and Conviction still set **mark capacity** by their own relevant Tier rating. Protection affects thresholds rather than mark-slot count. Do not automatically use a combat Dodge package for a spell's Mana Cost.
+
+**Open integrations:** rounding static Avoidance for integer comparison (retain exact half successes until chosen), precise spell-cost resistance package and tier, defense reactions/armor, trait tier/campaign save schema, and cross-Tier equipment controls. They do not alter the chain or raw-XP principle.

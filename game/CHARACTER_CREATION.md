@@ -12,3 +12,5 @@ Character creation cannot begin in a persistent live solo game until upstream Ge
 8. Approve a complete public sheet, then conduct [private pre-session work](PRE_SESSION_PREP.md) before opening the first scene.
 
 Never fill unimplemented mechanics with unsupported numbers or start a game simply because the template is syntactically valid. See [P0 prerequisites](../MIGRATION_BACKLOG.md).
+
+**Tier advancement:** All new traits start at **Tier 0**. After a trait reaches rating 25 at one Tier, the character may buy its next Tier at ×10 cost; using higher-Tier Skill/Specialty dice requires at least one corresponding Attribute/Skill die at that same Tier. Higher-rated children are allowed. See [Advancement](../rules/ADVANCEMENT.md). No initial Tier 1 budget has been approved.

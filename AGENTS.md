@@ -19,7 +19,7 @@
 - Resist handwaving months of Project labor merely because one chat response summarizes them. Resolve substantive intervals, resources, setbacks and world changes.
 - Preserve meaningful player agency and clear next action. Do not decide PC intentions or force planned scenes. Give NPCs independent goals and limited knowledge.
 - Save coherent multi-file snapshots only in an **authorized private repository/store**, with compare-before-commit, readback and exact rules revisions. Never claim a save succeeded without verified commit. If it fails, declare UNSAVED and don't continue from imaginary state.
-- **No live campaign saves or GM secrets in this public repository.** Upstream Geard Lif is private. Only four deliberately player-audience source tiddlers are imported; **do not copy private AI or GM-only files into the public repo**.
+- **No live campaign saves or GM secrets in this public repository.** Upstream Geard Lif is private. Only explicitly player-audience source tiddlers listed in the pinned manifest are imported; **do not copy private AI or GM-only files into the public repo**.
 - Preserve TES canon provenance and date-sensitive history. Do not copy game dialogue, official books, maps, assets or substantial nonlicensed wiki text.
 
 ## Development

@@ -7,8 +7,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Mapping, Sequence
+from fractions import Fraction
 
-from trait_pools import ATTRIBUTES, Talent, MAX_RATING, dice_for_rating
+from trait_pools import ATTRIBUTES, Talent, MAX_RATING, dice_for_rating, compose_tier_pool, validate_tier_ratings
 
 XP_PER_SUCCESS = {"attribute": 2, "talent": 1, "skill": 5, "specialty": 10}
 XP_COST_MULTIPLIER = 10
@@ -115,3 +116,130 @@ def validate_starting_allocation(
     for skill_id in talent.governed_skills:
         if skills.get(skill_id, 0) < 5:
             raise ValueError(f"Talent-governed Skill {skill_id} must start at rating >=5")
+
+
+def tier_multiplier(tier: int) -> int:
+    if type(tier) is not int or tier < 0:
+        raise ValueError("Tier must be a nonnegative integer")
+    return 10 ** tier
+
+
+def xp_to_next_at_tier(rating: int, tier: int) -> int:
+    """Cost in BASE XP for the next rating point at selected Tier."""
+    return xp_to_next(rating) * tier_multiplier(tier)
+
+
+def spend_tier_xp_tenths(ratings: Mapping[int,int], tier: int,
+                         bank_tenths: int) -> tuple[dict[int,int],int]:
+    """Spend integer tenths of base XP; never auto-up-tier.
+
+    Callers explicitly select a Tier. Lower-Tier ratings never leak into
+    this tier's dice pool. Tier T+1 becomes purchasable only with T at 25.
+    """
+    validate_tier_ratings(ratings)
+    mult=tier_multiplier(tier)
+    if type(bank_tenths) is not int or bank_tenths<0:
+        raise ValueError("bank must be nonnegative integer tenths of XP")
+    out=dict(ratings)
+    if tier not in out:
+        if tier!=max(out)+1 or out[tier-1]!=MAX_RATING:
+            raise ValueError("prior Tier must be 25 before unlocking next Tier")
+        out[tier]=0
+    while out[tier] < MAX_RATING:
+        cost_tenths=xp_to_next_at_tier(out[tier],tier)*10
+        if bank_tenths<cost_tenths:
+            break
+        bank_tenths-=cost_tenths
+        out[tier]+=1
+    return out,bank_tenths
+
+
+def award_tier_roll_xp(rolls: Mapping[str,Sequence[int]], *,
+                       attribute_name: str, role: str,
+                       tier: int, talent: Talent, skill_id: str,
+                       ratings: Mapping[str,Mapping[int,int]],
+                       specialty_declared: bool) -> PracticeAward:
+    """Scale the XP from actual Tier-specific source dice exactly once."""
+    compose_tier_pool(
+        attribute_name=attribute_name,role=role,tier=tier,talent=talent,
+        skill_id=skill_id,ratings=ratings,specialty_declared=specialty_declared)
+    snapshot={key: series.get(tier,0) for key,series in ratings.items()}
+    original=award_roll_xp(
+        rolls,snapshot,talent_governs=skill_id in talent.governed_skills,
+        specialty_declared=specialty_declared)
+    multiplier=tier_multiplier(tier)
+    return PracticeAward(
+        {source:amount*multiplier for source,amount in original.xp.items()},
+        original.natural_tens,
+        original.bootstrap_skill_xp*multiplier,
+        original.bootstrap_specialty_xp*multiplier)
+
+
+CASCADE_ORDER=("talent","attribute","skill","specialty")
+
+
+def cascade_xp_tenths(*, source: str, amount_tenths: int,
+                      tier: int, ratings: Mapping[str,Mapping[int,int]],
+                      specialty_declared: bool,
+                      choice: str="cascade") -> tuple[str,int]:
+    """Select ONE destination for already-earned raw XP, no multiplier.
+
+    Choice 'bank' keeps XP with its source for future Tier purchasing.
+    'cascade' passes through maxed traits to the first nonmaxed usable
+    narrower trait. A missing/not-yet-unlockable destination stops
+    cascade and preserves XP at its last eligible owner.
+    """
+    tier_multiplier(tier)
+    if source not in CASCADE_ORDER or choice not in {"cascade","bank"}:
+        raise ValueError("invalid source or XP allocation choice")
+    if type(amount_tenths) is not int or amount_tenths<0:
+        raise ValueError("XP must be nonnegative integer tenths")
+    if set(ratings)!=set(CASCADE_ORDER):
+        raise ValueError("all four source tiers required")
+    for series in ratings.values():
+        validate_tier_ratings(series)
+    if choice=="bank":
+        return source,amount_tenths
+    dest=source
+    while ratings[dest].get(tier,0)==MAX_RATING:
+        idx=CASCADE_ORDER.index(dest)
+        if idx+1>=len(CASCADE_ORDER):
+            break
+        next_source=CASCADE_ORDER[idx+1]
+        if next_source=="specialty" and not specialty_declared:
+            break
+        next_ratings=ratings[next_source]
+        if tier>0 and (tier-1 not in next_ratings or
+                       next_ratings[tier-1]!=MAX_RATING):
+            break
+        dest=next_source
+    return dest,amount_tenths
+
+
+def static_defense_value(contributing_ratings: Mapping[str,int]) -> Fraction:
+    """Static defense = half dice actually provided by the chosen package.
+
+    Exact halves are preserved. No decision on eventual integer rounding.
+    Equipment rating/flat modifiers belong to a separate adapter.
+    """
+    if not contributing_ratings:
+        raise ValueError("defense must identify participating traits")
+    return Fraction(sum(dice_for_rating(r) for r in contributing_ratings.values()),2)
+
+
+def passive_xp_tenths(contributing_ratings: Mapping[str,int],
+                      tier: int=0) -> dict[str,int]:
+    """Actual passive defense/Cost practice: rating/10 XP per source ×10^Tier.
+
+    Return integer tenths of base XP to avoid losing fractional awards.
+    The caller determines which sources genuinely contributed to the
+    chosen defense or resource Cost resistance, and deduplicates events.
+    """
+    multiplier=tier_multiplier(tier)
+    if not contributing_ratings:
+        raise ValueError("passive event must identify participating traits")
+    result={}
+    for source, rating in contributing_ratings.items():
+        dice_for_rating(rating)
+        result[source]=rating*multiplier
+    return result

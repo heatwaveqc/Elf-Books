@@ -25,7 +25,7 @@ four trait categories:
 - Skill
 - Specialty
 
-Each is currently capped at 5, for a maximum personal contribution of **20 dice**.
+Each has a **0–25 rating at each unlocked trait Tier**, contributing one die per full five points, so the personal maximum remains **20 dice**. See [[Trait Tiers and Experience Cascade]] for same-Tier Attribute→Skill→Specialty prerequisites (minimum one die each, not rating caps), Talent's exemption, and progression.
 
 Appropriate tools or gear can add at most as many dice as the character
 contributes from their own traits. This means the current intended ordinary ceiling

@@ -1,6 +1,6 @@
 {
   "source_repository": "heatwaveqc/geard-lif",
-  "upstream_commit": "b7700d5f7d8ac4115ec8f4f83ae13b5f2f6ff700",
+  "upstream_commit": "6332383e3dbf68d0f0c7184ab704758125055f83",
   "import_kind": "verbatim player-audience wiki rule snapshot",
   "upstream_paths": [
     "tiddlers/Content/Rules/Project_Framework.tid",
@@ -8,7 +8,8 @@
     "tiddlers/Content/Rules/Tentative_D10_Resolution.tid",
     "tiddlers/Content/Rules/Tentative_Tier_Scaling.tid",
     "tiddlers/Content/Rules/Attributes_and_Talents.tid",
-    "tiddlers/Content/Rules/Use_Based_Trait_Advancement.tid"
+    "tiddlers/Content/Rules/Use_Based_Trait_Advancement.tid",
+    "tiddlers/Content/Rules/Trait_Tiers_and_Experience_Cascade.tid"
   ],
   "local_paths": [
     "engine/geard-lif/source/Project_Framework.tid",
@@ -16,7 +17,8 @@
     "engine/geard-lif/source/Tentative_D10_Resolution.tid",
     "engine/geard-lif/source/Tentative_Tier_Scaling.tid",
     "engine/geard-lif/source/Attributes_and_Talents.tid",
-    "engine/geard-lif/source/Use_Based_Trait_Advancement.tid"
+    "engine/geard-lif/source/Use_Based_Trait_Advancement.tid",
+    "engine/geard-lif/source/Trait_Tiers_and_Experience_Cascade.tid"
   ],
   "note": "Public player-audience rules only. Upstream AI/GM-only design content is not automatically published or synchronized. Re-import by explicit reviewed PR.",
   "status": {
@@ -27,6 +29,8 @@
     "attributes": "locked",
     "talent_structure": "locked",
     "trait_numeric_caps": "working-0-to-25",
-    "advancement": "working-calibration"
+    "advancement": "working-calibration",
+    "trait_tiers_and_cascade": "working",
+    "passive_xp": "working"
   }
 }
