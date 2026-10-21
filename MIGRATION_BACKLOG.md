@@ -103,3 +103,10 @@ We're back at approximately the previous design milestone when **all P0 entries*
 - [x] **Shared Potence and Cost:** One Potence roll even after missed Accuracy; Cost = rolled successes + fixed parameter surcharges. Voluntary withholding of Potence dice is legal; no duplicate active XP. Standard static Mana resistance and overflow apply.
 - [x] **Fixed spell design:** range, area, duration, multiple targets and multi-effects add cost-success equivalents, with efficiencies of scale; record in the learned formula, not chosen ad hoc at casting.
 - [ ] **Calibrate spell parameters:** determine actual surcharge numbers/bands, sustained upkeep, combined effects, non-damage Potence translations and exceptional cross-school designs.
+
+## Continuing damage and multi-effect updates (2026-10-21)
+
+- [x] Remove **weight** from the spell parameter surcharge schedule. Lifting heavy masses uses Potence as work against a movement Project with its own Complexity/Recalcitrance/Scope/Time; spell research still has no Scope track.
+- [x] Timed damaging spells may **apply recorded Potence each turn**. Damaging areas are **stationary** and avoidable by leaving; physical one-target afflictions (fire) specify a real removal action/condition; supernatural single-target curses permit an appropriate active resistance roll **every damaging instance**. Do not invent new caster Potence/XP/Mana rolls per tick.
+- [x] **Multi-effect design perk** required to invent combined formulae. Each distinct component rolls Potence and resolves resistance **separately**, pays its own Potence-plus-fixed-surcharge Mana Cost **individually**, and trains its genuinely participating traits. Component sequencing can redirect later Cost to Spirit within the same spell; not a single shared Potence pool or combined Cost incident.
+- [ ] Price and test [provisional parameter schedule](design/SPELL_PARAMETERS.md), especially very long recurring curses; determine tick timing, removal action standards, named defensive pools on repeat curses, and cross-School compound ownership. Perk identity/tree placement is not finalized.

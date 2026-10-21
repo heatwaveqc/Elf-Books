@@ -1,6 +1,6 @@
 # Elder Scrolls spell construction — Geard Lif adapter
 
-**Adopted design:** Every individual spell is a School Specialty. One Potence roll supplies both its actual Effect magnitude and the variable part of its Mana Cost. Fixed spell parameters add Cost-success surcharges. Studying a spell is self-governing through Specialty XP, not a Scope-bearing design Project. **Still open:** exact parameter price table, sustained effects, multi-effect allocation, non-damage templates and other spell-by-spell balance. Generic non-spell Geard Lif Costs are unchanged.
+**Adopted design:** Every individual spell is a School Specialty. One Potence roll supplies both its actual Effect magnitude and the variable part of its Mana Cost. Fixed spell parameters add Cost-success surcharges. Studying a spell is self-governing through Specialty XP, not a Scope-bearing design Project. **Still open:** final parameter price calibration, exact turn/tick timing, non-damage templates, cross-School compound rules and spell-by-spell balance. Persistent damage and separately resisted multi-effect spells are approved Elf-Books adaptations. Generic non-spell Geard Lif Costs are unchanged.
 
 See [resource tracks](../engine/geard-lif/source/Resource_Tracks.tid), [advancement](../rules/ADVANCEMENT.md), and [named action pools](../engine/geard-lif/source/Named_Action_Pools_and_Defense_Modes.tid). Mind/Will owns Mana and Spirit; Soul/Conviction owns Attention and Plasticity. There are no d20 spell slots or numeric MP.
 
@@ -18,27 +18,33 @@ See [resource tracks](../engine/geard-lif/source/Resource_Tracks.tid), [advancem
 
 Inspired by classic Elder Scrolls spellmaking and the **parameter-priced flexible magic** approach of **GURPS Thaumatology / Ritual Path Magic**, formulas declare their **effect, delivery, power, range, area, number of targets, duration and any combined effects** when designed. This is a design inspiration, not a port of another game's exact copyrighted pricing table.
 
-**Extended range, larger area, multiple targets, longer duration, and multiple effects** are priced as **fixed, nonnegative Cost-success surcharges**. Costs are recorded in the learned formula **before casting**, in the spell's applicable Tier. Efficient scaling should make larger area, target counts and duration grow in sensible *bands* rather than rigidly multiplying expense per creature or second. Precise bands and prices are **OPEN**; do not invent them ad hoc in live play.
+**Extended range, larger area, multiple targets, longer duration, speed and multiple effects** use **fixed, nonnegative Cost-success surcharges**, with draft bands in [Spell Parameters](SPELL_PARAMETERS.md). Record them in the learned formula. **There is no weight parameter**: heavy-object motion resolves as the spell's Potence doing work against an ordinary movement Project with the required Complexity, Recalcitrance, Scope and Time. The spell *design* still has no Scope progress track. The numeric surcharge schedule is provisional pending tests.
 
-These fixed surcharges are **not Potence dice**, do **not** improve the effect, and do **not** make failed Accuracy succeed. A caster can voluntarily omit Potence dice before rolling to make the same known formula less powerful and reduce only the variable Cost; the fixed parameter surcharge remains. Combined-effect output distribution, sustained upkeep and whether an unusual effect needs a base surcharge are still open.
+These fixed surcharges are **not Potence dice**, do **not** improve the effect, and do **not** make failed Accuracy succeed. A caster can voluntarily omit Potence dice before rolling to make the same known formula less powerful and reduce only the variable Cost; the fixed parameter surcharge remains. **Damaging duration applies injury every turn** using the stored cast Potence, without new caster Potence/Mana rolls each tick. Stationary hazardous areas cannot move after placement; a single-target affliction remains on its original target. Mundane ongoing harm needs a credible action or condition to stop it, while supernatural ongoing curses allow the target a new active resistance for each tick. **Multiple effects require a spell-design perk**. Components roll separate Potence (not shared/split), resolve target resistance separately, and **each pays its own Mana Cost** against its own Cost resistance; components can cause Mana→Spirit overflow within one casting. Further details in [Spell Parameters](SPELL_PARAMETERS.md).
 
-## One Potence roll powers the spell AND determines Cost
+## One Potence roll **per effect** powers that effect AND determines its Cost
 
 | Function | Named pool | Resolution |
 | --- | --- | --- |
 | Application | **Perception + School** | Roll Accuracy if the effect needs an application test. Compare to the valid static defense or Complexity. |
-| Effect | **Intelligence + School** | Roll Potence **once**, even on a missed application. On a successful application, its actual successes are the spell's output magnitude. |
-| Mana Cost | **Will + School** | **No independent spell Cost roll.** Raw Cost magnitude = **rolled Potence successes + fixed designed parameter surcharges**; grade it against static Cost resistance. |
+| Effect | **Intelligence + School** | Roll Potence **once for each separately resolved component**, even on a missed application. On successful application, the relevant component successes are its output magnitude. A one-effect spell has one roll. |
+| Mana Cost | **Will + School** | **No independent Cost roll.** Each component has a separate self-Cost incident, raw magnitude = **that component's Potence successes + its fixed designed surcharges**; grade each against static Cost resistance. |
 
 Include one applicable Talent and the actual spell Specialty automatically in each named pool. Unknown spells (Specialty 0) cannot be cast. A self-targeted effect may not need Accuracy, but still rolls Potence and pays Cost. **Misses still cost Mana**: an Accuracy miss suppresses the target effect, **not** the Potence/Cost roll. Potence zero may still incur the positive parameter surcharge.
 
-The shared Potence result awards **one set of active source-tagged XP**, never two. Genuine Cost resistance may separately award the usual *passive* resistance XP.
+Each actual component Potence roll awards **one set of active source-tagged XP**, never extra active XP for also causing Cost. Each real separate Cost resistance may separately award the usual *passive* XP. Persistent damage does not reroll caster Potence or reaward caster XP on later turns.
 
 **Static Mana Cost resistance** = `floor((Will dice + eligible governed Talent dice + School dice + relevant Spell Specialty dice + eligible cost-reducing external dice) / 2)`. Sum and floor once; the shared cap on all external dice applies. Neither better Skill nor equipment reduces rolled Potence successes or the fixed parameter surcharge; they may raise the **Cost severity threshold**.
 
 **Mana and Spirit capacity** = `floor(Will rating / 5)` slots per grade at the chosen Tier. The School, Talent, Specialty, robe and other protections do **not** add slots. The zero-static-threshold edge is still OPEN.
 
 **Example:** Intelligence 15 (3d) + Mage Talent 10 (2d) + Destruction 10 (2d) + learned Firebolt Specialty 5 (1d) gives **8 Potence dice**. Will 10 (2d) + Talent 10 (2d) + Destruction 10 (2d) + Firebolt 5 (1d) gives **7 Cost-resistance dice** (threshold **3**), and two Mana slots per grade. Four Potence successes on a simple, surcharge-free hit mean effect magnitude **4** against the target and Cost magnitude **4** against the caster: **Middling Mana**. If a designed area version hypothetically adds **+2 Cost successes**, output remains **4** while Cost becomes **6**, yielding **Major Mana**. **+2 is merely illustrative, not an approved area-price entry.** On a miss, the effect is absent but the Cost remains. Eligible cost-reduction robes alter resistance threshold, not Cost magnitude or slots.
+
+## Continuing damage and compound effects
+
+**Continuing harmful magic is real damage, not mere duration of appearance.** A successfully established damaging spell with duration deals the original recorded Potence each turn during exposure. Damaging area spells are anchored to their casting location and **cannot move**; victims can escape. A physically burning single victim can take a relevant action to extinguish the fire (or use a condition such as immersion); a wasting/other supernatural curse on one victim allows an appropriate **active resistance roll every damaging turn**, against recorded cast Potence (exact defenses/tick timing to be calibrated). Subject-affixed harm follows that same subject, never retargets or becomes a moving area. Mana/XP are paid/earned for the actual initial casting only, not on fabricated Potence rolls every tick.
+
+**Multiple distinct magical effects require a spell-design perk.** The resulting formula remains a learnable Specialty. Each component has its **own Potence roll, appropriate target resistance, and separate full Mana Cost incident**, including its individually assigned fixed parameters. The later effect may hit Spirit if earlier components exhausted Mana. Independent real rolls provide genuine training; never reuse one Potence total or grant each effect all of another effect's successes. A designer needs the perk; a separate perk prerequisite to **learn/cast** a finished compound spell is not imposed. Cross-School Specialty ownership remains to be settled. See [working schedule and examples](SPELL_PARAMETERS.md).
 
 ## Non-damage effects and defenses
 
@@ -52,4 +58,4 @@ Supernatural spells may directly target Plasticity if the specific effect explic
 
 ## Implementation status
 
-[Code helper](../scripts/magic.py), [tests](../tests/test_magic.py), [migration backlog](../MIGRATION_BACKLOG.md). The spell Cost adapter must use one rolled Potence result plus fixed parameters, not its earlier separate independent spell Cost roll. Numeric surcharge tables, multi-effect behavior, non-damage balancing and persistent campaign execution are not yet complete.
+[Code helper](../scripts/magic.py), [tests](../tests/test_magic.py), [migration backlog](../MIGRATION_BACKLOG.md). The spell Cost adapter must use one rolled Potence result plus fixed parameters, not its earlier separate independent spell Cost roll. A **provisional** surcharge schedule and compound Cost sequencing are included in this adapter; final surcharge balance, non-damage effect interpretation, ongoing-effect action timing, cross-School combinations and persistent campaign execution are not yet complete.
