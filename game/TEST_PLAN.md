@@ -16,6 +16,14 @@
 - A Project of Scope 2 has two slots at **each grade**, and finishes after two Final marks; low-grade marks promote when their grade's slots overflow.
 - A person with Health 4 has four Injury slots at each grade. An armor-raised threshold of 6 makes Potence 5 a Minor injury instead of Middling, but keeps four slots per grade. This threshold 6 is a **test fixture**, not a finalized armor value.
 
+## Attributes and five-skill Talent test cases
+
+- Verify the exact twelve attributes grouped by Body/Mind/Soul and by Potence/Accuracy/Avoidance/Resilience.
+- Verify all twelve supplied preset five-skill Talents and any player-created custom Talent use only five *distinct* canonical Skill IDs.
+- A Spellsword's Talent 2 + Dexterity 3 + One-Handed 4 + Longswords 1 contributes **10d10 Accuracy**; Strength 4 produces **11d10 Potence**. Smithing 3 + Strength 4 gives **7d10** even though Smithing is *outside* Spellsword—no prohibition, just no Talent dice.
+- Test one Talent selected per character, multiple Specialties not stacking, correctly chosen active function Attributes, rating caps currently provisional, and no deriving resource capacities from other attributes.
+- Later test balance across preset packages, 0–5 cap, Talent progress rates, and complete equivalent custom progression trees; none is finalized by the pool arithmetic alone.
+
 ## Four-scene acceptance vertical slice
 
 1. **Swordsman/bandit:** compare Accuracy to static Avoidance; Potence to Health; apply real Injury marks; demonstrate armor/shield/block/dodge intervention, genuine risk, recording and legal actions.

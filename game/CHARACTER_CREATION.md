@@ -4,8 +4,8 @@ Character creation cannot begin in a persistent live solo game until upstream Ge
 
 1. Choose historical era, initial region, canon continuity, and character concept.
 2. Choose ancestry/culture/background and optional archetype. No classes or character levels.
-3. Identify Mind, Body and Soul and their Resilience values (**Will, Health, Conviction**) using the eventual approved creation budget; initialize all six resource tracks from those ratings.
-4. Allocate appropriate Geard Attributes, Talents, Skills and Specialties using their final, not-assumed dice caps. Map the 24 TES labels to these categories.
+3. Record all **12 independent attributes**: Body (Strength, Dexterity, Agility, Health), Mind (Intelligence, Perception, Wits, Will), Soul (Charisma, Insight, Temperance, Conviction). Health/Will/Conviction directly determine their resource-track capacities. Starting budget remains open.
+4. Choose **exactly one Talent** from [the twelve presets or a custom named five-skill package](../rules/TALENTS.md). All 24 Skills are available and trainable regardless of Talent; allocate Skill and narrower Specialty ratings under the eventual approved budget. Only the five governed Skills receive extra Talent dice. Talent progression is separate from ordinary Skill perks.
 5. Set equipment, starting Effects/Tiers, spell schools and legal resource Costs. Do not reuse D20 HP, MP, AC, hit bonus, or 0–100 skill ratings.
 6. Review eligible perks and advancement only after the d10 critical and use-based practice mechanics are approved.
 7. Confirm personal hooks, danger/lethality preferences, style of play and boundaries.

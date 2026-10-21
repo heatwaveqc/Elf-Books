@@ -1,0 +1,51 @@
+title: Attributes and Talents
+type: text/markdown
+geard-audience: player
+tags: Rules Traits
+
+# Attributes, Talent, Skills, and Specialties
+
+**Status:** 12-attribute names and the single five-skill Talent structure are adopted. The precise numeric dice caps, character-creation budget, advancement rates, and Talent-tree benefits remain provisional. Different settings supply their own skill catalog and preset Talents.
+
+## Twelve attributes in three aspects
+
+Each aspect has four independently rated attributes, corresponding to the four engine functions:
+
+| Function | Body (physical) | Mind (mental) | Soul (social/spiritual) |
+| --- | --- | --- | --- |
+| Potence | **Strength** | **Intelligence** | **Charisma** |
+| Accuracy | **Dexterity** | **Perception** | **Insight** |
+| Avoidance | **Agility** | **Wits** | **Temperance** |
+| Resilience | **Health** | **Will** | **Conviction** |
+
+All twelve are **attributes in their own right**. Health, Will and Conviction are **not derived** from other attributes. They are the usual personal Resilience values and set mark capacity on each aspect's two [[Resource Tracks]]. Active protection can adjust the effective injury threshold without adding Resilience slots.
+
+The aspects remain **Body, Mind, Soul** in the engine. Calling Soul's everyday nonmagical uses “social” does not remove its spiritual identity or the Spirit/Mana tracks.
+
+## Four sources of competence
+
+An applicable active roll provisionally combines:
+
+`relevant Attribute + selected Talent (only if it governs the used Skill) + Skill + applicable Specialty`
+
+- **Attribute:** The function appropriate to this particular roll (e.g. Dexterity for physical Accuracy, Strength for physical Potence). For a different method, choose a different relevant attribute; this is adjudication, not a free bonus.
+- **Talent:** The character has **exactly one** chosen Talent that governs **exactly five distinct skills** from the setting's catalog. It contributes its rated dice **only when one of those five skills is genuinely used**. This is an affinity, **not a class**.
+- **Skill:** A learnable ability anyone may use and advance whether or not it belongs to their Talent.
+- **Specialty:** A single narrow application under a parent Skill, such as a particular weapon, spell or technical activity. Only a directly applicable Specialty adds dice; owning several doesn't stack them.
+
+For the tentative dice-pool implementation, each source has a provisional **0–5** rating cap and contributes its rating in d10s. One applicable contribution from each category makes a provisional personal maximum of 20d10; no Talent contribution means the character simply rolls fewer dice, not that the skill is forbidden. Suitable equipment can contribute additional dice under the existing provisional gear ceiling. These caps and starting budgets are subject to playtesting.
+
+**Resilience** is normally passive/static; its attribute is used directly as the appropriate threshold/capacity, not presumed to be an additional active die contribution to every Accuracy/Potence roll. The derivation of **static Avoidance** from Avoidance attributes, skill, gear or circumstances still requires a separate rule.
+
+## What a Talent does and doesn't do
+
+- Exactly **one Talent per character**. The setting may provide named five-skill packages or allow a freely named **custom package of any five distinct skills**.
+- Talent is a **rated source of extra dice** on governed skills **and has a separate personal progression tree**. The specific progression rewards/branches and means of raising Talent are **not yet defined** by the generic engine.
+- It **never** prevents ungoverned Skill improvement, use of those Skills' Specialties, access to ordinary Skill perks, or the attempt of a skill-based action.
+- The character **does not select a different Talent on each roll**; the same chosen package remains their Talent. Rules for later retraining/exceptional changes are open.
+- Treat a Skill as governed by Talent based on the **actual Skill used**, not on whether the GM finds the situation similar in theme. A physical swordsman can still use a social Attribute for an appropriate swordsman-related social action, but doesn't gain a Mage Talent bonus unless the declared governed Skill is being used.
+- Multiple Specialties or multiple Talents never pile onto one roll.
+
+**Example:** A character's Talent “Spellsword” governs One-Handed, Light Armor, Alteration, Destruction, and Restoration. With Dexterity 3, Talent 2, One-Handed 4 and Longswords Specialty 1, physical sword Accuracy rolls 10d10; a Strength 4 sword Potence roll uses 11d10. For non-governed Smithing with Strength 4, Smithing 3 and no Specialty, the same character uses **7d10**; Smithing remains trainable. These example numbers are demonstrations, not official creation values.
+
+See [[Project Framework]] and [[Tentative d10 Resolution]] for what the resulting pool does. The choice of advancement rules and trait purchasing is deliberately separate.

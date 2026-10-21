@@ -10,6 +10,8 @@ tentative core randomizer while the resolution engine is tested.
 
 This is a provisional implementation, not a locked final dice engine.
 
+The provisional Attribute + Talent + Skill + Specialty composition uses **one applicable rating per category**; the Talent contribution only applies to one of its five governed Skills, and ungoverned Skills remain usable. See [[Attributes and Talents]].
+
 ## Dice Pool
 
 Roll a number of d10s equal to the relevant rating or pool.

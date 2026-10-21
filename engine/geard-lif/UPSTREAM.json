@@ -1,24 +1,29 @@
 {
   "source_repository": "heatwaveqc/geard-lif",
-  "upstream_commit": "37699bf629cae33743f609354cff14871d9a4e79",
+  "upstream_commit": "ac172d47bcb0f0d6b5db42df98f67cc3abd54c3d",
   "import_kind": "verbatim player-audience wiki rule snapshot",
   "upstream_paths": [
     "tiddlers/Content/Rules/Project_Framework.tid",
     "tiddlers/Content/Rules/Resource_Tracks.tid",
     "tiddlers/Content/Rules/Tentative_D10_Resolution.tid",
-    "tiddlers/Content/Rules/Tentative_Tier_Scaling.tid"
+    "tiddlers/Content/Rules/Tentative_Tier_Scaling.tid",
+    "tiddlers/Content/Rules/Attributes_and_Talents.tid"
   ],
   "local_paths": [
     "engine/geard-lif/source/Project_Framework.tid",
     "engine/geard-lif/source/Resource_Tracks.tid",
     "engine/geard-lif/source/Tentative_D10_Resolution.tid",
-    "engine/geard-lif/source/Tentative_Tier_Scaling.tid"
+    "engine/geard-lif/source/Tentative_Tier_Scaling.tid",
+    "engine/geard-lif/source/Attributes_and_Talents.tid"
   ],
   "note": "Public player-audience rules only. Upstream AI/GM-only design content is not automatically published or synchronized. Re-import by explicit reviewed PR.",
   "status": {
     "project": "locked",
     "resource_tracks": "locked",
     "d10_randomizer": "provisional",
-    "tier_scaling": "provisional"
+    "tier_scaling": "provisional",
+    "attributes": "locked",
+    "talent_structure": "locked",
+    "trait_numeric_caps": "provisional"
   }
 }

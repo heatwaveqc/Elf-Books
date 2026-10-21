@@ -9,19 +9,34 @@
   "archetype_optional": null,
   "engine": {
     "id": "geard-lif",
-    "upstream_commit": "37699bf629cae33743f609354cff14871d9a4e79",
+    "upstream_commit": "ac172d47bcb0f0d6b5db42df98f67cc3abd54c3d",
     "adapter_rules_commit": null
   },
-  "resilience": {
-    "will": null,
-    "health": null,
-    "conviction": null
-  },
   "traits": {
-    "attributes": {},
-    "talents": {},
+    "attributes": {
+      "strength": null,
+      "dexterity": null,
+      "agility": null,
+      "health": null,
+      "intelligence": null,
+      "perception": null,
+      "wits": null,
+      "will": null,
+      "charisma": null,
+      "insight": null,
+      "temperance": null,
+      "conviction": null
+    },
     "skills": {},
-    "specialties": {}
+    "specialties": {},
+    "talent": {
+      "id": null,
+      "name": null,
+      "governed_skills": [],
+      "rating": null,
+      "tree_progress": {},
+      "unlocked_nodes": []
+    }
   },
   "tiers": {},
   "resources": {
@@ -74,7 +89,8 @@
     "status": "UNDEFINED_PENDING_GEARD_CONVERSION",
     "practice_events": [],
     "perk_points": null,
-    "owned_perks": []
+    "owned_perks": [],
+    "talent_events": []
   },
   "inventory": [],
   "relationships": [],

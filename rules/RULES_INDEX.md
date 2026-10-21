@@ -1,6 +1,6 @@
 # Elf-Books rules authority — Geard Lif migration
 
-**Overall status: FOUNDATION / NOT PLAYABLE.** Do not use archived D20 mechanics. **Geard Lif / Raven's Heart is the base engine**, vendored at [engine/geard-lif](../engine/geard-lif/README.md) from upstream commit `37699bf629cae33743f609354cff14871d9a4e79`.
+**Overall status: FOUNDATION / NOT PLAYABLE.** Do not use archived D20 mechanics. **Geard Lif / Raven's Heart is the base engine**, vendored at [engine/geard-lif](../engine/geard-lif/README.md) from upstream commit `ac172d47bcb0f0d6b5db42df98f67cc3abd54c3d`.
 
 ## Authority order
 
@@ -19,13 +19,14 @@
 
 ## Provisional upstream, not approved for actual campaigns
 
-- d10 successes (7–9=1, 10=2); trait pools from Attribute/Talent/Skill/Specialty; 5 cap per category, up to 20 personal dice and 40 including gear.
+- d10 successes (7–9=1, 10=2); provisional 0–5 caps and up to 20 personal dice/40 including gear. **Twelve attribute names and one five-skill Talent are now established**, and a governed skill adds the Talent rating; ungoverned skill activity is fully legal.
 - Approximate 10× Tier difference, converted rolled magnitude, static opposition stays at its own Tier.
-- Full combat/equipment formulas, critical-event frequency, setbacks and repair, zero-threshold case, and exact character traits remain incomplete. Ordinary Project equality **succeeds**.
+- Full combat/equipment formulas, critical-event frequency, setbacks and repair, zero-threshold case, precise trait-to-action choices, static Avoidance, Talent tree, and creation budgets remain incomplete. Ordinary Project equality **succeeds**.
 
 ## Elf-Books material preserved but awaiting conversion
 
-- [24 candidate skill names](SKILLS.md) and [structured vocabulary](skills.json), with existing historical TES skill grouping used as metadata only.
+- **[Twelve attributes and five-skill Talent packages](TALENTS.md)** are adopted, with [structured 12 attributes](attributes.json), [12 sample Talents and custom option](talents.json), and a separate as-yet-undefined personal Talent progression tree.
+- [24 skill names](SKILLS.md) and [structured vocabulary](skills.json); all skills may advance regardless of Talent.
 - [Perk design](PERKS.md) and [75 TES game inspirations](../design/tes_perk_seeds.json), with no final Geard gate/effect.
 - [Use-based advancement intent](ADVANCEMENT.md); old 5×skill, XP per HP, XP per Magicka etc. are **retired numeric formulas**.
 - [Armor/combat adaptation](DEFENSE.md); old D20 AC is **not** active.

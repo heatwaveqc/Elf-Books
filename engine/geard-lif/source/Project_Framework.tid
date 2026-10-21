@@ -11,7 +11,7 @@ tasks use the same underlying structure rather than separate resolution engines.
 
 The core structure below is settled. The current dice implementation and Tier
 scaling are still tentative; see [[Tentative d10 Resolution]] and
-[[Tentative Tier Scaling]].
+[[Tentative Tier Scaling]], and [[Attributes and Talents]].
 
 ## Project Traits
 
