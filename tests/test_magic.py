@@ -11,7 +11,7 @@ from magic import (
     casting_pools,mana_cost_resistance,resolve_mana_cost,
     mana_cost_practice_xp,counterspell_avoidance,spell_is_learned,
     spell_cost_from_potence,resolve_spell_cast_cost,
-    validate_spell_design,resolve_compound_spell_costs
+    validate_spell_design,resolve_compound_spell_costs,resolve_curse_tick
 )
 
 class MagicTests(unittest.TestCase):
@@ -133,6 +133,40 @@ class MagicTests(unittest.TestCase):
             resolve_compound_spell_costs(components=[(-1,1)],**base)
         with self.assertRaises(ValueError):
             resolve_compound_spell_costs(components=[(2,-1)],**base)
+
+    def test_curse_breaks_only_after_successful_active_resistance(self):
+        one=resolve_curse_tick(stored_potence=4,resistance_successes=3)
+        self.assertEqual((one.damage_magnitude,one.curse_active,
+                          one.broken_by_resistance),(4,True,False))
+        two=resolve_curse_tick(stored_potence=4,resistance_successes=2,
+                               curse_active=one.curse_active)
+        self.assertEqual((two.damage_magnitude,two.curse_active),(4,True))
+        three=resolve_curse_tick(stored_potence=4,resistance_successes=4,
+                                 curse_active=two.curse_active)
+        self.assertEqual((three.damage_magnitude,three.curse_active,
+                          three.broken_by_resistance),(0,False,True))
+        # A remaining one-hour duration cannot resume ticks once broken.
+        four=resolve_curse_tick(stored_potence=4,resistance_successes=0,
+                                curse_active=three.curse_active)
+        self.assertEqual((four.damage_magnitude,four.curse_active),(0,False))
+
+    def test_curse_resistance_success_exceeds_potence(self):
+        result=resolve_curse_tick(stored_potence=3,resistance_successes=7)
+        self.assertEqual((result.damage_magnitude,result.curse_active,
+                          result.broken_by_resistance),(0,False,True))
+
+    def test_curse_zero_power_and_invalid_inputs(self):
+        result=resolve_curse_tick(stored_potence=0,resistance_successes=0)
+        self.assertFalse(result.curse_active)
+        for values in (
+            dict(stored_potence=-1,resistance_successes=2),
+            dict(stored_potence=True,resistance_successes=2),
+            dict(stored_potence=4,resistance_successes=-1),
+            dict(stored_potence=4,resistance_successes=False),
+            dict(stored_potence=4,resistance_successes=2,curse_active=1)
+        ):
+            with self.assertRaises(ValueError):
+                resolve_curse_tick(**values)
 
     def test_resources_mind_magic_and_soul_social(self):
         self.assertEqual(RESOURCE_TRACKS["mind"],

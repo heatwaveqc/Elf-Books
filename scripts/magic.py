@@ -263,6 +263,39 @@ def resolve_compound_spell_costs(
     return tuple(results)
 
 
+
+@dataclass(frozen=True)
+class CurseTick:
+    damage_magnitude: int
+    curse_active: bool
+    broken_by_resistance: bool
+
+
+def resolve_curse_tick(*, stored_potence:int, resistance_successes:int,
+                       curse_active:bool=True)->CurseTick:
+    """First successful active resistance PERMANENTLY ends this curse.
+
+    This is a post-roll adapter: an actual method-appropriate active defense
+    must already have been rolled. A failure takes the stored Potence as
+    damage and remains active. A success meets or beats stored Potence,
+    prevents current damage and ends the curse forever. Subsequent ticks
+    cannot restart it. Duration expiry, dispels and subject death are
+    handled by the surrounding effect ledger, not by this helper.
+    No caster Potence or Mana reroll is made per tick.
+    """
+    if type(stored_potence) is not int or stored_potence < 0:
+        raise ValueError("stored Potence must be nonnegative integer")
+    if type(resistance_successes) is not int or resistance_successes < 0:
+        raise ValueError("resistance successes must be nonnegative integer")
+    if type(curse_active) is not bool:
+        raise ValueError("curse active flag must be boolean")
+    if not curse_active:
+        return CurseTick(0,False,False)
+    if resistance_successes >= stored_potence:
+        return CurseTick(0,False,True)
+    return CurseTick(stored_potence,True,False)
+
+
 def mana_cost_practice_xp(*, tier:int, talent:Talent, school_id:str,
                           will_rating:int, school_skill_rating:int,
                           talent_rating:int|None=None,
