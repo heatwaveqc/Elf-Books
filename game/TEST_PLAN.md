@@ -31,6 +31,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - [XP benchmarking](../design/XP_CALIBRATION.md) tests 20→25, 50→55, 95→100 and 20→100 with d8 expected nominal damage, actual HP lost to armor, and candidate magic/noncombat scales. XP magnitudes are **not approved**.
 - [Core defense smoke tests](../tests/test_xp_calibration.py) check without-10 AC, +3 plate/shield endgame matchup, reaction consumption/perk bypass, and armor gaining XP from actual HP loss despite a failed Block.
 
+## Actual-damage XP and fivefold rank-cost candidate
+- [New XP experiment](../design/ACTUAL_DAMAGE_XP.md) tests K=5 versus K=1 and base d8 versus applied real HP loss. [Pure calculator](../scripts/actual_damage_xp.py) tests that overkill is not extra learning, mitigated damage earns less, and a 20-HP enemy awards no more than 20 damage XP regardless of hit count.
+- Test that skill 20→25 can become ~3 times slower than the previous base-damage model with only 1d8+3 actual HP per hit; high-end 1d8+7+3 damage is below the 22.5 XP/hit break-even.
+- Recalibrate armor, Block/Dodge, schools of magic, crafting and social rewards whenever the rank-cost scale changes. No new XP numbers are operative without approval.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.

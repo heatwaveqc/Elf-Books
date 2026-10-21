@@ -1,6 +1,6 @@
 # Skill XP — first calibration pass (proposals, not approved numbers)
 
-**Purpose:** Select unit scales using equal-opportunity benchmarks rather than reflexively awarding one point per die roll. The 24-skill candidate is in [skills_v2.json](skills_v2.json) and the agreed defense formula is [rules/DEFENSE.md](../rules/DEFENSE.md).
+**Purpose: PRIOR COMPARISON DESIGN ONLY.** The latest candidate is [actual applied HP damage with fivefold rank cost](ACTUAL_DAMAGE_XP.md). Keep this K=1/base-weapon-die document as a reference baseline, **not** the recommended way to award weapon XP. The 24-skill candidate is in [skills_v2.json](skills_v2.json) and the agreed defense formula is [rules/DEFENSE.md](../rules/DEFENSE.md).
 
 ## Rank cost: candidate K = 1
 
