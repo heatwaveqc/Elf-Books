@@ -42,9 +42,13 @@ For substantial projects, predeclare DC, work interval, progress goal, and genui
 - Project: DC25, goal 1,000, result 30 ⇒ 750 progress and 75 XP; next interval can credit only the remaining 250, awarding 25 XP.
 - A successful DC25 quick check ⇒ 50 XP; a meaningful failed DC25 check ⇒ 12.5 XP.
 
+## Critical-derived perk points
+
+A **meaningful, successful natural 20** in an active skill use awards **one bankable, untyped perk point**. An opponent's **natural 1 on a credible incoming attack** similarly awards the character **one perk point**, providing passive combat defenses with critical breakthrough opportunities. This is **distinct from defensive XP**, since a natural-1 attack is an automatic miss and does not demonstrate a successful trained avoidance. Points can be saved and spent at will on one owned-once, skill-gated eligible perk. Ordinary trainers cannot teach perks; exceptional artifacts and revelations may grant points or defined perks. See [PERKS.md](PERKS.md) for full treatment.
+
 ## Next development phase
 
-**Perks**: skill gates, active critical discoveries, passive defensive opportunities, instructor teaching and whether earned discoveries can be banked. Critical successes **do not** directly increase skill ranks.
+**Perks**: earning points from qualifying critical events and banking/spending them is defined in [PERKS.md](PERKS.md); individual perk effects, final skill-rank gates, extraordinary artifact rewards and GM save integration remain unfinished. Critical successes **do not** directly increase skill ranks.
 
 Details still needed for specific spell effects, unconventional damage mitigation, teamwork, defensive reactions and GM save integration. Numeric XP progression is settled; **Elf-Books is not yet playable**.
 

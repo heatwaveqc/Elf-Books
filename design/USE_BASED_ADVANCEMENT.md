@@ -1,5 +1,7 @@
 # Skill advancement v2 — consequential-use XP and critical perk discovery
 
+**CURRENT PERK RULES:** [PERKS.md](../rules/PERKS.md) supersedes the perk-discovery proposal below: qualifying criticals **grant bankable shared perk points**, not instant skill-locked perks; credible natural-1 enemy attacks grant passive combat opportunity, ordinary trainers do not teach perks, and explicit rare artifacts may grant them.
+
 **Status: early proposal, NOT complete operative rules.** The updated defensive core is now [rules/DEFENSE.md](../rules/DEFENSE.md), and numerical skill XP benchmarking is in [XP_CALIBRATION.md](XP_CALIBRATION.md). In particular, actual HP lost while armored teaches armor regardless of whether Block/Dodge was attempted. Earlier XP/AC discussions below are retained as design history.
 
 **Previous status: working proposal, NOT operative rules.** A newer [24-skill consolidation and defense draft](CONSOLIDATED_SKILLS_DEFENSE.md) supersedes the earlier AC-attribution examples below for **single-method defense**; the general concept of use-based XP remains current. This supersedes the *learning-check advancement recommendation* in [ADVANCEMENT_MATH.md](ADVANCEMENT_MATH.md), but not the still-proposed 0–100 skill scale, +1 skill bonus per 5 ranks, or Warrior/Mage/Rogue ECL formulas. Do not migrate characters or begin play until the quantitative details are approved.
