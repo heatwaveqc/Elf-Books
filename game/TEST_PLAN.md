@@ -74,6 +74,11 @@ These are **structural** tests; passing them does **not** declare the game playa
 - [Perk bank prototype/tests](../tests/test_perk_points.py) check cross-skill banking, requirement gating, single point per unique event, legitimate sparring, no point from trivial/nonwinning criticals, and explicitly exceptional artifact direct rewards.
 - Next implement real perk effects, authoritative skill threshold catalog, event-ID-based persistence and item-specific rewards. Ordinary trainers can teach skills but **cannot teach perks**.
 
+## Perk source-port review
+- [TES perk crosswalk](../design/TES_PERK_PORT_SURVEY.md) uses cited Skyrim vanilla and Oblivion mastery benefits across all 24 candidate skills, distinguishing near-direct permissions/techniques, D20-conversion candidates, poor-fit numeric effects, and absent trees.
+- [Machine-checkable candidate inventory](../design/tes_perk_candidates.json) and [unit tests](../tests/test_tes_perk_survey.py) check 24-skill coverage, 75 research entries, valid skill thresholds, source links, and leave the existing 48 provisional perks untouched.
+- Source perks are **not automatically live**; after player chooses a shortlist, define exact triggers/actions/requirements for adoptable perks, avoid clashing with flat skill damage and existing no-Stamina system, and ensure perk points remain bankable skill-gated purchases.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.

@@ -1,0 +1,692 @@
+{
+  "schema_version": 1,
+  "status": "RESEARCH_CANDIDATES_NOT_PURCHASABLE",
+  "fit_meanings": {
+    "direct": "Narrative capability carries over; implementation details and prerequisite approval still needed.",
+    "convert": "Recognizable TES idea, but substantive D20/action/economy translation needed.",
+    "reject": "Poor fit or redundant with Elf-Books core.",
+    "missing": "No Skyrim counterpart; build original with thematic TES inspiration."
+  },
+  "policy": "All existing 48 original draft perk seeds remain untouched; source skill thresholds recorded for discussion only, not approved gates. This list is an annotated crosswalk, not game rules.",
+  "sources": {
+    "skyrim": "https://www.gamebanshee.com/skyrim/skills.php",
+    "oblivion": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033"
+  },
+  "candidates": [
+    {
+      "skill": "one_handed",
+      "original": "Critical Charge",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "Sprint into a stronger one-handed attack; map sprint/power attack and critical damage.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/one-handed.php"
+    },
+    {
+      "skill": "one_handed",
+      "original": "Dual Flurry",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "convert",
+      "design_note": "Faster dual attacks require a specific extra-attack/action-economy rule.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/one-handed.php"
+    },
+    {
+      "skill": "one_handed",
+      "original": "Hack and Slash",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "convert",
+      "design_note": "Axe attacks inflict additional bleed; define ongoing damage/stacking.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/one-handed.php"
+    },
+    {
+      "skill": "one_handed",
+      "original": "Armsman",
+      "origin": "Skyrim",
+      "minimum_skill": 0,
+      "fit": "reject",
+      "design_note": "Percentage damage multiplier duplicates the accepted +skill/5 flat damage scaling.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/one-handed.php"
+    },
+    {
+      "skill": "two_handed",
+      "original": "Sweep",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "convert",
+      "design_note": "A sideways power attack catches multiple nearby enemies; define threatened arc and attacks.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/two-handed.php"
+    },
+    {
+      "skill": "two_handed",
+      "original": "Great Critical Charge",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "Sprinting two-handed power attack; requires power-attack and critical action rules.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/two-handed.php"
+    },
+    {
+      "skill": "two_handed",
+      "original": "Barbarian",
+      "origin": "Skyrim",
+      "minimum_skill": 0,
+      "fit": "reject",
+      "design_note": "Percentage base damage duplicates skill-derived damage bonuses.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/two-handed.php"
+    },
+    {
+      "skill": "archery",
+      "original": "Hunter's Discipline",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "direct",
+      "design_note": "Retrieve twice as many usable arrows after combat; ammo recovery is narrative bookkeeping.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/archery.php"
+    },
+    {
+      "skill": "archery",
+      "original": "Ranger",
+      "origin": "Skyrim",
+      "minimum_skill": 60,
+      "fit": "convert",
+      "design_note": "Move without losing readied bow/aim; specify move/ready interaction.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/archery.php"
+    },
+    {
+      "skill": "archery",
+      "original": "Power Shot",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "On a strong arrow hit, stagger; need condition/defense procedure.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/archery.php"
+    },
+    {
+      "skill": "archery",
+      "original": "Steady Hand",
+      "origin": "Skyrim",
+      "minimum_skill": 40,
+      "fit": "convert",
+      "design_note": "Slow-time aiming becomes focus/aim/reaction rule in turn-based combat.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/archery.php"
+    },
+    {
+      "skill": "block",
+      "original": "Power Bash",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "direct",
+      "design_note": "Unlock shield power-bash maneuver once bash attack action is specified.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/block.php"
+    },
+    {
+      "skill": "block",
+      "original": "Deflect Arrows",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "convert",
+      "design_note": "Shield can fully stop arrows; replace real-time shield-hit detection with legal Block reaction.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/block.php"
+    },
+    {
+      "skill": "block",
+      "original": "Block Runner",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "convert",
+      "design_note": "Move while keeping shield raised; map movement/action availability.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/block.php"
+    },
+    {
+      "skill": "block",
+      "original": "Elemental Protection",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "Halve elemental effects when shield blocks; define timing and resource.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/block.php"
+    },
+    {
+      "skill": "heavy_armor",
+      "original": "Conditioning",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "direct",
+      "design_note": "Worn heavy armor contributes no encumbrance or movement penalty.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/heavyarmor.php"
+    },
+    {
+      "skill": "heavy_armor",
+      "original": "Cushioned",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "direct",
+      "design_note": "Halve falling HP damage with a full heavy-armor suit.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/heavyarmor.php"
+    },
+    {
+      "skill": "heavy_armor",
+      "original": "Tower of Strength",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "Reduce stagger when fully heavy-armored; needs stagger rule.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/heavyarmor.php"
+    },
+    {
+      "skill": "heavy_armor",
+      "original": "Juggernaut",
+      "origin": "Skyrim",
+      "minimum_skill": 0,
+      "fit": "reject",
+      "design_note": "Percent armor-rating multiplier breaks calibrated additive AC.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/heavyarmor.php"
+    },
+    {
+      "skill": "unarmed",
+      "original": "Hand to Hand: Journeyman ghost striking",
+      "origin": "Oblivion",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "Unarmed techniques affect ghosts/ethereal targets; depends on insubstantiality rules.",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033"
+    },
+    {
+      "skill": "unarmed",
+      "original": "Hand to Hand: side power attack",
+      "origin": "Oblivion",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "Unarmed power maneuver can disarm; define D20 maneuver.",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033"
+    },
+    {
+      "skill": "athletics",
+      "original": "Athletics: sprint fatigue mastery",
+      "origin": "Oblivion",
+      "minimum_skill": 100,
+      "fit": "reject",
+      "design_note": "No Stamina pool, so fatigue regeneration perk has no direct target.",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033"
+    },
+    {
+      "skill": "athletics",
+      "original": "Acrobatics: attack during jumps",
+      "origin": "Oblivion",
+      "minimum_skill": 25,
+      "fit": "direct",
+      "design_note": "Allow a normal attack while leaping/falling; requires legal movement.",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033"
+    },
+    {
+      "skill": "smithing",
+      "original": "Arcane Blacksmith",
+      "origin": "Skyrim",
+      "minimum_skill": 60,
+      "fit": "direct",
+      "design_note": "Temper/improve enchanted weapons and armor.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/smithing.php"
+    },
+    {
+      "skill": "smithing",
+      "original": "Dwarven Smithing",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "convert",
+      "design_note": "Use Dwarven crafting process and improve results; requires recipe/craft DC.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/smithing.php"
+    },
+    {
+      "skill": "smithing",
+      "original": "Daedric Smithing",
+      "origin": "Skyrim",
+      "minimum_skill": 90,
+      "fit": "convert",
+      "design_note": "Craft Daedric equipment with necessary materials and recipe access.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/smithing.php"
+    },
+    {
+      "skill": "alteration",
+      "original": "Stability",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "convert",
+      "design_note": "Longer Alteration duration; define duration multiplier.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/alteration.php"
+    },
+    {
+      "skill": "alteration",
+      "original": "Mage Armor",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "convert",
+      "design_note": "Enhances flesh protection while unarmored; AC stacking and magic scale must be defined.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/alteration.php"
+    },
+    {
+      "skill": "alteration",
+      "original": "Atronach",
+      "origin": "Skyrim",
+      "minimum_skill": 100,
+      "fit": "convert",
+      "design_note": "Absorb incoming magical energy; define resisted spell and Magicka restore.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/alteration.php"
+    },
+    {
+      "skill": "conjuration",
+      "original": "Summoner",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "direct",
+      "design_note": "Extend conjuration summon/reanimate range twofold.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/conjuration.php"
+    },
+    {
+      "skill": "conjuration",
+      "original": "Atromancy",
+      "origin": "Skyrim",
+      "minimum_skill": 40,
+      "fit": "direct",
+      "design_note": "Double atronach summoning duration.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/conjuration.php"
+    },
+    {
+      "skill": "conjuration",
+      "original": "Soul Stealer",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "direct",
+      "design_note": "Bound weapons also apply Soul Trap on hit, subject to soul rules.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/conjuration.php"
+    },
+    {
+      "skill": "conjuration",
+      "original": "Oblivion Binding",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "Bound strikes banish summons and turn reanimated foes; requires effects system.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/conjuration.php"
+    },
+    {
+      "skill": "conjuration",
+      "original": "Twin Souls",
+      "origin": "Skyrim",
+      "minimum_skill": 100,
+      "fit": "convert",
+      "design_note": "Allow two concurrent summons; encounter balance and summon-slot system needed.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/conjuration.php"
+    },
+    {
+      "skill": "destruction",
+      "original": "Rune Master",
+      "origin": "Skyrim",
+      "minimum_skill": 40,
+      "fit": "direct",
+      "design_note": "Place magical runes at five times their normal range.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/destruction.php"
+    },
+    {
+      "skill": "destruction",
+      "original": "Impact",
+      "origin": "Skyrim",
+      "minimum_skill": 40,
+      "fit": "convert",
+      "design_note": "Dual-cast Destruction spells can stagger; define dual casting and save.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/destruction.php"
+    },
+    {
+      "skill": "destruction",
+      "original": "Intense Flames",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "Weak targets struck by fire may flee; define threshold and fear mechanic.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/destruction.php"
+    },
+    {
+      "skill": "illusion",
+      "original": "Quiet Casting",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "direct",
+      "design_note": "Spells cast from any school make no audible casting sound.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/illusion.php"
+    },
+    {
+      "skill": "illusion",
+      "original": "Master of the Mind",
+      "origin": "Skyrim",
+      "minimum_skill": 90,
+      "fit": "convert",
+      "design_note": "Mind effects can target undead, daedra and constructs; define immunities and exceptions.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/illusion.php"
+    },
+    {
+      "skill": "illusion",
+      "original": "Animage",
+      "origin": "Skyrim",
+      "minimum_skill": 20,
+      "fit": "convert",
+      "design_note": "Improve influence on animals; no target level cap in this system.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/illusion.php"
+    },
+    {
+      "skill": "mysticism",
+      "original": "Oblivion Mysticism spell mastery ranks",
+      "origin": "Skyrim",
+      "minimum_skill": 25,
+      "fit": "reject",
+      "design_note": "Spell-tier access isn't a perk to copy verbatim into the classless engine.",
+      "source": "https://cs.uesp.net/wiki/mysticism"
+    },
+    {
+      "skill": "mysticism",
+      "original": "Skyrim ward/absorption effects from other schools",
+      "origin": "Skyrim",
+      "minimum_skill": 60,
+      "fit": "convert",
+      "design_note": "Spell absorption, Soul Trap and detection inspire future Mysticism perks; no direct Skyrim tree.",
+      "source": "https://cs.uesp.net/wiki/mysticism"
+    },
+    {
+      "skill": "restoration",
+      "original": "Ward Absorb",
+      "origin": "Skyrim",
+      "minimum_skill": 60,
+      "fit": "direct",
+      "design_note": "Absorbing hostile spells with a ward restores Magicka, magnitude needs tuning.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/restoration.php"
+    },
+    {
+      "skill": "restoration",
+      "original": "Necromage",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "convert",
+      "design_note": "Enhanced magic against undead; decide size/target type.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/restoration.php"
+    },
+    {
+      "skill": "restoration",
+      "original": "Avoid Death",
+      "origin": "Skyrim",
+      "minimum_skill": 90,
+      "fit": "convert",
+      "design_note": "Limited automatic emergency healing; convert fixed 250 HP to level-free Health scale.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/restoration.php"
+    },
+    {
+      "skill": "restoration",
+      "original": "Respite",
+      "origin": "Skyrim",
+      "minimum_skill": 40,
+      "fit": "reject",
+      "design_note": "Restores Stamina, which Elf-Books deliberately removed.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/restoration.php"
+    },
+    {
+      "skill": "alchemy",
+      "original": "Green Thumb",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "direct",
+      "design_note": "Gather double the number of ingredients from plants.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/alchemy.php"
+    },
+    {
+      "skill": "alchemy",
+      "original": "Concentrated Poison",
+      "origin": "Skyrim",
+      "minimum_skill": 60,
+      "fit": "direct",
+      "design_note": "One weapon poison application remains effective for twice as many hits.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/alchemy.php"
+    },
+    {
+      "skill": "alchemy",
+      "original": "Experimenter",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "direct",
+      "design_note": "Eating an ingredient reveals additional alchemical effects; rank specifics follow Skyrim.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/alchemy.php"
+    },
+    {
+      "skill": "alchemy",
+      "original": "Purity",
+      "origin": "Skyrim",
+      "minimum_skill": 100,
+      "fit": "direct",
+      "design_note": "Craft potions without unwanted harmful effects and poisons without unwanted helpful effects.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/alchemy.php"
+    },
+    {
+      "skill": "enchanting",
+      "original": "Extra Effect",
+      "origin": "Skyrim",
+      "minimum_skill": 100,
+      "fit": "direct",
+      "design_note": "A finished item can hold two enchantments, with normal resource requirements.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/enchanting.php"
+    },
+    {
+      "skill": "enchanting",
+      "original": "Soul Squeezer",
+      "origin": "Skyrim",
+      "minimum_skill": 20,
+      "fit": "convert",
+      "design_note": "Soul gems provide more recharge energy; define recharge costs.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/enchanting.php"
+    },
+    {
+      "skill": "enchanting",
+      "original": "Soul Siphon",
+      "origin": "Skyrim",
+      "minimum_skill": 40,
+      "fit": "convert",
+      "design_note": "Defeating nonhuman foes recharges wielded enchanted weapon; needs souls model.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/enchanting.php"
+    },
+    {
+      "skill": "light_armor",
+      "original": "Unhindered",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "direct",
+      "design_note": "Light armor worn imposes no encumbrance or movement penalty.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/lightarmor.php"
+    },
+    {
+      "skill": "light_armor",
+      "original": "Deft Movement",
+      "origin": "Skyrim",
+      "minimum_skill": 100,
+      "fit": "convert",
+      "design_note": "Chance to evade all melee damage; avoid adding hidden invulnerability to AC.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/lightarmor.php"
+    },
+    {
+      "skill": "light_armor",
+      "original": "Wind Walker",
+      "origin": "Skyrim",
+      "minimum_skill": 60,
+      "fit": "reject",
+      "design_note": "Only modifies Stamina regeneration; no equivalent resource.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/lightarmor.php"
+    },
+    {
+      "skill": "dodge",
+      "original": "Oblivion Acrobatics: jumping attacks",
+      "origin": "Oblivion",
+      "minimum_skill": 25,
+      "fit": "direct",
+      "design_note": "May attack while jumping/falling; may also fit Athletics; decide authoritative mapping.",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033"
+    },
+    {
+      "skill": "dodge",
+      "original": "Oblivion Acrobatics: rolling dodge",
+      "origin": "Oblivion",
+      "minimum_skill": 50,
+      "fit": "convert",
+      "design_note": "Rapid tumble to avoid attacks, translating dodge ability into action-economy option.",
+      "source": "https://steamcommunity.com/sharedfiles/filedetails/?id=1092346033"
+    },
+    {
+      "skill": "sneak",
+      "original": "Light Foot",
+      "origin": "Skyrim",
+      "minimum_skill": 40,
+      "fit": "direct",
+      "design_note": "Avoid activating mundane pressure plates through careful movement.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/sneak.php"
+    },
+    {
+      "skill": "sneak",
+      "original": "Silence",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "direct",
+      "design_note": "Walking/running at normal pace carries no added movement-noise detection penalty.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/sneak.php"
+    },
+    {
+      "skill": "sneak",
+      "original": "Shadow Warrior",
+      "origin": "Skyrim",
+      "minimum_skill": 100,
+      "fit": "convert",
+      "design_note": "Break target tracking briefly in combat; turn-based perception and invisibility required.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/sneak.php"
+    },
+    {
+      "skill": "sneak",
+      "original": "Backstab",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "reject",
+      "design_note": "Sixfold damage clashes with existing flat skill damage, HP balance and ambush system.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/sneak.php"
+    },
+    {
+      "skill": "security",
+      "original": "Quick Hands",
+      "origin": "Skyrim",
+      "minimum_skill": 40,
+      "fit": "direct",
+      "design_note": "Can work a lock discreetly without inherently revealing the activity.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/lockpicking.php"
+    },
+    {
+      "skill": "security",
+      "original": "Wax Key",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "direct",
+      "design_note": "Successful picking yields a copy of the key when a copyable key exists.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/lockpicking.php"
+    },
+    {
+      "skill": "security",
+      "original": "Unbreakable",
+      "origin": "Skyrim",
+      "minimum_skill": 100,
+      "fit": "direct",
+      "design_note": "Normal lockpicks are not destroyed by picking failures.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/lockpicking.php"
+    },
+    {
+      "skill": "security",
+      "original": "Treasure Hunter",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "reject",
+      "design_note": "Changes chest loot probability rather than character ability; GM owns world inventory.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/lockpicking.php"
+    },
+    {
+      "skill": "legerdemain",
+      "original": "Poisoned",
+      "origin": "Skyrim",
+      "minimum_skill": 40,
+      "fit": "direct",
+      "design_note": "Slip poison onto an unsuspecting target to cause its normal effects.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/pickpocket.php"
+    },
+    {
+      "skill": "legerdemain",
+      "original": "Misdirection",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "direct",
+      "design_note": "May lift a worn/readied weapon from an unsuspecting target.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/pickpocket.php"
+    },
+    {
+      "skill": "legerdemain",
+      "original": "Perfect Touch",
+      "origin": "Skyrim",
+      "minimum_skill": 100,
+      "fit": "direct",
+      "design_note": "May remove equipped gear from an unsuspecting target.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/pickpocket.php"
+    },
+    {
+      "skill": "speechcraft",
+      "original": "Merchant",
+      "origin": "Skyrim",
+      "minimum_skill": 50,
+      "fit": "direct",
+      "design_note": "Negotiate trade of categories outside a shop's usual merchandise, subject to NPC consent.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/speech.php"
+    },
+    {
+      "skill": "speechcraft",
+      "original": "Bribery",
+      "origin": "Skyrim",
+      "minimum_skill": 30,
+      "fit": "convert",
+      "design_note": "Gain ability to bribe guards to overlook lesser offenses; no universal NPC mind control.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/speech.php"
+    },
+    {
+      "skill": "speechcraft",
+      "original": "Investor",
+      "origin": "Skyrim",
+      "minimum_skill": 70,
+      "fit": "convert",
+      "design_note": "Fund businesses to increase working capital; economy/world persistence needed.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/speech.php"
+    },
+    {
+      "skill": "speechcraft",
+      "original": "Master Trader",
+      "origin": "Skyrim",
+      "minimum_skill": 100,
+      "fit": "reject",
+      "design_note": "Every merchant in the world receiving free gold isn't grounded in a solo GM simulation.",
+      "source": "https://www.gamebanshee.com/skyrim/skills/speech.php"
+    },
+    {
+      "skill": "survival",
+      "original": "No equivalent Skyrim perk tree",
+      "origin": "Skyrim",
+      "minimum_skill": null,
+      "fit": "missing",
+      "design_note": "Design separately using Elder Scrolls' environmental gameplay rather than fabricating a vanilla tree.",
+      "source": "https://www.gamebanshee.com/skyrim/skills.php"
+    },
+    {
+      "skill": "lore",
+      "original": "No equivalent Skyrim perk tree",
+      "origin": "Skyrim",
+      "minimum_skill": null,
+      "fit": "missing",
+      "design_note": "Design research and scholarship perks from existing gameplay; no standalone Skyrim Lore tree.",
+      "source": "https://www.gamebanshee.com/skyrim/skills.php"
+    }
+  ]
+}
