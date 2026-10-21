@@ -1,6 +1,6 @@
 {
   "source_repository": "heatwaveqc/geard-lif",
-  "upstream_commit": "4ba2934cbb34cf8f43584016fadd2e339fad23fe",
+  "upstream_commit": "5f4f5473a53873e83aaee82a8e3e3ae4c508af50",
   "import_kind": "verbatim player-audience wiki rule snapshot",
   "upstream_paths": [
     "tiddlers/Content/Rules/Project_Framework.tid",
@@ -33,6 +33,8 @@
     "trait_tiers_and_cascade": "working",
     "passive_xp": "tier-0-ceiling; higher-tier-exact",
     "static_defense": "floor-half-of-total-pool",
-    "cost_resistance": "setting-defined threshold modifiers"
+    "cost_resistance": "setting-defined threshold modifiers",
+    "resource_aspects": "mind-spirit-mana;body-injury-fatigue;soul-plasticity-attention",
+    "elder_scrolls_mana_resistance": "Will+governing Talent+School Skill+Spell Specialty+eligible gear; capacity Will"
   }
 }

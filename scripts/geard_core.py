@@ -7,6 +7,12 @@ Armor/effect modifiers, advancement and GM state integration remain separate.
 from __future__ import annotations
 from dataclasses import dataclass, replace
 
+RESOURCE_TRACKS = {
+    "mind": {"resilience": "will", "slow": "spirit", "fast": "mana"},
+    "body": {"resilience": "health", "slow": "injury", "fast": "fatigue"},
+    "soul": {"resilience": "conviction", "slow": "plasticity", "fast": "attention"},
+}
+
 PENALTY=(0,-1,-2,-4)
 GRADES=("minor","middling","major","final")
 

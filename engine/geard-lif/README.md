@@ -29,3 +29,5 @@ For executable **pure arithmetic exercises**, see [`scripts/geard_core.py`](../.
 - Do not automatically copy or sublicense Geard Lif material beyond the owner's authorized Elf-Books adaptation; no general license is implied by this import.
 
 The preserved prior d20 system is on [`archive/d20-pre-geard-lif`](https://github.com/heatwaveqc/Elf-Books/tree/archive/d20-pre-geard-lif); **it is historical**, not an alternate active engine.
+
+**Current aspect ownership:** Mind/Will holds Spirit and Mana; Soul/Conviction holds Plasticity and Attention; Body/Health holds Injury and Fatigue. See [resource tracks](source/Resource_Tracks.tid) and [Elf-Books' four-source Cost rule](../../design/MAGIC.md).

@@ -131,10 +131,13 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
                 errors.append("character needs passive and cascade/up-tier event ledgers")
             if set(item.get("resources",{})) != {"mind","body","soul"}:
                 errors.append("character must have three Geard resource aspects")
-            for aspect,tracks in (("mind",("attention","plasticity")),
+            for aspect,tracks in (("mind",("spirit","mana")),
                                   ("body",("injury","fatigue")),
-                                  ("soul",("mana","spirit"))):
-                if any(item.get("resources",{}).get(aspect,{}).get(t) != [0,0,0,0] for t in tracks):
+                                  ("soul",("plasticity","attention"))):
+                present=item.get("resources",{}).get(aspect,{})
+                if not isinstance(present,dict) or set(present)!=set(tracks):
+                    errors.append(f"character resource aspect has wrong track names: {aspect}")
+                elif any(present[t] != [0,0,0,0] for t in tracks):
                     errors.append(f"character resource aspect missing four-grade track: {aspect}")
         if name == "gm-secrets.json" and item.get("preflight", {}).get("status") != "pending":
             errors.append("GM secrets template must not be ready")
