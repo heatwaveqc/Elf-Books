@@ -70,6 +70,17 @@ def load_attack_modes() -> dict[str,dict]:
         raise ValueError("duplicate/invalid attack mode IDs")
     if any(not m.get("valid_defenses") and not m.get("defense_none_explicit",False) for m in modes):
         raise ValueError("contested attack mode has no declared legal defensive responses")
+    for mode in modes:
+        if (mode.get("typical_target_track") == "plasticity"
+            or mode.get("long_term_target_track") == "plasticity"):
+            if not mode.get("supernatural_attack",False):
+                raise ValueError("only supernatural attacks can directly mark Plasticity")
+        if mode.get("kind") == "social":
+            if mode.get("typical_target_track") != "attention" or mode.get("supernatural_attack"):
+                raise ValueError("ordinary social attacks must target Attention only")
+        if mode.get("kind") in {"social","supernatural_social"}:
+            if any(d.get("attribute") == "conviction" for d in mode.get("valid_defenses",[])):
+                raise ValueError("Conviction is social Resilience/soak, not Avoidance")
     return {m["id"]:m for m in modes}
 
 

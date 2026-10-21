@@ -17,18 +17,19 @@ These are working **default mode menus**, subject to weapon technique, narrative
 | Ice spear / magical missile | Same Dodge/Block; **Wits + Mysticism** counterspell if permitted | **Parry** |
 | Cold exposure | **Health + Survival** | Physical Block/Parry/Dodge |
 | Direct freezing Malediction | **Health + Survival**, or **Wits + Mysticism** when countermagic is available | **Dodge, Block, Parry** |
-| Social persuasion | **Insight + Speechcraft** to critically evaluate, **Temperance + Speechcraft** to remain composed, **Conviction + Speechcraft** to defend explicit values | Physical defenses |
+| Social persuasion | **Insight + Speechcraft** to critically evaluate, **Temperance + Speechcraft** to maintain composure, **Wits + Lore** where factual verification is available | Physical defenses; Conviction as Avoidance |
 | Social deception | **Insight + Speechcraft** to discern lies, **Wits + Lore** to verify facts when applicable | Physical defenses |
-| Social intimidation | **Temperance + Speechcraft** against pressure, **Conviction + Speechcraft** to stand firm | Physical defenses |
-| Social reputation/shame | **Insight + Speechcraft** to challenge framing, **Conviction + Speechcraft** for identity, **Wits + Lore** to verify factual claims | Physical defenses |
+| Social intimidation | **Temperance + Speechcraft** to resist emotional pressure, **Insight + Speechcraft** to recognize bluffs | Physical defenses; Conviction as Avoidance |
+| Social reputation/shame | **Insight + Speechcraft** to challenge framing, **Temperance + Speechcraft** to withstand shame, **Wits + Lore** to verify claims | Physical defenses; Conviction as Avoidance |
+| **Supernatural identity Malediction** | **Temperance + Speechcraft** to resist intrusion, or available **Wits + Mysticism** counterspell | Physical defenses; Conviction as Avoidance |
 
 In a *direct freezing Malediction*, an attacker does not conjure an interceptable ice spear: the cold directly assaults the victim, so they withstand it via the **same Health + Survival pool as adverse weather**. A physically traveling ice spear instead permits Dodge or shield Block, as does an arrow; none is normally Parried. Counterspelling remains an ability-dependent alternative, not a free defense added atop survival or Dodge.
 
 ## Default social attack modes
 
-Four social modes are available as initial playtesting options: **Persuasion, Deception, Intimidation, Reputation**. In a consequential hostile contest the attacker's default **Accuracy** is **Insight + Speechcraft** (finding an applicable opening) and **Potence** is **Charisma + Speechcraft** (how strongly it changes the situation). Legitimate alternative Skills/methods can be defined by particular actions.
+Four **mundane** social modes are the initial playtesting options: **Persuasion, Deception, Intimidation, Reputation**. Their usual Accuracy is **Insight + Speechcraft**, except physically imposing **Intimidation uses Strength + Speechcraft** to establish the threatening opening. Their typical Potence is **Charisma + Speechcraft** to establish its social effect. Cross-category Attributes are entirely legitimate when the described method fits; explicit alternatives can be defined by particular actions. The catalog separately includes a sample *supernatural identity Malediction* to test Plasticity protection.
 
-Typical immediate social strain lands on **Soul/Attention** (fast), and lasting damage to identity, belonging, or social adaptation can land on **Soul/Plasticity** (slow). **Conviction**, not Will, sets mark slots on both. Ordinary conversation does not automatically inflict resource marks: an attack requires genuine stakes, declared mode, an appropriate target and Project framing. Reputation attacks can also involve a Project representing an audience or institution, not just marks on one person's track.
+**All mundane social attacks can directly mark Soul/Attention (fast) only. Direct marks on Soul/Plasticity (slow) require a supernatural attack.** Long-term mundane reputation, relationship and identity consequences are still possible through narrative outcomes, institutions and Projects—not direct Plasticity injury. **Conviction provides both Soul resource mark capacity and baseline mark-severity resistance (soak), never ordinary social Avoidance**: avoid the pressure using Insight, Temperance or other applicable methods rather than treating resilience as evasion. Ordinary conversation does not automatically inflict marks; consequences require real stakes and a legitimate Project or contested effect.
 
 These are *default attack modes*, not a final social-vulnerability, agency or status model. No automatic social mind control from high Charisma; what a completed social Project does in the fiction remains bounded by the narrative situation and separately specified action.
 

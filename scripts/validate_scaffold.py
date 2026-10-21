@@ -109,6 +109,15 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
         mode_ids.add(mid)
         if not mode.get("valid_defenses") and not mode.get("defense_none_explicit"):
             errors.append(f"attack mode {mid} has no legal defenses")
+        if mode.get("typical_target_track")=="plasticity" or mode.get("long_term_target_track")=="plasticity":
+            if not mode.get("supernatural_attack"):
+                errors.append(f"mode {mid}: direct Plasticity marks require supernatural attack")
+        if mode.get("kind")=="social":
+            if mode.get("typical_target_track")!="attention" or mode.get("supernatural_attack"):
+                errors.append(f"mode {mid}: mundane social attack must target Attention only")
+        if mode.get("kind") in ("social","supernatural_social"):
+            if any(x.get("attribute")=="conviction" for x in mode.get("valid_defenses",[])):
+                errors.append(f"mode {mid}: Conviction is Soul soak, not Avoidance")
         for defense in mode.get("valid_defenses",[]):
             if defense.get("attribute") not in set(observed) or defense.get("skill") not in skill_ids:
                 errors.append(f"attack mode {mid} has invalid defensive Attribute + Skill")

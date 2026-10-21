@@ -1,6 +1,6 @@
 {
   "source_repository": "heatwaveqc/geard-lif",
-  "upstream_commit": "d38a29d902750a2d4b222399fd32d96eb3ec6e4e",
+  "upstream_commit": "a870b69d1204fc90e2228d35412d0c83fa69b19c",
   "import_kind": "verbatim player-audience wiki rule snapshot",
   "upstream_paths": [
     "tiddlers/Content/Rules/Project_Framework.tid",
@@ -39,6 +39,10 @@
     "resource_aspects": "mind-spirit-mana;body-injury-fatigue;soul-plasticity-attention",
     "elder_scrolls_mana_resistance": "Will+governing Talent+School Skill+Spell Specialty+eligible gear; capacity Will",
     "attack_modes": "named pool contract; setting default modes in Elf Books",
-    "external_bonus_cap": "sum external sources <= same-Tier unmodified personal dice"
+    "external_bonus_cap": "sum external sources <= same-Tier unmodified personal dice",
+    "tier_effect_scale": "fivefold",
+    "tier_xp_scale": "fivefold",
+    "social_resources": "Mundane direct effects only Attention; Plasticity direct marks supernatural-only",
+    "social_resilience": "Conviction sets mark capacity and severity, not Avoidance"
   }
 }

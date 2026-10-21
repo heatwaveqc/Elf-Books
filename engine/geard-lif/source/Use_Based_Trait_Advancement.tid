@@ -40,9 +40,9 @@ This rewards actual consequential practice, not empty repetitions manufactured s
 
 ## Trait Tiers, cascade and passive practice
 
-The separate [[Trait Tiers and Experience Cascade]] rule defines per-trait Tiers, **one same-Tier Attribute die to enable Skill and one same-Tier Skill die to enable Specialty**, no rating cap between them, Talent exemption, 10× Tier-scaled costs and earned XP, raw-XP cascade **Talent → Attribute → Skill → Specialty**, and fractional passive defense/resistance awards.
+The separate [[Trait Tiers and Experience Cascade]] rule defines per-trait Tiers, **one same-Tier Attribute die to enable Skill and one same-Tier Skill die to enable Specialty**, no rating cap between them, Talent exemption, 5× per-Tier scaled costs and earned XP, raw-XP cascade **Talent → Attribute → Skill → Specialty**, and fractional passive defense/resistance awards.
 
-For static defense, total the chosen source dice and **round half the pool down**. For passive XP, award each actually used trait **ceil(rating/10) XP at Tier 0**, or **rating/10 × 10^Tier XP at Tier 1+**. These are **passive awards**, not extra active-success multiplier awards. Maxed trait XP can be banked toward up-tiering or cascaded once; not both.
+For static defense, total the chosen source dice and **round half the pool down**. For passive XP, award each actually used trait **ceil(rating/10) XP at Tier 0**, or **rating/10 × 5^Tier XP at Tier 1+** (retain fractional XP rather than rounding). These are **passive awards**, not extra active-success multiplier awards. Maxed trait XP can be banked toward up-tiering or cascaded once; not both.
 
 ## Remaining integrations
 

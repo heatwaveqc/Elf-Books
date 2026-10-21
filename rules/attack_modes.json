@@ -7,8 +7,9 @@
     "Defense depends on how the attack reaches the target, not whether it is magic or physical.",
     "Pick one available named defensive response, which supplies floor(total dice/2) static opposition. A declared mode must contain one or more defenses or explicitly say that no defense applies.",
     "Physical projectiles do not allow default Parry; direct nonmissile Maledictions cannot be Dodged, Blocked or Parried.",
-    "Social attacks affect Soul's Attention or Plasticity only for genuinely consequential hostile influence, not everyday conversation. Mark capacity for both is Conviction.",
-    "Alternate defenses require circumstances in catalog; countermagic requires access to a reaction or counterspell, not free universal use."
+    "Ordinary social attacks may directly mark only Soul's Attention. Only supernatural attacks may directly mark Soul's Plasticity. Conviction provides resource capacity and effect soak, not Avoidance.",
+    "Alternate defenses require circumstances in catalog; countermagic requires access to a reaction or counterspell, not free universal use.",
+    "Social attack attributes may cross categories: physically imposing intimidation uses Strength + Speechcraft Accuracy by default; Charisma + Speechcraft Potence."
   ],
   "modes": [
     {
@@ -46,7 +47,8 @@
           "condition": "suitable held two-handed weapon and timing"
         }
       ],
-      "typical_target_track": "injury"
+      "typical_target_track": "injury",
+      "supernatural_attack": false
     },
     {
       "id": "launched_projectile",
@@ -74,7 +76,8 @@
       "forbidden_defaults": [
         "parry"
       ],
-      "typical_target_track": "injury"
+      "typical_target_track": "injury",
+      "supernatural_attack": false
     },
     {
       "id": "ice_spear_projectile",
@@ -107,7 +110,8 @@
       "forbidden_defaults": [
         "parry"
       ],
-      "typical_target_track": "injury"
+      "typical_target_track": "injury",
+      "supernatural_attack": false
     },
     {
       "id": "cold_exposure",
@@ -122,7 +126,8 @@
           "condition": "actually exposed to cold and able to adapt or endure"
         }
       ],
-      "typical_target_track": "fatigue"
+      "typical_target_track": "fatigue",
+      "supernatural_attack": false
     },
     {
       "id": "direct_freezing_malediction",
@@ -151,7 +156,8 @@
         "block",
         "parry"
       ],
-      "typical_target_track": "fatigue"
+      "typical_target_track": "fatigue",
+      "supernatural_attack": false
     },
     {
       "id": "social_persuasion",
@@ -179,14 +185,15 @@
           "condition": "deliberately resist emotional pressure"
         },
         {
-          "id": "stand_by_values",
-          "attribute": "conviction",
-          "skill": "speechcraft",
-          "condition": "appeal challenges explicitly held commitments"
+          "id": "check_claim",
+          "attribute": "wits",
+          "skill": "lore",
+          "condition": "relevant factual evidence or domain knowledge can be applied"
         }
       ],
       "typical_target_track": "attention",
-      "long_term_target_track": "plasticity"
+      "supernatural_attack": false,
+      "ordinary_long_term_consequences": "Can affect relationships, reputation, status and Projects; never directly marks Plasticity"
     },
     {
       "id": "social_deception",
@@ -215,14 +222,15 @@
         }
       ],
       "typical_target_track": "attention",
-      "long_term_target_track": "plasticity"
+      "supernatural_attack": false,
+      "ordinary_long_term_consequences": "Can affect relationships, reputation, status and Projects; never directly marks Plasticity"
     },
     {
       "id": "social_intimidation",
       "label": "Intimidation and social coercion",
       "kind": "social",
       "attack_accuracy": {
-        "attribute": "insight",
+        "attribute": "strength",
         "skill": "speechcraft"
       },
       "attack_potence": {
@@ -237,14 +245,15 @@
           "condition": "resisting social pressure and emotional dysregulation"
         },
         {
-          "id": "stand_firm",
-          "attribute": "conviction",
+          "id": "recognize_bluff",
+          "attribute": "insight",
           "skill": "speechcraft",
-          "condition": "refusing pressure to abandon convictions"
+          "condition": "discern when threats lack credibility or backing"
         }
       ],
       "typical_target_track": "attention",
-      "long_term_target_track": "plasticity"
+      "supernatural_attack": false,
+      "ordinary_long_term_consequences": "Can affect relationships, reputation, status and Projects; never directly marks Plasticity"
     },
     {
       "id": "social_reputation",
@@ -266,20 +275,53 @@
           "condition": "able to expose manipulation or rebut claims"
         },
         {
-          "id": "stand_by_identity",
-          "attribute": "conviction",
-          "skill": "speechcraft",
-          "condition": "defending self-image and personal integrity"
-        },
-        {
           "id": "verify_reputation",
           "attribute": "wits",
           "skill": "lore",
           "condition": "concrete evidence or contextual knowledge is available"
+        },
+        {
+          "id": "maintain_composure",
+          "attribute": "temperance",
+          "skill": "speechcraft",
+          "condition": "withstand shame or emotional pressure without losing social composure"
         }
       ],
       "typical_target_track": "attention",
-      "long_term_target_track": "plasticity"
+      "supernatural_attack": false,
+      "ordinary_long_term_consequences": "Can affect relationships, reputation, status and Projects; never directly marks Plasticity"
+    },
+    {
+      "id": "supernatural_identity_malediction",
+      "label": "Supernatural attack against identity",
+      "kind": "supernatural_social",
+      "supernatural_attack": true,
+      "attack_accuracy": {
+        "attribute": "perception",
+        "skill": "illusion",
+        "illustrative": true
+      },
+      "attack_potence": {
+        "attribute": "intelligence",
+        "skill": "illusion",
+        "illustrative": true
+      },
+      "valid_defenses": [
+        {
+          "id": "defend_identity",
+          "attribute": "temperance",
+          "skill": "speechcraft",
+          "condition": "personally resist the supernatural intrusion on social identity"
+        },
+        {
+          "id": "counterspell",
+          "attribute": "wits",
+          "skill": "mysticism",
+          "condition": "a legitimate counterspell reaction is available"
+        }
+      ],
+      "typical_target_track": "plasticity",
+      "scope_note": "Only explicitly supernatural attacks may directly mark Plasticity; ordinary persuasion and other social methods remain Attention only"
     }
   ]
 }

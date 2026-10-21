@@ -27,8 +27,8 @@ def convert_tier(magnitude:int,source:int,target:int)->int:
     if type(magnitude)!=int or magnitude<0 or type(source)!=int or type(target)!=int:
         raise ValueError("integer magnitude/tier required")
     if source>=target:
-        return magnitude*10**(source-target)
-    return magnitude//10**(target-source)
+        return magnitude*5**(source-target)
+    return magnitude//5**(target-source)
 
 def severity_marks(magnitude:int,threshold:int)->tuple[int,int]:
     """Return (grade 0..3, count). Any positive effect gets at least Minor.

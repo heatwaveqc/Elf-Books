@@ -21,3 +21,5 @@ The current **provisional** randomizer is a Storyteller-style d10 pool (7–9 = 
 See [MIGRATION_BACKLOG.md](../MIGRATION_BACKLOG.md) for unresolved mechanics and acceptance scenarios. Until they pass, game status remains **not playable**.
 
 **Named roll convention:** Rules say only **Attribute + Skill**. Applicable five-skill Talent and one declared relevant Specialty are implicit. All legal gear, enchantments, ensorcellments and temporary magical bonuses share a **single external dice cap** equal to unmodified personal dice. [Attack modes](ATTACK_MODES.md) specify appropriate defenses, not generic Dodge against everything.
+
+**Social resource routing:** mundane social attacks directly affect only Soul's **Attention**; only supernatural attacks may directly inflict **Plasticity** marks. **Conviction** establishes Soul soak and mark capacity, not generic social Avoidance. Cross-category Attribute+Skill methods such as offensive **Strength + Speechcraft** intimidation are explicitly legal.
