@@ -7,7 +7,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import Mapping, Sequence
-from fractions import Fraction
 
 from trait_pools import ATTRIBUTES, Talent, MAX_RATING, dice_for_rating, compose_tier_pool, validate_tier_ratings
 
@@ -216,30 +215,31 @@ def cascade_xp_tenths(*, source: str, amount_tenths: int,
     return dest,amount_tenths
 
 
-def static_defense_value(contributing_ratings: Mapping[str,int]) -> Fraction:
-    """Static defense = half dice actually provided by the chosen package.
+def static_defense_value(contributing_ratings: Mapping[str,int]) -> int:
+    """Static defense = floor(total eligible personal dice / 2).
 
-    Exact halves are preserved. No decision on eventual integer rounding.
-    Equipment rating/flat modifiers belong to a separate adapter.
+    Floor ONCE after summing, not separately by each participating trait.
+    Equipment/other modifiers belong to the relevant adapter.
     """
     if not contributing_ratings:
         raise ValueError("defense must identify participating traits")
-    return Fraction(sum(dice_for_rating(r) for r in contributing_ratings.values()),2)
+    return sum(dice_for_rating(r) for r in contributing_ratings.values())//2
 
 
 def passive_xp_tenths(contributing_ratings: Mapping[str,int],
                       tier: int=0) -> dict[str,int]:
-    """Actual passive defense/Cost practice: rating/10 XP per source ×10^Tier.
+    """Award per-trait passive XP in tenths, rounding UP at Tier 0 only.
 
-    Return integer tenths of base XP to avoid losing fractional awards.
-    The caller determines which sources genuinely contributed to the
-    chosen defense or resource Cost resistance, and deduplicates events.
+    Tier 0: ceil(rating / 10) whole XP per participating trait.
+    Tier >=1: exactly rating/10 * 10**tier XP (always an integer).
+    Existing rating and actual source participation determine the award;
+    never apply the active 2/1/5/10 success multipliers again.
     """
     multiplier=tier_multiplier(tier)
     if not contributing_ratings:
         raise ValueError("passive event must identify participating traits")
     result={}
-    for source, rating in contributing_ratings.items():
+    for source,rating in contributing_ratings.items():
         dice_for_rating(rating)
-        result[source]=rating*multiplier
+        result[source]=10*((rating+9)//10) if tier==0 else rating*multiplier
     return result

@@ -1,6 +1,6 @@
 # Geard Lif core snapshot for Elf-Books
 
-This directory is a **local, reviewed snapshot** of seven player-audience Geard Lif rules, imported from [heatwaveqc/geard-lif](https://github.com/heatwaveqc/geard-lif) at pinned commit `6332383e3dbf68d0f0c7184ab704758125055f83`. The upstream repository is private; the copied pages were deliberately marked **player-facing** upstream. Nothing in the source repository's GM or AI-only layers is imported.
+This directory is a **local, reviewed snapshot** of seven player-audience Geard Lif rules, imported from [heatwaveqc/geard-lif](https://github.com/heatwaveqc/geard-lif) at pinned commit `4ba2934cbb34cf8f43584016fadd2e339fad23fe`. The upstream repository is private; the copied pages were deliberately marked **player-facing** upstream. Nothing in the source repository's GM or AI-only layers is imported.
 
 Elf-Books follows Geard Lif (internally documented as Raven's Heart) as its **base rules engine**, not D&D/d20. The canonical upstream engine remains Geard Lif. The checked-in snapshot is the version actually available to public Elf-Books readers and GM runtimes: upstream changes do **not** silently change a pinned campaign.
 
@@ -17,7 +17,7 @@ Elf-Books follows Geard Lif (internally documented as Raven's Heart) as its **ba
 9. [Elder Scrolls implementation boundaries](../../rules/RULES_INDEX.md)
 10. [Migration and critical path](../../MIGRATION_BACKLOG.md)
 
-For executable **pure arithmetic exercises**, see [`scripts/geard_core.py`](../../scripts/geard_core.py). This script can compute d10 successes, Tier conversion, resource severity/mark/recovery and track project progress. It evaluates **meet-to-beat application**, Potence-to-four-grade marks, **Scope-sized Project mark capacity**, promotion/exhaustion, and optional protection-adjusted personal thresholds. It also includes a tested provisional four-source trait pool calculator. It can now calculate the working rating/XP curve and per-source roll XP; full character budgets, selection of passive trait packages and defenses, equipment, magic and Talent-tree/perk systems still need work.
+For executable **pure arithmetic exercises**, see [`scripts/geard_core.py`](../../scripts/geard_core.py). This script can compute d10 successes, Tier conversion, resource severity/mark/recovery and track project progress. It evaluates **meet-to-beat application**, Potence-to-four-grade marks, **Scope-sized Project mark capacity**, promotion/exhaustion, and optional protection-adjusted personal thresholds. It also includes a tested provisional four-source trait pool calculator. It can now calculate the working rating/XP curve and per-source roll XP; full character budgets, equipment values, legal reaction timing, spell-effect catalogs and Talent-tree/perk systems still need work.
 
 ## Updating the snapshot
 

@@ -9,7 +9,7 @@
   "archetype_optional": null,
   "engine": {
     "id": "geard-lif",
-    "upstream_commit": "6332383e3dbf68d0f0c7184ab704758125055f83",
+    "upstream_commit": "4ba2934cbb34cf8f43584016fadd2e339fad23fe",
     "adapter_rules_commit": null
   },
   "traits": {

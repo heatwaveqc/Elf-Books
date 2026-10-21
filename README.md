@@ -4,7 +4,7 @@
 
 ## Status
 
-**FOUNDATION / NOT PLAYABLE.** A local snapshot of Geard Lif's player-facing Project, resource, tentative d10 and Tier rules is in [engine/geard-lif/](engine/geard-lif/README.md). The twelve attributes, five-skill Talent model and 24-skill vocabulary are defined, and the 0–25 source-dice XP model is now implemented for active rolls, with all twelve starting Attributes >=5 and five governed starting Skills >=5; complete budgets, defense/Cost contributor selection, Talent trees, combat, magic and persistence still need work.
+**FOUNDATION / NOT PLAYABLE.** A local snapshot of Geard Lif's player-facing Project, resource, tentative d10 and Tier rules is in [engine/geard-lif/](engine/geard-lif/README.md). The twelve attributes, five-skill Talent model and 24-skill vocabulary are defined, and the 0–25 source-dice XP model is now implemented for active rolls, with all twelve starting Attributes >=5 and five governed starting Skills >=5; complete budgets, many reaction/equipment values, Talent trees, full combat, full spell lists and persistence still need work.
 
 Geard Lif is the mechanical upstream; Elf-Books provides Elder Scrolls characters, magic traditions, setting, NPCs, perks, and an independent solo-GM experience. Changes to upstream engine mechanics must be reviewed and repinned, not improvised differently here.
 

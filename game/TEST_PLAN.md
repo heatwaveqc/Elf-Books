@@ -56,3 +56,10 @@
 - A trait cannot purchase Tier 1 until its Tier 0 rating is 25. Tier 1 rating 20→21 costs **2,000 XP**, versus Tier 0 **200 XP**. Source rewards multiply by 10 **once**, not again after Tier-scaled Effect magnitude.
 - Test choice between keeping maxed Talent XP to unlock Tier 1 and cascading **unchanged raw XP** to the first unmaxed Attribute/Skill/Specialty. No double award and no arbitrary related-skill recipient.
 - Static four-die Dodge = **2**. Agility rating 10 + Talent 5 + Dodge 5 + Specialty 0 passive awards **1.0 / 0.5 / 0.5 / 0 XP**, not 2/1/5/10 times that amount. Verify fractional, Tier 1, and true resource-Cost resistance cases.
+
+## Spell Cost and rounding tests
+
+- At Tier 0, a rating 5/11/15 participant receives **1/2/2 whole passive XP** (rounded up per source); zero earns zero. At Tier 1, ratings 5/11/15 earn **5/11/15 XP** (no ceiling needed).
+- Static defense **floors the combined dice/2**, not per-source halves: one total die 0, two dice 1, three dice 1, four dice 2.
+- Destruction Accuracy uses **Perception + Destruction**, Potence **Intelligence + Destruction**, and its rolled self-Cost is measured against static **Will + Destruction**, plus cost-reducing robes; **Conviction** sets the independent Mana mark capacity. Cost dice themselves are never reduced by robes, no extra resistance roll occurs.
+- Default counterspell uses **Wits + Mysticism** as a chosen alternative static Avoidance. Appropriate Talent/Specialty are applicable where legitimate; counterspell reaction cost and timing remain unsettled.

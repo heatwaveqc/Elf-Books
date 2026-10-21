@@ -1,6 +1,6 @@
 # Geard Lif compatibility status — snapshot review
 
-This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/6332383e3dbf68d0f0c7184ab704758125055f83/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
+This is a **snapshot summary** of upstream [Raven's Heart Core Design](https://github.com/heatwaveqc/geard-lif/blob/4ba2934cbb34cf8f43584016fadd2e339fad23fe/ai/design/RAVENS_HEART_CORE_DESIGN.md). That design document is private AI/development material **and is not copied into public Elf-Books**. The four public player-audience tiddlers are the executable reference sources. Do not portray provisional mechanics as locked simply because they appear in local files.
 
 ## Locked upstream concepts
 
@@ -40,4 +40,6 @@ This document is descriptive, not a patch or silent rule change to upstream Gear
 
 ## Working trait Tier and passive XP rules
 
-Every trait begins at Tier 0, and buying the next Tier requires rating 25 at the preceding Tier. Cost and earned XP scale by `10^Tier`. A same-Tier Skill needs at least one die from its governing Attribute and a Specialty needs at least one die from its Skill; their *ratings* may be higher than the parent rating. Talent is not a prerequisite. Maxed-trait **raw XP** is either banked for up-tier advancement or cascaded Talent→Attribute→Skill→Specialty without reapplying the receiving trait's XP multiplier. Static defense equals half the relevant dice pool (fractional rounding not settled), and each actually used defensive/resisting trait earns `rating/10×10^Tier` base XP. See [the imported canonical player rule](source/Trait_Tiers_and_Experience_Cascade.tid).
+Every trait begins at Tier 0, and buying the next Tier requires rating 25 at the preceding Tier. Cost and earned XP scale by `10^Tier`. A same-Tier Skill needs at least one die from its governing Attribute and a Specialty needs at least one die from its Skill; their *ratings* may be higher than the parent rating. Talent is not a prerequisite. Maxed-trait **raw XP** is either banked for up-tier advancement or cascaded Talent→Attribute→Skill→Specialty without reapplying the receiving trait's XP multiplier. Static defense is **floor(half the combined relevant dice pool)**, and each actually used defensive/resisting trait earns **ceil(rating/10) XP at Tier 0** or exact **rating/10 ×10^Tier XP at Tier 1+**. See [the imported canonical player rule](source/Trait_Tiers_and_Experience_Cascade.tid).
+
+**Cost threshold versus capacity:** the generic Cost magnitude still rolls unmodified; settings may define static resistance Attribute/Skill and equipment additions which change its *severity threshold*, never the target resource's Resilience-sized mark capacity. Elf-Books defines Will + same casting school, while Conviction remains Mana capacity (see [Magic](../../design/MAGIC.md)).
