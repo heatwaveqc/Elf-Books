@@ -58,6 +58,12 @@ These are **structural** tests; passing them does **not** declare the game playa
 - [Methodology/report](../design/SOLO_PACING_COMPARISON.md) separates one-chat-project summaries from the actual week-by-week simulation; compare goal 1000/2500/6000 against constant 1000 goals.
 - Do not attempt to equalize XP per *chat turn* with an artificial reward cap. World clocks, expenses and fiction elapsed are real costs for downtime.
 
+## Armor and magic XP calibration
+- [Candidate formulas, examples and layering rules](../design/MAGIC_DEFENSE_XP.md) and [testable arithmetic](../tests/test_magic_defense_xp.py) cover 2 XP per actually attributable offensive HP, candidate 1×/2× actual MP spent, candidate armor 4 XP/HP suffered, active protection 2 XP/HP suffered, and credited avoidance 2× full enemy attack total.
+- Avoided hits require a legal chosen defense and counterfactual AC test; natural-1 attacker misses and natural-20 attacker hits regardless of AC, so neither is a defender avoided-attack XP event. Spells get avoidance XP only if their increment uniquely prevents a hit.
+- Ensure independent damage sources do not collectively claim more outgoing HP than a victim actually lost; document optional parallel learning for *worn armor plus active protection spell* from one genuinely damaging event.
+- Test utility school's low XP from Magicka-only casts against damaging spells' output+Magicka; settle MP multiplier after spell costs, Magicka pools and recovery are defined.
+
 ## Before first real campaign
 - Decide advancement formula and skill/check mapping; simulate novice/specialist/generalist/mage career paths and bounded-accuracy outcomes.
 - Decide HP, damage, initiative, armor and saves without character levels.

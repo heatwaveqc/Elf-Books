@@ -12,7 +12,8 @@
 - [Rules boundaries and open decisions](rules/RULES_INDEX.md)
 - **[Agreed AC and defense progression](rules/DEFENSE.md)** (core formula agreed; combat system not fully playable)
 - **[Accepted core weapon training](design/WEAPON_SKILL_DAMAGE_XP.md)** — weapon skill adds to hit and damage; next rank costs 5× current skill, offense earns 2× real HP damage
-- **[Combat vs quick checks vs projects in solo-chat pacing](design/SOLO_PACING_COMPARISON.md)** — simulated exchanges versus fictional weeks; numerical rates still in trial
+- **[Magic, armor and avoided-attack XP trial](design/MAGIC_DEFENSE_XP.md)** — spell damage/injury plus Magicka spent; candidate 4× armor wounds and 2× attacker total for defenses
+- [Combat vs quick checks vs projects in solo-chat pacing](design/SOLO_PACING_COMPARISON.md) — simulated exchanges versus fictional weeks; numerical rates still in trial
 - [Generalized extended-roll and quick-check XP model](design/GENERALIZED_EXTENDED_XP.md) — progress = check result × DC, optional XP per credited progress, quick successes/failures based on static or opposed DC
 - [Earlier crafting-only DC award trial](design/CRAFTING_DC_XP.md) (superseded baseline)
 - [Earlier actual-damage XP, fivefold rank-cost candidate](design/ACTUAL_DAMAGE_XP.md) (comparison)
