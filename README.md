@@ -13,6 +13,7 @@
 - **[Agreed AC and defense progression](rules/DEFENSE.md)** (core formula agreed; combat system not fully playable)
 - **[Agreed skill XP rules](rules/ADVANCEMENT.md)** — one reference for rank cost, offensive/defensive/magic/quick/extended awards
 - **[Perk point breakthroughs](rules/PERKS.md)** — bankable shared points from meaningful natural 20s and credible enemy natural 1s; trainers cannot teach perks
+- **[TES game-perk source survey](design/TES_PERK_PORT_SURVEY.md)** — 24-skill mapping of vanilla Skyrim and Oblivion perks, with near-direct candidates and conversion caveats
 - [Accepted core weapon training](design/WEAPON_SKILL_DAMAGE_XP.md) — weapon skill adds to hit and damage; next rank costs 5× current skill, offense earns 2× real HP damage
 - [Magic, armor and avoided-attack XP details](design/MAGIC_DEFENSE_XP.md) — accepted multipliers, source attribution and remaining spell-specific details
 - [Combat vs quick checks vs projects in solo-chat pacing](design/SOLO_PACING_COMPARISON.md) — simulated exchanges versus fictional weeks; numerical rates still in trial

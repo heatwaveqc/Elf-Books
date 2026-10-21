@@ -43,6 +43,10 @@ At a natural-20 frequency of 5% per qualifying d20, an active character earns on
 
 If points accumulate much faster than eligible perk variety, revise perk availability or the global point economy in a later playtest rather than silently adding a one-per-scene cap now.
 
+## Survey of existing Elder Scrolls perk effects
+
+[First-pass Skyrim and Oblivion source survey](../design/TES_PERK_PORT_SURVEY.md) and [structured candidate inventory](../design/tes_perk_candidates.json) identify promising original-game perk effects for the 24-skill roster. The annotated list is **research-only**: no listed source perk becomes purchasable until its Elf-Books rule is written, checked against skill/rank gates and approved. No existing 48 draft perk seeds were overwritten.
+
 ## Remaining work
 
 1. Publish real perk actions, eligibility gates and costs in the canonical 24-skill roster (initial 25/75 hooks are provisional).
