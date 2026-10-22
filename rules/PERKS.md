@@ -70,3 +70,13 @@ In particular, original equipment 10s **may someday generate deed enchantments o
 The [75-entry source survey](../design/tes_perk_seeds.json) preserves lore and thematic names like Quiet Casting, Arcane Blacksmith, Extra Effect, Green Thumb, Wax Key, and Poisoned. **The original game's numeric skill gate can be translated into a minimum combined 0–100 requirement**, after choosing the correct Attribute and acceptable Specialties; it is **not** a gate on Skill alone. Author the actual Geard Lif effect, action/time, resource Cost, prerequisite choices, rank prices and tests before marking that perk purchasable. Geard's Fatigue is available for TES Stamina-inspired effects.
 
 Archived D20 critical rules, direct HP/MP bonuses and old fixed perk gate implementations remain historical material only.
+
+## First implemented combat-perk effects
+
+**Effect-ready, purchase-gate-pending:** [Power Bash, Deflect Arrows and Dual Flurry](../design/COMBAT_PERK_PILOTS.md) now have explicit Geard Lif attack/defense/Cost behavior and executable [effect-plan helpers](../scripts/combat_perks.py). These three are **not freely purchasable yet**, because each still requires an authored named prerequisite Attribute, accepted Specialty group and minimum 0–100 threshold. Effects are available for explicit GM-adjudicated tests without inventing those purchase gates.
+
+- **Power Bash:** choose up to **Strength dice** of extra muscle-powered weapon/shield bash Damage Potence, with **two extra Fatigue hazard dice per additional Damage die**, charged on the attempted attack even if it misses. Strength means the current-Tier die-equivalent rating (`floor(rating/5)` under Elf Books), **not** the raw 0–25 rating. The extra technique dice are separately tagged as perk-derived, never as gear or an Attribute/Skill source for breakthrough perks.
+- **Deflect Arrows:** owning the perk lets a character **Parry an arrow** with a suitable real weapon Parry mode, paying the **ordinary 1 defensive action** and **normal weapon Parry Fatigue Cost**. This changes response legality, not the baseline default for other projectiles or direct attacks.
+- **Dual Flurry:** when wielding **two ready usable melee weapons**, a single attack action delivers **two independently rolled actual strikes**, each with its normal Fatigue hazard incident, even on a miss. Three committed attack actions can therefore make **six strikes**, with accumulating fatigue and ordinary fast→slow overflow.
+
+**Arcane Blacksmith remains deferred until enchanting mechanics exist.** Quiet Casting, Extra Effect and Green Thumb are ready for separate focused effect drafting, not presumed silently implemented by this pilot.
