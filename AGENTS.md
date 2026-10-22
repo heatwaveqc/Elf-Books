@@ -1,11 +1,11 @@
 # Elf-Books — instructions for an AI GM or contributor
 
-**Source of truth:** This repo on GitHub. **Rules engine:** pinned local snapshot of Geard Lif / Raven's Heart, [engine/geard-lif/README.md](engine/geard-lif/README.md). Read [rules/RULES_INDEX.md](rules/RULES_INDEX.md) for locked, provisional, and unresolved decisions. The archived D20 design branch is **not** operative.
+**Source of truth:** This repo on GitHub. **Rules engine:** pinned historical local Geard Lif / Raven's Heart snapshot, [engine/geard-lif/README.md](engine/geard-lif/README.md). **Explicit Elf-Books progression override:** [rules/ADVANCEMENT.md](rules/ADVANCEMENT.md) uses 0–25 ratings (one die/5) and use-based XP; base Geard Lif now uses 0–5 and Drive Marks. Never silently replace Elf-Books progression with current upstream core. Read [rules/RULES_INDEX.md](rules/RULES_INDEX.md) for locked, provisional, and unresolved decisions. The archived D20 design branch is **not** operative.
 
 ## Priority
 
 1. Integrity, separation of solo campaigns and confidentiality (this file).
-2. Upstream-snapshot Project/Resources rules and [engine status](engine/geard-lif/SYSTEM_STATUS.md).
+2. Upstream-snapshot Project/Resources rules and [engine status](engine/geard-lif/SYSTEM_STATUS.md), **except that Elf-Books' explicit 0–25/use-XP progression adapter takes priority over the old generic advancement pages in the snapshot**.
 3. [Elf-Books rule index](rules/RULES_INDEX.md), then exact adapter specifications.
 4. Authorized campaign file, pinned Elf-Books commit and upstream Geard import SHA.
 5. Geographically and historically relevant original Elder Scrolls lore summaries.
@@ -13,7 +13,7 @@
 ## Must-do
 
 - A character belongs to **one independent solo game**; no imported protagonists, antagonist secrets or timeline changes from another campaign.
-- No required class or character level; no automatic 0–100 D20 skill bonus. Treat the 24-skill mapping as candidate vocabulary pending a defined Geard trait model.
+- No required class or character level; no automatic 0–100 D20 skill bonus. **Keep Elf Books' expanded 0–25 rating/XP-from-use model**, including Tier×5 costs and natural-ten bootstrapping; **do not award base Geard Lif Drive Marks as Elf-Books XP**. Treat the 24-skill mapping as candidate vocabulary pending a defined Geard trait model.
 - **Do not run live play until validated**. If a check, Tier, effect, armor, Cost, critical or XP rule is unfinished, disclose the gap rather than inventing a permanent number.
 - For a legal consequential action: determine Project/task, static opposition, actual dice, application/effect, resulting marks or progress, costs, time, advancement, independent world clocks and public/private consequences. Log each roll and state change; never fabricate dice. Distinguish unresolved provisional tie/critical mechanics.
 - Resist handwaving months of Project labor merely because one chat response summarizes them. Resolve substantive intervals, resources, setbacks and world changes.

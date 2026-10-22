@@ -22,7 +22,7 @@
     "engine/geard-lif/source/Trait_Tiers_and_Experience_Cascade.tid",
     "engine/geard-lif/source/Named_Action_Pools_and_Defense_Modes.tid"
   ],
-  "note": "Public player-audience rules only. Upstream AI/GM-only design content is not automatically published or synchronized. Re-import by explicit reviewed PR.",
+  "note": "Public player-audience rules only. Upstream AI/GM-only design content is not automatically published or synchronized. Re-import by explicit reviewed PR. Numeric advancement pages in this historical snapshot remain an explicit Elf Books variant after base Geard Lif moved to 0-5 ratings and Drive Marks; never auto-import those base rating changes as if Elf Books adopted them.",
   "status": {
     "project": "locked",
     "resource_tracks": "locked",
@@ -45,5 +45,13 @@
     "social_resources": "Mundane direct effects only Attention; Plasticity direct marks supernatural-only",
     "social_resilience": "Conviction sets mark capacity and severity, not Avoidance",
     "fast_to_slow_exhaustion": "route subsequent fast-targeted incidents into slow (Fatigue→Injury, Mana→Spirit, Attention→Plasticity); mundane social indirect overflow permitted"
+  },
+  "advancement_adapter": {
+    "name": "elf-books-use-xp-0-to-25",
+    "core_current": "geard-lif-drive-marks-0-to-5",
+    "rating_multiplier_vs_core": 5,
+    "one_die_per_rating_points": 5,
+    "source_die_practice_xp": true,
+    "explicit_override_of_legacy_imported_advancement": true
   }
 }

@@ -61,6 +61,14 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
         errors.append("Geard Lif upstream pin must be a full SHA")
     if manifest.get("source_repository") != "heatwaveqc/geard-lif":
         errors.append("unexpected mechanical upstream")
+    adapter = manifest.get("advancement_adapter", {})
+    if (adapter.get("name") != "elf-books-use-xp-0-to-25"
+        or adapter.get("core_current") != "geard-lif-drive-marks-0-to-5"
+        or adapter.get("rating_multiplier_vs_core") != 5
+        or adapter.get("one_die_per_rating_points") != 5
+        or adapter.get("source_die_practice_xp") is not True
+        or adapter.get("explicit_override_of_legacy_imported_advancement") is not True):
+        errors.append("Elf Books use-based advancement must explicitly override base Geard Lif Drive Marks")
     for name in UPSTREAM_PAGES:
         path = root / "engine/geard-lif/source" / (name + ".tid")
         try:
@@ -84,6 +92,13 @@ def validate_scaffold(root: Path = ROOT) -> list[str]:
     if (rating.get("min"),rating.get("max"),rating.get("dice_per_five"),
         rating.get("starting_floor"),rating.get("xp_per_success")) != (0,25,1,5,2):
         errors.append("working Attribute rating/XP calibration mismatch")
+    declared_adapter = attributes.get("adapter", {})
+    if (attributes.get("status") != "ELF_BOOKS_0_TO_25_USE_XP_ADAPTER"
+        or declared_adapter.get("base_core_trait_rating_range") != [0, 5]
+        or declared_adapter.get("base_core_advancement") != "Drive Marks"
+        or declared_adapter.get("elf_trait_rating_range") != [0, 25]
+        or declared_adapter.get("rating_multiplier_vs_core") != 5):
+        errors.append("Elf Books attributes must declare their 0-25 XP adapter")
     talent_data = _load_json(root / "rules/talents.json", errors)
     skill_ids = {x.get("id") for x in skills.get("skills", [])}
     if talent_data.get("selection", {}).get("governed_skill_count") != 5:
