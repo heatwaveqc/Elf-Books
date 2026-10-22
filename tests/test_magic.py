@@ -13,7 +13,7 @@ from magic import (
     spell_cost_from_potence,resolve_spell_cast_cost,
     validate_spell_design,resolve_compound_spell_costs,resolve_curse_tick,
     grade_healing_potence,oakflesh_effective_injury_threshold,
-    healing_steps_for_grade,apply_healing_recovery
+    apply_healing_recovery
 )
 
 class MagicTests(unittest.TestCase):
@@ -203,75 +203,57 @@ class MagicTests(unittest.TestCase):
         self.assertEqual(paid.cost_magnitude,4)
         self.assertEqual(paid.new_mana.marks,(0,1,0,0))
 
-    def test_matching_severity_healing_directly_removes_one_mark(self):
-        for health,potence,grade,wound in (
-            (2,4,2,(0,0,1,0)),
-            (4,4,1,(0,1,0,0)),
-            (5,4,0,(1,0,0,0)),
-        ):
-            with self.subTest(health=health):
-                healing=grade_healing_potence(
-                    patient_health_resilience=health,
-                    potence_successes=potence,
-                    willing_and_accessible=True)
-                self.assertEqual(healing.grade,grade)
-                result=apply_healing_recovery(
-                    injury=Track(health,marks=wound),healing=healing)
-                self.assertEqual(result.marks,(0,0,0,0))
+    def test_restoration_undoes_infliction_equivalence_not_natural_steps(self):
+        # Health=2, base=3: nine Minor marks promote to one Major.
+        injured=Track(2)
+        for _ in range(9):
+            injured=injured.apply_effect(1)
+        self.assertEqual(injured.marks,(0,0,1,0))
+        healing=grade_healing_potence(
+            patient_health_resilience=2,potence_successes=4,
+            willing_and_accessible=True)
+        self.assertEqual(healing.grade,2)
+        self.assertEqual(apply_healing_recovery(injury=injured,healing=healing).marks,
+                         (0,0,0,0))
+        # Seven natural recovery steps for this isolated Major are separate.
+        natural=injured
+        for _ in range(7):
+            natural=natural.recover_step()
+        self.assertEqual(natural.marks,(0,0,0,0))
 
-    def test_direct_major_healing_preserves_mixed_lower_wounds(self):
-        # Direct grade match is a SIMPLIFICATION, not identical to a full
-        # sequence of natural recovery on every mixed-wound state.
+    def test_restoration_mixed_marks_exact_subtraction(self):
         injured=Track(2,marks=(1,2,1,0))
+        self.assertEqual(injured.infliction_value(),16)
         healing=grade_healing_potence(patient_health_resilience=2,
             potence_successes=4,willing_and_accessible=True)
         result=apply_healing_recovery(injury=injured,healing=healing)
+        self.assertEqual(result.infliction_value(),7)
         self.assertEqual(result.marks,(1,2,0,0))
+        # An ordinary seven recovery steps DO NOT give the same mark layout.
         natural=injured
-        for _ in range(healing_steps_for_grade(
-                health_resilience=2,healing_grade=2,grade_mark_count=1)):
+        for _ in range(7):
             natural=natural.recover_step()
         self.assertEqual(natural.marks,(0,0,1,0))
-        self.assertNotEqual(result,natural)
 
-    def test_missing_matching_grade_uses_ordinary_recovery(self):
-        # No Major Injury: Major healing converts to seven recovery steps
-        # for Health resilience 2 and heals lower-grade wounds normally.
-        injured=Track(2,marks=(1,2,0,0))
-        healing=grade_healing_potence(patient_health_resilience=2,
-            potence_successes=4,willing_and_accessible=True)
-        steps=healing_steps_for_grade(
-            health_resilience=2,healing_grade=healing.grade,
-            grade_mark_count=1)
-        self.assertEqual(steps,7)
-        normal=injured
-        for _ in range(steps):
-            normal=normal.recover_step()
-        self.assertEqual(apply_healing_recovery(injury=injured,healing=healing),
-                         normal)
-        self.assertEqual(normal.marks,(0,0,0,0))
-        # No Middling Injury but an existing Final: ordinary recovery
-        # demotes the higher wound via exactly the standard mechanism.
+    def test_restoration_borrows_from_higher_wound_without_match(self):
         injured=Track(2,marks=(0,0,0,1))
         healing=grade_healing_potence(patient_health_resilience=2,
-            potence_successes=2,willing_and_accessible=True)
-        normal=injured
-        for _ in range(3):
-            normal=normal.recover_step()
-        self.assertEqual(apply_healing_recovery(injury=injured,healing=healing),
-                         normal)
+            potence_successes=4,willing_and_accessible=True)
+        result=apply_healing_recovery(injury=injured,healing=healing)
+        # Final is 27 Minor-equivalents; subtract Major's 9 -> 18,
+        # which canonically means two Major marks.
+        self.assertEqual(result.marks,(0,0,2,0))
+        self.assertEqual(result.infliction_value(),18)
 
-    def test_multiple_final_healing_marks_resolve_independently(self):
+    def test_restoration_multi_final_and_overhealing(self):
         injured=Track(2,marks=(1,0,1,1))
         healing=grade_healing_potence(patient_health_resilience=2,
             potence_successes=8,willing_and_accessible=True)
         self.assertEqual((healing.grade,healing.mark_equivalents),(3,2))
-        self.assertEqual(healing_steps_for_grade(health_resilience=2,
-            healing_grade=3,grade_mark_count=2),30)
-        # First Final healing mark directly erases Final Injury; second
-        # has no exact match and converts to natural recovery.
-        self.assertEqual(apply_healing_recovery(injury=injured,
-            healing=healing).marks,(0,0,0,0))
+        self.assertEqual(injured.infliction_value(),37)
+        self.assertEqual(apply_healing_recovery(
+            injury=injured,healing=healing).marks,(0,0,0,0))
+        # One Final heals 27 units; two heal 54, clamped to zero.
 
     def test_failed_healing_application_and_zero_potence_do_nothing(self):
         injured=Track(2,marks=(0,1,0,0))
@@ -291,9 +273,6 @@ class MagicTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"death"):
             apply_healing_recovery(injury=Track(2,marks=(0,0,0,2)),
                                    healing=healed)
-        with self.assertRaises(ValueError):
-            healing_steps_for_grade(health_resilience=2,
-                healing_grade=2,grade_mark_count=2)
 
     def test_oakflesh_modifies_threshold_not_health_or_mark_capacity(self):
         from geard_core import Track
