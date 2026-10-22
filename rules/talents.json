@@ -35,9 +35,11 @@
     ],
     "talent_rating_cap_provisional": 25,
     "starting_governed_skill_floor": 5,
-    "rating_per_die": 5
+    "rating_per_die": 5,
+    "starting_talent_has_perk_tree": false,
+    "acquired_supernatural_talent_trees": "FUTURE_SEPARATE_VAMPIRISM_LYCANTHROPY"
   },
-  "rule": "One selected Talent contributes floor(its 0..25 rating/5) dice only to its five governed skills; all 24 Skills remain freely trainable. Each of the five governed Skills starts >= rating 5 in Elf-Books. Talent has a separate progression tree (nodes still open).",
+  "rule": "One starting named Talent governs exactly five chosen Skills and contributes floor(rating/5) dice to those Skills only. Ordinary starting Talents have NO perk tree. Skill perks are available to everyone via a 0-100 Attribute+governing Talent+Skill+accepted Specialty rating prerequisite. Acquired supernatural vampire/werewolf perk trees are separate future designs.",
   "presets": [
     {
       "id": "warrior",
@@ -49,7 +51,7 @@
         "heavy_armor",
         "athletics"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "mage",
@@ -61,7 +63,7 @@
         "illusion",
         "restoration"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "thief",
@@ -73,7 +75,7 @@
         "speechcraft",
         "dodge"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "spellsword",
@@ -85,7 +87,7 @@
         "destruction",
         "restoration"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "battlemage",
@@ -97,7 +99,7 @@
         "one_handed",
         "enchanting"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "nightblade",
@@ -109,7 +111,7 @@
         "security",
         "legerdemain"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "ranger",
@@ -121,7 +123,7 @@
         "light_armor",
         "athletics"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "artificer",
@@ -133,7 +135,7 @@
         "lore",
         "mysticism"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "monk",
@@ -145,7 +147,7 @@
         "athletics",
         "illusion"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "crusader",
@@ -157,7 +159,7 @@
         "restoration",
         "speechcraft"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "scholar",
@@ -169,7 +171,7 @@
         "alchemy",
         "speechcraft"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     },
     {
       "id": "scout",
@@ -181,7 +183,7 @@
         "dodge",
         "lore"
       ],
-      "tree_status": "UNDEFINED_BRANCHES"
+      "perk_tree": "NONE_STARTING_TALENT"
     }
   ]
 }
