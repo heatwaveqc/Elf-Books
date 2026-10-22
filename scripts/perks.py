@@ -17,6 +17,7 @@ from typing import Mapping, Sequence
 from trait_pools import MAX_RATING, Talent
 
 PERSONAL_SOURCES = ("attribute", "talent", "skill", "specialty")
+PERK_SKILL_SOURCE = "perk_skill"  # perk-created dice receive Skill awards
 
 
 def _validate_rating(value: int, name: str) -> None:
@@ -129,8 +130,9 @@ def resolve_perk_confirmations(
     each confirmation 1 gives that defender one bankable perk point.
     There is no per-roll point cap.
 
-    Equipment dice are ignored for BOTH character perk triggers. They
-    are not allowed in either confirmation mapping. Rerolls do not change
+    Skill-equivalent `perk_skill` bonus dice are INCLUDED for actor 10s
+    and threatened defender 1s and are kept in a separate provenance key.
+    Equipment dice are excluded from BOTH character perk triggers. Rerolls do not change
     Accuracy/Potence or XP and do not themselves trigger further rerolls.
     This function handles one actual roll/one actual threatened defender;
     the caller must not award the same original faces repeatedly to
@@ -140,17 +142,18 @@ def resolve_perk_confirmations(
         raise ValueError("defender_targeted must be boolean")
     if not isinstance(original_roll, Mapping):
         raise ValueError("roll needs source-tagged original faces")
-    if set(original_roll) - set(PERSONAL_SOURCES) - {"equipment"}:
+    if set(original_roll) - set(PERSONAL_SOURCES) - {"equipment", PERK_SKILL_SOURCE}:
         raise ValueError("unknown original die source")
     if not set(PERSONAL_SOURCES) <= set(original_roll):
         raise ValueError("all four personal sources must be present")
     for faces in original_roll.values():
         _validate_faces(faces)
+    eligible = (*PERSONAL_SOURCES, PERK_SKILL_SOURCE) if PERK_SKILL_SOURCE in original_roll else PERSONAL_SOURCES
     for confirmations in (actor_ten_confirmations, defender_one_confirmations):
         if confirmations is None:
             continue
-        if not isinstance(confirmations, Mapping) or set(confirmations) != set(PERSONAL_SOURCES):
-            raise ValueError("confirmations must name exactly four personal sources; no gear")
+        if not isinstance(confirmations, Mapping) or set(confirmations) != set(eligible):
+            raise ValueError("confirmations must match personal and perk_skill sources exactly; no gear")
         for faces in confirmations.values():
             _validate_faces(faces)
     if defender_targeted != (defender_one_confirmations is not None):
@@ -159,7 +162,7 @@ def resolve_perk_confirmations(
     defender_points = 0
     actor_attempts = 0
     defender_attempts = 0
-    for source in PERSONAL_SOURCES:
+    for source in eligible:
         first = original_roll[source]
         actor_faces = actor_ten_confirmations[source]
         expected_tens = sum(face == 10 for face in first)
