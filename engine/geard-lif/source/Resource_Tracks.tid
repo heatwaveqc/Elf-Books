@@ -102,6 +102,22 @@ aspect's slow-exhaustion consequences, which are handled separately from
 this redirection rule. Non-personal Projects are not paired resources and
 do not acquire overflow by default.
 
+## Supernatural Healing and Restoration
+
+**General rule across Geard Lif, not a setting-specific spell rule:** When a legitimate supernatural Effect **restores an existing personal resource track**, resolve its Application as the Effect specifies, roll normal Potence, and determine the grade and number of *restorative marks* using the **target's base aspect Resilience** (Health for Injury/Fatigue, Will for Spirit/Mana, Conviction for Plasticity/Attention) as the Effect severity threshold. Potence zero produces no restoration; higher Potence may produce multiple Final-grade restorative marks. Protection that raises incoming Injury severity (armor, wards, flesh spells) does **not** raise the patient's healing threshold or alter their resource capacity. When Tiers differ, apply ordinary Tier conversion to Potence before grading. Powers may specify narrower legal resources or special restrictions.
+
+**At the table:** First cancel one existing resource mark **of the same severity** for each restorative mark. If there is no matching mark, use the *equivalent value of lower-grade marks*, or reduce a higher-grade mark and return the unused value in lower-grade marks, following the normal promotion relationships. Stop at an empty track; restoration never creates negative marks. One higher-grade mark is worth **R + 1** marks of the immediately lower grade, where **R is the target track's mark capacity per grade**. For Health 2, **one Major = three Middling = nine Minor**; one Final = three Major. Resolve multiple Final restorative marks separately, but the arithmetic result is the same as subtracting their combined value.
+
+**Precise invariant, for adjudication or software:** Let the target track hold mark counts `m[0]` through `m[3]` in grades Minor/Middling/Major/Final, let `b = R + 1`, and define
+
+`V = m[0] + b*m[1] + b^2*m[2] + b^3*m[3]`.
+
+A successful healing Effect with restorative grade `g` and count `n` removes `H = n*b^g` infliction-equivalent Minor marks: `V' = max(0, V - H)`. Rewrite `V'` in base `b` as the four normal mark counts (each 0 through R), retaining the existing graded track and penalties. This is the exact **inverse of infliction/promotion accounting**, independent of which wounds were inflicted first or what mixed grades remain. For a Health-2 track, (Minor 1, Middling 2, Major 1) has value `1 + 2*3 + 9 = 16`; one Major restorative mark removes 9, leaving value 7 = **Minor 1, Middling 2, Major 0**. A Final wound worth 27 minus one Major healing mark worth 9 leaves **two Major wounds**.
+
+**This is not ordinary timed recovery.** Natural recovery below still prioritizes the lowest occupied grade and operates in discrete reverse-promotion steps. A Major wound at Health 2 is worth **nine Minor marks when inflicted or supernaturally healed**, but takes **seven ordinary recovery steps** to clear when isolated. These two measures have different purposes and should not be interchanged. Healing may be more effective at removing an existing high-grade wound than running an equal number of natural recovery steps.
+
+**Limits:** Restore the **named damaged track**; do not automatically undo Injury/Spirit/Plasticity that resulted from an earlier fast-to-slow overflow by healing only Fatigue/Mana/Attention. **Ordinary restoration is not resurrection:** a character whose Injury track is exhausted is dead and requires an explicitly defined resurrection effect, not a generic healing Effect. Nothing here creates new recovery-per-turn actions, heals Projects automatically, or changes the normal recovery timetable. Other exhausted-resource consequences may need special conditions if specified by their Domain.
+
 ## Recovery
 
 A recovery step always works on the lowest occupied grade.
