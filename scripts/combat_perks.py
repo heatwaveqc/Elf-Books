@@ -2,9 +2,9 @@
 
 Pure planning helpers, not a complete round engine. Exact purchase gates,
 specialties, individual equipment statistics, and enchanting are separate.
-A technique's extra damage dice are tagged 'perk', not four character-trait
-source dice nor equipment dice. They do not by themselves confirm character
-perk points or make equipment eligible for deed enchantments.
+A technique's bonus damage dice are tagged 'perk_skill' to preserve their
+origin while counting as Skill dice for training XP and character perk-point
+confirmations. They are not equipment dice and cannot earn item deed effects.
 """
 from __future__ import annotations
 
@@ -27,7 +27,7 @@ class PowerBashPlan:
     normal_fatigue_hazard_dice: int
     additional_fatigue_hazard_dice: int
     total_fatigue_hazard_dice: int
-    technique_die_source: str = "perk"
+    technique_die_source: str = "perk_skill"
 
 
 def plan_power_bash(

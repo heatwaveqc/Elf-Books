@@ -59,16 +59,19 @@ def award_roll_xp(
     """Credit actual source successes, plus one surrogate per natural 10.
 
     'rolls' maps attribute/talent/skill/specialty to lists of actual d10
-    faces, plus optional equipment dice. A natural 10 can teach both an
+    faces, plus optional equipment and `perk_skill` dice. Perk-created
+    dice earn the used Skill's ordinary 5 XP per rolled success, but retain
+    their perk origin in the event ledger. A natural 10 can teach both an
     under-5 Skill and an under-5 declared Specialty on the same action.
     A roll uses pre-roll trait ratings throughout, even if the XP crosses
     the threshold for a new die. Equipment contributes no direct trait XP.
+    Caller must verify how many perk_skill dice the unlocked perk permits.
     """
     expected = set(XP_PER_SUCCESS)
     if set(ratings) != expected:
         raise ValueError("exactly four rated sources are required")
-    if not expected <= set(rolls) or set(rolls) - expected - {"equipment"}:
-        raise ValueError("rolls must have all four sources and optional equipment")
+    if not expected <= set(rolls) or set(rolls) - expected - {"equipment", "perk_skill"}:
+        raise ValueError("rolls need four rated sources and optional equipment/perk_skill")
     for category in expected:
         count = dice_for_rating(ratings[category])
         if category == "talent" and not talent_governs:
@@ -84,6 +87,7 @@ def award_roll_xp(
         category: _successes(rolls[category]) * XP_PER_SUCCESS[category]
         for category in XP_PER_SUCCESS
     }
+    xp["skill"] += _successes(rolls.get("perk_skill", [])) * XP_PER_SUCCESS["skill"]
     all_faces = [face for faces in rolls.values() for face in faces]
     natural_tens = sum(face == 10 for face in all_faces)
     skill_bootstrap = natural_tens * XP_PER_SUCCESS["skill"] if ratings["skill"] < 5 else 0

@@ -30,7 +30,7 @@ Every ordinary Skill perk definition specifies a **required Attribute**, **requi
 
 ## Confirmed natural 10 — acting character
 
-For **each original natural 10 on a character's actually rolled, eligible personal Attribute, Talent, Skill or Specialty d10** in a consequential action:
+For **each original natural 10 on a character's actually rolled Attribute, Talent, Skill, Specialty, or perk-granted Skill-equivalent d10** in a consequential action:
 
 1. Record the die's original face and personal source.
 2. **Reroll it once** as a *confirmation die*, separately from the original action.
@@ -41,7 +41,7 @@ Confirmation dice **do not** count toward Accuracy, Potence, Costs, ordinary use
 
 ## Confirmed natural 1 — attacked character
 
-For **each original natural 1 in the attacker's actually rolled, eligible personal Attribute, Talent, Skill or Specialty d10** in a genuine consequential hostile action directed at a defender:
+For **each original natural 1 in the attacker's actually rolled Attribute, Talent, Skill, Specialty, or perk-granted Skill-equivalent d10** in a genuine consequential hostile action directed at a defender:
 
 1. Identify the **genuinely targeted defender** for that attack event; this does **not** require fabricating a defender's normal static Avoidance roll. A legal target can still gain the opportunity if the attacker misses.
 2. For each eligible **attacker personal die showing 1**, **the defender rolls a separate d10 confirmation**.
@@ -52,7 +52,7 @@ The eligible first roll is **the attacker's**, never phantom dice from the defen
 
 ## Personal dice only — equipment deed enchantments later
 
-**Only actual dice originating from the four character-trait sources can generate *character perk points* with double 10 or double 1.** Equipment, magical items and other external bonus dice may still legitimately affect the action; their original faces are recorded and resolved normally, but **their 10s/1s are excluded from both perk-confirmation pools**.
+**Any die granted by a character's perk counts as a Skill die for advancement and perk-point breakthroughs**, even if the effect grants it to Potence rather than the normal Skill pool. Record the original face under the separate `perk_skill` provenance source, but credit ordinary **Skill XP (5 per rolled success at Tier 0, scaling normally with Tier)**, confirmed 10s for the actor, and confirmed attacker 1s for a genuine defender. Natural 10s on these dice participate in the established Skill/Specialty bootstrap. The perk's bonus dice do **not** raise the rated Skill trait or the prerequisite total. **Equipment, magical items and other external dice are excluded from character perk-point confirmations** but keep their ordinary separate XP-bootstrap rule. If a particular perk bonus is not rolled dice, it creates no fictional XP or breakthrough opportunities.
 
 In particular, original equipment 10s **may someday generate deed enchantments or other equipment achievements**, using a separate item-focused system. **IDEA ONLY — NOT YET IMPLEMENTED:** a gear 10 confirmed by another 10 could unlock a deed enchantment on that item. It does **not** currently create either a character perk point or a functioning item ability. Equipment 10s may still count toward **existing natural-10 Skill/Specialty bootstrap XP** under [Advancement](ADVANCEMENT.md); excluding equipment from *perk points* does **not** silently change that separate learning rule.
 
@@ -75,7 +75,7 @@ Archived D20 critical rules, direct HP/MP bonuses and old fixed perk gate implem
 
 **Effect-ready, purchase-gate-pending:** [Power Bash, Deflect Arrows and Dual Flurry](../design/COMBAT_PERK_PILOTS.md) now have explicit Geard Lif attack/defense/Cost behavior and executable [effect-plan helpers](../scripts/combat_perks.py). These three are **not freely purchasable yet**, because each still requires an authored named prerequisite Attribute, accepted Specialty group and minimum 0–100 threshold. Effects are available for explicit GM-adjudicated tests without inventing those purchase gates.
 
-- **Power Bash:** choose up to **Strength dice** of extra muscle-powered weapon/shield bash Damage Potence, with **two extra Fatigue hazard dice per additional Damage die**, charged on the attempted attack even if it misses. Strength means the current-Tier die-equivalent rating (`floor(rating/5)` under Elf Books), **not** the raw 0–25 rating. The extra technique dice are separately tagged as perk-derived, never as gear or an Attribute/Skill source for breakthrough perks.
+- **Power Bash:** choose up to **Strength dice** of extra muscle-powered weapon/shield bash Damage Potence, with **two extra Fatigue hazard dice per additional Damage die**, charged on the attempted attack even if it misses. Strength means the current-Tier die-equivalent rating (`floor(rating/5)` under Elf Books), **not** the raw 0–25 rating. The bonus dice are logged as `perk_skill`: they earn Skill XP and 10/1 breakthrough opportunities exactly like Skill dice, but remain distinct from gear for deed enchantments.
 - **Deflect Arrows:** owning the perk lets a character **Parry an arrow** with a suitable real weapon Parry mode, paying the **ordinary 1 defensive action** and **normal weapon Parry Fatigue Cost**. This changes response legality, not the baseline default for other projectiles or direct attacks.
 - **Dual Flurry:** when wielding **two ready usable melee weapons**, a single attack action delivers **two independently rolled actual strikes**, each with its normal Fatigue hazard incident, even on a miss. Three committed attack actions can therefore make **six strikes**, with accumulating fatigue and ordinary fast→slow overflow.
 
