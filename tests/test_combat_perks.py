@@ -31,7 +31,7 @@ class CombatPerkPilots(unittest.TestCase):
         self.assertEqual(p.weapon_damage_bonus_with_bash,6)
         self.assertEqual(p.additional_fatigue_hazard_dice,8)
         self.assertEqual(p.total_fatigue_hazard_dice,10)
-        self.assertEqual(p.technique_die_source,"perk")
+        self.assertEqual(p.technique_die_source,"perk_skill")
         # Default Damage 0 simple melee still risks 8d extra fatigue.
         zero=plan_power_bash(
             strength_rating=20,added_damage_dice=4,
@@ -67,23 +67,26 @@ class CombatPerkPilots(unittest.TestCase):
             with self.assertRaises(ValueError):
                 plan_power_bash(**kw)
 
-    def test_perk_bonus_dice_do_not_confirm_character_or_gear_perks(self):
+    def test_perk_bonus_dice_count_as_skill_for_breakthroughs(self):
         p=plan_power_bash(
             strength_rating=20,added_damage_dice=4,
             weapon_damage_rating=2,normal_fatigue_hazard_dice=2)
-        self.assertEqual(p.technique_die_source,"perk")
+        self.assertEqual(p.technique_die_source,"perk_skill")
         original={
             "attribute":[10],"talent":[],"skill":[],"specialty":[],
-            "equipment":[10,10],
+            "perk_skill":[10,1,10,7],"equipment":[10,1,10],
         }
-        # The four perk dice aren't one of the four rated character
-        # source categories, and equipment is also excluded.
         award=resolve_perk_confirmations(
             original_roll=original,
             actor_ten_confirmations={"attribute":[10],"talent":[],
-                "skill":[],"specialty":[]})
-        self.assertEqual(award.actor_points,1)
-        self.assertEqual(award.actor_confirmation_attempts,1)
+                "skill":[],"specialty":[],"perk_skill":[10,10]},
+            defender_one_confirmations={"attribute":[],"talent":[],
+                "skill":[],"specialty":[],"perk_skill":[1]},
+            defender_targeted=True,
+        )
+        self.assertEqual((award.actor_points,award.defender_points),(3,1))
+        self.assertEqual((award.actor_confirmation_attempts,
+                          award.defender_confirmation_attempts),(3,1))
 
     def test_deflect_arrow_expands_parry_not_normal_action_budget(self):
         p=plan_deflect_arrows(
