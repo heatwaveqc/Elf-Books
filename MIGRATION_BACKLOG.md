@@ -146,5 +146,5 @@ We're back at approximately the previous design milestone when **all P0 entries*
 ## Full perk catalogue — review proposal
 
 - [x] Drafted [80 candidate perk effects and prerequisites](design/PERK_CATALOG_DRAFT.md): all 75 original inspirations plus Finesse, Light Footed, Shield Reflex, Flowing Parry, and Spell Synthesis. Each has candidate Attribute, Specialty options, 0–100 threshold and readiness status. These are NON-OPERATIVE proposals, not automatically purchased perks.
-- [ ] Approve or revise the proposed purchase gates and effects. In particular, stress-test the full Accuracy-margin damage increase of Finesse and the three distinct once-per-round free defensive actions that retain normal Fatigue Costs.
+- [ ] Approve or revise the proposed purchase gates and effects. In particular, stress-test one **actually rolled bonus Potence d10 per surplus Accuracy success** from Finesse (not automatic successes) and the three distinct once-per-round free defensive actions that retain normal Fatigue Costs.
 - [ ] Finish supporting subsystem rules before enabling any dependency-blocked perk, especially enchanting, conjuration, bleed/stagger, and economy. Enchanting Extra Effect and spell-design Spell Synthesis are distinct.
