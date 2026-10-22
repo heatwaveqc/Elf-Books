@@ -44,7 +44,8 @@
     "tier_xp_scale": "fivefold",
     "social_resources": "Mundane direct effects only Attention; Plasticity direct marks supernatural-only",
     "social_resilience": "Conviction sets mark capacity and severity, not Avoidance",
-    "fast_to_slow_exhaustion": "route subsequent fast-targeted incidents into slow (Fatigue→Injury, Mana→Spirit, Attention→Plasticity); mundane social indirect overflow permitted"
+    "fast_to_slow_exhaustion": "route subsequent fast-targeted incidents into slow (Fatigue→Injury, Mana→Spirit, Attention→Plasticity); mundane social indirect overflow permitted",
+    "universal_supernatural_healing": "base-(R+1) infliction-equivalent restoration of all six named personal resources; distinct from timed recovery"
   },
   "advancement_adapter": {
     "name": "elf-books-use-xp-0-to-25",
@@ -53,5 +54,15 @@
     "one_die_per_rating_points": 5,
     "source_die_practice_xp": true,
     "explicit_override_of_legacy_imported_advancement": true
-  }
+  },
+  "selective_player_rule_imports": [
+    {
+      "upstream_commit": "9a1817d14fef0d4b01c3cadcf3384cc20cff220b",
+      "upstream_path": "tiddlers/Content/Rules/Resource_Tracks.tid",
+      "local_path": "engine/geard-lif/source/Resource_Tracks.tid",
+      "section": "Supernatural Healing and Restoration",
+      "method": "reviewed verbatim section imported into historical pinned player-resource page; all other snapshot sections left unchanged",
+      "reason": "Apply universal infliction-equivalent supernatural healing without silently importing the later core turn-start fast recovery timing or advancement rules"
+    }
+  ]
 }
