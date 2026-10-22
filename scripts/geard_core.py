@@ -154,6 +154,28 @@ class Track:
                 return replace(self,marks=tuple(marks))
         return self
 
+
+def restore_resource_effect(*, aspect:str, resource:str,
+                            track:Track, magnitude:int)->Track:
+    """Restore one named personal resource using core infliction equivalence.
+
+    This universal supernatural rule covers the six Mind, Body and Soul
+    resource tracks. The power must establish Application/target legitimacy;
+    the magnitude is already rolled/converted and will be graded against
+    base Resilience, never the target's armor-adjusted Injury threshold.
+    Resource routing on past harm is NOT undone by restoring a fast track.
+    """
+    if aspect not in RESOURCE_TRACKS:
+        raise ValueError("unknown resource aspect")
+    if resource not in (RESOURCE_TRACKS[aspect]["fast"],RESOURCE_TRACKS[aspect]["slow"]):
+        raise ValueError("named resource is not in its aspect")
+    if not isinstance(track,Track):
+        raise ValueError("resource must be a Track")
+    if resource=="injury" and track.exhausted:
+        raise ValueError("exhausted Injury is death; ordinary restoration cannot resurrect")
+    return track.restore_effect(magnitude)
+
+
 @dataclass(frozen=True)
 class ResourceEffectOutcome:
     """Result of one incident; targets remain tracked by their aspect's names."""
