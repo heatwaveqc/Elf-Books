@@ -299,7 +299,7 @@ def resolve_curse_tick(*, stored_potence:int, resistance_successes:int,
 
 @dataclass(frozen=True)
 class HealingEffectGrade:
-    """Grade of healing work; does NOT yet decide mixed-mark reversal."""
+    """Grade of healing work applied through normal recovery steps."""
     applied: bool
     grade: int
     mark_equivalents: int
@@ -316,9 +316,8 @@ def grade_healing_potence(
     actual legal defense/Avoidance threshold must be supplied for the
     Malediction-like Application roll. Unlike ordinary non-spell Projects,
     the spell's Potence must already have been rolled even if Application
-    misses, because its Mana Cost uses that same result. This helper
-    deliberately does not remove any Injury marks; mapping grades to
-    wound de-promotion is a separate open design decision.
+    misses, because its Mana Cost uses that same result. Applying the
+    graded outcome reuses Track.recover_step(), without new wound rules.
     """
     from geard_core import severity_marks
     if type(willing_and_accessible) is not bool:
@@ -340,6 +339,60 @@ def grade_healing_potence(
         return HealingEffectGrade(False,-1,0)
     grade,count=severity_marks(potence_successes,patient_health_resilience)
     return HealingEffectGrade(True,grade,count)
+
+
+
+def healing_steps_for_grade(*, health_resilience:int,
+                            healing_grade:int, grade_mark_count:int)->int:
+    """Convert healing marks to the equivalent number of natural recovery steps.
+
+    An isolated grade-g wound in an R-slot track takes 1 + R + ... + R**g
+    normal recovery steps to clear, because each demotion fills every slot
+    at the next lower grade. No new wound-removal mechanism is introduced.
+    """
+    if type(health_resilience) is not int or health_resilience<1:
+        raise ValueError("Health resilience must be a positive integer")
+    if type(healing_grade) is not int or healing_grade not in (-1,0,1,2,3):
+        raise ValueError("healing grade must be -1 or 0..3")
+    if type(grade_mark_count) is not int or grade_mark_count<0:
+        raise ValueError("healing mark count must be nonnegative")
+    if healing_grade == -1:
+        if grade_mark_count:
+            raise ValueError("no-effect healing cannot contain marks")
+        return 0
+    if grade_mark_count == 0:
+        return 0
+    if healing_grade != 3 and grade_mark_count != 1:
+        raise ValueError("non-Final healing gives one mark equivalent")
+    return grade_mark_count * sum(health_resilience**g for g in range(healing_grade+1))
+
+
+def apply_healing_recovery(*, injury:Track, healing:HealingEffectGrade)->Track:
+    """Apply restorative work through EXACTLY the ordinary recovery routine.
+
+    Recovery always addresses the lowest occupied grade. Middling and
+    higher wounds naturally step down and refill lower marks as usual.
+    A failed spell or zero Potence has no effect. Ordinary healing does
+    not resurrect an already-dead subject (exhausted Injury).
+    """
+    if not isinstance(injury,Track):
+        raise ValueError("injury must be a Track")
+    if not isinstance(healing,HealingEffectGrade):
+        raise ValueError("healing must be a HealingEffectGrade")
+    if injury.exhausted:
+        raise ValueError("exhausted Injury is death; ordinary healing cannot resurrect")
+    if not healing.applied:
+        return injury
+    count=healing_steps_for_grade(
+        health_resilience=injury.resilience,healing_grade=healing.grade,
+        grade_mark_count=healing.mark_equivalents)
+    result=injury
+    for _ in range(count):
+        next_step=result.recover_step()
+        if next_step == result:
+            break
+        result=next_step
+    return result
 
 
 def oakflesh_effective_injury_threshold(
