@@ -13,6 +13,8 @@ Locked upstream separation:
 
 **Open:** attack/effect roll resolution, tie policy, defense reactions, range/position, movement/initiative, armor and shield contribution, magical wards and flesh spells, weapon reach/speed, multiattack, injury prevention, combat practice and passive critical/perk opportunities.
 
+**Oakflesh prototype adopted:** For a successfully established Oakflesh effect, the **rolled Potence successes add directly to the recipient's effective Injury severity/Resistance threshold**, as a **flat equipment-equivalent protective bonus**. Health's dice-equivalent Resilience and marks per grade are unchanged. This is *not* an added number of static Avoidance dice or extra slots, and is not a general buff to Health's non-Injury uses. Example: Health 2 and Oakflesh Potence 4 make the incoming-Injury grade threshold **6** but leave **two slots per grade**. Interactions/stacking with ordinary armor and other protection remain OPEN. Willing accessible subjects need no separate Accuracy check; hostile application uses legal magical defenses, but Potence and Cost are still rolled on an Accuracy miss. [Magic](../design/MAGIC.md).
+
 **Priority:** test a swordsman versus bandit and an Oakflesh-style protective spell using the *same Project engine* and track actual graded Injury, rather than resurrecting a separate D20 subsystem.
 
 See [MIGRATION_BACKLOG.md](../MIGRATION_BACKLOG.md).

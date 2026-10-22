@@ -46,9 +46,30 @@ Each actual component Potence roll awards **one set of active source-tagged XP**
 
 **Multiple distinct magical effects require a spell-design perk.** The resulting formula remains a learnable Specialty. Each component has its **own Potence roll, appropriate target resistance, and separate full Mana Cost incident**, including its individually assigned fixed parameters. The later effect may hit Spirit if earlier components exhausted Mana. Independent real rolls provide genuine training; never reuse one Potence total or grant each effect all of another effect's successes. A designer needs the perk; a separate perk prerequisite to **learn/cast** a finished compound spell is not imposed. Cross-School Specialty ownership remains to be settled. See [working schedule and examples](SPELL_PARAMETERS.md).
 
+## Conditional Application: healing and protective spells
+
+**No additional general-purpose "casting check" exists.** The cast's normal **Application (Perception + the spell School)** is rolled only if application genuinely needs testing, such as striking an unwilling target or overcoming an obstacle. On a clearly **willing and accessible** patient, Healing and Oakflesh can omit their Accuracy check, not their Potence/Cost roll. When an unwilling subject actively opposes magical application, resolve normal Malediction-like **Application** against an explicitly permitted defense, not an improvised fixed Health-based to-hit number. If the application fails, the spell has no effect, but **Potence must still roll to determine Mana Cost**.
+
+### Healing (Restoration)
+
+- A Restoration Healing effect **reverses Injury** instead of adding it. A willing patient requires no Accuracy roll; an unwilling target or disputed application may require **Perception + Restoration** against a legal defense appropriate to this magic.
+- Roll normal **Intelligence + Restoration** Potence once. **The patient's Health-derived Injury Resilience serves as Healing's Recalcitrance/effect threshold**, not as an extra avoidance check. Health represents bodily scale/repair difficulty: a more resilient patient needs greater Potence to achieve the same **grade** of healing. No new special "healing size" surcharge is required.
+- Compare healing Potence against the patient's unmodified **Health dice-equivalent** with ordinary graded severity bands: positive Potence below Health is Minor healing; Potence ≥ Health is Middling; ≥2× Health Major; ≥3× Health Final, and higher multiples add Final-grade equivalents. At zero Potence there is no healing effect. **This classification produces restorative capacity, not an Injury attack.** Example: Potence 4 heals at Major grade against Health 2, Middling against Health 4, and Minor against Health 5.
+- **Still open:** the exact inverse mark removal/de-promotion procedure for a Healing result encountering mixed existing injuries, healing a wholly exhausted Injury track, and whether any condition requires separate restoration. Do not treat a healing-grade classification as automatic removal of a particular mark until that method is approved. Do not use an injury-protecting Oakflesh threshold to make existing wounds harder to heal: patient **base Health** is the healing threshold.
+- Casting pays its usual **Potence + fixed parameter surcharge** Mana Cost regardless of whether Application succeeds; no extra casting roll or healing discount. Restoring Fatigue and other tracks uses the same design pattern with that track's appropriate Resilience, pending exact mark repair.
+
+### Oakflesh (Alteration) and similar flesh protection
+
+- A spell such as Oakflesh adds **its rolled Potence successes as a flat equipment-equivalent bonus to the protected subject's effective Injury Resistance threshold**, not as extra Health rating, Health-mark slots, or Dodge dice. A willing accessible subject needs no Accuracy; hostile application uses a legal Application defense.
+- For **one** Oakflesh effect at the relevant Tier, **effective Injury threshold = base Health Resilience + Oakflesh Potence**, before unresolved interactions with other applicable protection. The effect has the formula's designed duration and requires only the initial casting Potence/Cost roll.
+- Example: Health resilience 2 plus Oakflesh Potence 4 yields threshold **6**, but still **two Injury slots per grade**. Apply incoming injuries using the improved threshold, keeping capacity and already-held Injury marks unchanged.
+- This is a **direct threshold modifier**, not a grant of equipment *dice* to a separate Avoidance/Cost resistance pool; therefore the combined external-*dice* cap must not be misapplied to halve the protection or add extra mark slots. **Stacking with worn armor, other flesh spells, overlapping protective gear, and Tier conversions remains open**. The general rule is that armor/protection changes grade thresholds without increasing personal resource capacity.
+
+**Summoning, creature control, and autonomous effects remain separate future design problems.**
+
 ## Non-damage effects and defenses
 
-Every spell does something; Potence supplies effective output for damaging magic, healing, protective thresholds, Open Lock, levitation, summons, social/identity magic, and other effects. Specific conversions (e.g. how Potence controls healing and how duration interacts with protection) remain open and need calibration. Oakflesh raises effective Injury severity resistance, not Health-mark capacity.
+Every spell does something; Potence supplies effective output for damaging magic, healing, protective thresholds, Open Lock, levitation, summons, social/identity magic, and other effects. Healing now uses patient Health as its restorative grade threshold, and Oakflesh adds Potence directly to effective Injury resistance without increasing Health capacity. Healing's *exact removal/de-promotion of marks* and protection stacking remain open.
 
 A launched ice spear allows eligible Dodge/Block, not ordinary projectile Parry. A direct freezing Malediction uses **Health + Survival**, like cold exposure. Reactive countermagic, when legitimately available, defaults to **Wits + Mysticism** as an *alternative* defense, not stacked with Dodge. Reaction timing and counterspell Cost remain open.
 

@@ -11,7 +11,8 @@ from magic import (
     casting_pools,mana_cost_resistance,resolve_mana_cost,
     mana_cost_practice_xp,counterspell_avoidance,spell_is_learned,
     spell_cost_from_potence,resolve_spell_cast_cost,
-    validate_spell_design,resolve_compound_spell_costs,resolve_curse_tick
+    validate_spell_design,resolve_compound_spell_costs,resolve_curse_tick,
+    grade_healing_potence,oakflesh_effective_injury_threshold
 )
 
 class MagicTests(unittest.TestCase):
@@ -167,6 +168,75 @@ class MagicTests(unittest.TestCase):
         ):
             with self.assertRaises(ValueError):
                 resolve_curse_tick(**values)
+
+    def test_willing_healing_skips_application_but_uses_patient_health(self):
+        small=grade_healing_potence(patient_health_resilience=2,
+            potence_successes=4,willing_and_accessible=True)
+        regular=grade_healing_potence(patient_health_resilience=4,
+            potence_successes=4,willing_and_accessible=True)
+        robust=grade_healing_potence(patient_health_resilience=5,
+            potence_successes=4,willing_and_accessible=True)
+        self.assertEqual([(x.applied,x.grade,x.mark_equivalents)
+            for x in (small,regular,robust)],
+            [(True,2,1),(True,1,1),(True,0,1)])
+        zero=grade_healing_potence(patient_health_resilience=4,
+            potence_successes=0,willing_and_accessible=True)
+        self.assertEqual((zero.grade,zero.mark_equivalents),(-1,0))
+        big=grade_healing_potence(patient_health_resilience=2,
+            potence_successes=8,willing_and_accessible=True)
+        self.assertEqual((big.grade,big.mark_equivalents),(3,2))
+
+    def test_unwilling_healing_uses_application_not_patient_health_dodge(self):
+        fail=grade_healing_potence(patient_health_resilience=5,
+            potence_successes=4,willing_and_accessible=False,
+            accuracy_successes=2,application_opposition=3)
+        self.assertEqual((fail.applied,fail.grade,fail.mark_equivalents),
+                         (False,-1,0))
+        hit=grade_healing_potence(patient_health_resilience=5,
+            potence_successes=4,willing_and_accessible=False,
+            accuracy_successes=3,application_opposition=3)
+        self.assertEqual((hit.applied,hit.grade,hit.mark_equivalents),
+                         (True,0,1))
+        # Potence was STILL rolled on miss, therefore there is a Mana Cost.
+        paid=self.spell_cast_cost(potence_successes=4,parameter_surcharge=0)
+        self.assertEqual(paid.cost_magnitude,4)
+        self.assertEqual(paid.new_mana.marks,(0,1,0,0))
+
+    def test_oakflesh_modifies_threshold_not_health_or_mark_capacity(self):
+        from geard_core import Track
+        base=Track(2)
+        threshold=oakflesh_effective_injury_threshold(
+            base_health_resilience=base.resilience,protection_potence_successes=4)
+        self.assertEqual(threshold,6)
+        # Identical incoming 4 successes changes grade, not wound-slot count.
+        bare=base.apply_effect(4)
+        protected=base.apply_effect(4,effective_threshold=threshold)
+        self.assertEqual(bare.marks,(0,0,1,0))
+        self.assertEqual(protected.marks,(1,0,0,0))
+        self.assertEqual(protected.resilience,2)
+
+    def test_healing_and_oakflesh_reject_invalid_input(self):
+        cases=(
+            dict(patient_health_resilience=0,potence_successes=2,
+                 willing_and_accessible=True),
+            dict(patient_health_resilience=2,potence_successes=-1,
+                 willing_and_accessible=True),
+            dict(patient_health_resilience=2,potence_successes=2,
+                 willing_and_accessible=1),
+            dict(patient_health_resilience=2,potence_successes=2,
+                 willing_and_accessible=False),
+            dict(patient_health_resilience=2,potence_successes=2,
+                 willing_and_accessible=True,accuracy_successes=0),
+        )
+        for kw in cases:
+            with self.assertRaises(ValueError):
+                grade_healing_potence(**kw)
+        with self.assertRaises(ValueError):
+            oakflesh_effective_injury_threshold(
+                base_health_resilience=2,protection_potence_successes=-1)
+        with self.assertRaises(ValueError):
+            oakflesh_effective_injury_threshold(
+                base_health_resilience=0,protection_potence_successes=1)
 
     def test_resources_mind_magic_and_soul_social(self):
         self.assertEqual(RESOURCE_TRACKS["mind"],
