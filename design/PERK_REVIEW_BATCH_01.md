@@ -24,15 +24,31 @@ The stated requirement is the combined rating of **the named Attribute + named S
 
 **Reviewer decisions:** Does the original low gate 30 correctly reflect how powerful the action-economy gain is? Is Any One-Handed Specialty enough, or should a named Dual Wielding Specialty be necessary? The effect itself is **not** reopened by this review unless explicitly requested.
 
-## 3. Hack and Slash — One-Handed (one rank; dependency: bleeding)
+## 3. Hack and Slash — One-Handed (five ranks; recurring Injury Hazard)
 
-**Proposed purchase gate:** **Strength + One-Handed, 30**, specifically **Axes / Hatchets** (an applicable axe Specialty is necessary for any contribution to the gate and for use of this axe technique). No sword, dagger or mace Specialty qualifies. Decide whether axe Specialty should also be an **absolute prerequisite** even when Attribute+Skill+Talent already reaches 30.
+**Proposed rank gates:** **Strength + One-Handed**, with an **actually possessed and applicable Axes/Hatchets Specialty required at every rank** (not merely optional bonus dice), at total rating **30 / 45 / 60 / 75 / 90**. Purchase consecutively, one bankable perk point per rank.
 
-**Existing draft effect:** A successful Injury-inflicting axe attack produces an ongoing bleed that adds a **Minor Injury mark every victim turn** until a credible wound-care action stops it; multiple applications do not stack on one wound.
+| Purchased rank | Minimum composite prerequisite | Recurring Injury Hazard |
+| --- | ---: | ---: |
+| 1 | 30 | **1d10** |
+| 2 | 45 | **2d10** |
+| 3 | 60 | **3d10** |
+| 4 | 75 | **4d10** |
+| 5 | 90 | **5d10** |
 
-**Problem:** Automatic continuing Injury marks on any weak hit can be lethal and effectively bypass normal Attack Potence, even at a 30 rating gate. No generic bleeding status, natural clotting, medical difficulty, or interaction with armor/undead anatomy is agreed.
+**Trigger:** An actual axe/hatchet hit must cause at least **one Middling-or-worse Injury mark** after the ordinary attack's Potence, armor, and other protections. Smaller wounds do not start bleeding. The weapon/target must be capable of physically bleeding. Initial Injury and the attacker's attempted-attack Fatigue Cost are resolved normally; this perk adds a lasting **bleeding condition**, not an automatic extra Injury mark on initial contact.
 
-**Reviewer proposal:** Require at least a **Middling Injury** from the triggering axe hit; produce a **nonstacking bleed hazard** starting at the victim's next turn; define whether it has a rolled hazard magnitude or guaranteed Minor mark and what specific Survival/Restoration/Security (or other suitable) wound-treatment action ends it. Do not activate the perk until bleed resolution is defined.
+**Ongoing hazard:** Starting at the **beginning of the victim's next own turn**, and once at the beginning of each of their later turns while the bleed remains active, roll a fresh **rank d10 Injury Hazard**, using the ordinary face-to-success map (1–6 = 0, 7–9 = 1, 10 = 2). It is an **independent new Injury incident** each turn with no new Accuracy/application roll and no extra attacker action/Cost. Grade and apply the rolled successes against the target's **unmodified Health-derived Injury threshold and mark capacity, without Armor Rating**. Armor protected the triggering strike; it does not seal an already opened blood vessel. Health and legitimate *nonarmor* intrinsic bleed resistance still apply where actually defined. The target cannot Dodge, Block, or Parry the continuing loss of blood.
+
+**Ends on full resistance:** If that turn's Injury Hazard causes **no Injury mark**, the bleeding condition ends immediately. With the existing Geard Lif positive-magnitude grading rule, a hazard whose dice produce **zero successes** causes no mark and therefore ends the bleed; a positive magnitude causes at least a Minor mark against ordinary positive Health, even if it is below the Middling threshold. Healing the already recorded Injury marks is separate from stopping the bleeding condition unless a specific treatment or power says otherwise.
+
+**Nonstacking:** A target can have **at most one active Hack and Slash bleed**. A subsequent qualifying axe strike may replace a lower bleed rank with a higher one, not create an additional independent hazard; equal/lower ranks do not restart or multiply it. If the condition has already ended, a later genuine qualifying strike may begin a new one.
+
+**Mathematical balance warning:** At rank `r`, if ending requires a 0-success hazard, the chance to stop on any tick is `0.6^r`. At rank 1, **60%** of ticks end the bleed without Injury, but at rank 5 only **7.776%** do. With independent unchanged rolls, the expected number of **damaging ticks before the first zero-success tick** is `(1-0.6^r)/(0.6^r)`: about **0.67 at rank 1** versus **11.86 at rank 5**. Even though hazard dice grow linearly, bleed duration and total harm grow very sharply. This is a purposeful design stress test, not yet proof that rank 5 is balanced.
+
+**Experience/confirmation question:** User-approved general rule credits **rolled bonus dice granted to a character's Skill pool** as Skill dice for XP and double-10/attacker double-1 perk confirmations. An independently ticking **bleeding hazard** is not literally another attack/Skill roll made by the original attacker. **Proposed distinction for review:** tag autonomous ticks as `bleeding_hazard` rather than `perk_skill` and give them no new Skill XP or perk confirmations; the **original axe attack's actual perk-enhanced Skill dice** remain eligible as usual. This prevents passive XP farming without weakening the user-approved rule for actual perk-created Skill dice. If the user intends *all* dice produced by a perk, even unattended hazards, to train a character, that broader interpretation should be approved explicitly before activation.
+
+**Remaining narrow blockers:** confirming what counts as bleed-capable anatomy; exact start-of-turn ordering and how actual healing/bandaging/Restoration can staunch bleeding; and the status of passive hazard rolls for XP. The ranked dice, trigger, armor bypass, independent new hazard roll, nonstacking, and end-on-no-Injury procedure are directly specified.
 
 ## 4. Armsman — One-Handed (consider five ranks)
 
