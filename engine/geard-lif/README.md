@@ -19,6 +19,12 @@ Elf-Books follows Geard Lif (internally documented as Raven's Heart) for its **s
 
 For executable **pure arithmetic exercises**, see [`scripts/geard_core.py`](../../scripts/geard_core.py). This script can compute d10 successes, Tier conversion, resource severity/mark/recovery and track project progress. It evaluates **meet-to-beat application**, Potence-to-four-grade marks, **Scope-sized Project mark capacity**, promotion/exhaustion, and optional protection-adjusted personal thresholds. It also includes a tested provisional four-source trait pool calculator. It can now calculate the working rating/XP curve and per-source roll XP; full character budgets, equipment values, legal reaction timing, spell-effect catalogs and Talent-tree/perk systems still need work.
 
+## Targeted later core rule adoption
+
+The eight imported tiddlers retain the documented historical base pin `8bf0801a9ac6731455cf70e77337ff9ebbec84d2`. A **reviewed, player-facing universal supernatural restoration** section from upstream Geard Lif commit `9a1817d14fef0d4b01c3cadcf3384cc20cff220b` is now selectively incorporated into the local [Resource Tracks](source/Resource_Tracks.tid). This gives all six personal tracks the universal **infliction-equivalence healing** rule: one grade-g restorative mark reverses `(Resilience+1)^g` Minor-mark equivalents of inflicted marks.
+
+Only that later section was imported. **The remaining pinned text stays at its historical snapshot version**, including Elf Books' retained fast-recovery cadence; the newer Geard Lif *once-per-own-turn* cadence was not silently adopted here. The Elf Books 0–25/use-XP advancement variant also remains separate. See [UPSTREAM.json](UPSTREAM.json) for the explicit selective-import provenance and [magic](../../design/MAGIC.md) for the TES Restoration adapter.
+
 ## Updating the snapshot
 
 - Inspect [UPSTREAM.json](UPSTREAM.json) for the source commit and paths.
