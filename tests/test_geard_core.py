@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
-from geard_core import d10_successes,convert_tier,severity_marks,Track,Project,resolve_project_roll,apply_resource_effect,RESOURCE_TRACKS
+from geard_core import d10_successes,convert_tier,severity_marks,Track,Project,resolve_project_roll,apply_resource_effect,restore_resource_effect,RESOURCE_TRACKS
 
 class LocalCoreTests(unittest.TestCase):
     def test_tentative_randomizer_and_tier(self):
@@ -132,6 +132,94 @@ class LocalCoreTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"nonnegative"):
             apply_resource_effect(aspect="mind",requested_resource="mana",
                                   magnitude=-1,fast=Track(2),slow=Track(2))
+
+    def test_universal_restoration_across_six_personal_resources(self):
+        for aspect,spec in RESOURCE_TRACKS.items():
+            for resource in (spec["fast"],spec["slow"]):
+                if resource=="injury":
+                    injured=Track(2,marks=(1,2,1,0))
+                else:
+                    injured=Track(2,marks=(1,2,1,0))
+                with self.subTest(aspect=aspect,resource=resource):
+                    # Potence 4 at Resilience 2 means one Major healing.
+                    restored=restore_resource_effect(
+                        aspect=aspect,resource=resource,
+                        track=injured,magnitude=4)
+                    self.assertEqual(restored.marks,(1,2,0,0))
+                    self.assertEqual(restored.infliction_value(),7)
+                    self.assertEqual(injured.infliction_value(),16)
+                    self.assertEqual(injured.marks,(1,2,1,0))
+
+    def test_invariant_r_plus_one_conversion_and_promoted_small_hits(self):
+        for R in range(1,6):
+            base=R+1
+            for grade in range(4):
+                for amount in range(1,4):
+                    initial=Track(R,marks=tuple(min(R,(grade+i)%base)
+                        if i!=3 else min(R-1,(grade+i)%base)
+                        for i in range(4)))
+                    healed=initial.restore_marks(grade,amount)
+                    self.assertEqual(healed.infliction_value(),
+                        max(0,initial.infliction_value()-amount*base**grade))
+                    self.assertTrue(all(0<=m<=R for m in healed.marks))
+                    self.assertEqual(healed.resilience,R)
+        t=Track(2)
+        for _ in range(9):
+            t=t.apply_effect(1)
+        self.assertEqual(t.marks,(0,0,1,0))
+        self.assertEqual(t.restore_marks(2).marks,(0,0,0,0))
+
+    def test_restoration_canonicalization_from_larger_grades(self):
+        # At R=2, a Final is 27 Minor-equivalents, a Major is 9.
+        one_final=Track(2,marks=(0,0,0,1))
+        after=one_final.restore_marks(2)
+        self.assertEqual(after.marks,(0,0,2,0))
+        self.assertEqual(after.infliction_value(),18)
+        self.assertEqual(one_final.restore_marks(0,27).marks,(0,0,0,0))
+        # Two Grade-3 effects applied as one batch or independently agree.
+        initial=Track(2,marks=(1,1,0,1))
+        batch=initial.restore_marks(3,2)
+        sequential=initial.restore_marks(3).restore_marks(3)
+        self.assertEqual(batch,sequential)
+        # Healing never generates negative marks.
+        self.assertEqual(initial.restore_marks(3,100).marks,(0,0,0,0))
+
+    def test_supernatural_healing_separate_from_daily_or_turn_recovery(self):
+        t=Track(2,marks=(1,2,1,0))
+        magic=t.restore_marks(2,1)
+        natural=t
+        for _ in range(7):
+            natural=natural.recover_step()
+        self.assertEqual(magic.marks,(1,2,0,0))
+        self.assertEqual(natural.marks,(0,0,1,0))
+        # Healing Mana does not automatically undo overflow Spirit marks.
+        spirit=Track(2,marks=(0,1,0,0))
+        mana=Track(2,marks=(0,1,0,0))
+        restored=restore_resource_effect(
+            aspect="mind",resource="mana",track=mana,magnitude=2)
+        self.assertEqual(restored.marks,(0,0,0,0))
+        self.assertEqual(spirit.marks,(0,1,0,0))
+
+    def test_restorative_legal_resources_and_death_boundary(self):
+        dead=Track(2,marks=(0,0,0,2))
+        with self.assertRaisesRegex(ValueError,"death"):
+            restore_resource_effect(
+                aspect="body",resource="injury",track=dead,magnitude=10)
+        # An exhausted Mana track, unlike death, may be restored.
+        result=restore_resource_effect(
+            aspect="mind",resource="mana",track=Track(2,marks=(0,0,0,2)),
+            magnitude=10)
+        self.assertFalse(result.exhausted)
+        for kw in (
+            dict(aspect="unknown",resource="mana",track=Track(2),magnitude=1),
+            dict(aspect="body",resource="mana",track=Track(2),magnitude=1),
+            dict(aspect="mind",resource="mana",track=Track(2),magnitude=-1),
+        ):
+            with self.assertRaises(ValueError):
+                restore_resource_effect(**kw)
+        for grade,count in ((-2,1),(4,1),(-1,1),(0,-1)):
+            with self.assertRaises(ValueError):
+                Track(2).restore_marks(grade,count)
 
     def test_personal_exhaustion_and_cost_mark_boundaries(self):
         t=Track(4).apply_effect(24)
