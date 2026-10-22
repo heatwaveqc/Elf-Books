@@ -1,6 +1,6 @@
 # Elf-Books Talents: five-skill custom classes
 
-**Status:** Structure agreed: one Talent per character, exactly five governed Skills, preset or custom, and a personal progression tree. Twelve independent Geard attributes are also agreed. The **working 0–25 rating scale and 10×-rating XP curve** are specified; total starting budget, passive-defense XP and Talent tree-node mechanics remain open. Core upstream explanation: [Attributes and Talents](../engine/geard-lif/source/Attributes_and_Talents.tid).
+**Status:** Structure agreed: one starting Talent per character, exactly five governed Skills, preset or custom, **with no starting-Talent perk tree**. Twelve independent Geard attributes are also agreed. The **working 0–25 rating scale and 10×-rating XP curve** are specified; total starting budget, passive-defense XP and Talent tree-node mechanics remain open. Core upstream explanation: [Attributes and Talents](../engine/geard-lif/source/Attributes_and_Talents.tid).
 
 ## Attributes (all independent)
 
@@ -48,21 +48,19 @@ These are **sample packages**, not rigid vocational tracks; a player can create 
 
 Custom Talent creation only needs a name and five skill IDs; no *race, origin, morality, or faction* limits apply by default.
 
-## The separate Talent progression tree
+## Starting Talents versus acquired supernatural trees
 
-A Talent also owns an **additional advancement tree**, representing its distinctive cross-skill synergies and vocation. Its basic tree contract is:
+**An ordinary starting Talent is not a perk tree.** Its five governed Skills get the Talent's extra dice, and its **actual 0–25 rating** can contribute to an eligible Skill perk's combined rating. It has **no personal nodes, perk ranks or private perk-point currency**. This holds for the twelve presets and custom five-skill packages.
 
-- One character-selected Talent = **one** available Talent tree, in addition to all ordinary Skill perk options.
-- A **custom Talent gets a genuine custom tree**, not a missing/penalized tree.
-- Talent progress, tree-node eligibility, costs, ranks, choices and effects require separate balancing. Do **not** pretend these nodes are already published or that they automatically consume the bankable general-perk points.
-- Ordinary Skill XP and skill perks for all 24 skills remain available whether governed or not. The previously preferred **bankable perk-point** concept survives independently until a specific Talent-tree currency rule is decided.
-- Possible branches for later testing: **Integration** (synergies between two of the five governed Skills); **Technique** (narrow specialty capability); **Identity** (a signature move/quality). These are *design seeds*, not mechanical grants.
+Every Skill has its own independently accessible perk selection. Eligibility is based on the perk's named **Attribute + the starting Talent (only if it governs that Skill) + Skill + one permitted Specialty**, using actual ratings. Talent/Attribute/Skill/Specialty each cap at 25, so requirements above 75 need both governing Talent and an appropriate Specialty; the Talent-less ceiling is 75. See [Perks](PERKS.md).
+
+**Acquired supernatural Talents** such as **vampirism and lycanthropy** can have their own condition-specific perk trees as later additions. They do not erase/replace the single initial five-skill Talent. Their ratings, costs, interactions with normal trait pools, and exact trees are not yet written; **never stack two Talent dice contributions** merely because such a tree exists.
 
 ## Outstanding decisions
 
 1. **Starting budget and advancement pacing**: ratings are 0–25, one die per five levels, with a working 10×-rating XP cost and 2/1/5/10 source multipliers. The exact character creation point budget, equipment rules and long-term balance are open.
 2. **Talent XP**: its own contributed dice earn one XP per success on governed skills; monitor how rapidly five-skill breadth advances its rating. The separate Talent progression **tree** remains undefined.
-3. **How the Talent tree awards nodes** (level thresholds, choices, use-based triggers or perk points); custom-tree generation requirements, GM consistency and documentation.
+3. **Supernatural tree progression:** vampires/werewolves may obtain acquired condition-specific perks, but their die contributions and progression are still undefined.
 4. **Attribute-selection and static defenses**: four roles named, but which aspect applies to a particular legal roll, how Avoidance is calculated, and how armor adjusts severity remain to be settled.
 5. **Talent change or retraining** after character creation: one Talent at a time, but whether extraordinary circumstances allow replacing the five governed skills is not decided.
 
