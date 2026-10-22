@@ -98,6 +98,52 @@ class Track:
         grade,count=severity_marks(magnitude,threshold)
         return replace(self,marks=_apply_marks(self.marks,self.resilience,grade,count))
 
+    def infliction_value(self)->int:
+        """Count resource marks in Minor equivalents, using promotion base R+1."""
+        base=self.resilience+1
+        return sum(mark*base**grade for grade,mark in enumerate(self.marks))
+
+    def restore_marks(self,grade:int,count:int=1)->"Track":
+        """Universally restore supernatural mark-equivalents, not recovery steps.
+
+        Graded restoration undoes the value of mark infliction/promotion.
+        A grade-g restorative mark is (R+1)**g Minor equivalents, where R is
+        resource Resilience and mark capacity. Subtract the total, clamping
+        to zero, then rebuild the canonical four-grade mark distribution.
+        A caller controls Application, potency grade, target legality and
+        exceptional dead-resource restrictions (e.g. Injury resurrection).
+        """
+        if type(grade) is not int or grade not in (-1,0,1,2,3):
+            raise ValueError("restoration grade must be -1 or 0..3")
+        if type(count) is not int or count<0:
+            raise ValueError("restoration count must be a nonnegative integer")
+        if grade == -1:
+            if count != 0:
+                raise ValueError("zero-effect restoration cannot contain marks")
+            return self
+        if count == 0:
+            return self
+        base=self.resilience+1
+        remaining=max(0,self.infliction_value()-count*base**grade)
+        marks=[]
+        for _ in range(4):
+            marks.append(remaining%base)
+            remaining//=base
+        if remaining:
+            raise ValueError("restoration remainder exceeded four-grade track")
+        return replace(self,marks=tuple(marks))
+
+    def restore_effect(self,magnitude:int)->"Track":
+        """Resolve supernatural restorative Potence versus base Resilience.
+
+        Potence must have passed its applicable Application and Tier
+        conversion before calling this; no armor/ward effective threshold
+        raises a patient's restoration Recalcitrance. Ordinary timed
+        recovery remains separately defined in recover_step().
+        """
+        grade,count=severity_marks(magnitude,self.resilience)
+        return self.restore_marks(grade,count)
+
     def recover_step(self)->"Track":
         """One recovery step; the caller enforces per-action or per-day timing."""
         marks=list(self.marks)
