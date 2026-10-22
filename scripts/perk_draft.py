@@ -17,6 +17,7 @@ class FinesseEffect:
     bonus_potence_successes: int
     modified_potence: int
     extra_dice: int
+    bonus_die_source: str = "perk_skill"
 
 
 def finesse_potence(*,accuracy_successes:int,static_avoidance:int,
@@ -27,9 +28,10 @@ def finesse_potence(*,accuracy_successes:int,static_avoidance:int,
     After Accuracy successfully meets static Avoidance, the surplus
     successes determine the NUMBER OF BONUS DICE rolled in the Potence
     pool. Each bonus face produces ordinary d10 successes: 1-6 -> 0,
-    7-9 -> 1, 10 -> 2. These are perk-sourced dice and cannot be
-    recorded as Attribute/Talent/Skill/Specialty or equipment dice for
-    breakthrough XP, perk-point confirmations, or deed enchantments.
+    7-9 -> 1, 10 -> 2. Record these bonus faces as `perk_skill` so they
+    retain their origin while counting as Skill dice for practice XP and
+    confirmed actor-10 / attacker-1 perk points. These are NOT equipment
+    dice for prospective item deed enchantments.
 
     Caller records the original rolled Potence success magnitude and
     exactly the required bonus die faces from the same actual Effect
