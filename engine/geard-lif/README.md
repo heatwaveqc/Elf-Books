@@ -1,8 +1,8 @@
 # Geard Lif core snapshot for Elf-Books
 
-This directory is a **local, reviewed snapshot** of seven player-audience Geard Lif rules, imported from [heatwaveqc/geard-lif](https://github.com/heatwaveqc/geard-lif) at pinned commit `4ba2934cbb34cf8f43584016fadd2e339fad23fe`. The upstream repository is private; the copied pages were deliberately marked **player-facing** upstream. Nothing in the source repository's GM or AI-only layers is imported.
+This directory is a **local, reviewed snapshot** of eight player-audience Geard Lif rules, imported from [heatwaveqc/geard-lif](https://github.com/heatwaveqc/geard-lif) at pinned commit `8bf0801a9ac6731455cf70e77337ff9ebbec84d2`. The upstream repository is private; the copied pages were deliberately marked **player-facing** upstream. Nothing in the source repository's GM or AI-only layers is imported.
 
-Elf-Books follows Geard Lif (internally documented as Raven's Heart) as its **base rules engine**, not D&D/d20. The canonical upstream engine remains Geard Lif. The checked-in snapshot is the version actually available to public Elf-Books readers and GM runtimes: upstream changes do **not** silently change a pinned campaign.
+Elf-Books follows Geard Lif (internally documented as Raven's Heart) for its **shared Project, resources, and Tier engine**, not D&D/d20. **Progression is an explicit Elf-Books exception:** its 0–25 traits and XP-from-use stay in force even though current base Geard Lif uses 0–5 traits and Drive Marks. The historical imported use-XP pages remain part of this *pinned Elf-Books adapter*, not current upstream law. The canonical upstream engine remains Geard Lif. The checked-in snapshot is the version actually available to public Elf-Books readers and GM runtimes: upstream changes do **not** silently change a pinned campaign.
 
 ## Read order
 
@@ -22,7 +22,7 @@ For executable **pure arithmetic exercises**, see [`scripts/geard_core.py`](../.
 ## Updating the snapshot
 
 - Inspect [UPSTREAM.json](UPSTREAM.json) for the source commit and paths.
-- Fetch the seven *public-player-marked* upstream tiddlers at a specific newer commit.
+- Fetch only reviewed *public-player-marked* upstream tiddlers at a specific newer commit. **Do not overwrite Elf-Books 0–25/use-XP adapter rules with the new 0–5/Drive-Mark core; port shared mechanics separately and update local adapter tests.**
 - Compare their diffs to this snapshot; separately re-evaluate the status notes and any Elf-Books overlays.
 - Run repository tests and migrate ongoing private campaign rules only with explicit consent.
 - Never copy upstream `ai/`, `geard-audience: gm`, or unpublished material into the public snapshot without a specific review.
