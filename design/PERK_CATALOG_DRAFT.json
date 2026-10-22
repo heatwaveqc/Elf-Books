@@ -54,11 +54,20 @@
         "axes",
         "hatchets"
       ],
-      "effect": "An Injury-causing axe hit may leave a bleeding wound. At the injured subject's subsequent turns a bleeding incident inflicts a Minor Injury unless a successful wound-care action staunches it; no stacking multiple bleeds on the same wound.",
+      "effect": "When a real axe or hatchet hit inflicts at least Middling Injury after armor and mitigation, cause one persistent, nonstacking bleeding condition on that bleed-capable target. Beginning at the start of its following turn and once at the start of each subsequent turn, roll one fresh Injury Hazard of a number of d10 equal to the purchased rank (1–5), with no renewed attack action, Potence, or Fatigue Cost. Compare rolled hazard successes to the target's normal unmodified Health threshold; ignore armor entirely for recurring bleed Injury grading, but retain Health and any explicitly legal nonarmor bleed resistance. If the hazard adds no Injury mark, end the bleed immediately. Positive hazard magnitude causes graded Injury as normal. At most one active Hack and Slash bleed per target; a stronger-rank qualifying wound may replace a weaker ongoing one without stacking. The autonomous bleeding hazard's eligibility for training/perk confirmations remains a separate flagged decision, not an automatic extra attacker Skill roll.",
       "status": "framework_needed",
-      "dependency": "Bleeding timing, wound-care complexity and which injuries can bleed",
+      "dependency": "Determine bleeding-capable anatomy, start-of-turn ordering, credible bleed-staunching techniques, and whether autonomous hazard tick rolls count toward XP/perk confirmations.",
       "point_cost": 1,
-      "source_seed_index": 3
+      "source_seed_index": 3,
+      "absolute_specialty_requirement": true,
+      "rank_requirements": [
+        30,
+        45,
+        60,
+        75,
+        90
+      ],
+      "max_rank": 5
     },
     {
       "id": "one_handed_armsman",
