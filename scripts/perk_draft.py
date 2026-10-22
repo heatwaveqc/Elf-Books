@@ -13,18 +13,27 @@ class FinesseEffect:
     applied: bool
     threshold_successes: int
     rolled_potence: int
+    bonus_faces: tuple[int, ...]
+    bonus_potence_successes: int
     modified_potence: int
-    extra_dice: int = 0
+    extra_dice: int
 
 
 def finesse_potence(*,accuracy_successes:int,static_avoidance:int,
-                   rolled_potence:int,application_allowed:bool=True)->FinesseEffect:
-    """Transfer margin over actual Application threshold into EFFECT SUCCESSES.
+                   rolled_potence:int,bonus_faces:tuple[int,...]|list[int],
+                   application_allowed:bool=True)->FinesseEffect:
+    """Roll ONE actual extra Potence d10 per net Accuracy success.
 
-    This is the accuracy-to-potence BRIDGE exception allowed by the Geard
-    core; no new dice, no XP/confirmations, and no damage-hazard increase.
-    A miss produces no damage. An actual hit with 0 Potence still can deal
-    injury if it has positive Finesse threshold successes (playtest risk).
+    After Accuracy successfully meets static Avoidance, the surplus
+    successes determine the NUMBER OF BONUS DICE rolled in the Potence
+    pool. Each bonus face produces ordinary d10 successes: 1-6 -> 0,
+    7-9 -> 1, 10 -> 2. These are perk-sourced dice and cannot be
+    recorded as Attribute/Talent/Skill/Specialty or equipment dice for
+    breakthrough XP, perk-point confirmations, or deed enchantments.
+
+    Caller records the original rolled Potence success magnitude and
+    exactly the required bonus die faces from the same actual Effect
+    resolution. The bonus never changes the ordinary melee Fatigue hazard.
     """
     for name,val in (("Accuracy",accuracy_successes),
                      ("Avoidance",static_avoidance),("Potence",rolled_potence)):
@@ -32,10 +41,23 @@ def finesse_potence(*,accuracy_successes:int,static_avoidance:int,
             raise ValueError(f"{name} must be a nonnegative integer")
     if type(application_allowed) is not bool:
         raise ValueError("application_allowed must be boolean")
-    success=application_allowed and accuracy_successes>=static_avoidance
-    margin=max(0,accuracy_successes-static_avoidance) if success else 0
-    return FinesseEffect(success,margin,rolled_potence,
-                         rolled_potence+margin if success else 0)
+    if not isinstance(bonus_faces,(tuple,list)) or any(
+        type(face) is not int or face<1 or face>10 for face in bonus_faces
+    ):
+        raise ValueError("bonus_faces must contain actual d10 faces 1..10")
+    applied=application_allowed and accuracy_successes>=static_avoidance
+    margin=accuracy_successes-static_avoidance if applied else 0
+    if len(bonus_faces)!=margin:
+        raise ValueError("roll exactly one Finesse Potence die per surplus Accuracy success")
+    bonus_successes=sum(2 if face==10 else 1 if face>=7 else 0
+                        for face in bonus_faces)
+    return FinesseEffect(
+        applied=applied,threshold_successes=margin,
+        rolled_potence=rolled_potence,bonus_faces=tuple(bonus_faces),
+        bonus_potence_successes=bonus_successes,
+        modified_potence=(rolled_potence+bonus_successes) if applied else 0,
+        extra_dice=margin,
+    )
 
 
 @dataclass(frozen=True)
