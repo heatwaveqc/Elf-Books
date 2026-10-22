@@ -7,7 +7,7 @@
   "purchase": "Proposed 1 bankable perk point per unique perk; special additional ranks and prerequisites not calibrated. Not purchasable until separately adopted.",
   "tier": "Initial prerequisite proposals apply only to Tier-0 actual 0..25 ratings.",
   "specialty_note": "Specialty IDs proposed by this draft are candidate player-facing vocabulary, not yet a published Specialty registry. They must be reconciled when purchased perks become operative.",
-  "status_note": "adopted_effect means the perk effect already exists in the approved combat pilot; other descriptions and every numeric purchase gate here remain proposals.",
+  "status_note": "adopted_effect means the perk effect already exists in the approved combat pilot; other descriptions and every numeric purchase gate here remain proposals. Perk-derived BONUS DICE are Skill-equivalent for training XP and character confirmed 10s/attacker 1s, logged under perk_skill; not equipment.",
   "perks": [
     {
       "id": "one_handed_critical_charge",
@@ -668,7 +668,7 @@
         "mind_magic",
         "beast_behavior"
       ],
-      "effect": "When using Illusion to influence a genuine animal with a mind, add +2 perk-technique dice to Potence. Those bonus dice affect the spell's usual Potence-derived Mana Cost but are not personal trait dice for perk confirmations.",
+      "effect": "When using Illusion to influence a genuine animal with a mind, add +2 perk-technique dice to Potence. Those bonus dice affect the spell's usual Potence-derived Mana Cost and count as Skill dice for XP and character perk-point confirmations; they are not equipment dice.",
       "status": "draft",
       "dependency": null,
       "point_cost": 1,
@@ -1030,7 +1030,7 @@
         "daggers",
         "precision_striking"
       ],
-      "effect": "When you make a melee attack against someone genuinely unaware of you at the time of Accuracy resolution, add +3 perk-technique Damage dice to its Potence. No bonus against targets already aware of you; the extra dice do not generate perk confirmations.",
+      "effect": "When you make a melee attack against someone genuinely unaware of you at the time of Accuracy resolution, add +3 perk-technique Damage dice to its Potence. No bonus against targets already aware of you; the extra dice count as Skill dice for training XP and perk confirmations.",
       "status": "draft",
       "dependency": null,
       "point_cost": 1,
@@ -1258,7 +1258,7 @@
         "daggers",
         "precise_striking"
       ],
-      "effect": "On a successfully applied muscle-powered One-Handed Injury/Fatigue attack, each rolled Accuracy success ABOVE the target's actual static Avoidance provides ONE ADDITIONAL d10 to the attack's damage Potence roll. Roll those dice normally (1-6 gives 0 successes, 7-9 gives 1, 10 gives 2) and combine their actual successes with the regular Potence roll before grading harm. The added dice are perk-derived, not Attribute/Talent/Skill/Specialty or equipment dice for XP, character perk confirmations, or future gear deeds. They do not increase the attack's self-Fatigue hazard. Equal Accuracy versus Avoidance gives no extra dice, and a miss has no Potence effect.",
+      "effect": "On a successfully applied muscle-powered One-Handed Injury/Fatigue attack, each rolled Accuracy success ABOVE the target's actual static Avoidance provides ONE ADDITIONAL d10 to the attack's damage Potence roll. Roll those dice normally (1-6 gives 0 successes, 7-9 gives 1, 10 gives 2) and combine their actual successes with the regular Potence roll before grading harm. The added perk dice are logged as perk_skill and count as Skill dice for training XP and confirmed 10s or attacker 1s toward character perk points; they do not count as equipment dice for future gear deeds. They do not increase the attack's self-Fatigue hazard. Equal Accuracy versus Avoidance gives no extra dice, and a miss has no Potence effect.",
       "status": "new_proposal",
       "dependency": null,
       "point_cost": 1,
