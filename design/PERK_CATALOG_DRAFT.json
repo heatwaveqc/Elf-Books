@@ -1258,7 +1258,7 @@
         "daggers",
         "precise_striking"
       ],
-      "effect": "On a successfully applied muscle-powered One-Handed Injury/Fatigue attack, add all Accuracy threshold successes (rolled Accuracy successes ABOVE the defender's actual static Avoidance) directly to the rolled Potence success magnitude BEFORE grading damage. These are virtual Effect successes, not extra dice: they earn no XP or perk confirmations, do not alter self-Fatigue Costs, and give no bonus at an exactly matched threshold.",
+      "effect": "On a successfully applied muscle-powered One-Handed Injury/Fatigue attack, each rolled Accuracy success ABOVE the target's actual static Avoidance provides ONE ADDITIONAL d10 to the attack's damage Potence roll. Roll those dice normally (1-6 gives 0 successes, 7-9 gives 1, 10 gives 2) and combine their actual successes with the regular Potence roll before grading harm. The added dice are perk-derived, not Attribute/Talent/Skill/Specialty or equipment dice for XP, character perk confirmations, or future gear deeds. They do not increase the attack's self-Fatigue hazard. Equal Accuracy versus Avoidance gives no extra dice, and a miss has no Potence effect.",
       "status": "new_proposal",
       "dependency": null,
       "point_cost": 1,
