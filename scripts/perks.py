@@ -73,8 +73,11 @@ def qualify_for_perk(
 
     A Talent contributes only when it actually governs this Skill. One
     eligible known Specialty supplies its rating (max of allowed matches,
-    never sum multiple Specialties). Attribute and Skill must match the
-    perk's exact declared prereqs. Equipment and magical dice add nothing.
+    never sum multiple Specialties). The accepted set may contain "*"
+    to accept ANY Specialty legitimately belonging to the named Skill.
+    specialty_ratings must be pre-filtered to the named Skill by caller.
+    Attribute and Skill must match the perk's exact declared prereqs.
+    Equipment, magical, and perk-generated bonus dice add no rating.
     """
     if not isinstance(requirement, PerkRequirement):
         raise ValueError("perk requirement is required")
@@ -90,9 +93,14 @@ def qualify_for_perk(
         if not isinstance(name, str) or not name.strip():
             raise ValueError("Specialty IDs must be named")
         _validate_rating(value, f"Specialty {name}")
+    # "*" is the wildcard for ANY legitimately possessed Specialty
+    # belonging to this perk's named Skill. Caller must supply only
+    # Specialties of that Skill, never an unrelated Skill's specialisms.
+    # One actual Specialty contributes at most once; no combining ratings.
+    any_specialty = "*" in requirement.accepted_specialties
     eligible = sorted(
-        (name for name in requirement.accepted_specialties
-         if name in specialty_ratings),
+        (name for name in specialty_ratings
+         if any_specialty or name in requirement.accepted_specialties),
         key=lambda name: (-specialty_ratings[name], name),
     )
     selected = eligible[0] if eligible else None
