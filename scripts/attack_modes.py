@@ -23,10 +23,11 @@ class NamedPool:
     tier: int
     personal_dice: int
     external_dice: int
+    perk_skill_dice: int = 0
 
     @property
     def dice(self) -> int:
-        return self.personal_dice + self.external_dice
+        return self.personal_dice + self.external_dice + self.perk_skill_dice
 
     @property
     def static_opposition(self) -> int:
@@ -37,12 +38,16 @@ def compose_named_pool(*, attribute: str, skill: str, tier: int,
                        talent: Talent,
                        ratings: Mapping[str, Mapping[int, int]],
                        specialty_declared: bool = False,
-                       external_bonuses: Mapping[str, int] | None = None) -> NamedPool:
+                       external_bonuses: Mapping[str, int] | None = None,
+                       perk_skill_dice: int = 0) -> NamedPool:
     """The specified Attribute+Skill are sufficient to resolve the four sources.
 
     External bonuses are a single aggregate cap, no matter how many sources.
     Eligibility and item-specific Control/Effect Tier must be verified by the
     action's adapter before passing these relevant bonuses to the calculator.
+    The caller must also validate any `perk_skill_dice` granted by a perk.
+    Extra perk-sourced rolled dice increase total dice, but NOT the personal
+    base used for the external equipment/enchantment/buff cap.
     """
     if attribute not in ATTRIBUTE_ROLE:
         raise ValueError(f"unknown attribute {attribute!r}")
@@ -57,10 +62,16 @@ def compose_named_pool(*, attribute: str, skill: str, tier: int,
         for k, v in bonuses.items()
     ):
         raise ValueError("external dice must be a source-labeled map of nonnegative ints")
+    if type(perk_skill_dice) is not int or perk_skill_dice < 0:
+        raise ValueError("perk-granted Skill-equivalent dice must be nonnegative int")
     external = sum(bonuses.values())
+    # Only the actual four rated traits define external bonus allowance.
+    # Perk Skill-equivalent dice belong in the final rolled pool, but they
+    # NEVER expand the external cap or masquerade as gear. A caller must
+    # independently validate ownership and the specific perk dice granted.
     if external > personal:
         raise ValueError("aggregate equipment/enchantment/ensorcellment/buff dice exceed unmodified personal pool")
-    return NamedPool(attribute,skill,tier,personal,external)
+    return NamedPool(attribute,skill,tier,personal,external,perk_skill_dice)
 
 
 def load_attack_modes() -> dict[str,dict]:
