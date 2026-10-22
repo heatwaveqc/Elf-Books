@@ -1,0 +1,1336 @@
+{
+  "schema_version": 1,
+  "status": "DRAFT_FOR_REVIEW_NOT_ACTIVE",
+  "source_seed_count": 75,
+  "additional_perks_count": 5,
+  "qualification": "Named Attribute + Skill + one accepted Specialty + starting Talent only if it governs Skill; all individual 0–25 ratings, no equipment or supernatural Talent added.",
+  "purchase": "Proposed 1 bankable perk point per unique perk; special additional ranks and prerequisites not calibrated. Not purchasable until separately adopted.",
+  "tier": "Initial prerequisite proposals apply only to Tier-0 actual 0..25 ratings.",
+  "specialty_note": "Specialty IDs proposed by this draft are candidate player-facing vocabulary, not yet a published Specialty registry. They must be reconciled when purchased perks become operative.",
+  "status_note": "adopted_effect means the perk effect already exists in the approved combat pilot; other descriptions and every numeric purchase gate here remain proposals.",
+  "perks": [
+    {
+      "id": "one_handed_critical_charge",
+      "skill": "one_handed",
+      "name": "Critical Charge",
+      "attribute": "strength",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "swords",
+        "axes",
+        "maces"
+      ],
+      "effect": "After spending a movement action to enter melee with a previously out-of-reach target, your first One-Handed hit this turn gets +2 technique Damage dice. The attack's normal melee Fatigue hazard increases by 2d even if it misses; the movement still costs its own action.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 1
+    },
+    {
+      "id": "one_handed_dual_flurry",
+      "skill": "one_handed",
+      "name": "Dual Flurry",
+      "attribute": "dexterity",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "dual_wielding",
+        "swords",
+        "axes",
+        "daggers"
+      ],
+      "effect": "With two ready melee weapons, one attack action makes two full separate strikes, one with each weapon. Resolve each Accuracy, Potence, and normal Fatigue Cost separately; accumulated fatigue affects later strikes.",
+      "status": "adopted_effect",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 2
+    },
+    {
+      "id": "one_handed_hack_and_slash",
+      "skill": "one_handed",
+      "name": "Hack and Slash",
+      "attribute": "strength",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "axes",
+        "hatchets"
+      ],
+      "effect": "An Injury-causing axe hit may leave a bleeding wound. At the injured subject's subsequent turns a bleeding incident inflicts a Minor Injury unless a successful wound-care action staunches it; no stacking multiple bleeds on the same wound.",
+      "status": "framework_needed",
+      "dependency": "Bleeding timing, wound-care complexity and which injuries can bleed",
+      "point_cost": 1,
+      "source_seed_index": 3
+    },
+    {
+      "id": "one_handed_armsman",
+      "skill": "one_handed",
+      "name": "Armsman",
+      "attribute": "strength",
+      "minimum_rating": 0,
+      "accepted_specialties": [
+        "swords",
+        "axes",
+        "maces",
+        "daggers"
+      ],
+      "effect": "For a successful muscle-powered One-Handed attack, add 1 perk-technique die to Potence. The attack's Fatigue hazard rises by 1d, whether it hits or misses; this is not an increase to the weapon's permanent Damage rating.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 4
+    },
+    {
+      "id": "two_handed_sweep",
+      "skill": "two_handed",
+      "name": "Sweep",
+      "attribute": "strength",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "greatswords",
+        "battleaxes",
+        "warhammers",
+        "polearms"
+      ],
+      "effect": "When two enemies are within the same plausible sweep arc, spend one attack action to attempt a separate Two-Handed Accuracy and Potence against each. Roll and pay a separate normal Fatigue hazard per attempted strike; movement or positioning must actually permit the arc.",
+      "status": "framework_needed",
+      "dependency": "Adjacent-target geometry and multi-target attack timing",
+      "point_cost": 1,
+      "source_seed_index": 5
+    },
+    {
+      "id": "two_handed_great_critical_charge",
+      "skill": "two_handed",
+      "name": "Great Critical Charge",
+      "attribute": "strength",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "greatswords",
+        "battleaxes",
+        "warhammers"
+      ],
+      "effect": "After spending a movement action to enter melee with a previously out-of-reach enemy, your next Two-Handed strike this turn adds 3 technique Damage dice. It also adds 3d to its normal attempted-attack Fatigue hazard.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 6
+    },
+    {
+      "id": "two_handed_barbarian",
+      "skill": "two_handed",
+      "name": "Barbarian",
+      "attribute": "strength",
+      "minimum_rating": 0,
+      "accepted_specialties": [
+        "greatswords",
+        "battleaxes",
+        "warhammers",
+        "polearms"
+      ],
+      "effect": "Add 1 perk-technique Damage die to each muscle-powered Two-Handed attack. Add 1d to that attack's ordinary Fatigue hazard, including on a miss.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 7
+    },
+    {
+      "id": "archery_hunter_s_discipline",
+      "skill": "archery",
+      "name": "Hunter's Discipline",
+      "attribute": "perception",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "bows",
+        "crossbows",
+        "field_archery"
+      ],
+      "effect": "After combat, recover twice as many of the arrows that were actually fired and remain physically retrievable, subject to the actual number of recoverable arrows. Does not create missing or destroyed ammunition.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 8
+    },
+    {
+      "id": "archery_ranger",
+      "skill": "archery",
+      "name": "Ranger",
+      "attribute": "agility",
+      "minimum_rating": 60,
+      "accepted_specialties": [
+        "bows",
+        "mounted_archery"
+      ],
+      "effect": "You may take one ordinary movement action without losing a previously prepared bow shot or interrupting an already established aim. Movement and attack still require their normal separate actions, and range still matters.",
+      "status": "framework_needed",
+      "dependency": "Ready and Aim state model",
+      "point_cost": 1,
+      "source_seed_index": 9
+    },
+    {
+      "id": "archery_power_shot",
+      "skill": "archery",
+      "name": "Power Shot",
+      "attribute": "strength",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "bows",
+        "heavy_bows"
+      ],
+      "effect": "When an arrow inflicts a Major-or-worse Injury mark, its impact may stagger the target, costing one available action before its next turn. An exhausted target cannot lose extra actions; only one stagger from this perk per target per round.",
+      "status": "framework_needed",
+      "dependency": "Stagger timing and action loss",
+      "point_cost": 1,
+      "source_seed_index": 10
+    },
+    {
+      "id": "archery_steady_hand",
+      "skill": "archery",
+      "name": "Steady Hand",
+      "attribute": "perception",
+      "minimum_rating": 40,
+      "accepted_specialties": [
+        "bows",
+        "crossbows",
+        "long_range_shooting"
+      ],
+      "effect": "Spend one action to aim at a visible target; the next Archery Accuracy roll before your next turn gets +2 perk-technique dice. Aim is lost on loss of target awareness or changing to a different target.",
+      "status": "framework_needed",
+      "dependency": "Aim action baseline and awareness interruption",
+      "point_cost": 1,
+      "source_seed_index": 11
+    },
+    {
+      "id": "block_power_bash",
+      "skill": "block",
+      "name": "Power Bash",
+      "attribute": "strength",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "shields",
+        "shield_bashing"
+      ],
+      "effect": "On a muscle-powered shield or weapon bash, choose 0 through your Strength dice as extra Damage dice. Each added Damage die adds TWO dice to the attack's normal Fatigue hazard; pay the hazard even if the attack misses.",
+      "status": "adopted_effect",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 12
+    },
+    {
+      "id": "block_deflect_arrows",
+      "skill": "block",
+      "name": "Deflect Arrows",
+      "attribute": "dexterity",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "shields",
+        "weapon_parries",
+        "projectile_defense"
+      ],
+      "effect": "You may use a genuine weapon Parry against an incoming arrow; it remains a one-action defensive reaction with that weapon's ordinary Parry Fatigue Cost. It requires awareness and a parry-capable weapon; it does not cover bullets or magical spears.",
+      "status": "adopted_effect",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 13
+    },
+    {
+      "id": "block_block_runner",
+      "skill": "block",
+      "name": "Block Runner",
+      "attribute": "agility",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "shields",
+        "mobile_blocking"
+      ],
+      "effect": "During a movement action you may retain a prepared shield Block reaction against one incoming attack until your next turn. The actual Block still consumes its normal available reaction action and Fatigue hazard; no second Block is created.",
+      "status": "framework_needed",
+      "dependency": "Prepared defense and movement interruption",
+      "point_cost": 1,
+      "source_seed_index": 14
+    },
+    {
+      "id": "block_elemental_protection",
+      "skill": "block",
+      "name": "Elemental Protection",
+      "attribute": "will",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "shields",
+        "elemental_guarding"
+      ],
+      "effect": "When you declare and pay an eligible shield Block against a traveling elemental projectile but its Accuracy still meets your Avoidance, add +2 to your effective Injury severity threshold against THAT attack's elemental Potence only. Does not apply to nontraveling Maledictions or ordinary weapon blows.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 15
+    },
+    {
+      "id": "heavy_armor_conditioning",
+      "skill": "heavy_armor",
+      "name": "Conditioning",
+      "attribute": "health",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "plate",
+        "mail",
+        "armor_fit"
+      ],
+      "effect": "While wearing armor for which you have the matching Specialty, ignore its positive Encumbrance when calculating final Dodge and ordinary movement distance. Its Armor Rating and the item's underlying Encumbrance statistic do not change.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 16
+    },
+    {
+      "id": "heavy_armor_cushioned",
+      "skill": "heavy_armor",
+      "name": "Cushioned",
+      "attribute": "health",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "plate",
+        "mail",
+        "fall_protection"
+      ],
+      "effect": "While properly wearing heavy armor, halve the incoming falling-impact Effect magnitude, rounding down, before grading Injury. This does not help against drowning, crushing pressure, or falls the armor does not actually cushion.",
+      "status": "framework_needed",
+      "dependency": "Falling Effect magnitude rules",
+      "point_cost": 1,
+      "source_seed_index": 17
+    },
+    {
+      "id": "heavy_armor_tower_of_strength",
+      "skill": "heavy_armor",
+      "name": "Tower of Strength",
+      "attribute": "health",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "plate",
+        "mail",
+        "bracing"
+      ],
+      "effect": "Once per round while braced in heavy armor, ignore one action-loss/stagger condition caused by a hit or shove. You still take its graded resource harm and Fatigue Costs normally.",
+      "status": "framework_needed",
+      "dependency": "Stagger and bracing definition",
+      "point_cost": 1,
+      "source_seed_index": 18
+    },
+    {
+      "id": "heavy_armor_juggernaut",
+      "skill": "heavy_armor",
+      "name": "Juggernaut",
+      "attribute": "health",
+      "minimum_rating": 0,
+      "accepted_specialties": [
+        "plate",
+        "mail",
+        "armor_fit"
+      ],
+      "effect": "While properly using a trained suit of heavy armor, add +1 to your effective Injury severity threshold against ordinary physical contact attacks, after applicable Armor Rating. Does not add mark slots or change the armor item's own rating.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 19
+    },
+    {
+      "id": "unarmed_ghost_strike",
+      "skill": "unarmed",
+      "name": "Ghost Strike",
+      "attribute": "will",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "spirit_striking",
+        "unarmed_striking"
+      ],
+      "effect": "Your ordinary unarmed strikes may interact with an insubstantial or ghostly target you can perceive and physically reach, using normal attack and Injury rules. The perk does not itself grant supernatural perception or remove cross-Tier penalties.",
+      "status": "framework_needed",
+      "dependency": "Insubstantiality and supernatural targeting",
+      "point_cost": 1,
+      "source_seed_index": 20
+    },
+    {
+      "id": "unarmed_disarming_strike",
+      "skill": "unarmed",
+      "name": "Disarming Strike",
+      "attribute": "dexterity",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "grappling",
+        "unarmed_striking"
+      ],
+      "effect": "After successful unarmed Application, you may resolve the Effect as a disarming Project against the target's grip rather than inflicting Injury. Damage is forfeited for that strike; item security and remaining grip determine the Project's Recalcitrance and Scope.",
+      "status": "framework_needed",
+      "dependency": "Disarm Projects and resisting grip",
+      "point_cost": 1,
+      "source_seed_index": 21
+    },
+    {
+      "id": "athletics_second_wind",
+      "skill": "athletics",
+      "name": "Second Wind",
+      "attribute": "health",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "sprinting",
+        "endurance_running"
+      ],
+      "effect": "Once per round after you spend at least two movement actions sprinting, immediately take one extra ordinary Fatigue recovery step. This does not accelerate Injury or bypass pre-existing Fatigue-to-Injury overflow from earlier Cost incidents.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 22
+    },
+    {
+      "id": "athletics_leaping_strike",
+      "skill": "athletics",
+      "name": "Leaping Strike",
+      "attribute": "agility",
+      "minimum_rating": 25,
+      "accepted_specialties": [
+        "jumping",
+        "acrobatics"
+      ],
+      "effect": "You may make an ordinary attack while airborne during a jump without automatic positional penalty solely for being in the air. The jump or movement and the attack still consume their usual actions; landing and distance remain consequential.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 23
+    },
+    {
+      "id": "smithing_arcane_blacksmith",
+      "skill": "smithing",
+      "name": "Arcane Blacksmith",
+      "attribute": "intelligence",
+      "minimum_rating": 60,
+      "accepted_specialties": [
+        "tempering",
+        "enchanted_items"
+      ],
+      "effect": "Permit tempering or repairing an enchanted weapon or suit of armor without automatically destroying or suppressing its enchantment. The crafting Project still requires appropriate tools, materials, Skill, and safe treatment of each magical layer.",
+      "status": "framework_needed",
+      "dependency": "Enchanting rules, modification Projects and enchantment stability",
+      "point_cost": 1,
+      "source_seed_index": 24
+    },
+    {
+      "id": "smithing_dwarven_smithing",
+      "skill": "smithing",
+      "name": "Dwarven Smithing",
+      "attribute": "intelligence",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "dwarven_metallurgy",
+        "forging"
+      ],
+      "effect": "You may undertake Smithing Projects to reproduce and repair documented Dwemer-metal equipment when suitable materials, drawings and tools exist. This grants recipe access, not free Dwarven ingots or automatic success.",
+      "status": "framework_needed",
+      "dependency": "Dwemer craft recipes and construction Projects",
+      "point_cost": 1,
+      "source_seed_index": 25
+    },
+    {
+      "id": "smithing_daedric_smithing",
+      "skill": "smithing",
+      "name": "Daedric Smithing",
+      "attribute": "intelligence",
+      "minimum_rating": 90,
+      "accepted_specialties": [
+        "daedric_metallurgy",
+        "forging"
+      ],
+      "effect": "You may undertake Daedric equipment Smithing Projects using the actual rare inputs and rituals required by the recipe. The perk allows this category of work; it does not conjure artifacts or ignore the Project's Tier.",
+      "status": "framework_needed",
+      "dependency": "Daedric materials, artifact constraints and recipes",
+      "point_cost": 1,
+      "source_seed_index": 26
+    },
+    {
+      "id": "alteration_stability",
+      "skill": "alteration",
+      "name": "Stability",
+      "attribute": "will",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "flesh_magic",
+        "alteration_duration",
+        "wards"
+      ],
+      "effect": "When designing an Alteration formula with a duration, you may extend its maximum duration by ONE listed duration band without the additional +1 fixed Mana surcharge. All other parameters, Potence and Costs remain normal.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 27
+    },
+    {
+      "id": "alteration_mage_armor",
+      "skill": "alteration",
+      "name": "Mage Armor",
+      "attribute": "health",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "flesh_magic",
+        "wards"
+      ],
+      "effect": "While not wearing protective armor, add +2 to the effective Injury resistance threshold granted by an already-active Flesh/Oakflesh spell. This does not increase Health or wound slots; the bonus disappears when wearing protective armor.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 28
+    },
+    {
+      "id": "alteration_atronach",
+      "skill": "alteration",
+      "name": "Atronach",
+      "attribute": "will",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "absorption",
+        "wards",
+        "alteration_defense"
+      ],
+      "effect": "When you successfully counter or absorb a hostile spell with a legal Alteration ward, you can redirect one restorative Minor mark to your Mana track rather than merely negating the spell. Each incoming spell can trigger at most one absorption.",
+      "status": "framework_needed",
+      "dependency": "Ward absorption and spell-energy transfer",
+      "point_cost": 1,
+      "source_seed_index": 29
+    },
+    {
+      "id": "conjuration_summoner",
+      "skill": "conjuration",
+      "name": "Summoner",
+      "attribute": "perception",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "summons",
+        "daedra_summoning"
+      ],
+      "effect": "When designing a true creature-summoning formula, move its allowed casting range up one range band without adding the usual range surcharge. The summoned creature remains subject to its existing command, location, and lifetime restrictions.",
+      "status": "framework_needed",
+      "dependency": "Creature summoning Project/slot rules",
+      "point_cost": 1,
+      "source_seed_index": 30
+    },
+    {
+      "id": "conjuration_atromancy",
+      "skill": "conjuration",
+      "name": "Atromancy",
+      "attribute": "intelligence",
+      "minimum_rating": 40,
+      "accepted_specialties": [
+        "atronachs",
+        "summons"
+      ],
+      "effect": "When designing an atronach-summoning formula, extend its maximum duration by one listed duration band without additional fixed Mana surcharge. Does not increase summon count or independently improve its stats.",
+      "status": "framework_needed",
+      "dependency": "Summon legality, duration and commands",
+      "point_cost": 1,
+      "source_seed_index": 31
+    },
+    {
+      "id": "conjuration_soul_stealer",
+      "skill": "conjuration",
+      "name": "Soul Stealer",
+      "attribute": "will",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "bound_weapons",
+        "soul_trapping"
+      ],
+      "effect": "You may design a bound-weapon spell whose strike also carries a distinct Soul Trap component, paying its separate Potence and Mana Cost as any other compound effect. This ability does not capture souls without a valid receptacle and target.",
+      "status": "framework_needed",
+      "dependency": "Soul capture and compound spell design privilege",
+      "point_cost": 1,
+      "source_seed_index": 32
+    },
+    {
+      "id": "conjuration_oblivion_binding",
+      "skill": "conjuration",
+      "name": "Oblivion Binding",
+      "attribute": "will",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "banishment",
+        "bound_weapons"
+      ],
+      "effect": "A successful bound-weapon contact can be resolved as a banishment/turning Project against a summoned or reanimated being instead of regular Injury. Its origin, actual Tier and binding set Recalcitrance and Scope; no automatic instant banishment.",
+      "status": "framework_needed",
+      "dependency": "Summon and banishment Projects",
+      "point_cost": 1,
+      "source_seed_index": 33
+    },
+    {
+      "id": "conjuration_twin_souls",
+      "skill": "conjuration",
+      "name": "Twin Souls",
+      "attribute": "will",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "summons",
+        "necromancy",
+        "atronachs"
+      ],
+      "effect": "You may maintain two independently created permanent or timed summon bindings concurrently instead of the ordinary single controlled-summon allowance. Each summon is cast, paid for, controlled, and dispelled separately.",
+      "status": "framework_needed",
+      "dependency": "Baseline summon limits and control economy",
+      "point_cost": 1,
+      "source_seed_index": 34
+    },
+    {
+      "id": "destruction_rune_master",
+      "skill": "destruction",
+      "name": "Rune Master",
+      "attribute": "perception",
+      "minimum_rating": 40,
+      "accepted_specialties": [
+        "runes",
+        "fire_runes",
+        "frost_runes"
+      ],
+      "effect": "When placing a Destruction rune, choose the next greater published range band without paying its extra fixed range surcharge. The rune remains anchored and uses its originally designed area, duration and trigger.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 35
+    },
+    {
+      "id": "destruction_impact",
+      "skill": "destruction",
+      "name": "Impact",
+      "attribute": "strength",
+      "minimum_rating": 40,
+      "accepted_specialties": [
+        "force_magic",
+        "shock_magic",
+        "destruction_impact"
+      ],
+      "effect": "When a Destruction effect deals a Major-or-worse Injury mark through an actual traveling magical impact, the hit staggers its victim once per round, imposing loss of one available action. No free stagger from a direct nonimpact curse.",
+      "status": "framework_needed",
+      "dependency": "Stagger action timing and spell impact classes",
+      "point_cost": 1,
+      "source_seed_index": 36
+    },
+    {
+      "id": "destruction_intense_flames",
+      "skill": "destruction",
+      "name": "Intense Flames",
+      "attribute": "charisma",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "fire_magic",
+        "terror_flames"
+      ],
+      "effect": "When a fire spell actually inflicts Major-or-worse Injury, you may also threaten the target's Attention with a separate fear effect, using its own real Potence/Cost incident and legitimate Soul defense. No automatic supernatural Plasticity damage.",
+      "status": "framework_needed",
+      "dependency": "Fear attack mode and dual-effect access",
+      "point_cost": 1,
+      "source_seed_index": 37
+    },
+    {
+      "id": "illusion_quiet_casting",
+      "skill": "illusion",
+      "name": "Quiet Casting",
+      "attribute": "wits",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "silent_spellcasting",
+        "misdirection",
+        "sound_magic"
+      ],
+      "effect": "Spells you cast produce no voluntary spoken invocation, vocalization, or ordinary audible casting cues from their casting process. The actual spell effect can still make noise, glow, burn, or reveal magical signatures; this does not grant invisibility.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 38
+    },
+    {
+      "id": "illusion_master_of_the_mind",
+      "skill": "illusion",
+      "name": "Master of the Mind",
+      "attribute": "insight",
+      "minimum_rating": 90,
+      "accepted_specialties": [
+        "mind_magic",
+        "undead_illusion",
+        "construct_illusion"
+      ],
+      "effect": "You may attempt Illusion effects against undead, Daedra, or constructs with some cognition even when their type would normally exclude ordinary mind effects. Mindless targets remain mindless; resistance, immunity and actual Tier still apply.",
+      "status": "framework_needed",
+      "dependency": "Target cognition and mind-affecting immunities",
+      "point_cost": 1,
+      "source_seed_index": 39
+    },
+    {
+      "id": "illusion_animage",
+      "skill": "illusion",
+      "name": "Animage",
+      "attribute": "insight",
+      "minimum_rating": 20,
+      "accepted_specialties": [
+        "animal_influence",
+        "mind_magic",
+        "beast_behavior"
+      ],
+      "effect": "When using Illusion to influence a genuine animal with a mind, add +2 perk-technique dice to Potence. Those bonus dice affect the spell's usual Potence-derived Mana Cost but are not personal trait dice for perk confirmations.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 40
+    },
+    {
+      "id": "mysticism_spell_analysis",
+      "skill": "mysticism",
+      "name": "Spell Analysis",
+      "attribute": "intelligence",
+      "minimum_rating": 25,
+      "accepted_specialties": [
+        "spell_analysis",
+        "arcane_lore",
+        "detection"
+      ],
+      "effect": "After examining an ongoing spell or written formula with a legitimate Mysticism research attempt, you can identify its School and any observable range, duration, or area parameters on a successful Project. Secret designer details still require sufficient access/evidence.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 41
+    },
+    {
+      "id": "mysticism_aegis_of_wards",
+      "skill": "mysticism",
+      "name": "Aegis of Wards",
+      "attribute": "wits",
+      "minimum_rating": 60,
+      "accepted_specialties": [
+        "counterspelling",
+        "wards",
+        "spell_absorption"
+      ],
+      "effect": "When making a real Wits + Mysticism counterspell defense, add +2 perk-technique dice before converting the pool to static Avoidance. This supplies no free reaction action, no automatic spell absorption, and no extra Mana slots.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 42
+    },
+    {
+      "id": "restoration_ward_absorb",
+      "skill": "restoration",
+      "name": "Ward Absorb",
+      "attribute": "will",
+      "minimum_rating": 60,
+      "accepted_specialties": [
+        "wards",
+        "spell_absorption"
+      ],
+      "effect": "If you successfully cancel a hostile spell with a legally available Restoration ward, restore one Minor Mana mark after the incident. The incoming spell's Damage and any cost to maintain the ward still resolve normally until canceled; never heal Spirit overflow automatically.",
+      "status": "framework_needed",
+      "dependency": "Restoration ward cancellation and resource ordering",
+      "point_cost": 1,
+      "source_seed_index": 43
+    },
+    {
+      "id": "restoration_necromage",
+      "skill": "restoration",
+      "name": "Necromage",
+      "attribute": "intelligence",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "anti_undead",
+        "restoration_healing",
+        "holy_wards"
+      ],
+      "effect": "Against a genuinely undead subject, add +2 perk-technique dice to eligible Restoration Potence for healing, warding or turning effects when their target rules permit it. Added Potence modifies ordinary spell Mana Cost; do not assume all undead can be healed.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 44
+    },
+    {
+      "id": "restoration_avoid_death",
+      "skill": "restoration",
+      "name": "Avoid Death",
+      "attribute": "will",
+      "minimum_rating": 90,
+      "accepted_specialties": [
+        "emergency_healing",
+        "restoration_healing"
+      ],
+      "effect": "Once per day, automatically interrupt one Injury incident that would fill your final Fatal slot and kill you, immediately applying a Final-grade restorative mark to Injury before the incident becomes irrevocably lethal. It does not resurrect a person already dead and cannot trigger twice per day.",
+      "status": "framework_needed",
+      "dependency": "Pre-death interrupt/response timing and interaction with one-hit multiple Final marks",
+      "point_cost": 1,
+      "source_seed_index": 45
+    },
+    {
+      "id": "restoration_respite",
+      "skill": "restoration",
+      "name": "Respite",
+      "attribute": "health",
+      "minimum_rating": 40,
+      "accepted_specialties": [
+        "fatigue_restoration",
+        "restoration_healing"
+      ],
+      "effect": "You may design a Restoration formula that restores Injury and Fatigue together, resolving each component with its own Potence, resistance, and Mana Cost under the existing compound-spell rules. Casting a separately learned single-resource spell still heals only its stated track.",
+      "status": "framework_needed",
+      "dependency": "How this perk interacts with Spell Synthesis design requirement",
+      "point_cost": 1,
+      "source_seed_index": 46
+    },
+    {
+      "id": "alchemy_green_thumb",
+      "skill": "alchemy",
+      "name": "Green Thumb",
+      "attribute": "perception",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "herbalism",
+        "foraging",
+        "plant_harvesting"
+      ],
+      "effect": "For a successful actual plant-foraging or harvesting Project, collect twice the quantity of physically available usable plant ingredients that a normal harvest would produce. It does not fabricate plants, double nonplant loot, or bypass resource scarcity.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 47
+    },
+    {
+      "id": "alchemy_concentrated_poison",
+      "skill": "alchemy",
+      "name": "Concentrated Poison",
+      "attribute": "intelligence",
+      "minimum_rating": 60,
+      "accepted_specialties": [
+        "poisons",
+        "weapon_toxins"
+      ],
+      "effect": "One ordinary weapon poison application can deliver its normal poison effect on twice as many successful contacts before the coating is spent. Each poison delivery still follows its original defenses, dose limits and depletion rule.",
+      "status": "framework_needed",
+      "dependency": "Poison coating contact count and dose model",
+      "point_cost": 1,
+      "source_seed_index": 48
+    },
+    {
+      "id": "alchemy_experimenter",
+      "skill": "alchemy",
+      "name": "Experimenter",
+      "attribute": "perception",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "ingredient_lore",
+        "experimental_alchemy"
+      ],
+      "effect": "When tasting a real alchemical ingredient during a legitimate identification attempt, one successful Alchemy Project reveals one additional concealed effect beyond normal identification. Eating still exposes you to the ingredient's real risks.",
+      "status": "framework_needed",
+      "dependency": "Ingredient effect-identification baseline",
+      "point_cost": 1,
+      "source_seed_index": 49
+    },
+    {
+      "id": "alchemy_purity",
+      "skill": "alchemy",
+      "name": "Purity",
+      "attribute": "intelligence",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "potions",
+        "poisons",
+        "distillation"
+      ],
+      "effect": "When brewing a researched formula you may exclude known unwanted harmful effects from a potion, or known beneficial effects from a poison, while retaining one chosen main effect. Each removed component still requires actual alchemical knowledge and materials; no discovery of unknown effects.",
+      "status": "framework_needed",
+      "dependency": "Alchemy formula component/purity rules",
+      "point_cost": 1,
+      "source_seed_index": 50
+    },
+    {
+      "id": "enchanting_extra_effect",
+      "skill": "enchanting",
+      "name": "Extra Effect",
+      "attribute": "intelligence",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "weapon_enchanting",
+        "armor_enchanting",
+        "dual_enchanting"
+      ],
+      "effect": "A single crafted item may carry TWO separately designed item enchantments where the eventual item-ownership and enchantment-slot rules normally permit only one. Both effects retain separate components, costs, compatibility limits and their actual Tier.",
+      "status": "framework_needed",
+      "dependency": "Item enchantment system and stacking; DISTINCT from Spell Synthesis",
+      "point_cost": 1,
+      "source_seed_index": 51
+    },
+    {
+      "id": "enchanting_soul_squeezer",
+      "skill": "enchanting",
+      "name": "Soul Squeezer",
+      "attribute": "intelligence",
+      "minimum_rating": 20,
+      "accepted_specialties": [
+        "soul_gems",
+        "weapon_recharging"
+      ],
+      "effect": "When using a soul gem for item recharging, increase the usable recharging work it contributes by 50 percent, rounding down only after the actual recharge accounting is defined. It does not duplicate soul gems.",
+      "status": "framework_needed",
+      "dependency": "Soul-gem energy units and item recharge Projects",
+      "point_cost": 1,
+      "source_seed_index": 52
+    },
+    {
+      "id": "enchanting_soul_siphon",
+      "skill": "enchanting",
+      "name": "Soul Siphon",
+      "attribute": "will",
+      "minimum_rating": 40,
+      "accepted_specialties": [
+        "soul_gems",
+        "weapon_enchanting"
+      ],
+      "effect": "When a wielded enchanted weapon lawfully captures usable residual soul energy from a defeated eligible creature, apply it to that item's recharge Project rather than the character's Mana. No soul is generated from an ineligible or empty target.",
+      "status": "framework_needed",
+      "dependency": "Soul eligibility, capture and recharge accounting",
+      "point_cost": 1,
+      "source_seed_index": 53
+    },
+    {
+      "id": "light_armor_unhindered",
+      "skill": "light_armor",
+      "name": "Unhindered",
+      "attribute": "agility",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "leather_armor",
+        "armor_fit",
+        "skirmishing"
+      ],
+      "effect": "While wearing light armor for which you have the relevant Specialty, ignore its positive Encumbrance when calculating your final Dodge and ordinary movement distance. Do not alter its Armor Rating or Fatigue costs that expressly depend on item Encumbrance.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 54
+    },
+    {
+      "id": "light_armor_deft_movement",
+      "skill": "light_armor",
+      "name": "Deft Movement",
+      "attribute": "agility",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "evasion",
+        "skirmishing",
+        "leather_armor"
+      ],
+      "effect": "Once per round after a real attack lands despite your Light-Armor-assisted Dodge, downgrade ONE resulting Injury mark by one severity grade (Final to Major, Major to Middling, Middling to Minor). Damage is still inflicted and further marks remain unchanged.",
+      "status": "framework_needed",
+      "dependency": "Post-effect prevention timing, multiple Final marks and demotion handling",
+      "point_cost": 1,
+      "source_seed_index": 55
+    },
+    {
+      "id": "light_armor_wind_walker",
+      "skill": "light_armor",
+      "name": "Wind Walker",
+      "attribute": "health",
+      "minimum_rating": 60,
+      "accepted_specialties": [
+        "endurance",
+        "skirmishing",
+        "leather_armor"
+      ],
+      "effect": "At the start of your own turn, while wearing light armor and after having spent a movement action in the prior round, take ONE extra ordinary Fatigue recovery step after your normal single turn-start step. Never heal Injury or other resource tracks by this rule.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 56
+    },
+    {
+      "id": "dodge_aerial_evasion",
+      "skill": "dodge",
+      "name": "Aerial Evasion",
+      "attribute": "agility",
+      "minimum_rating": 25,
+      "accepted_specialties": [
+        "acrobatics",
+        "jumping"
+      ],
+      "effect": "Your legal Dodge can be used while leaping or falling whenever you remain aware and have physical room to alter your path. Pay its usual action and worn-armor Fatigue hazard; this does not give an extra action.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 57
+    },
+    {
+      "id": "dodge_rolling_dodge",
+      "skill": "dodge",
+      "name": "Rolling Dodge",
+      "attribute": "agility",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "tumbling",
+        "evasive_footwork"
+      ],
+      "effect": "Once per round when you spend an actual Dodge reaction action, you may immediately shift a short distance (up to one-quarter of your ordinary move-action distance) without a separate movement action. You must have space and cannot pass through solid cover or obstacles.",
+      "status": "framework_needed",
+      "dependency": "Partial tactical movement and reactions",
+      "point_cost": 1,
+      "source_seed_index": 58
+    },
+    {
+      "id": "sneak_light_foot",
+      "skill": "sneak",
+      "name": "Light Foot",
+      "attribute": "agility",
+      "minimum_rating": 40,
+      "accepted_specialties": [
+        "trap_avoidance",
+        "silent_movement"
+      ],
+      "effect": "When making deliberate careful movement, you do not trigger mundane pressure plates merely by your weight if the trigger could reasonably be avoided by foot placement. This does not bypass magical sensors, unavoidable full-floor triggers, or traps you do not have a chance to detect.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 59
+    },
+    {
+      "id": "sneak_silence",
+      "skill": "sneak",
+      "name": "Silence",
+      "attribute": "agility",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "silent_movement",
+        "combat_stealth"
+      ],
+      "effect": "At an ordinary walking or running movement pace, treat your movement-related noise as if moving cautiously for Sneak attempts. Armor clang, speech and other external noise sources still apply; this is not supernatural sound suppression.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 60
+    },
+    {
+      "id": "sneak_shadow_warrior",
+      "skill": "sneak",
+      "name": "Shadow Warrior",
+      "attribute": "wits",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "combat_stealth",
+        "misdirection"
+      ],
+      "effect": "Once per round when there is actual concealment or a diversion, you may attempt an immediate Sneak disengagement during an ongoing encounter. Success breaks a target's visual tracking until it reacquires you; no instant invisibility while observed in the open.",
+      "status": "framework_needed",
+      "dependency": "Line of sight and reacquisition Project rules",
+      "point_cost": 1,
+      "source_seed_index": 61
+    },
+    {
+      "id": "sneak_backstab",
+      "skill": "sneak",
+      "name": "Backstab",
+      "attribute": "dexterity",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "ambush",
+        "daggers",
+        "precision_striking"
+      ],
+      "effect": "When you make a melee attack against someone genuinely unaware of you at the time of Accuracy resolution, add +3 perk-technique Damage dice to its Potence. No bonus against targets already aware of you; the extra dice do not generate perk confirmations.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 62
+    },
+    {
+      "id": "security_quick_hands",
+      "skill": "security",
+      "name": "Quick Hands",
+      "attribute": "dexterity",
+      "minimum_rating": 40,
+      "accepted_specialties": [
+        "lockpicking",
+        "covert_tools"
+      ],
+      "effect": "You may attempt a normal Security lock Project while concealing that you are working on the lock; observers need a genuine successful perception/opposition attempt to notice your hands. This does not waive the lock Project or remove the time/tool requirement.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 63
+    },
+    {
+      "id": "security_wax_key",
+      "skill": "security",
+      "name": "Wax Key",
+      "attribute": "intelligence",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "locksmithing",
+        "lockpicking"
+      ],
+      "effect": "After legitimately opening an ordinary keyed lock, you can make a wax impression suitable for a later key-copying Smithing/Security Project when you have actual wax and access to the keyway. The impression is not automatically a functioning duplicate key.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 64
+    },
+    {
+      "id": "security_unbreakable",
+      "skill": "security",
+      "name": "Unbreakable",
+      "attribute": "dexterity",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "lockpicking",
+        "precision_tools"
+      ],
+      "effect": "Ordinary lockpicks you use in routine lockpicking Projects do not break solely because an ordinary picking roll fails. Deliberate sabotage, unsuitable tools and exceptional trap mechanisms can still destroy them.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 65
+    },
+    {
+      "id": "security_treasure_hunter",
+      "skill": "security",
+      "name": "Treasure Hunter",
+      "attribute": "perception",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "lockpicking",
+        "loot_appraisal"
+      ],
+      "effect": "When successfully opening a genuinely unexplored loot-bearing container, apply one extra random treasure-quality check and use the more valuable legal result, but only if the campaign's treasure generator uses randomized quality. Never rewrite already-established contents.",
+      "status": "framework_needed",
+      "dependency": "Loot generation quality tables and campaign persistence",
+      "point_cost": 1,
+      "source_seed_index": 66
+    },
+    {
+      "id": "legerdemain_poisoned",
+      "skill": "legerdemain",
+      "name": "Poisoned",
+      "attribute": "dexterity",
+      "minimum_rating": 40,
+      "accepted_specialties": [
+        "pickpocketing",
+        "poison_placement"
+      ],
+      "effect": "Against a genuinely unaware subject within reach, you may covertly place one actual dose of poison on or into an accessible carried item. Make the ordinary Legerdemain application; poison works only by its own legal delivery and resistance rules.",
+      "status": "framework_needed",
+      "dependency": "Poison delivery triggers and covert-object placement",
+      "point_cost": 1,
+      "source_seed_index": 67
+    },
+    {
+      "id": "legerdemain_misdirection",
+      "skill": "legerdemain",
+      "name": "Misdirection",
+      "attribute": "dexterity",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "pickpocketing",
+        "weapon_theft"
+      ],
+      "effect": "Against someone genuinely unaware and within reach, you may attempt to lift a carried or readied handheld weapon via a Legerdemain theft Project. On success the actual item transfers; no automatic disarm against alert combatants.",
+      "status": "framework_needed",
+      "dependency": "Possession/disarm opposing Project difficulty",
+      "point_cost": 1,
+      "source_seed_index": 68
+    },
+    {
+      "id": "legerdemain_perfect_touch",
+      "skill": "legerdemain",
+      "name": "Perfect Touch",
+      "attribute": "dexterity",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "pickpocketing",
+        "gear_theft"
+      ],
+      "effect": "Against someone genuinely unaware and within reach, you may attempt an exceptionally difficult Legerdemain Project to remove a worn usable item without alerting its owner. Fastened armor and secured items require credible time/access; success is not teleportation.",
+      "status": "framework_needed",
+      "dependency": "Time/scope and secured-gear theft rules",
+      "point_cost": 1,
+      "source_seed_index": 69
+    },
+    {
+      "id": "speechcraft_merchant",
+      "skill": "speechcraft",
+      "name": "Merchant",
+      "attribute": "charisma",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "negotiation",
+        "trade"
+      ],
+      "effect": "You may open legitimate trading negotiations for categories of goods a merchant normally does not stock, provided the merchant could plausibly obtain or use them. It permits the attempt; it never compels the merchant to accept an unwanted deal.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 70
+    },
+    {
+      "id": "speechcraft_bribery",
+      "skill": "speechcraft",
+      "name": "Bribery",
+      "attribute": "insight",
+      "minimum_rating": 30,
+      "accepted_specialties": [
+        "bribery",
+        "guard_negotiation"
+      ],
+      "effect": "You can openly propose a discreet bribe to an official or guard without the offer alone automatically spoiling an otherwise legal social approach. Resolve their actual interests, duties and reactions through a Social Project; no automatic forgiveness.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 71
+    },
+    {
+      "id": "speechcraft_investor",
+      "skill": "speechcraft",
+      "name": "Investor",
+      "attribute": "charisma",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "merchant_finance",
+        "trade"
+      ],
+      "effect": "You can sponsor a willing merchant's real trading venture as a persistent economic Project, increasing their actual available stock and capital only as the Project's recorded progress and risks warrant. No automatic global wealth bonus.",
+      "status": "framework_needed",
+      "dependency": "Persistent merchants, capital and trading Projects",
+      "point_cost": 1,
+      "source_seed_index": 72
+    },
+    {
+      "id": "speechcraft_master_trader",
+      "skill": "speechcraft",
+      "name": "Master Trader",
+      "attribute": "insight",
+      "minimum_rating": 100,
+      "accepted_specialties": [
+        "merchant_finance",
+        "negotiation",
+        "trade"
+      ],
+      "effect": "Once per settlement, arrange an extraordinary but plausible procurement or exchange network for a specific rare good by completing a real social/trade Project. It expands access to people who can actually supply it; does not conjure gold or merchandise.",
+      "status": "framework_needed",
+      "dependency": "Supplier search Projects and economic world persistence",
+      "point_cost": 1,
+      "source_seed_index": 73
+    },
+    {
+      "id": "survival_trailwise",
+      "skill": "survival",
+      "name": "Trailwise",
+      "attribute": "perception",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "foraging",
+        "weathercraft",
+        "sheltercraft"
+      ],
+      "effect": "After you complete a suitable genuine Survival Project to establish a safe shelter, reduce the next environmental exposure hazard magnitude for sheltered companions by 1 success before grading Fatigue (minimum zero). This does not protect against hazards the shelter cannot physically address.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 74
+    },
+    {
+      "id": "lore_field_scholar",
+      "skill": "lore",
+      "name": "Field Scholar",
+      "attribute": "intelligence",
+      "minimum_rating": 50,
+      "accepted_specialties": [
+        "monster_lore",
+        "ancient_history",
+        "field_research"
+      ],
+      "effect": "On a successful research Project concerning a specific observed creature, artifact or ruin, learn one concrete relevant vulnerability, provenance or operational fact that available sources could establish. The GM must disclose a real fact, not invent one solely to reward the perk.",
+      "status": "draft",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": 75
+    },
+    {
+      "id": "one_handed_finesse",
+      "skill": "one_handed",
+      "name": "Finesse",
+      "attribute": "dexterity",
+      "minimum_rating": 70,
+      "accepted_specialties": [
+        "swords",
+        "daggers",
+        "precise_striking"
+      ],
+      "effect": "On a successfully applied muscle-powered One-Handed Injury/Fatigue attack, add all Accuracy threshold successes (rolled Accuracy successes ABOVE the defender's actual static Avoidance) directly to the rolled Potence success magnitude BEFORE grading damage. These are virtual Effect successes, not extra dice: they earn no XP or perk confirmations, do not alter self-Fatigue Costs, and give no bonus at an exactly matched threshold.",
+      "status": "new_proposal",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": null
+    },
+    {
+      "id": "dodge_light_footed",
+      "skill": "dodge",
+      "name": "Light Footed",
+      "attribute": "agility",
+      "minimum_rating": 60,
+      "accepted_specialties": [
+        "evasive_footwork",
+        "tumbling",
+        "acrobatics"
+      ],
+      "effect": "Once per six-second round, make ONE otherwise legal Dodge reaction without spending an action from the ordinary three-action budget, even if none remain. Choose before the hostile Accuracy roll; still pay the usual Dodge Fatigue Cost, apply armor Encumbrance, and require awareness and room.",
+      "status": "new_proposal",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": null
+    },
+    {
+      "id": "block_shield_reflex",
+      "skill": "block",
+      "name": "Shield Reflex",
+      "attribute": "dexterity",
+      "minimum_rating": 60,
+      "accepted_specialties": [
+        "shields",
+        "shield_guard",
+        "projectile_defense"
+      ],
+      "effect": "Once per six-second round, make ONE otherwise legal Block reaction without spending an ordinary action. It still requires a suitable guarding implement and costs its usual Block Fatigue hazard; no free Block against modes that prohibit Block.",
+      "status": "new_proposal",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": null
+    },
+    {
+      "id": "one_handed_flowing_parry",
+      "skill": "one_handed",
+      "name": "Flowing Parry",
+      "attribute": "dexterity",
+      "minimum_rating": 60,
+      "accepted_specialties": [
+        "swords",
+        "daggers",
+        "weapon_parries"
+      ],
+      "effect": "Once per six-second round, make ONE otherwise legal One-Handed weapon Parry reaction without spending an ordinary action. It still requires a parry-capable ready weapon and pays the normal weapon Parry Fatigue hazard; arrows still require Deflect Arrows.",
+      "status": "new_proposal",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": null
+    },
+    {
+      "id": "mysticism_spell_synthesis",
+      "skill": "mysticism",
+      "name": "Spell Synthesis",
+      "attribute": "intelligence",
+      "minimum_rating": 75,
+      "accepted_specialties": [
+        "formula_design",
+        "spellcraft",
+        "arcane_theory"
+      ],
+      "effect": "You may DESIGN a compound spell formula containing two or more distinct effects. Each effect keeps its own separate Potence roll, lawful target resistance and Mana Cost incident, with +1 fixed surcharge on each additional component; other casters may learn and cast the finished formula without buying this design perk.",
+      "status": "new_proposal",
+      "dependency": null,
+      "point_cost": 1,
+      "source_seed_index": null
+    }
+  ]
+}
