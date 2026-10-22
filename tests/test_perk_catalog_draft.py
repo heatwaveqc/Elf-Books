@@ -168,6 +168,34 @@ class FullPerkDraftTests(unittest.TestCase):
         # Canonical mainline advancement/perk confirmation tests verify
         # the actual source tag and awards. This draft stays non-operative.
 
+    def test_ranked_hack_and_slash_thresholds_and_bleeding_hazard(self):
+        from geard_core import Track, severity_marks
+        p=next(x for x in self.perks if x["name"]=="Hack and Slash")
+        self.assertEqual(p["rank_requirements"],[30,45,60,75,90])
+        self.assertEqual(p["max_rank"],5)
+        self.assertTrue(p["absolute_specialty_requirement"])
+        self.assertEqual(set(p["accepted_specialties"]),{"axes","hatchets"})
+        # End only on no mark. Do not interpret sub-Health but positive
+        # success as full resistance; positive magnitude causes Minor.
+        healthy=Track(3)
+        no_bleed=healthy.apply_effect(0)
+        self.assertEqual(no_bleed,healthy)
+        weak_tick=healthy.apply_effect(1)
+        self.assertEqual(weak_tick.marks,(1,0,0,0))
+        # A positive 5d hazard hits unarmored Health=3, regardless of
+        # an armor modifier that could have raised the effective threshold.
+        # Raw magnitude 3 is Middling versus Health 3.
+        bleed=healthy.apply_effect(3)
+        armored=healthy.apply_effect(3,effective_threshold=8)
+        self.assertEqual(bleed.marks,(0,1,0,0))
+        self.assertEqual(armored.marks,(1,0,0,0))
+        self.assertEqual(severity_marks(3,3),(1,1))
+        self.assertEqual(severity_marks(0,3),(-1,0))
+        # Probability of an end tick is 0.6 ** rank; duration is
+        # geometrically long at five dice and should be balance tested.
+        self.assertAlmostEqual(0.6**5,0.07776)
+        self.assertAlmostEqual((1-0.6**5)/(0.6**5),11.8600823045,places=5)
+
     def test_three_free_reactions_cost_no_action_but_still_cost_fatigue(self):
         cases=(
             ("light_footed","dodge",dict(armor_encumbrance=3),6),
