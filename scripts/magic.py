@@ -368,12 +368,14 @@ def healing_steps_for_grade(*, health_resilience:int,
 
 
 def apply_healing_recovery(*, injury:Track, healing:HealingEffectGrade)->Track:
-    """Apply restorative work through EXACTLY the ordinary recovery routine.
+    """Player shortcut: remove a matching-grade wound mark directly.
 
-    Recovery always addresses the lowest occupied grade. Middling and
-    higher wounds naturally step down and refill lower marks as usual.
-    A failed spell or zero Potence has no effect. Ordinary healing does
-    not resurrect an already-dead subject (exhausted Injury).
+    If there is no mark of that grade, convert that healing mark into the
+    equivalent number of ordinary Track.recover_step() calls. Resolve each
+    Final healing mark separately. A direct high-grade removal can differ
+    in mixed-wound states from only using natural recovery; this is an
+    intentional at-table simplification, not a mathematically identical
+    state transition in all cases.
     """
     if not isinstance(injury,Track):
         raise ValueError("injury must be a Track")
@@ -383,15 +385,29 @@ def apply_healing_recovery(*, injury:Track, healing:HealingEffectGrade)->Track:
         raise ValueError("exhausted Injury is death; ordinary healing cannot resurrect")
     if not healing.applied:
         return injury
-    count=healing_steps_for_grade(
+    # Validate grade/count consistently even if an exact-grade wound exists.
+    healing_steps_for_grade(
         health_resilience=injury.resilience,healing_grade=healing.grade,
         grade_mark_count=healing.mark_equivalents)
+    if healing.grade == -1 or healing.mark_equivalents == 0:
+        return injury
     result=injury
-    for _ in range(count):
-        next_step=result.recover_step()
-        if next_step == result:
+    for _ in range(healing.mark_equivalents):
+        if not any(result.marks):
             break
-        result=next_step
+        if result.marks[healing.grade]:
+            marks=list(result.marks)
+            marks[healing.grade]-=1
+            result=Track(result.resilience,tuple(marks))
+        else:
+            steps=healing_steps_for_grade(
+                health_resilience=result.resilience,healing_grade=healing.grade,
+                grade_mark_count=1)
+            for _ in range(steps):
+                next_step=result.recover_step()
+                if next_step==result:
+                    break
+                result=next_step
     return result
 
 
