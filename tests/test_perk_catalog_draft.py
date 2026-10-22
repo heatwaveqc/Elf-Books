@@ -103,6 +103,7 @@ class FullPerkDraftTests(unittest.TestCase):
              hit.bonus_potence_successes,hit.modified_potence),
             (True,5,5,4,8))
         self.assertEqual(hit.bonus_faces,(2,7,10,4,8))
+        self.assertEqual(hit.bonus_die_source,"perk_skill")
         self.assertNotEqual(hit.modified_potence,9)  # not five flat successes
         # Even five bonus dice can contribute zero successes.
         zero_bonus=finesse_potence(
@@ -158,6 +159,14 @@ class FullPerkDraftTests(unittest.TestCase):
         ):
             with self.subTest(kwargs=kwargs),self.assertRaises(ValueError):
                 finesse_potence(**kwargs)
+
+    def test_draft_perk_bonus_dice_credit_skill_rewards(self):
+        for name in ("Finesse", "Backstab", "Animage"):
+            p=next(x for x in self.perks if x["name"]==name)
+            self.assertIn("Skill dice",p["effect"])
+            self.assertIn("perk",p["effect"].lower())
+        # Canonical mainline advancement/perk confirmation tests verify
+        # the actual source tag and awards. This draft stays non-operative.
 
     def test_three_free_reactions_cost_no_action_but_still_cost_fatigue(self):
         cases=(
