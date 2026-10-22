@@ -1,6 +1,6 @@
 # Use-based advancement — Elf-Books working rules
 
-**Current experimental calibration, implemented and unit-tested:** [source upstream Geard Lif page](../engine/geard-lif/source/Use_Based_Trait_Advancement.tid). Numbers are approved for preliminary balance testing, not a promise that campaign pacing is final. D20/HP-based XP is archived.
+**Elf-Books-specific Elder Scrolls progression adapter (deliberately retained).** Base Geard Lif / Raven's Heart now uses **0–5 ratings (one die each) and Drive Mark advancement**. Elf-Books instead uses **expanded 0–25 ratings (one die per five points) and XP earned from consequential practice**, preserving the Elder Scrolls learning-by-doing feel. This adapter's earlier upstream ancestry is frozen in the [reviewed source snapshot](../engine/geard-lif/source/Use_Based_Trait_Advancement.tid), but **current upstream Geard Lif progression is not the authority for this adapter**. Numeric rules below are implemented and unit-tested for preliminary balancing; D20/HP-based XP is archived.
 
 ## Rating, dice and XP cost
 
