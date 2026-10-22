@@ -24,8 +24,13 @@
       "source_game": "Skyrim",
       "source_url": "https://www.gamebanshee.com/skyrim/skills/one-handed.php",
       "prior_note": "Faster dual attacks require a specific extra-attack/action-economy rule.",
-      "port_status": "UNREVIEWED_FOR_GEARD",
-      "original_game_skill_gate": 30
+      "port_status": "EFFECT_RULE_ADOPTED_GATE_UNSPECIFIED",
+      "original_game_skill_gate": 30,
+      "effect_rule_id": "dual_flurry",
+      "effect_reference": "design/COMBAT_PERK_PILOTS.md",
+      "prerequisite_attribute": null,
+      "acceptable_specialties": null,
+      "minimum_composite_rating": null
     },
     {
       "skill": "one_handed",
@@ -114,8 +119,13 @@
       "source_game": "Skyrim",
       "source_url": "https://www.gamebanshee.com/skyrim/skills/block.php",
       "prior_note": "Unlock shield power-bash maneuver once bash attack action is specified.",
-      "port_status": "UNREVIEWED_FOR_GEARD",
-      "original_game_skill_gate": 30
+      "port_status": "EFFECT_RULE_ADOPTED_GATE_UNSPECIFIED",
+      "original_game_skill_gate": 30,
+      "effect_rule_id": "power_bash",
+      "effect_reference": "design/COMBAT_PERK_PILOTS.md",
+      "prerequisite_attribute": null,
+      "acceptable_specialties": null,
+      "minimum_composite_rating": null
     },
     {
       "skill": "block",
@@ -123,8 +133,13 @@
       "source_game": "Skyrim",
       "source_url": "https://www.gamebanshee.com/skyrim/skills/block.php",
       "prior_note": "Shield can fully stop arrows; replace real-time shield-hit detection with legal Block reaction.",
-      "port_status": "UNREVIEWED_FOR_GEARD",
-      "original_game_skill_gate": 30
+      "port_status": "EFFECT_RULE_ADOPTED_GATE_UNSPECIFIED",
+      "original_game_skill_gate": 30,
+      "effect_rule_id": "deflect_arrows",
+      "effect_reference": "design/COMBAT_PERK_PILOTS.md",
+      "prerequisite_attribute": null,
+      "acceptable_specialties": null,
+      "minimum_composite_rating": null
     },
     {
       "skill": "block",
@@ -222,8 +237,9 @@
       "source_game": "Skyrim",
       "source_url": "https://www.gamebanshee.com/skyrim/skills/smithing.php",
       "prior_note": "Temper/improve enchanted weapons and armor.",
-      "port_status": "UNREVIEWED_FOR_GEARD",
-      "original_game_skill_gate": 60
+      "port_status": "DEFER_UNTIL_ENCHANTING",
+      "original_game_skill_gate": 60,
+      "blocker": "No adopted enchanting system or enchanted-item modification contract yet"
     },
     {
       "skill": "smithing",

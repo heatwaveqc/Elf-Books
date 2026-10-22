@@ -133,3 +133,12 @@ We're back at approximately the previous design milestone when **all P0 entries*
 ## Equipment deed enchantments — future concept
 
 - [ ] **Confirmed equipment 10s may empower items:** investigate the user's idea that an original 10 on **gear-sourced** dice, confirmed by another 10, may earn the item a **deed enchantment**. **IDEA ONLY:** no equipment confirmation is currently rolled for item benefits and no enchantments are bestowed by this provisional concept. Gear dice are **never** eligible to earn *character* perk points. Keep natural-10 learning bootstrap from equipment as its separately approved XP rule until explicitly changed.
+
+## First combat perk effect pilots (2026-10-21)
+
+- [x] **Power Bash effect:** add chosen **0..Strength-dice** to a muscle-powered weapon/shield bash Potence, and **2× added Damage dice** to its normal attempted-attack Fatigue hazard. Costs apply on Accuracy miss. Technique-sourced bonus dice are not ordinary Attribute/Skill/Talent/Specialty or gear dice for perk confirmations. [Rule and tests](design/COMBAT_PERK_PILOTS.md).
+- [x] **Deflect Arrows effect:** allow eligible ordinary weapon Parry against an incoming **arrow**, still one reaction action and ordinary parrying item's Fatigue hazard. No free Parry against unrelated projectiles.
+- [x] **Dual Flurry effect:** two independent melee strikes with two ready weapons **per attack action**, each its own actual roll and normal Fatigue Cost incident; no per-round action increase.
+- [ ] **Pilot perk purchase gates:** choose named prerequisite Attribute, accepted Specialty list and combined 0–100 minimum rating for these three before enabling purchase. The mechanics are effect-ready only.
+- [ ] **Spell / utility pilot conversions:** Quiet Casting, Extra Effect (compound design permission perk), and Green Thumb await full specific wording/rating thresholds.
+- [ ] **Arcane Blacksmith:** **DEFER until enchanting** is established; no premature enchanted-equipment modification mechanic.
