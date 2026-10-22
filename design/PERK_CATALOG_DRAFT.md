@@ -60,9 +60,14 @@ Dual Flurry retains **one action for two independent actual attacks**, each with
 
 #### Hack and Slash
 
-- **Proposed requirement:** **30/100**, **Strength + One-Handed**, with one of: Axes, Hatchets. **Cost:** 1 bankable perk point (draft).
-- **Effect:** An Injury-causing axe hit may leave a bleeding wound. At the injured subject's subsequent turns a bleeding incident inflicts a Minor Injury unless a successful wound-care action staunches it; no stacking multiple bleeds on the same wound.
-- **Readiness:** Needs supporting subsystem. **Blocked by:** Bleeding timing, wound-care complexity and which injuries can bleed.
+- **Proposed ranked requirement:** **Strength + One-Handed**, at combined ratings **30 / 45 / 60 / 75 / 90** for ranks 1–5, respectively. An actual **Axes or Hatchets Specialty** is **mandatory** at every rank, even if the combined score could otherwise qualify. **Cost:** 1 bankable perk point **per sequential rank**.
+- **Trigger:** An axe/hatchet attack causes **at least a Middling Injury mark** after the original strike's armor and mitigation. On a creature physically capable of bleeding, this activates one persistent bleeding condition.
+- **Per-turn Hazard:** Beginning at the start of the target's next turn, roll a **fresh Injury Hazard of 1d10/2d10/3d10/4d10/5d10**, equal to the purchased Hack and Slash rank. Count real d10 successes (1–6=0, 7–9=1, 10=2) and grade the hazard against **unmodified Health** with **NO Armor Rating**, then add its ordinary graded Injury marks. This is an independent harm incident, not another axe attack, and needs no new Accuracy roll or attack action.
+- **End condition:** The first hazard tick that **adds no Injury mark** ends the bleed immediately. In ordinary Geard Lif grading, that includes all rolls with zero successes. Do not interpret low positive Potence as entirely soaked by Health: it still inflicts Minor Injury.
+- **Stacking:** Only **one active Hack and Slash bleed per target**. A stronger-rank qualifying new wound can replace a weaker ongoing bleed; equal/lower ranks do not create additional hazards or refresh the condition.
+- **Balance and eligibility:** Stop probability without special resistance is `0.6^rank`, so rank 1 stops 60% of the time per tick and rank 5 only 7.776% of the time. Autonomous bleed ticks are **not yet classified** as the attacker's new Skill rolls for XP and double-10/perk-point confirmations; unlike actual perk-sourced attack dice, they are unattended hazard incidents. This distinction, bleeding anatomy and possible staunching actions need final review.
+- **Readiness:** **Five-rank proposal with recurring hazard timing now specified; supporting bleed status integration and autonomous XP classification remain open.** [Batch 01 review](PERK_REVIEW_BATCH_01.md).
+
 
 #### Armsman
 
