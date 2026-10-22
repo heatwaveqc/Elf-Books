@@ -299,7 +299,7 @@ def resolve_curse_tick(*, stored_potence:int, resistance_successes:int,
 
 @dataclass(frozen=True)
 class HealingEffectGrade:
-    """Grade of healing work applied through normal recovery steps."""
+    """Restorative marks classified by patient Health for universal healing."""
     applied: bool
     grade: int
     mark_equivalents: int
@@ -316,8 +316,8 @@ def grade_healing_potence(
     actual legal defense/Avoidance threshold must be supplied for the
     Malediction-like Application roll. Unlike ordinary non-spell Projects,
     the spell's Potence must already have been rolled even if Application
-    misses, because its Mana Cost uses that same result. Applying the
-    graded outcome reuses Track.recover_step(), without new wound rules.
+    misses, because its Mana Cost uses that same result. Its restorative
+    mark grade is then applied with the shared infliction-equivalence rule.
     """
     from geard_core import severity_marks
     if type(willing_and_accessible) is not bool:
@@ -342,40 +342,14 @@ def grade_healing_potence(
 
 
 
-def healing_steps_for_grade(*, health_resilience:int,
-                            healing_grade:int, grade_mark_count:int)->int:
-    """Convert healing marks to the equivalent number of natural recovery steps.
-
-    An isolated grade-g wound in an R-slot track takes 1 + R + ... + R**g
-    normal recovery steps to clear, because each demotion fills every slot
-    at the next lower grade. No new wound-removal mechanism is introduced.
-    """
-    if type(health_resilience) is not int or health_resilience<1:
-        raise ValueError("Health resilience must be a positive integer")
-    if type(healing_grade) is not int or healing_grade not in (-1,0,1,2,3):
-        raise ValueError("healing grade must be -1 or 0..3")
-    if type(grade_mark_count) is not int or grade_mark_count<0:
-        raise ValueError("healing mark count must be nonnegative")
-    if healing_grade == -1:
-        if grade_mark_count:
-            raise ValueError("no-effect healing cannot contain marks")
-        return 0
-    if grade_mark_count == 0:
-        return 0
-    if healing_grade != 3 and grade_mark_count != 1:
-        raise ValueError("non-Final healing gives one mark equivalent")
-    return grade_mark_count * sum(health_resilience**g for g in range(healing_grade+1))
-
-
 def apply_healing_recovery(*, injury:Track, healing:HealingEffectGrade)->Track:
-    """Player shortcut: remove a matching-grade wound mark directly.
+    """Use the universal Geard Lif supernatural mark-restoration rule.
 
-    If there is no mark of that grade, convert that healing mark into the
-    equivalent number of ordinary Track.recover_step() calls. Resolve each
-    Final healing mark separately. A direct high-grade removal can differ
-    in mixed-wound states from only using natural recovery; this is an
-    intentional at-table simplification, not a mathematically identical
-    state transition in all cases.
+    Kept as the Elder Scrolls spell adapter entry point. Actual healing is
+    infliction-equivalence subtraction in Track.restore_marks(): a healing
+    mark of grade g cancels (Health Resilience+1)**g Minor equivalents,
+    and the remainder is expressed in normal mark grades. This is NOT
+    ordinary timed recover_step() logic. No separate priority/fallback.
     """
     if not isinstance(injury,Track):
         raise ValueError("injury must be a Track")
@@ -385,30 +359,7 @@ def apply_healing_recovery(*, injury:Track, healing:HealingEffectGrade)->Track:
         raise ValueError("exhausted Injury is death; ordinary healing cannot resurrect")
     if not healing.applied:
         return injury
-    # Validate grade/count consistently even if an exact-grade wound exists.
-    healing_steps_for_grade(
-        health_resilience=injury.resilience,healing_grade=healing.grade,
-        grade_mark_count=healing.mark_equivalents)
-    if healing.grade == -1 or healing.mark_equivalents == 0:
-        return injury
-    result=injury
-    for _ in range(healing.mark_equivalents):
-        if not any(result.marks):
-            break
-        if result.marks[healing.grade]:
-            marks=list(result.marks)
-            marks[healing.grade]-=1
-            result=Track(result.resilience,tuple(marks))
-        else:
-            steps=healing_steps_for_grade(
-                health_resilience=result.resilience,healing_grade=healing.grade,
-                grade_mark_count=1)
-            for _ in range(steps):
-                next_step=result.recover_step()
-                if next_step==result:
-                    break
-                result=next_step
-    return result
+    return injury.restore_marks(healing.grade,healing.mark_equivalents)
 
 
 def oakflesh_effective_injury_threshold(
