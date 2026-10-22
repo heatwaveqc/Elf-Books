@@ -10,7 +10,7 @@
 
 **Once per round:** A per-round use resets when the round's three-action budgets refresh, not once per attack or every six-second real-time interval an individual character spends talking. An extra *reaction* waives only its normal **action cost**; all physical/legal defenses, fatigue hazards, source pools and deadlines still apply. One incoming attack gets only one chosen defense, even if multiple free-response perks have been acquired.
 
-**Technique dice and Accuracy margin:** Where a perk adds *technique dice*, **roll them as real additional Effect/Application dice**. These dice are attributed to the perk, not falsely to Attribute/Talent/Skill/Specialty or equipment for XP, character perk confirmations, or deed enchantments. **Finesse grants one additional Potence d10 for each surplus Accuracy success above static opposition**; the resulting faces are rolled and counted normally (1–6 = 0 successes, 7–9 = 1, 10 = 2). It is **not** a flat increase in successes. Its extra dice do not add to the attack's ordinary Fatigue hazard. The final Effect still faces the ordinary resource threshold. Costs and natural recovery remain unchanged.
+**Technique dice and Accuracy margin:** Where a perk adds *technique dice*, **roll them as real additional Effect/Application dice**. Record them as `perk_skill` to retain their source; **treat their actual faces as Skill dice for practice XP and character confirmed-10/attacker confirmed-1 perk points**. They are not equipment dice and cannot generate future item deed enchantments. **Finesse grants one additional Potence d10 for each surplus Accuracy success above static opposition**; the resulting faces are rolled and counted normally (1–6 = 0 successes, 7–9 = 1, 10 = 2). It is **not** a flat increase in successes. Its extra dice do not add to the attack's ordinary Fatigue hazard. The final Effect still faces the ordinary resource threshold. Costs and natural recovery remain unchanged.
 
 **Conditional mechanics:** Describing a desired end state is not authorization to invent unsolved summoning, stagger, crafting, poison, enchanting, tracking, economics or random loot rules. Such perks are labeled *Needs supporting subsystem* with the exact dependency.
 
@@ -24,7 +24,7 @@ After a legal One-Handed Accuracy roll successfully meets the opponent's static 
 
 **Example:** One-Handed Accuracy rolls **8 successes** against static Dodge **3**, for **five surplus successes**. Finesse therefore grants **5d10** to the damage Potence roll, not +5 automatic Potence successes. Suppose the ordinary Potence dice generate **4 successes** and the five Finesse dice show **2, 7, 10, 4, 8**, contributing **0 + 1 + 2 + 0 + 1 = 4** additional successes. **Final damage Potence is 8**, determined by the actual dice. Those same five dice could contribute anything from **0 through 10** successes; with this d10 system their average is **2.5**. At equal Accuracy and Avoidance there are no bonus dice, and a failed Application does not create an Effect.
 
-Bonus Finesse dice are not ordinary Attribute/Talent/Skill/Specialty dice for learning XP or double-10 perk points; they are not weapon equipment dice for deed enchantments either. **They do not raise the self-Fatigue hazard** or create extra attack actions. High Accuracy margins still add many real dice, making this worth a focused balance test against undefended targets. The exact number of Finesse dice should be recorded with the Potence roll for replay.
+Bonus Finesse dice are recorded as `perk_skill`, and **earn the used Skill's usual XP per rolled success plus character double-10 and attacker double-1 perk-point opportunities**. They are not equipment dice for deed enchantments. **They do not raise the self-Fatigue hazard** or create extra attack actions. High Accuracy margins still add many real dice, making this worth a focused balance test against undefended targets. The exact number of Finesse dice should be recorded with the Potence roll for replay.
 
 ### Free defense family
 
@@ -73,7 +73,7 @@ Dual Flurry retains **one action for two independent actual attacks**, each with
 #### Finesse
 
 - **Proposed requirement:** **70/100**, **Dexterity + One-Handed**, with one of: Swords, Daggers, Precise Striking. **Cost:** 1 bankable perk point (draft).
-- **Effect:** On a successfully applied muscle-powered One-Handed Injury/Fatigue attack, each rolled Accuracy success ABOVE the target's actual static Avoidance provides ONE ADDITIONAL d10 to the attack's damage Potence roll. Roll those dice normally (1–6 gives 0 successes, 7–9 gives 1, 10 gives 2) and combine their actual successes with the regular Potence roll before grading harm. The added dice are perk-derived, not Attribute/Talent/Skill/Specialty or equipment dice for XP, character perk confirmations, or future gear deeds. They do not increase the attack's self-Fatigue hazard. Equal Accuracy versus Avoidance gives no extra dice, and a miss has no Potence effect.
+- **Effect:** On a successfully applied muscle-powered One-Handed Injury/Fatigue attack, each rolled Accuracy success ABOVE the target's actual static Avoidance provides ONE ADDITIONAL d10 to the attack's damage Potence roll. Roll those dice normally (1–6 gives 0 successes, 7–9 gives 1, 10 gives 2) and combine their actual successes with the regular Potence roll before grading harm. The added perk dice are logged as perk_skill and count as Skill dice for training XP and confirmed 10s or attacker 1s toward character perk points; they do not count as equipment dice for future gear deeds. They do not increase the attack's self-Fatigue hazard. Equal Accuracy versus Avoidance gives no extra dice, and a miss has no Potence effect.
 - **Readiness:** New proposal.
 
 #### Flowing Parry
@@ -323,7 +323,7 @@ Dual Flurry retains **one action for two independent actual attacks**, each with
 #### Animage
 
 - **Proposed requirement:** **20/100**, **Insight + Illusion**, with one of: Animal Influence, Mind Magic, Beast Behavior. **Cost:** 1 bankable perk point (draft).
-- **Effect:** When using Illusion to influence a genuine animal with a mind, add +2 perk-technique dice to Potence. Those bonus dice affect the spell's usual Potence-derived Mana Cost but are not personal trait dice for perk confirmations.
+- **Effect:** When using Illusion to influence a genuine animal with a mind, add +2 perk-technique dice to Potence. Those bonus dice affect the spell's usual Potence-derived Mana Cost and count as Skill dice for XP and character perk-point confirmations; they are not equipment dice.
 - **Readiness:** Draft effect; candidate mechanics.
 
 ### Mysticism (3)
@@ -481,7 +481,7 @@ Dual Flurry retains **one action for two independent actual attacks**, each with
 #### Backstab
 
 - **Proposed requirement:** **30/100**, **Dexterity + Sneak**, with one of: Ambush, Daggers, Precision Striking. **Cost:** 1 bankable perk point (draft).
-- **Effect:** When you make a melee attack against someone genuinely unaware of you at the time of Accuracy resolution, add +3 perk-technique Damage dice to its Potence. No bonus against targets already aware of you; the extra dice do not generate perk confirmations.
+- **Effect:** When you make a melee attack against someone genuinely unaware of you at the time of Accuracy resolution, add +3 perk-technique Damage dice to its Potence. No bonus against targets already aware of you; the extra dice count as Skill dice for training XP and perk confirmations.
 - **Readiness:** Draft effect; candidate mechanics.
 
 ### Security (4)
