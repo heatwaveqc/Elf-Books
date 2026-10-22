@@ -73,8 +73,11 @@ def qualify_for_perk(
 
     A Talent contributes only when it actually governs this Skill. One
     eligible known Specialty supplies its rating (max of allowed matches,
-    never sum multiple Specialties). Attribute and Skill must match the
-    perk's exact declared prereqs. Equipment and magical dice add nothing.
+    never sum multiple Specialties). The accepted set may contain "*"
+    to accept ANY Specialty legitimately belonging to the named Skill.
+    specialty_ratings must be pre-filtered to the named Skill by caller.
+    Attribute and Skill must match the perk's exact declared prereqs.
+    Equipment, magical, and perk-generated bonus dice add no rating.
     """
     if not isinstance(requirement, PerkRequirement):
         raise ValueError("perk requirement is required")
@@ -90,9 +93,14 @@ def qualify_for_perk(
         if not isinstance(name, str) or not name.strip():
             raise ValueError("Specialty IDs must be named")
         _validate_rating(value, f"Specialty {name}")
+    # "*" is the wildcard for ANY legitimately possessed Specialty
+    # belonging to this perk's named Skill. Caller must supply only
+    # Specialties of that Skill, never an unrelated Skill's specialisms.
+    # One actual Specialty contributes at most once; no combining ratings.
+    any_specialty = "*" in requirement.accepted_specialties
     eligible = sorted(
-        (name for name in requirement.accepted_specialties
-         if name in specialty_ratings),
+        (name for name in specialty_ratings
+         if any_specialty or name in requirement.accepted_specialties),
         key=lambda name: (-specialty_ratings[name], name),
     )
     selected = eligible[0] if eligible else None
@@ -105,6 +113,74 @@ def qualify_for_perk(
         talent_rating=governed,
         specialty_rating=specialty,
         qualifying_specialty=selected if specialty > 0 else None,
+    )
+
+
+@dataclass(frozen=True)
+class RankedPerk:
+    """Sequential one-point rank purchases, each with its own 0..100 gate.
+
+    This is a general mechanism only; particular multi-rank perks and
+    their thresholds remain catalogue-level decisions until adopted.
+    """
+    name: str
+    attribute: str
+    skill: str
+    accepted_specialties: frozenset[str]
+    rank_requirements: tuple[int, ...]
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.rank_requirements, tuple) or not 1 <= len(self.rank_requirements) <= 5:
+            raise ValueError("ranked perk must define 1 through 5 sequential ranks")
+        previous = -1
+        for value in self.rank_requirements:
+            if type(value) is not int or not 0 <= value <= 100 or value <= previous:
+                raise ValueError("rank prerequisites must strictly increase within 0..100")
+            previous = value
+        PerkRequirement(self.name,self.attribute,self.skill,
+                        self.accepted_specialties,self.rank_requirements[0])
+
+
+@dataclass(frozen=True)
+class NextRankPurchase:
+    next_rank: int | None
+    required_rating: int | None
+    qualified: bool
+    remaining_points: int
+
+
+def evaluate_next_rank(*, perk:RankedPerk,current_rank:int,banked_points:int,
+                       attribute:str,attribute_rating:int,
+                       skill:str,skill_rating:int,talent:Talent,
+                       specialty_ratings:Mapping[str,int])->NextRankPurchase:
+    """Return whether the next consecutive rank is available and affordable.
+
+    Owning rank 1 is required to buy rank 2; upgrades spend one point each.
+    Rating eligibility is rechecked for the *next* rank, with the ordinary
+    Attribute+governed Talent+Skill+one accepted Specialty formula. No
+    equipment/perk dice contribute to this prerequisite rating.
+    """
+    if not isinstance(perk,RankedPerk):
+        raise ValueError("perk must be a RankedPerk")
+    if type(current_rank) is not int or not 0 <= current_rank <= len(perk.rank_requirements):
+        raise ValueError("invalid current rank")
+    if type(banked_points) is not int or banked_points < 0:
+        raise ValueError("perk-point bank cannot be negative")
+    if current_rank == len(perk.rank_requirements):
+        return NextRankPurchase(None,None,False,banked_points)
+    requirement=PerkRequirement(
+        perk.name,perk.attribute,perk.skill,perk.accepted_specialties,
+        perk.rank_requirements[current_rank],
+    )
+    qualifying=qualify_for_perk(
+        requirement=requirement,attribute=attribute,
+        attribute_rating=attribute_rating,skill=skill,skill_rating=skill_rating,
+        talent=talent,specialty_ratings=specialty_ratings,
+    )
+    available=qualifying.meets_requirement and banked_points >= 1
+    return NextRankPurchase(
+        current_rank+1,requirement.minimum_rating,available,
+        banked_points-1 if available else banked_points,
     )
 
 

@@ -142,3 +142,6 @@ We're back at approximately the previous design milestone when **all P0 entries*
 - [ ] **Pilot perk purchase gates:** choose named prerequisite Attribute, accepted Specialty list and combined 0–100 minimum rating for these three before enabling purchase. The mechanics are effect-ready only.
 - [ ] **Spell / utility pilot conversions:** Quiet Casting, Extra Effect (compound design permission perk), and Green Thumb await full specific wording/rating thresholds.
 - [ ] **Arcane Blacksmith:** **DEFER until enchanting** is established; no premature enchanted-equipment modification mechanic.
+
+- [x] **Perk rank and Specialty mechanisms:** perk records may have 1–5 consecutive purchased ranks (one point/rank by default) with monotonically increasing 0–100 gates; Specialty gate may name specific allowed Specialties or **Any Specialty of the named Skill**. Perk-generated Skill dice add to the final roll and count for XP/confirmations, **not** the external equipment cap. [Tests](tests/test_ranked_perks.py).
+- [ ] **Individual rank assignment:** candidate 5-rank Finesse caps 1/2/3/4/uncapped (suggested 20/40/60/75/90 gates) and Power Bash up to 1 extra die per rank, subject to Strength dice and +2d Fatigue per die. Exact named perk rank ladders and other ranked power attacks await content review.
