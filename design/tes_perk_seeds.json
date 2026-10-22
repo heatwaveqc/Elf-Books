@@ -5,7 +5,8 @@
   "notes": [
     "75 source examples were surveyed during D20 design. None have operative Geard mechanics.",
     "Do not use previous D20 fit/reject classifications as final. Stamina-type effects can be adapted to Geard's Fatigue, while percentual combat effects require Potence/Resilience design.",
-    "Original game gates are references, not Geard trait prerequisites."
+    "Original Skyrim 0–100 numeric gates are retained as candidate minimums on the combined rating: a perk-named Attribute + governed starting Talent + Skill + one eligible Specialty (0–25 each), never the Skill rating alone. Each perk's Attribute and allowed Specialties still need conversion.",
+    "Starting Talents have no perk trees. Double-confirmed personal 10s and attacker personal 1s award bankable character perk points; external equipment dice never earn such points."
   ],
   "items": [
     {
