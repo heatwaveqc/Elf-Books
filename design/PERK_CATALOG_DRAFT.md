@@ -10,7 +10,7 @@
 
 **Once per round:** A per-round use resets when the round's three-action budgets refresh, not once per attack or every six-second real-time interval an individual character spends talking. An extra *reaction* waives only its normal **action cost**; all physical/legal defenses, fatigue hazards, source pools and deadlines still apply. One incoming attack gets only one chosen defense, even if multiple free-response perks have been acquired.
 
-**Technique dice vs margin:** Where a perk adds *technique dice*, they are rolled as additional Effect/Application dice but **not** falsely attributed as Attribute/Talent/Skill/Specialty or equipment dice for perk confirmations or deed enchantments. An Effect bonus expressed as **successes** (Finesse) is added **after** the normal dice roll; no phantom dice, XP, extra natural tens or gear deeds are created. The final Effect still faces the ordinary resource threshold. Costs always follow the wording of the specific perk, and natural-turn recovery is unchanged.
+**Technique dice and Accuracy margin:** Where a perk adds *technique dice*, **roll them as real additional Effect/Application dice**. These dice are attributed to the perk, not falsely to Attribute/Talent/Skill/Specialty or equipment for XP, character perk confirmations, or deed enchantments. **Finesse grants one additional Potence d10 for each surplus Accuracy success above static opposition**; the resulting faces are rolled and counted normally (1–6 = 0 successes, 7–9 = 1, 10 = 2). It is **not** a flat increase in successes. Its extra dice do not add to the attack's ordinary Fatigue hazard. The final Effect still faces the ordinary resource threshold. Costs and natural recovery remain unchanged.
 
 **Conditional mechanics:** Describing a desired end state is not authorization to invent unsolved summoning, stagger, crafting, poison, enchanting, tracking, economics or random loot rules. Such perks are labeled *Needs supporting subsystem* with the exact dependency.
 
@@ -18,11 +18,13 @@
 
 ## High-priority demonstrations
 
-### Finesse — cross-axis Accuracy → damage bridge
+### Finesse — surplus Accuracy grants real Potence dice
 
-The perk **adds the attack's threshold successes** (`max(0, rolled Accuracy successes − actual static Avoidance/Complexity)`) to the **rolled damage Potence success magnitude** before graded mark calculation. The extra number is neither a rerolled weapon die nor a Fatigue hazard increase.
+After a legal One-Handed Accuracy roll successfully meets the opponent's static Avoidance, calculate **surplus Accuracy successes** as `max(0, rolled Accuracy successes − actual static Avoidance)`. **Add that many new d10 to the normal damage Potence pool, roll them, and count their actual successes.** These are perk-sourced dice, not guaranteed successes.
 
-**Example:** One-Handed Accuracy rolls 8 successes against static Dodge 3, for **five threshold successes**. The actual Potence roll supplies 4 successes. **Finesse increases damage magnitude to 9**. Against effective Injury threshold 3 this is Final-grade harm rather than the Middling harm of the original Potence 4. An exactly matched Accuracy 3 versus Avoidance 3 adds zero. Extra excess Accuracy makes Finesse potentially **very strong**, especially when targets exhaust their defensive actions and have zero Avoidance; this is a deliberate balance test, not a covert cap. Decide whether Finesse should remain a One-Handed entry or be offered as separate Archery/Two-Handed/Unarmed variants only after that test.
+**Example:** One-Handed Accuracy rolls **8 successes** against static Dodge **3**, for **five surplus successes**. Finesse therefore grants **5d10** to the damage Potence roll, not +5 automatic Potence successes. Suppose the ordinary Potence dice generate **4 successes** and the five Finesse dice show **2, 7, 10, 4, 8**, contributing **0 + 1 + 2 + 0 + 1 = 4** additional successes. **Final damage Potence is 8**, determined by the actual dice. Those same five dice could contribute anything from **0 through 10** successes; with this d10 system their average is **2.5**. At equal Accuracy and Avoidance there are no bonus dice, and a failed Application does not create an Effect.
+
+Bonus Finesse dice are not ordinary Attribute/Talent/Skill/Specialty dice for learning XP or double-10 perk points; they are not weapon equipment dice for deed enchantments either. **They do not raise the self-Fatigue hazard** or create extra attack actions. High Accuracy margins still add many real dice, making this worth a focused balance test against undefended targets. The exact number of Finesse dice should be recorded with the Potence roll for replay.
 
 ### Free defense family
 
@@ -71,7 +73,7 @@ Dual Flurry retains **one action for two independent actual attacks**, each with
 #### Finesse
 
 - **Proposed requirement:** **70/100**, **Dexterity + One-Handed**, with one of: Swords, Daggers, Precise Striking. **Cost:** 1 bankable perk point (draft).
-- **Effect:** On a successfully applied muscle-powered One-Handed Injury/Fatigue attack, add all Accuracy threshold successes (rolled Accuracy successes ABOVE the defender's actual static Avoidance) directly to the rolled Potence success magnitude BEFORE grading damage. These are virtual Effect successes, not extra dice: they earn no XP or perk confirmations, do not alter self-Fatigue Costs, and give no bonus at an exactly matched threshold.
+- **Effect:** On a successfully applied muscle-powered One-Handed Injury/Fatigue attack, each rolled Accuracy success ABOVE the target's actual static Avoidance provides ONE ADDITIONAL d10 to the attack's damage Potence roll. Roll those dice normally (1–6 gives 0 successes, 7–9 gives 1, 10 gives 2) and combine their actual successes with the regular Potence roll before grading harm. The added dice are perk-derived, not Attribute/Talent/Skill/Specialty or equipment dice for XP, character perk confirmations, or future gear deeds. They do not increase the attack's self-Fatigue hazard. Equal Accuracy versus Avoidance gives no extra dice, and a miss has no Potence effect.
 - **Readiness:** New proposal.
 
 #### Flowing Parry
@@ -574,7 +576,7 @@ Dual Flurry retains **one action for two independent actual attacks**, each with
 
 **What is settled already:** Elf Books' confirmed 10s/defender confirmed attacker 1s, banked personal-only perk points, composite 0–100 qualifications, absence of ordinary starting-Talent perk trees, and the effect text for **Power Bash, Deflect Arrows and Dual Flurry**. This draft **does not revise** any of those rules.
 
-**Still to decide before purchasing:** Whether the proposed numeric gates and listed Specialty vocabulary are accepted; which perks have multiple ranks; whether the Finesse bridge is too lethal at very high Accuracy margins or toward helpless targets; whether free reactions can be banked between turns (this draft says **no**, only one of each each round); and which supporting subsystems need completion. The once-per-round free-reaction perks **do not waive Fatigue Cost** by default.
+**Still to decide before purchasing:** Whether the proposed numeric gates and listed Specialty vocabulary are accepted; which perks have multiple ranks; whether the additional rolled Finesse damage dice are too strong at very high Accuracy margins or toward helpless targets; whether free reactions can be banked between turns (this draft says **no**, only one of each each round); and which supporting subsystems need completion. The once-per-round free-reaction perks **do not waive Fatigue Cost** by default.
 
 **Adjudication rule:** A draft effect is **not** acquired automatically when its qualifier is met. It must appear in an adopted purchasable perk record and be paid for with a banked point. Until that happens, all examples below are voluntary GM or test-run setups.
 
