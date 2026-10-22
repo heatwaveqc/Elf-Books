@@ -92,25 +92,72 @@ class FullPerkDraftTests(unittest.TestCase):
                 if p["minimum_rating"]>75:
                     self.assertFalse(no_specialty.meets_requirement)
 
-    def test_finesse_excess_accuracy_transfers_to_potence_not_dice(self):
+    def test_finesse_excess_accuracy_adds_rolled_potence_dice_not_successes(self):
+        # Accuracy 8 vs Dodge 3 gives EXACTLY 5 bonus Potence dice.
+        # The bonus rolls [2,7,10,4,8] = 0+1+2+0+1 = 4 successes.
         hit=finesse_potence(
-            accuracy_successes=8,static_avoidance=3,rolled_potence=4)
-        self.assertEqual((hit.threshold_successes,hit.modified_potence,
-                          hit.extra_dice),(5,9,0))
+            accuracy_successes=8,static_avoidance=3,rolled_potence=4,
+            bonus_faces=[2,7,10,4,8])
+        self.assertEqual(
+            (hit.applied,hit.threshold_successes,hit.extra_dice,
+             hit.bonus_potence_successes,hit.modified_potence),
+            (True,5,5,4,8))
+        self.assertEqual(hit.bonus_faces,(2,7,10,4,8))
+        self.assertNotEqual(hit.modified_potence,9)  # not five flat successes
+        # Even five bonus dice can contribute zero successes.
+        zero_bonus=finesse_potence(
+            accuracy_successes=8,static_avoidance=3,rolled_potence=4,
+            bonus_faces=[1,2,3,4,5])
+        self.assertEqual(zero_bonus.modified_potence,4)
+        # An excellent bonus roll could instead add 2 successes per 10.
+        high_bonus=finesse_potence(
+            accuracy_successes=8,static_avoidance=3,rolled_potence=4,
+            bonus_faces=[10,10,10,10,10])
+        self.assertEqual(high_bonus.modified_potence,14)
+        self.assertEqual(high_bonus.extra_dice,5)
+
+    def test_finesse_requires_real_dice_and_successful_application(self):
         matched=finesse_potence(
-            accuracy_successes=3,static_avoidance=3,rolled_potence=4)
-        self.assertEqual((matched.applied,matched.threshold_successes,
-                          matched.modified_potence),(True,0,4))
+            accuracy_successes=3,static_avoidance=3,rolled_potence=4,
+            bonus_faces=[])
+        self.assertEqual(
+            (matched.applied,matched.extra_dice,matched.modified_potence),
+            (True,0,4))
         missed=finesse_potence(
-            accuracy_successes=2,static_avoidance=3,rolled_potence=4)
-        self.assertEqual((missed.applied,missed.modified_potence),(False,0))
+            accuracy_successes=2,static_avoidance=3,rolled_potence=4,
+            bonus_faces=[])
+        self.assertEqual((missed.applied,missed.modified_potence,
+                          missed.extra_dice),(False,0,0))
+        # Bonus dice are real Potence dice, so zero base successes is NOT
+        # fatal when a rolled bonus actually generates successes.
         zero=finesse_potence(
-            accuracy_successes=6,static_avoidance=4,rolled_potence=0)
-        # An approved bridge can transform otherwise-zero Potence.
-        self.assertEqual(zero.modified_potence,2)
-        with self.assertRaises(ValueError):
-            finesse_potence(
-                accuracy_successes=-1,static_avoidance=3,rolled_potence=1)
+            accuracy_successes=6,static_avoidance=4,rolled_potence=0,
+            bonus_faces=[10,8])
+        self.assertEqual(
+            (zero.extra_dice,zero.bonus_potence_successes,zero.modified_potence),
+            (2,3,3))
+        # No fabricated successes: zero bonus die successes means zero harm.
+        truly_zero=finesse_potence(
+            accuracy_successes=6,static_avoidance=4,rolled_potence=0,
+            bonus_faces=[2,6])
+        self.assertEqual(truly_zero.modified_potence,0)
+        for kwargs in (
+            dict(accuracy_successes=-1,static_avoidance=3,
+                 rolled_potence=1,bonus_faces=[]),
+            dict(accuracy_successes=8,static_avoidance=3,
+                 rolled_potence=4,bonus_faces=[]),
+            dict(accuracy_successes=8,static_avoidance=3,
+                 rolled_potence=4,bonus_faces=[1,2,3,4,5,6]),
+            dict(accuracy_successes=8,static_avoidance=3,
+                 rolled_potence=4,bonus_faces=[1,2,3,4,11]),
+            dict(accuracy_successes=8,static_avoidance=3,
+                 rolled_potence=4,bonus_faces=[1,2,3,4,True]),
+            dict(accuracy_successes=8,static_avoidance=3,
+                 rolled_potence=4,bonus_faces=[1,2,3,4,5],
+                 application_allowed=False),
+        ):
+            with self.subTest(kwargs=kwargs),self.assertRaises(ValueError):
+                finesse_potence(**kwargs)
 
     def test_three_free_reactions_cost_no_action_but_still_cost_fatigue(self):
         cases=(
