@@ -296,6 +296,68 @@ def resolve_curse_tick(*, stored_potence:int, resistance_successes:int,
     return CurseTick(stored_potence,True,False)
 
 
+
+@dataclass(frozen=True)
+class HealingEffectGrade:
+    """Grade of healing work; does NOT yet decide mixed-mark reversal."""
+    applied: bool
+    grade: int
+    mark_equivalents: int
+
+
+def grade_healing_potence(
+        *, patient_health_resilience:int, potence_successes:int,
+        willing_and_accessible:bool,
+        accuracy_successes:int|None=None,
+        application_opposition:int|None=None)->HealingEffectGrade:
+    """Classify inverse-Injury healing against the PATIENT'S base Health.
+
+    Willing/accessible patients need no Application roll. Otherwise an
+    actual legal defense/Avoidance threshold must be supplied for the
+    Malediction-like Application roll. Unlike ordinary non-spell Projects,
+    the spell's Potence must already have been rolled even if Application
+    misses, because its Mana Cost uses that same result. This helper
+    deliberately does not remove any Injury marks; mapping grades to
+    wound de-promotion is a separate open design decision.
+    """
+    from geard_core import severity_marks
+    if type(willing_and_accessible) is not bool:
+        raise ValueError("willing_and_accessible must be boolean")
+    if type(patient_health_resilience) is not int or patient_health_resilience<1:
+        raise ValueError("patient Health resilience must be positive integer")
+    if type(potence_successes) is not int or potence_successes<0:
+        raise ValueError("healing Potence must be nonnegative integer")
+    if willing_and_accessible:
+        if accuracy_successes is not None or application_opposition is not None:
+            raise ValueError("automatic healing Application must omit to-hit inputs")
+        applied=True
+    else:
+        if (type(accuracy_successes) is not int or accuracy_successes<0
+                or type(application_opposition) is not int or application_opposition<0):
+            raise ValueError("opposed healing requires real Application and legal opposition")
+        applied=accuracy_successes>=application_opposition
+    if not applied:
+        return HealingEffectGrade(False,-1,0)
+    grade,count=severity_marks(potence_successes,patient_health_resilience)
+    return HealingEffectGrade(True,grade,count)
+
+
+def oakflesh_effective_injury_threshold(
+        *, base_health_resilience:int,
+        protection_potence_successes:int)->int:
+    """Flat protection added to the target's Injury severity threshold.
+
+    This DOES NOT increase Health, the Injury track's slots, or Avoidance,
+    and does not settle stacking with armor/other flesh spells. Potence
+    must be the actual successful spell effect at the relevant Tier.
+    """
+    if type(base_health_resilience) is not int or base_health_resilience<1:
+        raise ValueError("base Health resilience must be positive integer")
+    if type(protection_potence_successes) is not int or protection_potence_successes<0:
+        raise ValueError("protection Potence must be nonnegative integer")
+    return base_health_resilience+protection_potence_successes
+
+
 def mana_cost_practice_xp(*, tier:int, talent:Talent, school_id:str,
                           will_rating:int, school_skill_rating:int,
                           talent_rating:int|None=None,
