@@ -1,10 +1,10 @@
 # Elf-Books rules authority — Geard Lif migration
 
-**Overall status: FOUNDATION / NOT PLAYABLE.** Do not use archived D20 mechanics. **Geard Lif / Raven's Heart is the base engine**, vendored at [engine/geard-lif](../engine/geard-lif/README.md) from upstream commit `4ba2934cbb34cf8f43584016fadd2e339fad23fe`.
+**Overall status: FOUNDATION / NOT PLAYABLE.** Do not use archived D20 mechanics. **Geard Lif / Raven's Heart is the shared Project/resource/Tier engine**. Its reviewed *historical* player-safe snapshot is vendored at [engine/geard-lif](../engine/geard-lif/README.md), pinned to `8bf0801a9ac6731455cf70e77337ff9ebbec84d2`. **Elf-Books explicitly overrides base progression** with **0–25 ratings (one die/5) and XP-per-use**; the current Geard Lif core independently uses **0–5 ratings and Drive Marks**.
 
 ## Authority order
 
-1. [Local source snapshot](../engine/geard-lif/README.md) for locked Geard rules; [status notes](../engine/geard-lif/SYSTEM_STATUS.md) distinguish provisional/open pieces.
+1. [Local source snapshot](../engine/geard-lif/README.md) for reviewed shared Geard Project/resource/Tier rules; [status notes](../engine/geard-lif/SYSTEM_STATUS.md) distinguish provisional/open pieces. **For all trait rating, XP-per-use, natural-ten bootstrap and higher-Tier trait progression, [Elf-Books Advancement](ADVANCEMENT.md) takes precedence over the old copied snapshot and modern base Geard Lif Drive Mark rules.**
 2. [Elf-Books foundation](FOUNDATION.md) for Elder Scrolls adapter intent.
 3. Specific Elf-Books mechanics **only when explicitly designated approved**.
 4. [Return-to-parity checklist](../MIGRATION_BACKLOG.md) for open design and implementation tasks.
@@ -17,9 +17,13 @@
 - **All Projects and personal resources use four mark grades**, with promotion and Final exhaustion. Personal Resilience determines **slots per grade**; Project Scope determines **slots per grade** independently of Project Recalcitrance (its severity threshold). Worn armor and equivalent protective effects change an injured person's **effective severity threshold**, not slots. **Mind/Will: Spirit (slow), Mana (fast)**; **Body/Health: Injury (slow), Fatigue (fast)**; **Soul/Conviction: Plasticity (slow), Attention (fast)**. Track recovery speeds are unchanged.
 - Costs are rolled self-targeted Effects; not deducted from a numerical Magicka pool.
 
+## Elf-Books-specific progression (not inherited from current upstream)
+
+Elf Books **retains** a 0–25 rating for each Attribute/Talent/Skill/Specialty, contributing **floor(rating/5)** dice, as an intentional **fivefold expansion of the base Geard Lif 0–5 ratings**. Consequential rolls generate **source-tagged XP** (Attribute 2, Talent 1, Skill 5, Specialty 10 per success), natural-ten Skill/Specialty bootstrap, and passive resistance XP. Trait Tier unlocking and XP cascading still use [Advancement](ADVANCEMENT.md)'s rating-25 gate and Tier×5 cost/award formulas. **Drive Marks do not replace Elf-Books XP**. This is a setting-specific advancement adapter, not an inherited universal engine rule. Do not use present upstream 0–5 trait ratings when interpreting an Elf-Books sheet.
+
 ## Provisional upstream, not approved for actual campaigns
 
-- d10 successes (7–9=1, 10=2); **working trait ratings 0–25** with one d10 per five rating points (max 20 personal dice/40 including gear). **Source-die XP**: Attribute 2, Talent 1, Skill 5, Specialty 10 per success; a 10 can additionally bootstrap each used under-5 Skill and under-5 declared Specialty.
+- d10 successes (7–9=1, 10=2); **Elf-Books-only trait ratings 0–25** with one d10 per five rating points (max 20 personal dice/40 including gear). **Source-die XP**: Attribute 2, Talent 1, Skill 5, Specialty 10 per success; a 10 can additionally bootstrap each used under-5 Skill and under-5 declared Specialty.
 - **[Trait Tiers and XP cascade](ADVANCEMENT.md):** Tier N ratings require Tier N−1 at 25 to purchase. Skill dice need ≥1 governing Attribute die at the same Tier; Specialty needs ≥1 same-Tier Skill die. There is **no upper rating cap** imposed by the parent; Talent is exempt. Earned XP and point costs scale 5× per Tier. At max rating, choose up-tier bank or *raw* XP cascade Talent→Attribute→Skill→Specialty.
 - Adopted 5× Tier difference converts rolled outcome magnitude versus differently scaled opposition, without a second XP multiplication.
 - Full combat/equipment formulas, critical-event frequency, setbacks and repair, zero-threshold case, precise trait-to-action choices, static Avoidance, Talent tree, and creation budgets remain incomplete. Ordinary Project equality **succeeds**.
