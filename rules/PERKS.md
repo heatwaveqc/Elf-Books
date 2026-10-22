@@ -80,3 +80,7 @@ Archived D20 critical rules, direct HP/MP bonuses and old fixed perk gate implem
 - **Dual Flurry:** when wielding **two ready usable melee weapons**, a single attack action delivers **two independently rolled actual strikes**, each with its normal Fatigue hazard incident, even on a miss. Three committed attack actions can therefore make **six strikes**, with accumulating fatigue and ordinary fast→slow overflow.
 
 **Arcane Blacksmith remains deferred until enchanting mechanics exist.** Quiet Casting, Extra Effect and Green Thumb are ready for separate focused effect drafting, not presumed silently implemented by this pilot.
+
+## Complete proposed perk catalogue
+
+A [non-operative, 80-entry design draft](../design/PERK_CATALOG_DRAFT.md) covers all 75 source inspirations plus Finesse, Light Footed, Shield Reflex, Flowing Parry, and Spell Synthesis. The [structured draft](../design/PERK_CATALOG_DRAFT.json) specifies proposed Attribute, Skill, acceptable Specialties, combined rating requirement, effect, and supporting-system blockers for each entry. These proposals are for review and do not authorize purchase or use. The previously adopted effects for Power Bash, Deflect Arrows, and Dual Flurry remain unchanged.
